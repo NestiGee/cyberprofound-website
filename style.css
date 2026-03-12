@@ -957,6 +957,14 @@ section {
   margin-bottom: var(--space-6);
 }
 
+.bio-modal-text p {
+  margin-bottom: var(--space-4);
+}
+
+.bio-modal-text p:last-child {
+  margin-bottom: 0;
+}
+
 .bio-modal-linkedin {
   display: inline-flex;
   align-items: center;
