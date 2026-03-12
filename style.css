@@ -1352,7 +1352,7 @@ section {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .nav-links, .header-top, .nav-right .btn-outline { display: none; }
+  .nav-links, .header-top { display: none; }
   .mobile-toggle { display: flex; }
 
   .platform-layout,
