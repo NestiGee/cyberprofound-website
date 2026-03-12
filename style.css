@@ -169,6 +169,7 @@ section {
 }
 
 .nav-link:hover { color: white; }
+.nav-link.active { color: white; }
 
 .nav-right {
   display: flex;
