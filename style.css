@@ -847,6 +847,152 @@ section {
   letter-spacing: -0.01em;
 }
 
+/* ===== BIO MODAL ===== */
+.bio-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.bio-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bio-modal {
+  position: relative;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bio-modal-overlay.active .bio-modal {
+  transform: translateY(0) scale(1);
+}
+
+.bio-modal-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bio-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.bio-modal-content {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-8);
+}
+
+.bio-modal-photo {
+  flex-shrink: 0;
+  width: 220px;
+}
+
+.bio-modal-photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.bio-modal-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bio-modal-role {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.bio-modal-name {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.bio-modal-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+}
+
+.bio-modal-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: #0A66C2;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(10, 102, 194, 0.3);
+  border-radius: var(--radius-md);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bio-modal-linkedin:hover {
+  background: rgba(10, 102, 194, 0.1);
+  border-color: rgba(10, 102, 194, 0.6);
+}
+
+@media (max-width: 700px) {
+  .bio-modal-content {
+    flex-direction: column;
+    padding: var(--space-6);
+  }
+  .bio-modal-photo {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  .bio-modal {
+    max-height: 90vh;
+  }
+  .bio-modal-name {
+    font-size: var(--text-xl);
+  }
+}
+
 /* ===== NEWS ===== */
 .news-section {
   background: var(--color-surface);
