@@ -10,6 +10,47 @@
   }, { passive: true });
 })();
 
+/* ===== Dropdown Nav ===== */
+(function() {
+  var dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+  var overlay = document.getElementById('dropdownOverlay');
+  var activeItem = null;
+
+  function closeAll() {
+    dropdownItems.forEach(function(item) { item.classList.remove('active'); });
+    if (overlay) overlay.classList.remove('visible');
+    activeItem = null;
+  }
+
+  dropdownItems.forEach(function(item) {
+    var link = item.querySelector('.nav-link');
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (activeItem === item) {
+        closeAll();
+      } else {
+        closeAll();
+        item.classList.add('active');
+        if (overlay) overlay.classList.add('visible');
+        activeItem = item;
+      }
+    });
+  });
+
+  if (overlay) {
+    overlay.addEventListener('click', closeAll);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeAll();
+  });
+
+  // Close on scroll
+  window.addEventListener('scroll', function() {
+    if (activeItem) closeAll();
+  }, { passive: true });
+})();
+
 /* ===== Mobile Menu ===== */
 (function() {
   var openBtn = document.getElementById('mobileOpen');
