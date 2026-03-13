@@ -262,6 +262,142 @@
   });
 })();
 
+/* ===== Search Overlay ===== */
+(function() {
+  var searchToggle = document.getElementById('searchToggle');
+  var searchOverlay = document.getElementById('searchOverlay');
+  var searchClose = document.getElementById('searchClose');
+  var searchInput = document.getElementById('searchInput');
+  var searchResults = document.getElementById('searchResults');
+
+  if (!searchToggle || !searchOverlay) return;
+
+  /* -- Search index: curated content from all pages -- */
+  var searchIndex = [
+    /* HOME */
+    { page: 'Home', title: 'Acquire. Integrate. Scale. Protect.', desc: 'Cyber Profound is building America\'s preeminent cybersecurity platform through disciplined M&A.', url: './index.html' },
+    { page: 'Platform', title: 'One Platform. Total Protection.', desc: 'Enterprise-grade cybersecurity through strategic acquisition and integration of best-in-class U.S. firms.', url: './index.html#platform' },
+    { page: 'Approach', title: 'Disciplined Acquisition', desc: 'Revenue-positive firms with strong client relationships and recurring contracts. Long-term ownership, not flip-and-exit.', url: './index.html#solutions' },
+    { page: 'Approach', title: 'Platform Value Creation', desc: 'Shared SOC, threat intelligence, compliance tooling, and national-scale delivery from day one.', url: './index.html#solutions' },
+    { page: 'Approach', title: 'Operational Excellence', desc: 'Centralized shared services, unified reporting, and performance governance across the portfolio.', url: './index.html#solutions' },
+    { page: 'Approach', title: 'Risk Management', desc: 'Formal due diligence, cybersecurity audits, regulatory review, and integration risk controls.', url: './index.html#solutions' },
+    { page: 'Why Cyber Profound', title: 'Permanent Capital. Disciplined Governance. National Reach.', desc: 'Investment consortium with 400+ years combined leadership in cybersecurity, enterprise tech, and M&A.', url: './index.html#threat' },
+    { page: 'Acquisition Focus', title: 'Target Profiles', desc: 'Managed security service providers, identity and access management, cloud security, GRC, and incident response firms.', url: './index.html#targets' },
+    /* LEADERSHIP */
+    { page: 'Leadership', title: 'Mary Ann Davidson — Chair of the Board', desc: 'Former CSO of Oracle with nearly 40 years in software security, engineering governance, and cybersecurity standards.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Nest Gjinaj — Founder & Managing Director', desc: 'Strategist and leader focused on redefining the U.S. cybersecurity market through strategic acquisition.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Gautam Banerjea — Chief Executive Officer', desc: 'Over 30 years of enterprise technology and cloud transformation leadership, including 17 years at IBM.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Manvedeep Singh — Non-Executive Director', desc: 'British entrepreneur with interests spanning healthcare, hospitality, technology, and finance across multiple continents.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Jonathan Loretto — Non-Executive Director', desc: '25+ years advising boards on digital transformation, cyber resilience, and AI governance across financial services and telecom.', url: './index.html#leadership' },
+    /* ABOUT */
+    { page: 'About', title: 'Our Mission', desc: 'To acquire, support, and unify high-quality U.S. cybersecurity firms under one operationally excellent, nationally scaled platform.', url: './about.html#mission' },
+    { page: 'About', title: 'Our Vision', desc: 'To become the most trusted cybersecurity consolidation platform in the United States.', url: './about.html#mission' },
+    { page: 'About', title: 'The Opportunity — Market Fragmentation', desc: 'The U.S. cybersecurity market includes thousands of small and mid-size firms operating independently without scale.', url: './about.html#opportunity' },
+    { page: 'About', title: 'Our Approach — Permanent Capital', desc: 'Selective acquisition, operational integration, value creation, and long-term ownership.', url: './about.html#approach' },
+    { page: 'About', title: 'Who We Are', desc: 'Led by operators, not financial engineers. Senior professionals across cybersecurity, enterprise technology, and M&A.', url: './about.html#team' },
+    /* NEWS */
+    { page: 'News', title: 'Mary Ann Davidson Appointed Chair of the Board', desc: 'Former Oracle Chief Security Officer joins Cyber Profound to lead board oversight and cybersecurity governance.', url: './news.html' },
+    { page: 'News', title: 'Why U.S. Cybersecurity Consolidation Is Accelerating', desc: 'Market dynamics driving the wave of cybersecurity M&A and platform-based security models.', url: './news.html' },
+    { page: 'News', title: 'How Integrated Security Platforms Improve Outcomes', desc: 'The benefits of unified cybersecurity delivery versus fragmented point solutions.', url: './news.html' },
+    { page: 'News', title: 'What Cybersecurity Business Owners Should Know Before Selling', desc: 'Key considerations for cybersecurity firm founders evaluating acquisition opportunities.', url: './news.html' },
+    /* LEGAL */
+    { page: 'Legal', title: 'Privacy Policy', desc: 'How Cyber Profound collects, uses, and protects your information.', url: './privacy.html' },
+    { page: 'Legal', title: 'Terms of Service', desc: 'Terms and conditions governing use of the Cyber Profound website.', url: './terms.html' },
+    /* CONTACT */
+    { page: 'Contact', title: 'Get in Touch', desc: 'Email nest.gjinaj@cyberprofound.com or call +(888) 900-7343 to discuss acquisition opportunities.', url: './index.html#contact' }
+  ];
+
+  function openSearch() {
+    searchOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() { searchInput.focus(); }, 200);
+  }
+
+  function closeSearch() {
+    searchOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  }
+
+  searchToggle.addEventListener('click', openSearch);
+  searchClose.addEventListener('click', closeSearch);
+
+  // Close on background click
+  searchOverlay.addEventListener('click', function(e) {
+    if (e.target === searchOverlay) closeSearch();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) closeSearch();
+  });
+
+  // Keyboard shortcut: Ctrl/Cmd + K
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (searchOverlay.classList.contains('active')) {
+        closeSearch();
+      } else {
+        openSearch();
+      }
+    }
+  });
+
+  // Search on input
+  searchInput.addEventListener('input', function() {
+    var query = searchInput.value.trim().toLowerCase();
+    if (query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    var terms = query.split(/\s+/);
+    var matches = searchIndex.filter(function(item) {
+      var haystack = (item.title + ' ' + item.desc + ' ' + item.page).toLowerCase();
+      return terms.every(function(term) { return haystack.indexOf(term) !== -1; });
+    });
+
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-results">No results found for \u201c' + escapeHtml(searchInput.value.trim()) + '\u201d</div>';
+      return;
+    }
+
+    var html = '';
+    matches.forEach(function(item) {
+      html += '<a class="search-result-item" href="' + item.url + '">';
+      html += '<div class="search-result-label">' + escapeHtml(item.page) + '</div>';
+      html += '<div class="search-result-title">' + highlightMatch(item.title, terms) + '</div>';
+      html += '<div class="search-result-desc">' + highlightMatch(item.desc, terms) + '</div>';
+      html += '</a>';
+    });
+    searchResults.innerHTML = html;
+
+    // Close search when clicking a result
+    searchResults.querySelectorAll('.search-result-item').forEach(function(link) {
+      link.addEventListener('click', function() {
+        closeSearch();
+      });
+    });
+  });
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function highlightMatch(text, terms) {
+    var escaped = escapeHtml(text);
+    terms.forEach(function(term) {
+      var regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      escaped = escaped.replace(regex, '<mark style="background:rgba(224,30,38,0.25);color:inherit;border-radius:2px;padding:0 2px;">$1</mark>');
+    });
+    return escaped;
+  }
+})();
+
 /* ===== Fallback Scroll Reveal ===== */
 (function() {
   if (CSS.supports && CSS.supports('animation-timeline', 'scroll()')) return;
