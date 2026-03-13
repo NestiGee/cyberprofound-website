@@ -300,6 +300,14 @@
     { page: 'News', title: 'Why U.S. Cybersecurity Consolidation Is Accelerating', desc: 'Market dynamics driving the wave of cybersecurity M&A and platform-based security models.', url: './news.html' },
     { page: 'News', title: 'How Integrated Security Platforms Improve Outcomes', desc: 'The benefits of unified cybersecurity delivery versus fragmented point solutions.', url: './news.html' },
     { page: 'News', title: 'What Cybersecurity Business Owners Should Know Before Selling', desc: 'Key considerations for cybersecurity firm founders evaluating acquisition opportunities.', url: './news.html' },
+    /* CAREERS */
+    { page: 'Careers', title: 'Join Cyber Profound', desc: 'Build the future of cybersecurity. Senior leadership and advisory roles available.', url: './careers.html' },
+    { page: 'Careers', title: 'Chief Financial Officer', desc: 'Lead financial strategy, M&A deal structuring, capital allocation, and investor relations.', url: './careers.html#positions' },
+    { page: 'Careers', title: 'Chief Operating Officer', desc: 'Oversee platform operations, post-acquisition integration, and shared services buildout.', url: './careers.html#positions' },
+    { page: 'Careers', title: 'Chief Legal Officer', desc: 'Direct legal affairs including M&A transaction structuring, regulatory compliance, and corporate governance.', url: './careers.html#positions' },
+    { page: 'Careers', title: 'Investment Banker', desc: 'Source, evaluate, and execute cybersecurity acquisitions across the United States.', url: './careers.html#positions' },
+    { page: 'Careers', title: 'Tax Partner', desc: 'Advise on tax-efficient deal structuring and multi-entity tax planning across acquisitions.', url: './careers.html#positions' },
+    { page: 'Careers', title: 'Submit Your Resume', desc: 'Share your background for confidential executive and advisory positions at Cyber Profound.', url: './careers.html#apply' },
     /* LEGAL */
     { page: 'Legal', title: 'Privacy Policy', desc: 'How Cyber Profound collects, uses, and protects your information.', url: './privacy.html' },
     { page: 'Legal', title: 'Terms of Service', desc: 'Terms and conditions governing use of the Cyber Profound website.', url: './terms.html' },

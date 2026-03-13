@@ -1,0 +1,291 @@
+/* ===== CAREERS PAGE ===== */
+
+/* -- Hero -- */
+.careers-hero {
+  padding-top: calc(80px + var(--space-20));
+  padding-bottom: var(--space-16);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.careers-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(224, 30, 38, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+.careers-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+}
+
+.careers-hero-desc {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+/* -- Why Join -- */
+.careers-why {
+  padding-block: var(--space-16);
+  background: var(--color-surface);
+}
+
+.careers-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+}
+
+.careers-why-card {
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  transition: border-color 0.2s ease;
+}
+
+.careers-why-card:hover {
+  border-color: rgba(224, 30, 38, 0.3);
+}
+
+.careers-why-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(224, 30, 38, 0.08);
+  color: var(--color-accent);
+  margin-bottom: var(--space-5);
+}
+
+.careers-why-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: white;
+  margin-bottom: var(--space-3);
+}
+
+.careers-why-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* -- Open Positions -- */
+.careers-positions {
+  padding-block: var(--space-20);
+  background: var(--color-bg);
+}
+
+.careers-positions-header {
+  margin-bottom: var(--space-12);
+}
+
+.careers-positions-header .section-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.careers-positions-header .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.careers-positions-desc {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.careers-roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.careers-role-card {
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.careers-role-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--color-surface-alt, #141414);
+}
+
+.careers-role-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.careers-role-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: white;
+  margin-bottom: var(--space-2);
+}
+
+.careers-role-meta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.careers-role-tag {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  padding: 3px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+
+.careers-role-apply {
+  flex-shrink: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.careers-role-apply:hover {
+  background: var(--color-accent);
+  color: white;
+}
+
+.careers-role-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+/* -- Apply / Resume Form -- */
+.careers-apply {
+  padding-block: var(--space-20);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.careers-apply-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.careers-apply-info .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: white;
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+
+.careers-apply-info > p {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.careers-apply-contact {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.careers-apply-contact strong {
+  color: white;
+  font-weight: 600;
+}
+
+.careers-apply-contact p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.careers-apply-contact a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.careers-apply-contact a:hover {
+  text-decoration: underline;
+}
+
+.careers-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* -- Responsive -- */
+@media (max-width: 1024px) {
+  .careers-why-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .careers-apply-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 640px) {
+  .careers-hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .careers-role-header {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .careers-role-apply {
+    align-self: flex-start;
+  }
+}
