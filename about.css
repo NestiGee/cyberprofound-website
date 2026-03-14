@@ -17,7 +17,7 @@
   transform: translateX(-50%);
   width: 1000px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(0, 82, 204, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(34, 81, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -30,7 +30,7 @@
   color: var(--color-accent);
   margin-bottom: var(--space-6);
   padding: var(--space-1) var(--space-3);
-  border: 1px solid rgba(0, 82, 204, 0.3);
+  border: 1px solid rgba(34, 81, 255, 0.3);
   border-radius: var(--radius-sm);
 }
 
@@ -99,8 +99,8 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(0, 82, 204, 0.08);
-  border: 1px solid rgba(0, 82, 204, 0.15);
+  background: rgba(34, 81, 255, 0.08);
+  border: 1px solid rgba(34, 81, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
