@@ -17,7 +17,7 @@
   transform: translateX(-50%);
   width: 1000px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(224, 30, 38, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0, 82, 204, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -30,7 +30,7 @@
   color: var(--color-accent);
   margin-bottom: var(--space-6);
   padding: var(--space-1) var(--space-3);
-  border: 1px solid rgba(224, 30, 38, 0.3);
+  border: 1px solid rgba(0, 82, 204, 0.3);
   border-radius: var(--radius-sm);
 }
 
@@ -38,7 +38,7 @@
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 800;
-  color: white;
+  color: var(--color-text);
   letter-spacing: -0.03em;
   margin-bottom: var(--space-6);
   line-height: 1.15;
@@ -81,7 +81,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-cyan));
+  background: linear-gradient(90deg, var(--color-accent), #2979ff);
   opacity: 0;
   transition: opacity var(--transition-fast);
 }
@@ -99,8 +99,8 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(224, 30, 38, 0.1);
-  border: 1px solid rgba(224, 30, 38, 0.2);
+  background: rgba(0, 82, 204, 0.08);
+  border: 1px solid rgba(0, 82, 204, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +112,7 @@
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 800;
-  color: white;
+  color: var(--color-text);
   margin-bottom: var(--space-4);
   letter-spacing: -0.02em;
 }
@@ -142,7 +142,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-cyan);
+  color: var(--color-accent);
   margin-bottom: var(--space-4);
 }
 
@@ -150,7 +150,7 @@
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 800;
-  color: white;
+  color: var(--color-text);
   margin-bottom: var(--space-6);
   letter-spacing: -0.02em;
 }
@@ -200,7 +200,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: white;
+  color: var(--color-text);
   margin-bottom: var(--space-3);
 }
 
@@ -220,7 +220,7 @@
 
 /* Active nav state */
 .nav-link.active {
-  color: white;
+  color: var(--color-accent);
 }
 
 /* ===== RESPONSIVE ===== */
