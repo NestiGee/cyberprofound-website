@@ -884,24 +884,67 @@ section {
   );
 }
 
-/* LinkedIn link below photo */
-.team-linkedin {
-  display: inline-flex;
+/* "+" button and social */
+.card-social {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  color: #0A66C2;
-  text-decoration: none;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-1);
-  border-radius: var(--radius-sm);
-  transition: background var(--transition-fast), color var(--transition-fast);
+  gap: var(--space-2);
 }
 
-.team-linkedin:hover {
+.social-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: var(--radius-sm);
+  color: #0A66C2;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.card-social.open .social-linkedin {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.social-linkedin:hover {
   background: #e8f0fe;
-  color: #004182;
+}
+
+.card-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.card-plus:hover {
+  background: var(--color-accent-hover);
+}
+
+.card-plus svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-social.open .card-plus svg {
+  transform: rotate(45deg);
 }
 
 .team-role {
