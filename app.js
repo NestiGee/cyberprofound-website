@@ -181,6 +181,7 @@
       name: 'Nest Gjinaj',
       role: 'Founder & Managing Director',
       photo: './assets/headshot-gjinaj.jpg',
+      photoPosition: 'top',
       linkedin: 'https://www.linkedin.com/in/nest-gjinaj-929b9863/',
       bio: 'Nest Gjinaj is heralded as both strategist and leader, a man whose foundations were laid in the rigour of engineering, and whose career has been tempered by the exacting realms of quality, security, and transformation. He now embarks upon a new strategic mission of consequence: to redefine the cybersecurity market in the United States of America.\n\nFor years, Nest has stood at the confluence of technology and governance, where precision is non-negotiable, discipline is enforced, and vision is demanded at its highest expression. He is esteemed not merely for his individual craft, but for his rare ability to assemble around him men and women of talent who sharpen and elevate his own mettle.\n\nThrough his tenure across the corporate bastions of Mergers & Acquisitions, Finance, and Technology, he has discerned a void; a chasm in the very heart of the American cybersecurity domain. Here lies a market plagued not by lack of capital, but by absence of trust, of enduring relationships, of honed skill, and of decisive leadership.\n\nIt is in answer to this deficiency that Nest has founded Cyber Profound, an Investment Consortium composed of senior business professionals, that have conducted billions of dollars in transactions, across successive years. Their collective mission is neither idle nor tentative: it is to transform the cybersecurity landscape of the United States through the strategic acquisition of small and medium sized enterprises, thereby forging an industry fortified by integrity, mastery, and leadership.'
     },
@@ -201,7 +202,7 @@
     loretto: {
       name: 'Jonathan Loretto',
       role: 'Non-Executive Director',
-      photo: '',
+      photo: './assets/headshot-loretto.jpg',
       linkedin: 'https://www.linkedin.com/in/jloretto/',
       bio: 'Jonathan Loretto serves as Non-Executive Director and Cyber Industry Expert of Cyber Profound, where he provides independent board oversight and strategic guidance across enterprise transformation, cybersecurity strategy, governance, and platform integration as the company executes its long-term acquisition and growth strategy.\n\nMr. Loretto brings more than 25 years of international leadership experience advising boards and executive teams on large scale digital transformation, operating model design, and technology driven organizational change across financial services, telecommunications, utilities, supply chain, and private equity backed enterprises throughout Europe, North America, and Australia.\n\nHe has led complex transformation initiatives focused on improving operational resilience, strengthening risk posture, and enabling secure adoption of emerging technologies within regulated enterprise environments. His work has consistently centered on translating board level strategy into executable delivery structures that produce measurable commercial outcomes.\n\nMr. Loretto is recognized for his expertise in cyber resilience, artificial intelligence governance, and enterprise architecture strategy, advising senior stakeholders on navigating technological disruption while maintaining regulatory alignment and operational discipline.\n\nEarlier in his career, Mr. Loretto held senior enterprise leadership roles delivering large scale technology and transformation programs and served as IBM\'s Oracle Lead, acting as a senior executive point of contact responsible for strategic alignment, enterprise delivery coordination, and executive engagement across complex global client environments.\n\nAt Cyber Profound, Mr. Loretto supports the Board and executive leadership team in establishing a disciplined governance framework and scalable operating foundation as the company builds an enterprise grade cybersecurity platform through structured acquisitions and long-term value creation.'
     }
@@ -227,6 +228,7 @@
     if (data.photo) {
       modalPhoto.src = data.photo;
       modalPhoto.alt = data.name;
+      modalPhoto.style.objectPosition = data.photoPosition || 'center';
       modalPhoto.parentElement.style.display = '';
     } else {
       modalPhoto.parentElement.style.display = 'none';
