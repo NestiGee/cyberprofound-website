@@ -242,19 +242,27 @@ section {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: linear-gradient(135deg, #051C2C 0%, #0a2a40 40%, #051C2C 70%, #041524 100%);
 }
 
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,82,204,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(0,82,204,0.05) 0%, transparent 40%);
+  pointer-events: none;
 }
 
 .hero-bg::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(5,28,44,0.92) 0%, rgba(5,28,44,0.5) 60%, transparent 100%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,82,204,0.3), transparent);
 }
 
 .hero-content {
@@ -451,6 +459,75 @@ section {
   border-radius: var(--radius-lg);
 }
 
+/* Corporate platform graphic */
+.platform-graphic {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.pg-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,82,204,0.12);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pg-ring-1 {
+  width: 85%;
+  height: 85%;
+  border-color: rgba(0,82,204,0.08);
+}
+
+.pg-ring-2 {
+  width: 60%;
+  height: 60%;
+  border-color: rgba(0,82,204,0.15);
+}
+
+.pg-ring-3 {
+  width: 35%;
+  height: 35%;
+  border-color: rgba(0,82,204,0.2);
+  background: rgba(0,82,204,0.03);
+}
+
+.pg-shield {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  border-radius: 50%;
+  color: white;
+  box-shadow: 0 0 40px rgba(0,82,204,0.2);
+}
+
+.pg-node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.pg-n1 { top: 7%; left: 50%; transform: translateX(-50%); }
+.pg-n2 { top: 25%; right: 10%; }
+.pg-n3 { bottom: 25%; right: 10%; }
+.pg-n4 { bottom: 7%; left: 50%; transform: translateX(-50%); }
+.pg-n5 { bottom: 25%; left: 10%; }
+.pg-n6 { top: 25%; left: 10%; }
+
 /* ===== STATS BAR ===== */
 .stats-bar {
   background: var(--color-navy);
@@ -587,10 +664,10 @@ section {
 
 .card-link:hover { color: var(--color-accent-hover); }
 
-/* ===== THREAT INTELLIGENCE (FULL-WIDTH VISUAL) ===== */
+/* ===== WHY CYBER PROFOUND (FULL-WIDTH) ===== */
 .threat-section {
   position: relative;
-  min-height: 70vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -599,19 +676,25 @@ section {
 .threat-bg {
   position: absolute;
   inset: 0;
+  background: linear-gradient(135deg, #051C2C 0%, #0a2a40 50%, #051C2C 100%);
 }
 
-.threat-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.threat-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(0,82,204,0.06) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .threat-bg::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to left, rgba(5,28,44,0.85) 0%, rgba(5,28,44,0.75) 50%, rgba(5,28,44,0.95) 100%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,82,204,0.2), transparent);
 }
 
 .threat-content {
