@@ -37,7 +37,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
@@ -230,26 +230,34 @@
   <main>
     <!-- HERO -->
     <section class="hero" id="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-content">
-        <span class="hero-label hero-reveal" style="--reveal-d:0">Cybersecurity Platform</span>
-        <h1 class="hero-title">
-          <span class="hero-word" style="--word-d:1">Acquire.</span>
-          <span class="hero-word" style="--word-d:2">Integrate.</span><br>
-          <span class="hero-word" style="--word-d:3">Scale.</span>
-          <span class="hero-word" style="--word-d:4">Protect.</span>
-        </h1>
-        <p class="hero-subtitle hero-reveal" style="--reveal-d:5">
-          Cyber Profound is a U.S.-based cybersecurity services platform that acquires, supports, and scales high-quality firms through disciplined governance and operational leadership.
-        </p>
-        <div class="hero-actions hero-reveal" style="--reveal-d:6">
-          <a href="#contact" class="btn-primary">
-            Schedule a confidential call
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#platform" class="btn-outline">
-            Explore the platform
-          </a>
+      <div class="container">
+        <div class="hero-split">
+          <div class="hero-left">
+            <h1 class="hero-title hero-reveal" style="--reveal-d:0">
+              <span class="hero-word-line">Acquire.</span>
+              <span class="hero-word-line">Integrate.</span>
+              <span class="hero-word-line">Scale. <em>Protect.</em></span>
+            </h1>
+          </div>
+          <div class="hero-right hero-reveal" style="--reveal-d:2">
+            <p class="hero-description">
+              Cyber Profound is a U.S.-based cybersecurity consolidation platform. We acquire, support, and scale high-quality firms through disciplined governance and operational leadership.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">
+                Schedule a confidential call
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#platform" class="btn-outline">
+                Explore the platform
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap hero-reveal" style="--reveal-d:3">
+        <div class="container">
+          <img src="./assets/hero-image.jpg" alt="Modern corporate skyline" class="hero-image" loading="eager">
         </div>
       </div>
     </section>
