@@ -202,8 +202,14 @@
 /* -- Apply / Resume Form -- */
 .careers-apply {
   padding-block: var(--space-20);
-  background: var(--color-surface);
-  border-top: 1px solid var(--color-border);
+  background: var(--color-bg, #ffffff);
+}
+
+.careers-apply > .container {
+  background: var(--color-surface, #F9F8F5);
+  border: 1px solid var(--color-border, #D4D1CA);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-12) var(--space-10);
 }
 
 .careers-apply-content {
