@@ -358,7 +358,7 @@
             <p><a href="tel:+18889007343">+(888) 900-7343</a></p>
           </div>
         </div>
-        <form class="careers-form" name="careers" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="careers-form" name="careers" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
           <p class="hidden-field" style="display:none"><input name="bot-field"></p>
           <div class="form-row">
             <div class="form-group">
@@ -391,6 +391,16 @@
           <div class="form-group">
             <label for="careers-linkedin">LinkedIn Profile URL</label>
             <input type="url" id="careers-linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+          </div>
+          <div class="form-group">
+            <label for="careers-resume">Resume / CV</label>
+            <div class="file-upload-wrapper">
+              <input type="file" id="careers-resume" name="resume" accept=".pdf,.doc,.docx" class="file-upload-input">
+              <div class="file-upload-label" id="fileUploadLabel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Upload your resume (PDF, DOC, DOCX)</span>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="careers-message">Cover Letter / Message</label>
@@ -502,5 +512,23 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
   <script src="./app.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var fileInput = document.getElementById('careers-resume');
+      var fileLabel = document.getElementById('fileUploadLabel');
+      if (fileInput && fileLabel) {
+        fileInput.addEventListener('change', function() {
+          var span = fileLabel.querySelector('span');
+          if (fileInput.files.length > 0) {
+            span.textContent = fileInput.files[0].name;
+            fileLabel.classList.add('has-file');
+          } else {
+            span.textContent = 'Upload your resume (PDF, DOC, DOCX)';
+            fileLabel.classList.remove('has-file');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
