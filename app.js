@@ -191,6 +191,13 @@
       linkedin: 'https://www.linkedin.com/in/gbanerjea/',
       bio: 'Gautam Banerjea serves as Chief Executive Officer of Cyber Profound, where he leads execution of the company\'s national cybersecurity consolidation strategy, oversees platform integration, and drives enterprise expansion across priority verticals.\n\nMr. Banerjea brings more than three decades of senior leadership experience in enterprise technology, cloud transformation, and large-scale P&L management. Prior to joining Cyber Profound, he held multiple executive roles at IBM over a 17-year tenure, including Vice President and Senior Client Partner.\n\nMr. Banerjea has directed multi-billion-dollar P&Ls, driving consistent growth and delivering complex modernization programs across Retail, CPG, Travel, Transportation, and Healthcare industries. He has pioneered large-scale cloud migrations, integrated AI-driven solutions, and championed agile enterprise models that accelerate innovation and reduce cost. He has worked extensively across North America, Europe, and Asia-Pacific, leading multicultural teams and delivering mission-critical programs in over 50 countries.\n\nHis leadership experience spans hybrid cloud architecture, DevSecOps modernization, AI-enabled automation, enterprise application transformation, and large-scale Agile operating model deployments. Earlier in his career, Mr. Banerjea held senior leadership roles at Ernst and Young, CapGemini, HP, and EDS.\n\nHe holds a Master of Science in Information Systems from The University of Texas at Dallas and a Master of Science in Applied Economics from Birla Institute of Technology and Science.\n\nAt Cyber Profound, Mr. Banerjea is focused on building a disciplined, enterprise-grade cybersecurity platform through structured acquisitions, operational integration, and long-term value creation.'
     },
+    skuse: {
+      name: 'Sean Skuse',
+      role: 'Chief Financial Officer',
+      photo: './assets/headshot-skuse.jpg',
+      linkedin: 'https://www.linkedin.com/in/seanskuse/',
+      bio: 'Sean Skuse serves as Chief Financial Officer of Cyber Profound, where he oversees the company\'s financial strategy, capital management, and fiscal governance as the organization executes its national cybersecurity consolidation platform.'
+    },
     singh: {
       name: 'Manvedeep Singh',
       role: 'Non-Executive Director',
