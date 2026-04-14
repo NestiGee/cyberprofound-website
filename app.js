@@ -195,7 +195,7 @@
       name: 'Sean Skuse',
       role: 'Chief Financial Officer',
       photo: './assets/headshot-skuse.jpg',
-      linkedin: 'https://www.linkedin.com/in/seanskuse/',
+      linkedin: 'https://www.linkedin.com/in/sean-m-skuse-29881776/',
       bio: 'Sean Skuse serves as Chief Financial Officer of Cyber Profound, where he oversees the company\'s financial strategy, capital management, and fiscal governance as the organization executes its national cybersecurity consolidation platform.'
     },
     singh: {
