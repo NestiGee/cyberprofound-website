@@ -198,6 +198,13 @@
       linkedin: 'https://www.linkedin.com/in/sean-m-skuse-29881776/',
       bio: 'Sean Skuse serves as Chief Financial Officer of Cyber Profound, where he oversees the company\'s financial strategy, capital management, and fiscal governance as the organization executes its national cybersecurity consolidation platform.'
     },
+    miller: {
+      name: 'Susan Miller',
+      role: 'Chief Operational Officer',
+      photo: './assets/headshot-miller.jpg',
+      linkedin: '',
+      bio: 'Susan Miller serves as Chief Operational Officer of Cyber Profound, where she leads day-to-day operations, integration execution, and operational governance as the company builds its national cybersecurity consolidation platform.'
+    },
     singh: {
       name: 'Manvedeep Singh',
       role: 'Non-Executive Director',
@@ -229,7 +236,13 @@
     modalName.textContent = data.name;
     modalRole.textContent = data.role;
     modalText.innerHTML = data.bio.split('\n\n').map(function(p) { return '<p>' + p + '</p>'; }).join('');
-    modalLinkedIn.href = data.linkedin;
+    if (data.linkedin) {
+      modalLinkedIn.href = data.linkedin;
+      modalLinkedIn.style.display = '';
+    } else {
+      modalLinkedIn.removeAttribute('href');
+      modalLinkedIn.style.display = 'none';
+    }
 
     if (data.photo) {
       modalPhoto.src = data.photo;
@@ -295,6 +308,7 @@
     { page: 'Leadership', title: 'Mary Ann Davidson — Chair of the Board', desc: 'Former CSO of Oracle with nearly 40 years in software security, engineering governance, and cybersecurity standards.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Nest Gjinaj — Founder & Managing Director', desc: 'Strategist and leader focused on redefining the U.S. cybersecurity market through strategic acquisition.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Gautam Banerjea — Chief Executive Officer', desc: 'Over 30 years of enterprise technology and cloud transformation leadership, including 17 years at IBM.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Susan Miller — Chief Operational Officer', desc: 'Leads day-to-day operations, integration execution, and operational governance across the Cyber Profound platform.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Manvedeep Singh — Non-Executive Director', desc: 'British entrepreneur with interests spanning healthcare, hospitality, technology, and finance across multiple continents.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Jonathan Loretto — Non-Executive Director', desc: '25+ years advising boards on digital transformation, cyber resilience, and AI governance across financial services and telecom.', url: './index.html#leadership' },
     /* ABOUT */
