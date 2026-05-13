@@ -312,7 +312,7 @@
     { page: 'Leadership', title: 'Manvedeep Singh — Non-Executive Director', desc: 'British entrepreneur with interests spanning healthcare, hospitality, technology, and finance across multiple continents.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Jonathan Loretto — Non-Executive Director', desc: '25+ years advising boards on digital transformation, cyber resilience, and AI governance across financial services and telecom.', url: './index.html#leadership' },
     /* ABOUT */
-    { page: 'About', title: 'Our Mission', desc: 'To acquire, support, and unify high-quality U.S. cybersecurity firms under one operationally excellent, nationally scaled platform.', url: './about.html#mission' },
+    { page: 'About', title: 'Our Mission', desc: 'Deliver superior protection, measurable outcomes, and enduring value for clients, employees, and stakeholders by unifying the fragmented U.S. cybersecurity services market into a single, integrated, nationally scaled platform spanning managed security, endpoint protection, identity, and cloud security.', url: './about.html#mission' },
     { page: 'About', title: 'Our Vision', desc: 'To become the most trusted cybersecurity consolidation platform in the United States.', url: './about.html#mission' },
     { page: 'About', title: 'The Opportunity — Market Fragmentation', desc: 'The U.S. cybersecurity market includes thousands of small and mid-size firms operating independently without scale.', url: './about.html#opportunity' },
     { page: 'About', title: 'Our Approach — Permanent Capital', desc: 'Selective acquisition, operational integration, value creation, and long-term ownership.', url: './about.html#approach' },
@@ -334,7 +334,7 @@
     { page: 'Legal', title: 'Privacy Policy', desc: 'How Cyber Profound collects, uses, and protects your information.', url: './privacy.html' },
     { page: 'Legal', title: 'Terms of Service', desc: 'Terms and conditions governing use of the Cyber Profound website.', url: './terms.html' },
     /* CONTACT */
-    { page: 'Contact', title: 'Get in Touch', desc: 'Email nest.gjinaj@cyberprofound.com or call +(888) 900-7343 to discuss acquisition opportunities.', url: './index.html#contact' }
+    { page: 'Contact', title: 'Get in Touch', desc: 'Email Ngjinaj@cyberprofound.com or call +(888) 900-7343 to discuss acquisition opportunities.', url: './index.html#contact' }
   ];
 
   function openSearch() {
