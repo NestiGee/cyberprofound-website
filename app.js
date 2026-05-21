@@ -222,6 +222,7 @@
   };
 
   var modal = document.getElementById('bioModal');
+  if (!modal) return; // No bio modal on this page (e.g. careers, news) — skip
   var modalPhoto = document.getElementById('bioModalPhoto');
   var modalName = document.getElementById('bioModalName');
   var modalRole = document.getElementById('bioModalRole');
