@@ -509,49 +509,64 @@
   });
 })();
 
-/* ===== Form Submission via Email (mailto fallback) =====
-   Intercepts contact, careers, and newsletter forms and opens the user's
-   email client with a pre-filled message to Ngjinaj@cyberprofound.com.
-   Submissions arrive directly in Outlook. No backend required. */
+/* ===== Form Submission via Formspree =====
+   Submits contact, careers, and newsletter forms to Formspree, which emails
+   them to Ngjinaj@cyberprofound.com. Supports file attachments (resumes).
+   On success, redirects to /thank-you.html. */
 (function() {
-  var RECIPIENT = 'Ngjinaj@cyberprofound.com';
-
-  function escapeForBody(v) {
-    return (v == null ? '' : String(v)).trim();
-  }
-
-  function buildBody(form) {
-    var lines = [];
-    var elements = form.querySelectorAll('input, select, textarea');
-    var seen = {};
-    elements.forEach(function(el) {
-      if (!el.name) return;
-      if (el.type === 'hidden') return;
-      if (el.name === 'bot-field' || el.name === 'form-name') return;
-      if (el.type === 'file') {
-        if (el.files && el.files.length) {
-          lines.push(labelFor(el) + ': [Attached file: ' + el.files[0].name + ' \u2014 please send as an attachment from your email client]');
-        }
-        return;
-      }
-      var val = escapeForBody(el.value);
-      if (!val) return;
-      if (seen[el.name]) return;
-      seen[el.name] = true;
-      lines.push(labelFor(el) + ': ' + val);
-    });
-    return lines.join('\n');
-  }
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvzoyvq';
+  var SUCCESS_URL = '/thank-you.html';
 
   function labelFor(el) {
     if (el.id) {
       var lbl = document.querySelector('label[for="' + el.id + '"]');
       if (lbl) return lbl.textContent.trim();
     }
-    return el.name.replace(/[-_]/g, ' ').replace(/\b\w/g, function(c){return c.toUpperCase();});
+    return (el.name || '').replace(/[-_]/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
   }
 
-  function handleSubmit(form, subjectPrefix, hasResume) {
+  function showToast(message, isError) {
+    var note = document.createElement('div');
+    note.setAttribute('role', 'status');
+    note.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:' + (isError ? '#7a1a1a' : '#051C2C') + ';color:#fff;padding:16px 24px;border-radius:8px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.25);z-index:9999;max-width:90vw;text-align:center;';
+    note.innerHTML = message;
+    document.body.appendChild(note);
+    setTimeout(function() { note.style.transition = 'opacity 0.5s'; note.style.opacity = '0'; setTimeout(function(){ note.remove(); }, 600); }, 6000);
+  }
+
+  function buildSubject(form, fallback) {
+    var nameField = form.querySelector('[name="name"]');
+    var senderName = nameField && nameField.value ? nameField.value.trim() : '';
+    return fallback + (senderName ? ' \u2014 ' + senderName : '');
+  }
+
+  function rewriteFieldNamesForReadability(formData, form) {
+    // Formspree shows field names in emails. Rewrite to human-readable labels.
+    var nice = new FormData();
+    var fileFields = {};
+    var els = form.querySelectorAll('input, select, textarea');
+    var elsByName = {};
+    els.forEach(function(el) { if (el.name) elsByName[el.name] = el; });
+
+    formData.forEach(function(value, key) {
+      if (key === 'bot-field' || key === 'form-name') return;
+      var el = elsByName[key];
+      var label = el ? labelFor(el) : key;
+      // Preserve file uploads with their original key so Formspree treats them as attachments
+      if (value instanceof File) {
+        if (value.size === 0 && !value.name) return; // empty file input
+        // Use a readable name as the field key for the email body, but keep file
+        nice.append(label, value);
+        fileFields[label] = true;
+      } else {
+        if (!value || (typeof value === 'string' && !value.trim())) return;
+        nice.append(label, value);
+      }
+    });
+    return nice;
+  }
+
+  function handleSubmit(form, subjectPrefix) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -559,55 +574,58 @@
       var bot = form.querySelector('[name="bot-field"]');
       if (bot && bot.value) { return; }
 
-      // Native validity check
       if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
         if (typeof form.reportValidity === 'function') form.reportValidity();
         return;
       }
 
-      var nameField = form.querySelector('[name="name"]');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending\u2026';
+      }
+
+      var raw = new FormData(form);
+      var data = rewriteFieldNamesForReadability(raw, form);
+
+      // Add helpful metadata for the recipient
+      data.append('_subject', buildSubject(form, subjectPrefix));
       var emailField = form.querySelector('[name="email"]');
-      var senderName = nameField ? escapeForBody(nameField.value) : '';
-      var senderEmail = emailField ? escapeForBody(emailField.value) : '';
-
-      var subject = subjectPrefix + (senderName ? ' \u2014 ' + senderName : '');
-      var body = buildBody(form);
-      if (senderEmail) {
-        body = body + '\n\nReply to: ' + senderEmail;
+      if (emailField && emailField.value) {
+        data.append('_replyto', emailField.value);
       }
-      if (hasResume) {
-        body = body + '\n\n---\nPlease attach your resume (PDF/DOC/DOCX) to this email before sending.';
-      }
-      body = body + '\n\n---\nSubmitted via cyberprofound.com';
+      data.append('Submitted Via', 'cyberprofound.com' + (form.classList.contains('careers-form') ? ' \u2014 Careers page' : form.classList.contains('contact-form') ? ' \u2014 Contact page' : ' \u2014 Newsletter signup'));
 
-      var href = 'mailto:' + RECIPIENT +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
-
-      // Open the user's mail client
-      window.location.href = href;
-
-      // Show a confirmation after a short delay so the mail client gets focus first
-      setTimeout(function() {
-        try {
-          var note = document.createElement('div');
-          note.setAttribute('role', 'status');
-          note.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#051C2C;color:#fff;padding:16px 24px;border-radius:8px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.25);z-index:9999;max-width:90vw;text-align:center;';
-          note.innerHTML = 'Your email client should now be open with your message pre-filled.<br>If nothing opened, please email <a href="mailto:' + RECIPIENT + '" style="color:#5fa8ff;">' + RECIPIENT + '</a> directly.';
-          document.body.appendChild(note);
-          setTimeout(function() { note.style.transition = 'opacity 0.5s'; note.style.opacity = '0'; setTimeout(function(){ note.remove(); }, 600); }, 8000);
-        } catch (err) { /* noop */ }
-      }, 400);
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(response) {
+        if (response.ok) {
+          window.location.href = SUCCESS_URL;
+        } else {
+          return response.json().then(function(json) {
+            var msg = (json && json.errors && json.errors.length) ? json.errors.map(function(x){ return x.message; }).join(', ') : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
+            throw new Error(msg);
+          }).catch(function() {
+            throw new Error('Submission failed. Please email Ngjinaj@cyberprofound.com directly.');
+          });
+        }
+      }).catch(function(err) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
+        showToast((err && err.message) ? err.message : 'Submission failed. Please email <a href="mailto:Ngjinaj@cyberprofound.com" style="color:#5fa8ff;">Ngjinaj@cyberprofound.com</a> directly.', true);
+      });
     });
   }
 
   document.querySelectorAll('form.careers-form').forEach(function(f) {
-    handleSubmit(f, 'Career Application', true);
+    handleSubmit(f, 'Career Application');
   });
   document.querySelectorAll('form.contact-form').forEach(function(f) {
-    handleSubmit(f, 'Contact Inquiry', false);
+    handleSubmit(f, 'Contact Inquiry');
   });
   document.querySelectorAll('form.newsletter-form').forEach(function(f) {
-    handleSubmit(f, 'Newsletter Signup', false);
+    handleSubmit(f, 'Newsletter Signup');
   });
 })();
