@@ -1,0 +1,26 @@
+[build]
+  publish = "."
+
+# Ensure Netlify Forms processing is enabled even without a build step.
+# Forms are detected from the static HTML in the publish directory.
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# Friendly redirects so /careers, /about, etc. resolve cleanly
+[[redirects]]
+  from = "/careers"
+  to = "/careers.html"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/news"
+  to = "/news.html"
+  status = 200

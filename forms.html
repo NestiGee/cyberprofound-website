@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Form Detection</title>
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <!--
+    Hidden static forms so Netlify can detect and register them at deploy time.
+    Required because the live forms use JavaScript-like attributes (multipart, etc.)
+    that the Netlify build-time bot needs to see in plain HTML.
+    Do not remove. Do not link to this page.
+  -->
+
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="company" />
+    <input type="text" name="subject" />
+    <textarea name="message"></textarea>
+    <input name="bot-field" />
+  </form>
+
+  <form name="careers" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="position" />
+    <input type="url" name="linkedin" />
+    <input type="file" name="resume" />
+    <textarea name="message"></textarea>
+    <input name="bot-field" />
+  </form>
+
+  <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+    <input type="email" name="email" />
+    <input name="bot-field" />
+  </form>
+</body>
+</html>
