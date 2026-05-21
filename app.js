@@ -509,12 +509,13 @@
   });
 })();
 
-/* ===== Form Submission via Formspree =====
-   Submits contact, careers, and newsletter forms to Formspree, which emails
-   them to Ngjinaj@cyberprofound.com. Supports file attachments (resumes).
-   On success, redirects to /thank-you.html. */
+/* ===== Form Submission via Web3Forms =====
+   Submits contact, careers, and newsletter forms to Web3Forms, which emails
+   them to Ngjinaj@cyberprofound.com. Supports file attachments (resumes
+   up to 10MB). On success, redirects to /thank-you.html. */
 (function() {
-  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvzoyvq';
+  var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+  var WEB3FORMS_ACCESS_KEY = 'f24e8902-1a17-4e5d-be56-1f9f02f59d09';
   var SUCCESS_URL = '/thank-you.html';
 
   function labelFor(el) {
@@ -589,29 +590,29 @@
       var raw = new FormData(form);
       var data = rewriteFieldNamesForReadability(raw, form);
 
-      // Add helpful metadata for the recipient
-      data.append('_subject', buildSubject(form, subjectPrefix));
+      // Web3Forms required + metadata fields
+      data.append('access_key', WEB3FORMS_ACCESS_KEY);
+      data.append('subject', buildSubject(form, subjectPrefix));
+      data.append('from_name', 'Cyber Profound Website');
       var emailField = form.querySelector('[name="email"]');
       if (emailField && emailField.value) {
-        data.append('_replyto', emailField.value);
+        data.append('replyto', emailField.value);
       }
       data.append('Submitted Via', 'cyberprofound.com' + (form.classList.contains('careers-form') ? ' \u2014 Careers page' : form.classList.contains('contact-form') ? ' \u2014 Contact page' : ' \u2014 Newsletter signup'));
 
-      fetch(FORMSPREE_ENDPOINT, {
+      fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
       }).then(function(response) {
-        if (response.ok) {
-          window.location.href = SUCCESS_URL;
-        } else {
-          return response.json().then(function(json) {
-            var msg = (json && json.errors && json.errors.length) ? json.errors.map(function(x){ return x.message; }).join(', ') : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
+        return response.json().then(function(json) {
+          if (response.ok && json && json.success) {
+            window.location.href = SUCCESS_URL;
+          } else {
+            var msg = (json && json.message) ? json.message : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
             throw new Error(msg);
-          }).catch(function() {
-            throw new Error('Submission failed. Please email Ngjinaj@cyberprofound.com directly.');
-          });
-        }
+          }
+        });
       }).catch(function(err) {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
         showToast((err && err.message) ? err.message : 'Submission failed. Please email <a href="mailto:Ngjinaj@cyberprofound.com" style="color:#5fa8ff;">Ngjinaj@cyberprofound.com</a> directly.', true);
