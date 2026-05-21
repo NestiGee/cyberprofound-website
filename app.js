@@ -509,29 +509,29 @@
   });
 })();
 
-/* ===== Form Submission via Netlify Function (Resend) =====
-   Submits contact, careers, and newsletter forms to /.netlify/functions/submit-form,
-   which emails them to Ngjinaj@cyberprofound.com via Resend with file attachments
-   (resumes up to 10MB). On success, redirects to /thank-you.html. */
+/* ===== Form Submission via FormSubmit.co =====
+   FormSubmit is free, requires no signup, and supports file attachments (5MB total)
+   natively. Emails go to Ngjinaj@cyberprofound.com.
+
+   How it works:
+     - Each form is rewired at runtime: action -> FormSubmit endpoint,
+       enctype -> multipart/form-data, method -> POST.
+     - Hidden inputs add _subject, _next (thank-you redirect),
+       _captcha=false, _template=table, and a honeypot _honey field.
+     - Native submit is used so file uploads work end-to-end. */
 (function() {
-  var SUBMIT_ENDPOINT = '/.netlify/functions/submit-form';
-  var SUCCESS_URL = '/thank-you.html';
+  var FORMSUBMIT_TARGET = 'https://formsubmit.co/Ngjinaj@cyberprofound.com';
+  var SUCCESS_URL = window.location.origin + '/thank-you.html';
 
-  function labelFor(el) {
-    if (el.id) {
-      var lbl = document.querySelector('label[for="' + el.id + '"]');
-      if (lbl) return lbl.textContent.trim();
-    }
-    return (el.name || '').replace(/[-_]/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
-  }
-
-  function showToast(message, isError) {
-    var note = document.createElement('div');
-    note.setAttribute('role', 'status');
-    note.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:' + (isError ? '#7a1a1a' : '#051C2C') + ';color:#fff;padding:16px 24px;border-radius:8px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.25);z-index:9999;max-width:90vw;text-align:center;';
-    note.innerHTML = message;
-    document.body.appendChild(note);
-    setTimeout(function() { note.style.transition = 'opacity 0.5s'; note.style.opacity = '0'; setTimeout(function(){ note.remove(); }, 600); }, 6000);
+  function ensureHidden(form, name, value) {
+    var existing = form.querySelector('input[type="hidden"][name="' + name + '"]');
+    if (existing) { existing.value = value; return existing; }
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+    return input;
   }
 
   function buildSubject(form, fallback) {
@@ -540,91 +540,51 @@
     return fallback + (senderName ? ' \u2014 ' + senderName : '');
   }
 
-  function rewriteFieldNamesForReadability(formData, form) {
-    // Formspree shows field names in emails. Rewrite to human-readable labels.
-    var nice = new FormData();
-    var fileFields = {};
-    var els = form.querySelectorAll('input, select, textarea');
-    var elsByName = {};
-    els.forEach(function(el) { if (el.name) elsByName[el.name] = el; });
+  function configureForm(form, subjectPrefix) {
+    form.setAttribute('action', FORMSUBMIT_TARGET);
+    form.setAttribute('method', 'POST');
+    form.setAttribute('enctype', 'multipart/form-data');
+    // Clean up old Netlify hints so the browser doesn't double-process
+    form.removeAttribute('data-netlify');
+    form.removeAttribute('netlify');
+    form.removeAttribute('netlify-honeypot');
 
-    formData.forEach(function(value, key) {
-      if (key === 'bot-field' || key === 'form-name') return;
-      var el = elsByName[key];
-      var label = el ? labelFor(el) : key;
-      // Preserve file uploads with their original key so Formspree treats them as attachments
-      if (value instanceof File) {
-        if (value.size === 0 && !value.name) return; // empty file input
-        // Use a readable name as the field key for the email body, but keep file
-        nice.append(label, value);
-        fileFields[label] = true;
-      } else {
-        if (!value || (typeof value === 'string' && !value.trim())) return;
-        nice.append(label, value);
-      }
-    });
-    return nice;
-  }
+    ensureHidden(form, '_next', SUCCESS_URL);
+    ensureHidden(form, '_captcha', 'false');
+    ensureHidden(form, '_template', 'table');
+    ensureHidden(form, '_subject', subjectPrefix); // refined at submit time
+    // FormSubmit honeypot field
+    ensureHidden(form, '_honey', '');
 
-  function handleSubmit(form, subjectPrefix) {
+    // Carry over any existing bot-field honeypot value (kept for legacy)
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      // Honeypot: silently drop bots
+      var honey = form.querySelector('input[name="_honey"]');
       var bot = form.querySelector('[name="bot-field"]');
-      if (bot && bot.value) { return; }
-
-      if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
-        if (typeof form.reportValidity === 'function') form.reportValidity();
+      if ((honey && honey.value) || (bot && bot.value)) {
+        e.preventDefault();
         return;
       }
+      // Refine subject with the sender's name at submit time
+      var subjEl = form.querySelector('input[name="_subject"]');
+      if (subjEl) subjEl.value = buildSubject(form, subjectPrefix);
 
       var submitBtn = form.querySelector('button[type="submit"]');
-      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
+        var orig = submitBtn.innerHTML;
+        submitBtn.dataset.origLabel = orig;
         submitBtn.innerHTML = 'Sending\u2026';
       }
-
-      var raw = new FormData(form);
-      var data = rewriteFieldNamesForReadability(raw, form);
-
-      // Metadata for the email handler
-      data.append('Subject', buildSubject(form, subjectPrefix));
-      data.append('Submitted Via', 'cyberprofound.com' + (form.classList.contains('careers-form') ? ' \u2014 Careers page' : form.classList.contains('contact-form') ? ' \u2014 Contact page' : ' \u2014 Newsletter signup'));
-      // Ensure form-name is set so the server picks the right subject template
-      if (!data.has('form-name')) {
-        var fname = form.classList.contains('careers-form') ? 'careers' : (form.classList.contains('contact-form') ? 'contact' : 'newsletter');
-        data.append('form-name', fname);
-      }
-
-      fetch(SUBMIT_ENDPOINT, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(response) {
-        return response.json().then(function(json) {
-          if (response.ok && json && json.success) {
-            window.location.href = SUCCESS_URL;
-          } else {
-            var msg = (json && (json.error || json.message)) ? (json.error || json.message) : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
-            throw new Error(msg);
-          }
-        });
-      }).catch(function(err) {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHTML; }
-        showToast((err && err.message) ? err.message : 'Submission failed. Please email <a href="mailto:Ngjinaj@cyberprofound.com" style="color:#5fa8ff;">Ngjinaj@cyberprofound.com</a> directly.', true);
-      });
     });
   }
 
   document.querySelectorAll('form.careers-form').forEach(function(f) {
-    handleSubmit(f, 'Career Application');
+    configureForm(f, 'Career Application');
   });
   document.querySelectorAll('form.contact-form').forEach(function(f) {
-    handleSubmit(f, 'Contact Inquiry');
+    configureForm(f, 'Contact Inquiry');
   });
   document.querySelectorAll('form.newsletter-form').forEach(function(f) {
-    handleSubmit(f, 'Newsletter Signup');
+    configureForm(f, 'Newsletter Signup');
   });
 })();
