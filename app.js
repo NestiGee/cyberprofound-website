@@ -509,13 +509,12 @@
   });
 })();
 
-/* ===== Form Submission via Web3Forms =====
-   Submits contact, careers, and newsletter forms to Web3Forms, which emails
-   them to Ngjinaj@cyberprofound.com. Supports file attachments (resumes
-   up to 10MB). On success, redirects to /thank-you.html. */
+/* ===== Form Submission via Netlify Function (Resend) =====
+   Submits contact, careers, and newsletter forms to /.netlify/functions/submit-form,
+   which emails them to Ngjinaj@cyberprofound.com via Resend with file attachments
+   (resumes up to 10MB). On success, redirects to /thank-you.html. */
 (function() {
-  var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
-  var WEB3FORMS_ACCESS_KEY = 'f24e8902-1a17-4e5d-be56-1f9f02f59d09';
+  var SUBMIT_ENDPOINT = '/.netlify/functions/submit-form';
   var SUCCESS_URL = '/thank-you.html';
 
   function labelFor(el) {
@@ -590,17 +589,16 @@
       var raw = new FormData(form);
       var data = rewriteFieldNamesForReadability(raw, form);
 
-      // Web3Forms required + metadata fields
-      data.append('access_key', WEB3FORMS_ACCESS_KEY);
-      data.append('subject', buildSubject(form, subjectPrefix));
-      data.append('from_name', 'Cyber Profound Website');
-      var emailField = form.querySelector('[name="email"]');
-      if (emailField && emailField.value) {
-        data.append('replyto', emailField.value);
-      }
+      // Metadata for the email handler
+      data.append('Subject', buildSubject(form, subjectPrefix));
       data.append('Submitted Via', 'cyberprofound.com' + (form.classList.contains('careers-form') ? ' \u2014 Careers page' : form.classList.contains('contact-form') ? ' \u2014 Contact page' : ' \u2014 Newsletter signup'));
+      // Ensure form-name is set so the server picks the right subject template
+      if (!data.has('form-name')) {
+        var fname = form.classList.contains('careers-form') ? 'careers' : (form.classList.contains('contact-form') ? 'contact' : 'newsletter');
+        data.append('form-name', fname);
+      }
 
-      fetch(WEB3FORMS_ENDPOINT, {
+      fetch(SUBMIT_ENDPOINT, {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
@@ -609,7 +607,7 @@
           if (response.ok && json && json.success) {
             window.location.href = SUCCESS_URL;
           } else {
-            var msg = (json && json.message) ? json.message : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
+            var msg = (json && (json.error || json.message)) ? (json.error || json.message) : 'Submission failed. Please email Ngjinaj@cyberprofound.com directly.';
             throw new Error(msg);
           }
         });

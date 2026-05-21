@@ -1,5 +1,10 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # esbuild bundles deps from netlify/functions/package.json into the function output
+  node_bundler = "esbuild"
 
 # Ensure Netlify Forms processing is enabled even without a build step.
 # Forms are detected from the static HTML in the publish directory.
