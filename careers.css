@@ -268,6 +268,50 @@
   gap: var(--space-5);
 }
 
+/* -- Careers form: light-theme overrides (form sits on cream surface, not navy) -- */
+.careers-form .form-group label {
+  color: var(--color-text, #051C2C);
+  font-weight: 700;
+}
+
+.careers-form .form-group input,
+.careers-form .form-group select,
+.careers-form .form-group textarea {
+  background: #ffffff;
+  border: 1px solid var(--color-border, #D4D1CA);
+  color: var(--color-text, #051C2C);
+}
+
+.careers-form .form-group input::placeholder,
+.careers-form .form-group textarea::placeholder {
+  color: #8a8a8a;
+  opacity: 1;
+}
+
+.careers-form .form-group select {
+  color: var(--color-text, #051C2C);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23051C2C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.careers-form .form-group select option {
+  background: #ffffff;
+  color: var(--color-text, #051C2C);
+}
+
+.careers-form .form-group select:invalid,
+.careers-form .form-group select option[value=""][disabled] {
+  color: #8a8a8a;
+}
+
+.careers-form .form-group input:focus,
+.careers-form .form-group select:focus,
+.careers-form .form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent, #1F6BFF);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(31, 107, 255, 0.15);
+}
+
 .file-upload-wrapper {
   position: relative;
 }
