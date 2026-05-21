@@ -507,3 +507,106 @@
     });
   });
 })();
+
+/* ===== Form Submission via Email (mailto fallback) =====
+   Intercepts contact, careers, and newsletter forms and opens the user's
+   email client with a pre-filled message to Ngjinaj@cyberprofound.com.
+   Submissions arrive directly in Outlook. No backend required. */
+(function() {
+  var RECIPIENT = 'Ngjinaj@cyberprofound.com';
+
+  function escapeForBody(v) {
+    return (v == null ? '' : String(v)).trim();
+  }
+
+  function buildBody(form) {
+    var lines = [];
+    var elements = form.querySelectorAll('input, select, textarea');
+    var seen = {};
+    elements.forEach(function(el) {
+      if (!el.name) return;
+      if (el.type === 'hidden') return;
+      if (el.name === 'bot-field' || el.name === 'form-name') return;
+      if (el.type === 'file') {
+        if (el.files && el.files.length) {
+          lines.push(labelFor(el) + ': [Attached file: ' + el.files[0].name + ' \u2014 please send as an attachment from your email client]');
+        }
+        return;
+      }
+      var val = escapeForBody(el.value);
+      if (!val) return;
+      if (seen[el.name]) return;
+      seen[el.name] = true;
+      lines.push(labelFor(el) + ': ' + val);
+    });
+    return lines.join('\n');
+  }
+
+  function labelFor(el) {
+    if (el.id) {
+      var lbl = document.querySelector('label[for="' + el.id + '"]');
+      if (lbl) return lbl.textContent.trim();
+    }
+    return el.name.replace(/[-_]/g, ' ').replace(/\b\w/g, function(c){return c.toUpperCase();});
+  }
+
+  function handleSubmit(form, subjectPrefix, hasResume) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Honeypot: silently drop bots
+      var bot = form.querySelector('[name="bot-field"]');
+      if (bot && bot.value) { return; }
+
+      // Native validity check
+      if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+        if (typeof form.reportValidity === 'function') form.reportValidity();
+        return;
+      }
+
+      var nameField = form.querySelector('[name="name"]');
+      var emailField = form.querySelector('[name="email"]');
+      var senderName = nameField ? escapeForBody(nameField.value) : '';
+      var senderEmail = emailField ? escapeForBody(emailField.value) : '';
+
+      var subject = subjectPrefix + (senderName ? ' \u2014 ' + senderName : '');
+      var body = buildBody(form);
+      if (senderEmail) {
+        body = body + '\n\nReply to: ' + senderEmail;
+      }
+      if (hasResume) {
+        body = body + '\n\n---\nPlease attach your resume (PDF/DOC/DOCX) to this email before sending.';
+      }
+      body = body + '\n\n---\nSubmitted via cyberprofound.com';
+
+      var href = 'mailto:' + RECIPIENT +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+
+      // Open the user's mail client
+      window.location.href = href;
+
+      // Show a confirmation after a short delay so the mail client gets focus first
+      setTimeout(function() {
+        try {
+          var note = document.createElement('div');
+          note.setAttribute('role', 'status');
+          note.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#051C2C;color:#fff;padding:16px 24px;border-radius:8px;font-size:14px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.25);z-index:9999;max-width:90vw;text-align:center;';
+          note.innerHTML = 'Your email client should now be open with your message pre-filled.<br>If nothing opened, please email <a href="mailto:' + RECIPIENT + '" style="color:#5fa8ff;">' + RECIPIENT + '</a> directly.';
+          document.body.appendChild(note);
+          setTimeout(function() { note.style.transition = 'opacity 0.5s'; note.style.opacity = '0'; setTimeout(function(){ note.remove(); }, 600); }, 8000);
+        } catch (err) { /* noop */ }
+      }, 400);
+    });
+  }
+
+  document.querySelectorAll('form.careers-form').forEach(function(f) {
+    handleSubmit(f, 'Career Application', true);
+  });
+  document.querySelectorAll('form.contact-form').forEach(function(f) {
+    handleSubmit(f, 'Contact Inquiry', false);
+  });
+  document.querySelectorAll('form.newsletter-form').forEach(function(f) {
+    handleSubmit(f, 'Newsletter Signup', false);
+  });
+})();
