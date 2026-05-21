@@ -509,29 +509,81 @@
   });
 })();
 
-/* ===== Form Submission via FormSubmit.co =====
-   FormSubmit is free, requires no signup, and supports file attachments (5MB total)
-   natively. Emails go to Ngjinaj@cyberprofound.com.
+/* ===== Form Submission via Formspree + Litterbox =====
+   Formspree (free tier) delivers the form fields by email.
+   Litterbox (catbox.moe's temporary host — free, no signup, no auth) holds
+   the resume for 72 hours; its public download URL is inserted into the
+   form payload as a regular text field so it appears in the email body as
+   a clickable download link.
 
    How it works:
-     - Each form is rewired at runtime: action -> FormSubmit endpoint,
-       enctype -> multipart/form-data, method -> POST.
-     - Hidden inputs add _subject, _next (thank-you redirect),
-       _captcha=false, _template=table, and a honeypot _honey field.
-     - Native submit is used so file uploads work end-to-end. */
+     - The submit handler intercepts the form, uploads any selected file
+       to litterbox.catbox.moe, and adds the returned URL to the payload
+       as 'Resume Download Link'.
+     - The remaining fields are POSTed to Formspree as JSON.
+     - On success the visitor is redirected to /thank-you.html.
+     - All work happens client-side; no server, no dashboard, no env vars. */
 (function() {
-  var FORMSUBMIT_TARGET = 'https://formsubmit.co/Ngjinaj@cyberprofound.com';
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwvzoyvq';
+  var FILE_UPLOAD_ENDPOINT = 'https://litterbox.catbox.moe/resources/internals/api.php';
+  var FILE_RETENTION = '72h'; // litterbox max
   var SUCCESS_URL = window.location.origin + '/thank-you.html';
 
-  function ensureHidden(form, name, value) {
-    var existing = form.querySelector('input[type="hidden"][name="' + name + '"]');
-    if (existing) { existing.value = value; return existing; }
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-    return input;
+  function setSubmitting(form, sending) {
+    var btn = form.querySelector('button[type="submit"]');
+    if (!btn) return;
+    if (sending) {
+      if (!btn.dataset.origLabel) btn.dataset.origLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Sending\u2026';
+    } else {
+      btn.disabled = false;
+      if (btn.dataset.origLabel) btn.innerHTML = btn.dataset.origLabel;
+    }
+  }
+
+  function uploadResume(file) {
+    var fd = new FormData();
+    fd.append('reqtype', 'fileupload');
+    fd.append('time', FILE_RETENTION);
+    fd.append('fileToUpload', file, file.name);
+    return fetch(FILE_UPLOAD_ENDPOINT, { method: 'POST', body: fd })
+      .then(function(r) {
+        if (!r.ok) throw new Error('Upload host returned ' + r.status);
+        return r.text();
+      })
+      .then(function(text) {
+        var url = (text || '').trim();
+        if (/^https?:\/\//i.test(url)) return url;
+        throw new Error('Upload host returned unexpected response: ' + url.slice(0, 100));
+      });
+  }
+
+  function collectFields(form) {
+    var data = {};
+    var els = form.querySelectorAll('input, textarea, select');
+    els.forEach(function(el) {
+      if (!el.name) return;
+      if (el.type === 'file') return;          // handled separately
+      if (el.name === 'bot-field') return;     // honeypot
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) data[el.name] = el.value;
+      } else {
+        data[el.name] = el.value;
+      }
+    });
+    return data;
+  }
+
+  function sendToFormspree(payload) {
+    return fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r) {
+      if (!r.ok) throw new Error('Formspree returned ' + r.status);
+      return r.json();
+    });
   }
 
   function buildSubject(form, fallback) {
@@ -541,40 +593,49 @@
   }
 
   function configureForm(form, subjectPrefix) {
-    form.setAttribute('action', FORMSUBMIT_TARGET);
-    form.setAttribute('method', 'POST');
-    form.setAttribute('enctype', 'multipart/form-data');
-    // Clean up old Netlify hints so the browser doesn't double-process
+    // Strip any provider-specific attributes so nothing else hijacks submit
     form.removeAttribute('data-netlify');
     form.removeAttribute('netlify');
     form.removeAttribute('netlify-honeypot');
+    form.removeAttribute('action');
 
-    ensureHidden(form, '_next', SUCCESS_URL);
-    ensureHidden(form, '_captcha', 'false');
-    ensureHidden(form, '_template', 'table');
-    ensureHidden(form, '_subject', subjectPrefix); // refined at submit time
-    // FormSubmit honeypot field
-    ensureHidden(form, '_honey', '');
-
-    // Carry over any existing bot-field honeypot value (kept for legacy)
     form.addEventListener('submit', function(e) {
-      var honey = form.querySelector('input[name="_honey"]');
-      var bot = form.querySelector('[name="bot-field"]');
-      if ((honey && honey.value) || (bot && bot.value)) {
-        e.preventDefault();
-        return;
-      }
-      // Refine subject with the sender's name at submit time
-      var subjEl = form.querySelector('input[name="_subject"]');
-      if (subjEl) subjEl.value = buildSubject(form, subjectPrefix);
+      e.preventDefault();
 
-      var submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        var orig = submitBtn.innerHTML;
-        submitBtn.dataset.origLabel = orig;
-        submitBtn.innerHTML = 'Sending\u2026';
+      // Honeypot check
+      var bot = form.querySelector('[name="bot-field"], [name="_honey"]');
+      if (bot && bot.value) return;
+
+      setSubmitting(form, true);
+
+      var data = collectFields(form);
+      data._subject = buildSubject(form, subjectPrefix);
+      data._submittedVia = 'cyberprofound.com — Careers page';
+
+      // Find a file input (resume)
+      var fileInput = form.querySelector('input[type="file"]');
+      var hasFile = fileInput && fileInput.files && fileInput.files[0];
+
+      var pipeline;
+      if (hasFile) {
+        var file = fileInput.files[0];
+        data['Resume File Name'] = file.name;
+        data['Resume File Size'] = Math.round(file.size / 1024) + ' KB';
+        pipeline = uploadResume(file).then(function(link) {
+          data['Resume Download Link'] = link + '  (link active for 72 hours \u2014 please download promptly)';
+          return sendToFormspree(data);
+        });
+      } else {
+        pipeline = sendToFormspree(data);
       }
+
+      pipeline.then(function() {
+        window.location.href = SUCCESS_URL;
+      }).catch(function(err) {
+        console.error('Form submission error:', err);
+        setSubmitting(form, false);
+        alert('Sorry, your submission could not be sent. Please email ngjinaj@cyberprofound.com directly. Error: ' + err.message);
+      });
     });
   }
 
