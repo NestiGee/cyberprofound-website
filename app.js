@@ -212,6 +212,16 @@
       linkedin: 'https://www.linkedin.com/in/manvedeepsingh/',
       bio: 'Manvedeep Singh, known as Manav, is a British\u2011based businessman whose experience extends across healthcare, technology, finance, and related sectors.\n\nEndowed with global interests and a keen strategic mind, he combines foresight with measured and decisive execution. His present interests encompass care villages, care homes, home care services, e\u2011commerce ventures, cybersecurity, professional service firms, artificial intelligence businesses, and beyond.\n\nMr. Singh serves as founder, adviser, and Non\u2011Executive Director to various enterprises. A relationship\u2011minded gentleman with a no\u2011nonsense approach, he remains open to new associations built upon integrity, purpose, and mutual respect.'
     },
+    pauln: {
+      name: 'Paul N.',
+      role: 'CTO – Cybersecurity & AI',
+      photo: './assets/headshot-pauln.jpg',
+      bio: 'Paul N. serves as Chief Technology Officer – Cybersecurity & AI at Cyber Profound, where he leads the company\'s technology strategy, cybersecurity architecture, and artificial intelligence initiatives across the enterprise platform.
+
+He brings deep expertise in cybersecurity operations, AI-driven threat intelligence, and enterprise technology leadership, with a track record of designing and scaling secure, high-performance infrastructure across complex environments.
+
+At Cyber Profound, Paul N. is responsible for defining and executing the technology vision that underpins the company\'s national cybersecurity consolidation strategy, ensuring acquired firms are integrated under a disciplined, secure, and forward-looking technology framework.'
+    },
     loretto: {
       name: 'Jonathan Loretto',
       role: 'Non-Executive Director',
