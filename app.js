@@ -191,13 +191,6 @@
       linkedin: 'https://www.linkedin.com/in/gbanerjea/',
       bio: 'Gautam Banerjea serves as Chief Executive Officer of Cyber Profound, where he leads execution of the company\'s national cybersecurity consolidation strategy, oversees platform integration, and drives enterprise expansion across priority verticals.\n\nMr. Banerjea brings more than three decades of senior leadership experience in enterprise technology, cloud transformation, and large-scale P&L management. Prior to joining Cyber Profound, he held multiple executive roles at IBM over a 17-year tenure, including Vice President and Senior Client Partner.\n\nMr. Banerjea has directed multi-billion-dollar P&Ls, driving consistent growth and delivering complex modernization programs across Retail, CPG, Travel, Transportation, and Healthcare industries. He has pioneered large-scale cloud migrations, integrated AI-driven solutions, and championed agile enterprise models that accelerate innovation and reduce cost. He has worked extensively across North America, Europe, and Asia-Pacific, leading multicultural teams and delivering mission-critical programs in over 50 countries.\n\nHis leadership experience spans hybrid cloud architecture, DevSecOps modernization, AI-enabled automation, enterprise application transformation, and large-scale Agile operating model deployments. Earlier in his career, Mr. Banerjea held senior leadership roles at Ernst and Young, CapGemini, HP, and EDS.\n\nHe holds a Master of Science in Information Systems from The University of Texas at Dallas and a Master of Science in Applied Economics from Birla Institute of Technology and Science.\n\nAt Cyber Profound, Mr. Banerjea is focused on building a disciplined, enterprise-grade cybersecurity platform through structured acquisitions, operational integration, and long-term value creation.'
     },
-    skuse: {
-      name: 'Sean Skuse',
-      role: 'Chief Financial Officer',
-      photo: './assets/headshot-skuse.jpg',
-      linkedin: 'https://www.linkedin.com/in/sean-m-skuse-29881776/',
-      bio: 'Sean Skuse serves as Chief Financial Officer of Cyber Profound, where he oversees the company\'s financial strategy, capital management, and fiscal governance as the organization executes its national cybersecurity consolidation platform.'
-    },
     miller: {
       name: 'Susan Miller',
       role: 'Chief Operating Officer',
@@ -216,11 +209,7 @@
       name: 'Paul N.',
       role: 'CTO – Cybersecurity & AI',
       photo: './assets/headshot-pauln.jpg',
-      bio: 'Paul N. serves as Chief Technology Officer – Cybersecurity & AI at Cyber Profound, where he leads the company\'s technology strategy, cybersecurity architecture, and artificial intelligence initiatives across the enterprise platform.
-
-He brings deep expertise in cybersecurity operations, AI-driven threat intelligence, and enterprise technology leadership, with a track record of designing and scaling secure, high-performance infrastructure across complex environments.
-
-At Cyber Profound, Paul N. is responsible for defining and executing the technology vision that underpins the company\'s national cybersecurity consolidation strategy, ensuring acquired firms are integrated under a disciplined, secure, and forward-looking technology framework.'
+      bio: 'Paul N. serves as Chief Technology Officer – Cybersecurity & AI at Cyber Profound, where he leads the company\'s technology strategy, cybersecurity architecture, and artificial intelligence initiatives across the enterprise platform.\n\nHe brings deep expertise in cybersecurity operations, AI-driven threat intelligence, and enterprise technology leadership, with a track record of designing and scaling secure, high-performance infrastructure across complex environments.\n\nAt Cyber Profound, Paul N. is responsible for defining and executing the technology vision that underpins the company\'s national cybersecurity consolidation strategy, ensuring acquired firms are integrated under a disciplined, secure, and forward-looking technology framework.'
     },
     loretto: {
       name: 'Jonathan Loretto',
