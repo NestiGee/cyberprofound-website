@@ -230,37 +230,60 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="hero">
+    <section class="cp-hero" id="hero">
+      <!-- 3D canvas (Three.js fills this) -->
+      <canvas id="cp-hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Ambient layers behind the 3D scene -->
+      <div class="cp-hero-grid" aria-hidden="true"></div>
+      <div class="cp-hero-aurora" aria-hidden="true"></div>
+      <div class="cp-hero-noise" aria-hidden="true"></div>
+
       <div class="container">
-        <div class="hero-split">
-          <div class="hero-left">
-            <h1 class="hero-title hero-reveal" style="--reveal-d:0">
-              <span class="hero-word-line">Acquire.</span>
-              <span class="hero-word-line">Integrate.</span>
-              <span class="hero-word-line">Scale. <em>Protect.</em></span>
-            </h1>
+        <div class="cp-hero-content">
+          <div class="cp-hero-eyebrow">
+            <span class="cp-hero-pulse"></span>
+            America's cybersecurity consolidation platform
           </div>
-          <div class="hero-right hero-reveal" style="--reveal-d:2">
-            <p class="hero-description">
-              Cyber Profound is a U.S.-based cybersecurity consolidation platform. We acquire, support, and scale high-quality firms through disciplined governance and operational leadership.
-            </p>
-            <div class="hero-actions">
-              <a href="#contact" class="btn-primary">
-                Schedule a confidential call
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#platform" class="btn-outline">
-                Explore the platform
-              </a>
+
+          <h1 class="cp-hero-title">
+            <span class="cp-line"><span class="cp-reveal">Acquire.</span></span>
+            <span class="cp-line"><span class="cp-reveal" style="--d:.12s">Integrate.</span></span>
+            <span class="cp-line"><span class="cp-reveal" style="--d:.24s">Scale.</span></span>
+            <span class="cp-line cp-italic"><span class="cp-reveal" style="--d:.36s">Protect.</span></span>
+          </h1>
+
+          <p class="cp-hero-sub cp-reveal" style="--d:.54s">
+            Cyber Profound is a U.S.-based cybersecurity consolidation platform. We acquire, support, and scale high-quality firms through disciplined governance and operational leadership.
+          </p>
+
+          <div class="cp-hero-actions cp-reveal" style="--d:.68s">
+            <a href="#contact" class="cp-btn-primary">
+              Schedule a confidential call
+              <span class="cp-btn-icon">→</span>
+            </a>
+            <a href="#platform" class="cp-btn-link"><span>Explore the platform</span> →</a>
+          </div>
+
+          <div class="cp-hero-meta cp-reveal" style="--d:.82s">
+            <div class="cp-meta-item">
+              <div class="cp-meta-num"><span data-count="400">0</span>+</div>
+              <div class="cp-meta-lbl">Years combined leadership experience</div>
+            </div>
+            <div class="cp-meta-divider"></div>
+            <div class="cp-meta-item">
+              <div class="cp-meta-num">100<span>%</span></div>
+              <div class="cp-meta-lbl">Cybersecurity focused</div>
+            </div>
+            <div class="cp-meta-divider"></div>
+            <div class="cp-meta-item">
+              <div class="cp-meta-num">24<span>/7</span></div>
+              <div class="cp-meta-lbl">Operational support</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="hero-image-wrap hero-reveal" style="--reveal-d:3">
-        <div class="container">
-          <img src="./assets/hero-image.jpg" alt="Modern corporate skyline" class="hero-image" loading="eager">
-        </div>
-      </div>
+
     </section>
 
     <!-- FEATURED ROW -->
@@ -895,6 +918,15 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./assets/hero.js"></script>
+  <script src="./assets/counter.js" defer></script>
   <script src="./app.js" defer></script>
 </body>
 </html>
