@@ -170,13 +170,6 @@
 /* ===== Bio Modal ===== */
 (function() {
   var bioData = {
-    davidson: {
-      name: 'Mary Ann Davidson',
-      role: 'Chair of the Board',
-      photo: './assets/headshot-davidson.jpg',
-      linkedin: 'https://www.linkedin.com/in/mary-ann-davidson-235ba/',
-      bio: 'Mary Ann Davidson is a senior cybersecurity executive with nearly 40 years of experience in software security, engineering governance, and large-scale technology operations. She spent more than 35 years at Oracle Corporation, joining the company in 1988 and holding roles in product management and security before becoming Oracle\'s Chief Security Officer. In that position, she was responsible for software security assurance, secure development lifecycle programs, vulnerability response, and security standards across Oracle\'s global product suite.\n\nHer previous experience includes service as a commissioned officer in the United States Navy Civil Engineer Corps, where she worked on engineering, operations, and infrastructure responsibilities. She holds a Bachelor\'s degree in Mechanical Engineering from the University of Virginia and an MBA from the Wharton School of the University of Pennsylvania.\n\nMary Ann has participated in various U.S. government and industry advisory groups throughout her career. Her involvement includes work with the Defense Science Board, the Center for Strategic and International Studies (CSIS) Cybersecurity Commission, and related technical committees focused on software assurance, critical infrastructure, and cybersecurity standards. She has also provided expert testimony to congressional committees regarding software security and national cybersecurity issues.'
-    },
     gjinaj: {
       name: 'Nest Gjinaj',
       role: 'Founder & Managing Director',
@@ -186,7 +179,7 @@
     },
     banerjea: {
       name: 'Gautam Banerjea',
-      role: 'Chief Executive Officer',
+      role: 'Chairman of the Board',
       photo: './assets/headshot-banerjea.jpg',
       linkedin: 'https://www.linkedin.com/in/gbanerjea/',
       bio: 'Gautam Banerjea serves as Chief Executive Officer of Cyber Profound, where he leads execution of the company\'s national cybersecurity consolidation strategy, oversees platform integration, and drives enterprise expansion across priority verticals.\n\nMr. Banerjea brings more than three decades of senior leadership experience in enterprise technology, cloud transformation, and large-scale P&L management. Prior to joining Cyber Profound, he held multiple executive roles at IBM over a 17-year tenure, including Vice President and Senior Client Partner.\n\nMr. Banerjea has directed multi-billion-dollar P&Ls, driving consistent growth and delivering complex modernization programs across Retail, CPG, Travel, Transportation, and Healthcare industries. He has pioneered large-scale cloud migrations, integrated AI-driven solutions, and championed agile enterprise models that accelerate innovation and reduce cost. He has worked extensively across North America, Europe, and Asia-Pacific, leading multicultural teams and delivering mission-critical programs in over 50 countries.\n\nHis leadership experience spans hybrid cloud architecture, DevSecOps modernization, AI-enabled automation, enterprise application transformation, and large-scale Agile operating model deployments. Earlier in his career, Mr. Banerjea held senior leadership roles at Ernst and Young, CapGemini, HP, and EDS.\n\nHe holds a Master of Science in Information Systems from The University of Texas at Dallas and a Master of Science in Applied Economics from Birla Institute of Technology and Science.\n\nAt Cyber Profound, Mr. Banerjea is focused on building a disciplined, enterprise-grade cybersecurity platform through structured acquisitions, operational integration, and long-term value creation.'
@@ -299,9 +292,8 @@
     { page: 'Why Cyber Profound', title: 'Permanent Capital. Disciplined Governance. National Reach.', desc: 'Investment consortium with 400+ years combined leadership in cybersecurity, enterprise tech, and M&A.', url: './index.html#threat' },
     { page: 'Acquisition Focus', title: 'Target Profiles', desc: 'Managed security service providers, identity and access management, cloud security, GRC, and incident response firms.', url: './index.html#targets' },
     /* LEADERSHIP */
-    { page: 'Leadership', title: 'Mary Ann Davidson — Chair of the Board', desc: 'Former CSO of Oracle with nearly 40 years in software security, engineering governance, and cybersecurity standards.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Nest Gjinaj — Founder & Managing Director', desc: 'Strategist and leader focused on redefining the U.S. cybersecurity market through strategic acquisition.', url: './index.html#leadership' },
-    { page: 'Leadership', title: 'Gautam Banerjea — Chief Executive Officer', desc: 'Over 30 years of enterprise technology and cloud transformation leadership, including 17 years at IBM.', url: './index.html#leadership' },
+    { page: 'Leadership', title: 'Gautam Banerjea — Chairman of the Board', desc: 'Over 30 years of enterprise technology and cloud transformation leadership, including 17 years at IBM.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Susan Miller — Chief Operating Officer', desc: 'AI and cybersecurity executive with 30+ years leading AI security governance, security assurance, and enterprise operations at Oracle and Sun Microsystems.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Manvedeep Singh — Non-Executive Director', desc: 'British entrepreneur with interests spanning healthcare, hospitality, technology, and finance across multiple continents.', url: './index.html#leadership' },
     { page: 'Leadership', title: 'Jonathan Loretto — Non-Executive Director', desc: '25+ years advising boards on digital transformation, cyber resilience, and AI governance across financial services and telecom.', url: './index.html#leadership' },
