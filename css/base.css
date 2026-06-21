@@ -1,0 +1,122 @@
+/* ============================================================
+   BASE — Cyber Profound
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 24px);
+  hanging-punctuation: first last;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.68;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+ul[role='list'], ol[role='list'] { list-style: none; }
+input, button, textarea, select { font: inherit; color: inherit; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  color: var(--color-text);
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+}
+
+p, li, figcaption { text-wrap: pretty; max-width: 66ch; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; background: none; border: none; }
+
+::selection { background: var(--color-accent-muted); color: var(--color-text); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Layout helpers ─────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.wrap--default { max-width: var(--content-default); }
+.wrap--narrow  { max-width: var(--content-narrow); }
+
+/* ── Reveal animations ──────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--t-reveal), transform var(--t-reveal);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-left  { opacity: 0; transform: translateX(-24px); transition: opacity var(--t-reveal), transform var(--t-reveal); }
+.reveal-left.in { opacity: 1; transform: translateX(0); }
+.reveal-scale { opacity: 0; transform: scale(0.97); transition: opacity var(--t-reveal), transform var(--t-reveal); }
+.reveal-scale.in { opacity: 1; transform: scale(1); }
+
+.d1 { transition-delay: 60ms; }
+.d2 { transition-delay: 120ms; }
+.d3 { transition-delay: 180ms; }
+.d4 { transition-delay: 240ms; }
+.d5 { transition-delay: 300ms; }
+.d6 { transition-delay: 360ms; }
+
+/* ── Eyebrow label ──────────────────────────────────────── */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.eyebrow--inv {
+  color: var(--color-accent);
+  opacity: 0.85;
+}
+
+/* ── Divider ────────────────────────────────────────────── */
+.rule { border: none; border-top: 1px solid var(--color-divider); }
+.rule--nav { border-color: var(--color-navy-border); }
+
+/* ── Section paddings ───────────────────────────────────── */
+.section { padding-block: var(--section-py); }
+.section--sm { padding-block: var(--section-py-sm); }
+
+/* ── Surface variants ───────────────────────────────────── */
+.bg-surface   { background: var(--color-surface); }
+.bg-surface-2 { background: var(--color-surface-2); }
+.bg-navy      { background: var(--color-navy); color: var(--color-text-inv); }
+.bg-navy-deep { background: var(--color-navy-deep); color: var(--color-text-inv); }
+
+/* ── SR only ────────────────────────────────────────────── */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }

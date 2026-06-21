@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Profound — A Permanent-Capital Cybersecurity Platform</title>
+  <meta name="description" content="Cyber Profound acquires, integrates, and scales U.S. cybersecurity firms under institutional governance and AI-driven operational infrastructure." />
+
+  <!-- Fonts: Cormorant Garamond (display) + Switzer (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,450,500,550,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <style>
+    /* Page-specific overrides */
+    :root { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════ -->
+<header class="nav nav--hero" id="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Cyber Profound — home">
+      <!-- SVG Logo Mark -->
+      <svg class="nav__logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="4" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <path d="M7 16C7 11.03 11.03 7 16 7" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/>
+        <path d="M25 16C25 20.97 20.97 25 16 25" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="3.5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="1" fill="#0065fc"/>
+        <path d="M16 7 L16 10M16 22 L16 25M7 16 L10 16M22 16 L25 16" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      </svg>
+      <span class="nav__logo-wordmark">Cyber Profound</span>
+    </a>
+
+    <nav aria-label="Site navigation">
+      <ul class="nav__links" role="list">
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/platform.html">Platform</a></li>
+        <li><a href="/pages/governance.html">Governance</a></li>
+        <li><a href="/pages/newsroom.html">Newsroom</a></li>
+        <li><a href="/pages/careers.html">Careers</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="nav__theme-btn" data-theme-toggle aria-label="Switch theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/pages/contact.html" class="btn btn--primary btn--sm">Request a conversation</a>
+    </div>
+
+    <button class="nav__mobile-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav class="nav__drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="/pages/about.html">About</a>
+  <a href="/pages/platform.html">Platform</a>
+  <a href="/pages/governance.html">Governance</a>
+  <a href="/pages/newsroom.html">Newsroom</a>
+  <a href="/pages/careers.html">Careers</a>
+  <a href="/pages/contact.html" style="color: var(--color-accent); margin-top: var(--sp-4)">Request a conversation →</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero__bg">
+    <!-- SVG abstract network / grid background -->
+    <svg class="hero__network-svg" width="100%" height="100%" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      <!-- Subtle grid lines -->
+      <g opacity="0.03" stroke="white" stroke-width="0.5">
+        <line x1="0" y1="150" x2="1400" y2="150"/>
+        <line x1="0" y1="300" x2="1400" y2="300"/>
+        <line x1="0" y1="450" x2="1400" y2="450"/>
+        <line x1="0" y1="600" x2="1400" y2="600"/>
+        <line x1="0" y1="750" x2="1400" y2="750"/>
+        <line x1="200" y1="0" x2="200" y2="900"/>
+        <line x1="400" y1="0" x2="400" y2="900"/>
+        <line x1="600" y1="0" x2="600" y2="900"/>
+        <line x1="800" y1="0" x2="800" y2="900"/>
+        <line x1="1000" y1="0" x2="1000" y2="900"/>
+        <line x1="1200" y1="0" x2="1200" y2="900"/>
+      </g>
+      <!-- Network node constellation — right side -->
+      <g opacity="0.55">
+        <!-- Nodes -->
+        <circle cx="900" cy="200" r="3" fill="#0065fc" opacity="0.8"/>
+        <circle cx="1050" cy="150" r="2" fill="#0065fc" opacity="0.6"/>
+        <circle cx="1180" cy="280" r="4" fill="#0065fc" opacity="0.5"/>
+        <circle cx="980" cy="350" r="2.5" fill="white" opacity="0.3"/>
+        <circle cx="1120" cy="400" r="3" fill="#0065fc" opacity="0.7"/>
+        <circle cx="1280" cy="180" r="2" fill="white" opacity="0.25"/>
+        <circle cx="850" cy="420" r="2" fill="white" opacity="0.2"/>
+        <circle cx="1060" cy="500" r="3.5" fill="#0065fc" opacity="0.4"/>
+        <circle cx="1200" cy="520" r="2" fill="white" opacity="0.2"/>
+        <circle cx="1320" cy="380" r="2.5" fill="#0065fc" opacity="0.3"/>
+        <circle cx="940" cy="580" r="2" fill="white" opacity="0.15"/>
+        <circle cx="1100" cy="620" r="3" fill="#0065fc" opacity="0.35"/>
+        <!-- Connection lines -->
+        <line x1="900" y1="200" x2="1050" y2="150" stroke="#0065fc" stroke-width="0.6" opacity="0.35"/>
+        <line x1="1050" y1="150" x2="1180" y2="280" stroke="#0065fc" stroke-width="0.6" opacity="0.25"/>
+        <line x1="900" y1="200" x2="980" y2="350" stroke="white" stroke-width="0.4" opacity="0.15"/>
+        <line x1="1180" y1="280" x2="1120" y2="400" stroke="#0065fc" stroke-width="0.6" opacity="0.30"/>
+        <line x1="980" y1="350" x2="1120" y2="400" stroke="white" stroke-width="0.4" opacity="0.12"/>
+        <line x1="1180" y1="280" x2="1280" y2="180" stroke="white" stroke-width="0.4" opacity="0.12"/>
+        <line x1="1120" y1="400" x2="1060" y2="500" stroke="#0065fc" stroke-width="0.6" opacity="0.28"/>
+        <line x1="1060" y1="500" x2="1200" y2="520" stroke="white" stroke-width="0.4" opacity="0.10"/>
+        <line x1="1280" y1="180" x2="1320" y2="380" stroke="white" stroke-width="0.4" opacity="0.10"/>
+        <line x1="1060" y1="500" x2="1100" y2="620" stroke="#0065fc" stroke-width="0.5" opacity="0.20"/>
+        <line x1="850" y1="420" x2="940" y2="580" stroke="white" stroke-width="0.4" opacity="0.10"/>
+      </g>
+      <!-- Blue radial glow -->
+      <defs>
+        <radialGradient id="blueGlow" cx="75%" cy="30%" r="45%">
+          <stop offset="0%" stop-color="#0065fc" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#0065fc" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1400" height="900" fill="url(#blueGlow)"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero__content">
+    <span class="hero__eyebrow reveal">A permanent-capital cybersecurity platform — in formation.</span>
+    <h1 class="hero__headline reveal d1">
+      Acquire.<br>Integrate.<br>Scale.<br><em>Protect.</em>
+    </h1>
+    <p class="hero__sub reveal d2">
+      Cyber Profound is building America's permanent-capital platform for cybersecurity services — acquiring proven firms and uniting them under institutional governance, shared AI-driven security infrastructure, and long-term ownership.
+    </p>
+    <div class="hero__actions reveal d3">
+      <a href="/pages/contact.html" class="btn btn--primary btn--lg">Schedule a confidential call</a>
+      <a href="/pages/platform.html" class="btn btn--ghost btn--lg">Read our thesis</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll-cue">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROOF STRIP
+═══════════════════════════════════════════════════════════ -->
+<div class="proof-strip bg-navy">
+  <div class="wrap">
+    <div class="proof-strip__inner">
+      <div class="proof-strip__item reveal">
+        <strong class="proof-num" data-target="100" data-suffix="%">0%</strong>
+        <span>Cybersecurity-focused</span>
+      </div>
+      <div class="proof-strip__sep" aria-hidden="true"></div>
+      <div class="proof-strip__item reveal d1">
+        <strong class="proof-num" data-target="400" data-suffix="+">0+</strong>
+        <span>Years combined leadership experience</span>
+      </div>
+      <div class="proof-strip__sep" aria-hidden="true"></div>
+      <div class="proof-strip__item reveal d2">
+        <strong class="proof-num" data-target="3" data-suffix="">0</strong>
+        <span>Acquisition verticals</span>
+      </div>
+      <div class="proof-strip__sep" aria-hidden="true"></div>
+      <div class="proof-strip__item reveal d3">
+        <strong style="font-family:var(--font-display);font-size:var(--text-lg);color:white">AI-native</strong>
+        <span>Shared intelligence layer</span>
+      </div>
+      <div class="proof-strip__sep" aria-hidden="true"></div>
+      <div class="proof-strip__item reveal d4">
+        <strong style="font-family:var(--font-display);font-size:var(--text-lg);color:white">Permanent</strong>
+        <span>Capital — no forced exit clock</span>
+      </div>
+      <div class="proof-strip__sep" aria-hidden="true"></div>
+      <!-- Institution logos -->
+      <div class="proof-strip__logos reveal d5">
+        <span class="proof-strip__logo-label">Leadership from</span>
+        <div class="proof-strip__logo-row">
+          <span class="logo-badge">Oracle</span>
+          <span class="logo-badge">IBM</span>
+          <span class="logo-badge">Ernst &amp; Young</span>
+          <span class="logo-badge">Wharton</span>
+          <span class="logo-badge">HSBC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE PLATFORM — what we are
+═══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="platform-heading">
+  <div class="wrap wrap--default">
+    <div class="section-header reveal">
+      <span class="eyebrow">The Platform</span>
+      <h2 class="section-header__heading" id="platform-heading">
+        One platform.<br>Built deliberately.
+      </h2>
+      <p class="section-header__sub">
+        Cyber Profound is a U.S.-based cybersecurity consolidation platform. Our mandate is to acquire best-in-class managed security, identity, and cloud security firms and integrate them under centralized governance, shared operational infrastructure, and a unified national strategy.
+      </p>
+    </div>
+
+    <!-- 3-pillar feature row -->
+    <div class="platform-pillars reveal d1">
+      <div class="platform-pillar">
+        <div class="platform-pillar__num">01</div>
+        <div class="platform-pillar__body">
+          <h3 class="platform-pillar__title">Disciplined acquisition</h3>
+          <p class="platform-pillar__text">We pursue a small number of high-quality firms, evaluated through a rigorous, repeatable diligence framework. We say no often — so that every yes strengthens the platform.</p>
+        </div>
+      </div>
+      <div class="platform-pillar" style="transition-delay:80ms">
+        <div class="platform-pillar__num">02</div>
+        <div class="platform-pillar__body">
+          <h3 class="platform-pillar__title">Long-term ownership</h3>
+          <p class="platform-pillar__text">No forced exits. No countdown clock. We invest with a permanent-capital mindset — giving portfolio companies the stability to grow their capabilities and serve their customers for the long term.</p>
+        </div>
+      </div>
+      <div class="platform-pillar" style="transition-delay:160ms">
+        <div class="platform-pillar__num">03</div>
+        <div class="platform-pillar__body">
+          <h3 class="platform-pillar__title">Platform value creation</h3>
+          <p class="platform-pillar__text">Centralized governance, shared operations, a shared AI security layer — capabilities no single mid-market firm could build alone become standard for all of them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     MARKET OPPORTUNITY — dark section
+═══════════════════════════════════════════════════════════ -->
+<section class="section bg-navy opportunity-section" aria-labelledby="opportunity-heading">
+  <div class="wrap wrap--default">
+    <div class="opportunity-grid">
+      <div class="opportunity-text reveal">
+        <span class="eyebrow eyebrow--inv">Why now</span>
+        <h2 class="section-header__heading section-header--inv" id="opportunity-heading" style="color:white; margin-top:var(--sp-5)">
+          A $266B market,<br>fragmented and ready<br>to consolidate.
+        </h2>
+        <p style="color:var(--color-text-inv-muted); max-width:50ch; line-height:1.7; margin-top:var(--sp-6); font-size:var(--text-md)">
+          The U.S. cybersecurity services market is large, growing, and remarkably fragmented — thousands of high-quality regional firms, many led by founders approaching succession, most lacking the scale to invest in shared operations or national reach.
+        </p>
+        <p style="color:var(--color-text-inv-muted); max-width:50ch; line-height:1.7; margin-top:var(--sp-5); font-size:var(--text-md)">
+          Traditional private equity answers this with 3–5 year flip cycles that disrupt teams and customers. We answer it with permanent capital and operational discipline. The consolidation wave is coming — we intend to build the platform that does it right.
+        </p>
+        <a href="/pages/about.html" class="btn btn--ghost" style="margin-top:var(--sp-8); width:fit-content">Read our full thesis →</a>
+      </div>
+      <div class="opportunity-stats reveal d2">
+        <div class="opp-stat-card">
+          <div class="opp-stat-card__num">$266B</div>
+          <div class="opp-stat-card__label">Global cybersecurity market by 2027</div>
+          <div class="opp-stat-card__source">Source: Gartner, 2024</div>
+        </div>
+        <div class="opp-stat-card">
+          <div class="opp-stat-card__num">$60B+</div>
+          <div class="opp-stat-card__label">AI in cybersecurity by 2028</div>
+          <div class="opp-stat-card__source">Source: MarketsandMarkets</div>
+        </div>
+        <div class="opp-stat-card">
+          <div class="opp-stat-card__num">3,800+</div>
+          <div class="opp-stat-card__label">Data breaches annually — global</div>
+          <div class="opp-stat-card__source">Source: IBM Cost of a Data Breach 2024</div>
+        </div>
+        <div class="opp-stat-card">
+          <div class="opp-stat-card__num">312 days</div>
+          <div class="opp-stat-card__label">Average breach detection time</div>
+          <div class="opp-stat-card__source">Source: IBM Security</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     AI SECURITY PLATFORM — signature visual section
+═══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="ai-heading">
+  <div class="wrap wrap--default">
+    <div class="section-header reveal">
+      <span class="eyebrow">AI Security Infrastructure</span>
+      <h2 class="section-header__heading" id="ai-heading">
+        AI as a shared platform —<br>not a feature.
+      </h2>
+      <p class="section-header__sub">
+        Most cybersecurity firms can only afford to talk about AI. As a platform, we can deploy it — building a shared AI security layer once and putting it to work across every company we acquire. Threats now move at machine speed. Defenders that rely on manual triage cannot keep up.
+      </p>
+    </div>
+
+    <!-- Platform architecture diagram -->
+    <div class="ai-platform-diagram reveal d1">
+      <div class="ai-platform-diagram__inner">
+        <!-- Central core -->
+        <div class="ai-core">
+          <div class="ai-core__ring ai-core__ring--outer"></div>
+          <div class="ai-core__ring ai-core__ring--mid"></div>
+          <div class="ai-core__ring ai-core__ring--inner"></div>
+          <div class="ai-core__label">
+            <div class="ai-core__title">Cyber Profound</div>
+            <div class="ai-core__sub">AI Operations Center</div>
+          </div>
+        </div>
+
+        <!-- Layer nodes -->
+        <div class="ai-nodes">
+          <div class="ai-node ai-node--top">
+            <div class="ai-node__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="ai-node__text">AI-driven SOC &amp; SIEM</div>
+            <div class="ai-node__sub">CrowdStrike · Sentinel · Cortex XSIAM</div>
+          </div>
+          <div class="ai-node ai-node--right">
+            <div class="ai-node__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="ai-node__text">Cloud Security &amp; CNAPP</div>
+            <div class="ai-node__sub">Wiz · Palo Alto Prisma · Orca</div>
+          </div>
+          <div class="ai-node ai-node--bottom">
+            <div class="ai-node__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="ai-node__text">Identity &amp; Access (IAM)</div>
+            <div class="ai-node__sub">Entra · Okta · CyberArk · Ping</div>
+          </div>
+          <div class="ai-node ai-node--left">
+            <div class="ai-node__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <div class="ai-node__text">AI Data Security &amp; DSPM</div>
+            <div class="ai-node__sub">Cyera · BigID · Varonis · Purview</div>
+          </div>
+        </div>
+
+        <!-- AI-SPM outer layer label -->
+        <div class="ai-platform-label">
+          <span class="tag">AI-SPM Governance Layer</span>
+          <span style="margin-left:var(--sp-3);font-size:var(--text-xs);color:var(--color-text-muted)">SAFE AI-SPM · Securiti · Protect AI · Wiz AI-SPM</span>
+        </div>
+      </div>
+
+      <!-- Three capability columns -->
+      <div class="ai-caps">
+        <div class="ai-cap reveal">
+          <div class="ai-cap__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="ai-cap__title">Automation</h3>
+          <p class="ai-cap__desc">AI-assisted threat detection, triage, and correlation across portfolio SOCs. Automated incident response playbooks that contain threats in minutes, not hours.</p>
+        </div>
+        <div class="ai-cap reveal d1">
+          <div class="ai-cap__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="ai-cap__title">Human oversight</h3>
+          <p class="ai-cap__desc">Human-in-the-loop review on consequential actions. AI accelerates our experts — it does not replace their judgment. A governance framework for every model we deploy.</p>
+        </div>
+        <div class="ai-cap reveal d2">
+          <div class="ai-cap__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3 class="ai-cap__title">Platform leverage</h3>
+          <p class="ai-cap__desc">We integrate best-in-class AI security tooling once, then extend it across the portfolio. Every acquired firm instantly upgrades to enterprise-grade AI security capability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ACQUISITION CRITERIA — criteria grid
+═══════════════════════════════════════════════════════════ -->
+<section class="section bg-surface" aria-labelledby="criteria-heading">
+  <div class="wrap wrap--default">
+    <div class="section-header reveal">
+      <span class="eyebrow">Acquisition Criteria</span>
+      <h2 class="section-header__heading" id="criteria-heading">
+        Disciplined by design.
+      </h2>
+      <p class="section-header__sub">
+        We are selective. We acquire profitable, well-run U.S. cybersecurity firms with durable customer relationships and leadership we want to keep. Specificity is our discipline.
+      </p>
+    </div>
+
+    <!-- The target box — criteria grid -->
+    <div class="criteria-grid reveal d1">
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Revenue</span>
+        <span class="criteria-cell__value">$3M–$20M</span>
+        <span class="criteria-cell__desc">Annually. Sweet spot $5M–$15M ARR with demonstrated stability.</span>
+      </div>
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Profitability</span>
+        <span class="criteria-cell__value">15%+</span>
+        <span class="criteria-cell__desc">EBITDA margin. We pursue healthy businesses — not turnarounds.</span>
+      </div>
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Recurring Revenue</span>
+        <span class="criteria-cell__value">70%+</span>
+        <span class="criteria-cell__desc">Of total revenue. Durable, contractual customer relationships preferred.</span>
+      </div>
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Customer Base</span>
+        <span class="criteria-cell__value">Low concentration</span>
+        <span class="criteria-cell__desc">High retention. No single client representing outsized dependency.</span>
+      </div>
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Leadership</span>
+        <span class="criteria-cell__value">Builders</span>
+        <span class="criteria-cell__desc">Founders and operators who want to keep building — not exit and disappear.</span>
+      </div>
+      <div class="criteria-cell">
+        <span class="criteria-cell__label">Posture</span>
+        <span class="criteria-cell__value">Certified</span>
+        <span class="criteria-cell__desc">SOC 2 Type II and/or ISO 27001. Clean transferable ownership structure.</span>
+      </div>
+    </div>
+
+    <!-- Verticals -->
+    <div class="verticals reveal d2">
+      <h3 class="verticals__heading">Target verticals</h3>
+      <div class="vertical-cards">
+        <div class="vertical-card">
+          <div class="vertical-card__header">
+            <span class="vertical-card__num">01</span>
+            <span class="vertical-card__title">Managed Security (MSSP)</span>
+          </div>
+          <p class="vertical-card__desc">24/7 monitoring, MDR, SIEM, incident response for the mid-market.</p>
+          <div class="vertical-card__tags">
+            <span class="tag">SOC</span><span class="tag">MDR</span><span class="tag">SIEM</span><span class="tag">IR</span>
+          </div>
+        </div>
+        <div class="vertical-card">
+          <div class="vertical-card__header">
+            <span class="vertical-card__num">02</span>
+            <span class="vertical-card__title">Identity &amp; Access (IAM)</span>
+          </div>
+          <p class="vertical-card__desc">Identity governance, privileged access management, MFA, identity-centric architecture.</p>
+          <div class="vertical-card__tags">
+            <span class="tag">PAM</span><span class="tag">MFA</span><span class="tag">IGA</span><span class="tag">SSO</span>
+          </div>
+        </div>
+        <div class="vertical-card">
+          <div class="vertical-card__header">
+            <span class="vertical-card__num">03</span>
+            <span class="vertical-card__title">Cloud Security</span>
+          </div>
+          <p class="vertical-card__desc">Cloud-native protection, CASB, CSPM, CNAPP, Zero Trust architecture.</p>
+          <div class="vertical-card__tags">
+            <span class="tag">CASB</span><span class="tag">CSPM</span><span class="tag">CNAPP</span><span class="tag">Zero Trust</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ACQUISITION FUNNEL — visual timeline
+═══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="process-heading">
+  <div class="wrap wrap--default">
+    <div class="feature-row">
+      <div class="feature-row__text reveal">
+        <span class="eyebrow">Our Process</span>
+        <h2 class="section-header__heading" id="process-heading">
+          A repeatable process,<br>not a one-off bet.
+        </h2>
+        <p style="color:var(--color-text-muted); max-width:48ch; line-height:1.7; margin-top:var(--sp-4)">
+          Every acquisition is evaluated through the same framework, every time. Our diligence is thorough because we plan to own what we buy — permanently.
+        </p>
+        <a href="/pages/platform.html" class="btn btn--outline" style="margin-top:var(--sp-6); width:fit-content">View operating model</a>
+      </div>
+
+      <div class="feature-row__visual reveal d2">
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__body">
+              <span class="timeline__phase">Step 01</span>
+              <h3 class="timeline__title">Financial resilience</h3>
+              <p class="timeline__desc">Quality and durability of revenue, margins, and customer concentration.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__body">
+              <span class="timeline__phase">Step 02</span>
+              <h3 class="timeline__title">Leadership quality</h3>
+              <p class="timeline__desc">The people we are partnering with for the long term — retained and respected.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__body">
+              <span class="timeline__phase">Step 03</span>
+              <h3 class="timeline__title">Customer loyalty</h3>
+              <p class="timeline__desc">Retention, concentration risk, and the reputation the firm has built in market.</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot"></div>
+            <div class="timeline__body">
+              <span class="timeline__phase">Step 04</span>
+              <h3 class="timeline__title">Security &amp; compliance posture</h3>
+              <p class="timeline__desc">Controls, certifications, and regulatory alignment — our own standards are part of the product.</p>
+            </div>
+          </div>
+          <div class="timeline__item" style="padding-bottom:0">
+            <div class="timeline__dot"></div>
+            <div class="timeline__body">
+              <span class="timeline__phase">Step 05</span>
+              <h3 class="timeline__title">Platform fit</h3>
+              <p class="timeline__desc">Where the firm strengthens our geographic and capability coverage nationally.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ROLLUP ROADMAP — dark visual section
+═══════════════════════════════════════════════════════════ -->
+<section class="section bg-navy rollup-section" aria-labelledby="rollup-heading">
+  <div class="wrap wrap--default">
+    <div class="section-header section-header--inv reveal">
+      <span class="eyebrow eyebrow--inv">Acquisition Roadmap</span>
+      <h2 class="section-header__heading" id="rollup-heading" style="color:white">
+        Four acquisitions.<br>Full-spectrum coverage.
+      </h2>
+      <p class="section-header__sub" style="color:var(--color-text-inv-muted)">
+        Each acquisition is selected to close a prioritized coverage gap. We build capability deliberately — one disciplined partner at a time.
+      </p>
+    </div>
+
+    <div class="rollup-grid reveal d1">
+      <div class="rollup-card">
+        <div class="rollup-card__phase">Foundation · Year 1</div>
+        <div class="rollup-card__num">Acq. #1</div>
+        <h3 class="rollup-card__title">Anchor Firm</h3>
+        <p class="rollup-card__desc">Broadest multi-domain coverage — EDR, NSM, IAM, SIEM, TI. Existing enterprise client base (50+ logos). MSSP or MDR already operating.</p>
+        <div class="rollup-card__target">Target: $10–25M ARR</div>
+      </div>
+      <div class="rollup-card">
+        <div class="rollup-card__phase">Gap Fill · Year 2 Q1–Q2</div>
+        <div class="rollup-card__num">Acq. #2</div>
+        <h3 class="rollup-card__title">AppSec &amp; Identity Specialist</h3>
+        <p class="rollup-card__desc">Closes UEBA, Application Security (DAST/SAST/RASP), Privileged Access Management, and full multi-cloud CSPM gaps.</p>
+        <div class="rollup-card__target">Target: $10–25M ARR</div>
+      </div>
+      <div class="rollup-card">
+        <div class="rollup-card__phase">Expansion · Year 2 Q3–Q4</div>
+        <div class="rollup-card__num">Acq. #3</div>
+        <h3 class="rollup-card__title">OT/IoT &amp; SOAR</h3>
+        <p class="rollup-card__desc">OT/ICS security with industrial protocol expertise. Full SOAR and playbook automation. Advanced threat hunting. Critical infrastructure clients preferred.</p>
+        <div class="rollup-card__target">Target: $8–20M ARR</div>
+      </div>
+      <div class="rollup-card">
+        <div class="rollup-card__phase">Platform · Year 3+</div>
+        <div class="rollup-card__num">Acq. #4</div>
+        <h3 class="rollup-card__title">AI &amp; Threat Intelligence</h3>
+        <p class="rollup-card__desc">Proprietary threat intelligence graph, DLP and data classification, AI/ML model fine-tuning lab. Global threat research team and dark web monitoring capability.</p>
+        <div class="rollup-card__target">Target: $5–15M ARR</div>
+      </div>
+    </div>
+
+    <!-- Financial targets strip -->
+    <div class="fin-targets reveal d2">
+      <div class="fin-target">
+        <div class="fin-target__val">$35–60M</div>
+        <div class="fin-target__label">Year 1 ARR Target</div>
+      </div>
+      <div class="fin-target__divider"></div>
+      <div class="fin-target">
+        <div class="fin-target__val">$120–180M</div>
+        <div class="fin-target__label">Year 3 ARR Target</div>
+      </div>
+      <div class="fin-target__divider"></div>
+      <div class="fin-target">
+        <div class="fin-target__val">&gt;65%</div>
+        <div class="fin-target__label">Gross Margin Target</div>
+      </div>
+      <div class="fin-target__divider"></div>
+      <div class="fin-target">
+        <div class="fin-target__val">10–15× ARR</div>
+        <div class="fin-target__label">Platform Exit Multiple</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     GOVERNANCE / LEADERSHIP
+═══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="leadership-heading">
+  <div class="wrap wrap--default">
+    <div class="section-header reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2 class="section-header__heading" id="leadership-heading">
+        Led by operators who have<br>built and protected at scale.
+      </h2>
+      <p class="section-header__sub">
+        Cyber Profound is guided by a board whose combined experience spans 400+ years across cybersecurity, enterprise leadership, national infrastructure, and M&amp;A — with pedigree from Oracle, IBM, Ernst &amp; Young, Wharton, and HSBC.
+      </p>
+    </div>
+
+    <div class="leadership-grid reveal d1">
+      <!-- Leadership Card 1 -->
+      <div class="leader-card">
+        <div class="leader-card__avatar">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <rect width="80" height="80" fill="var(--color-surface-2)"/>
+            <circle cx="40" cy="30" r="14" fill="var(--color-border)"/>
+            <path d="M14 72c0-14.36 11.64-26 26-26s26 11.64 26 26" fill="var(--color-surface-offset)"/>
+          </svg>
+        </div>
+        <div class="leader-card__body">
+          <div class="leader-card__name">Mary Ann Davidson</div>
+          <div class="leader-card__title">Chair of the Board</div>
+          <div class="leader-card__cred">~40 years as Chief Security Officer, Oracle Corporation</div>
+        </div>
+      </div>
+      <!-- Leadership Card 2 -->
+      <div class="leader-card">
+        <div class="leader-card__avatar">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <rect width="80" height="80" fill="var(--color-surface-2)"/>
+            <circle cx="40" cy="30" r="14" fill="var(--color-border)"/>
+            <path d="M14 72c0-14.36 11.64-26 26-26s26 11.64 26 26" fill="var(--color-surface-offset)"/>
+          </svg>
+        </div>
+        <div class="leader-card__body">
+          <div class="leader-card__name">Nest Gjinaj</div>
+          <div class="leader-card__title">Founder &amp; Managing Director</div>
+          <div class="leader-card__cred">Cyber Profound Inc. — Building America's cybersecurity consolidation platform</div>
+        </div>
+      </div>
+      <!-- Leadership Card 3 -->
+      <div class="leader-card">
+        <div class="leader-card__avatar">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <rect width="80" height="80" fill="var(--color-surface-2)"/>
+            <circle cx="40" cy="30" r="14" fill="var(--color-border)"/>
+            <path d="M14 72c0-14.36 11.64-26 26-26s26 11.64 26 26" fill="var(--color-surface-offset)"/>
+          </svg>
+        </div>
+        <div class="leader-card__body">
+          <div class="leader-card__name">Susan Miller</div>
+          <div class="leader-card__title">Chief Executive Officer</div>
+          <div class="leader-card__cred">Executive leadership across cybersecurity and enterprise technology</div>
+        </div>
+      </div>
+      <!-- Leadership Card 4 -->
+      <div class="leader-card">
+        <div class="leader-card__avatar">
+          <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+            <rect width="80" height="80" fill="var(--color-surface-2)"/>
+            <circle cx="40" cy="30" r="14" fill="var(--color-border)"/>
+            <path d="M14 72c0-14.36 11.64-26 26-26s26 11.64 26 26" fill="var(--color-surface-offset)"/>
+          </svg>
+        </div>
+        <div class="leader-card__body">
+          <div class="leader-card__name">Gautam Banerjea</div>
+          <div class="leader-card__title">Non-Executive Director</div>
+          <div class="leader-card__cred">Senior leadership background in enterprise and financial services</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--sp-10); text-align:center" class="reveal d3">
+      <a href="/pages/governance.html" class="btn btn--outline">Meet the full board →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     NEWSROOM
+═══════════════════════════════════════════════════════════ -->
+<section class="section bg-surface" aria-labelledby="news-heading">
+  <div class="wrap wrap--default">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:var(--sp-12); gap:var(--sp-6)" class="reveal">
+      <div>
+        <span class="eyebrow">Newsroom</span>
+        <h2 class="section-header__heading" id="news-heading" style="margin-top:var(--sp-4)">Latest from<br>Cyber Profound</h2>
+      </div>
+      <a href="/pages/newsroom.html" class="btn btn--outline" style="flex-shrink:0">View all news</a>
+    </div>
+
+    <div class="news-list">
+      <a href="/pages/newsroom.html" class="news-card reveal">
+        <div style="display:flex;align-items:center;gap:var(--sp-4)">
+          <span class="news-card__tag">Leadership</span>
+          <span class="news-card__date">10 Mar 2026</span>
+        </div>
+        <h3 class="news-card__title">Mary Ann Davidson Appointed Chair of the Board at Cyber Profound</h3>
+        <p class="news-card__excerpt">We are honored to welcome Mary Ann Davidson as Chair of the Board. Her nearly 40 years as Chief Security Officer at Oracle Corporation reflects our commitment to the highest standards of governance and integrity.</p>
+        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+      </a>
+      <a href="/pages/newsroom.html" class="news-card reveal d1">
+        <div style="display:flex;align-items:center;gap:var(--sp-4)">
+          <span class="news-card__tag">Market Intelligence</span>
+          <span class="news-card__date">Mar 2026</span>
+        </div>
+        <h3 class="news-card__title">Why U.S. Cybersecurity Consolidation Is Accelerating</h3>
+        <p class="news-card__excerpt">A fragmented market of thousands of capable regional firms, a wave of founder-led businesses approaching succession, and capital that has mostly arrived in the form of short-horizon private equity. The conditions for disciplined consolidation are clear.</p>
+        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+      </a>
+      <a href="/pages/newsroom.html" class="news-card reveal d2">
+        <div style="display:flex;align-items:center;gap:var(--sp-4)">
+          <span class="news-card__tag">For Founders</span>
+          <span class="news-card__date">Mar 2026</span>
+        </div>
+        <h3 class="news-card__title">What Cybersecurity Business Owners Should Know Before Selling</h3>
+        <p class="news-card__excerpt">A guide to evaluating acquirers, understanding deal structures, and ensuring the firm you built continues to thrive — on your terms and theirs.</p>
+        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     AUDIENCE CTAs — 3-panel
+═══════════════════════════════════════════════════════════ -->
+<section class="section" aria-label="Contact and inquiry">
+  <div class="wrap wrap--default">
+    <div class="audience-panels">
+      <!-- Founders -->
+      <div class="audience-panel audience-panel--primary reveal">
+        <div class="audience-panel__label">For Founders</div>
+        <h3 class="audience-panel__heading">Thinking about your company's next chapter?</h3>
+        <p class="audience-panel__text">
+          If you've built a cybersecurity firm you're proud of, we'd like to talk — confidentially, with no obligation. We're assembling our founding platform companies now. The first partners help define what this platform becomes.
+        </p>
+        <a href="/pages/contact.html" class="btn btn--primary" style="margin-top:var(--sp-8)">Start a confidential conversation</a>
+      </div>
+      <!-- Investors -->
+      <div class="audience-panel reveal d1">
+        <div class="audience-panel__label">For Investors</div>
+        <h3 class="audience-panel__heading">Back a cybersecurity consolidator at formation.</h3>
+        <p class="audience-panel__text">
+          Institutional-grade exposure to the consolidation of a $266B+ market — disciplined acquisition criteria, permanent-capital structure, a shared AI security platform, and a board with 400+ years of combined experience.
+        </p>
+        <a href="/pages/contact.html" class="btn btn--outline" style="margin-top:var(--sp-8)">Request the investor briefing</a>
+      </div>
+      <!-- Careers -->
+      <div class="audience-panel reveal d2">
+        <div class="audience-panel__label">For Executive Talent</div>
+        <h3 class="audience-panel__heading">Build something national, from the ground up.</h3>
+        <p class="audience-panel__text">
+          We're early — and that's the opportunity. Joining Cyber Profound means helping build the platform, working alongside leaders from Oracle, IBM, and beyond, and growing as the portfolio grows.
+        </p>
+        <a href="/pages/careers.html" class="btn btn--outline" style="margin-top:var(--sp-8)">See open roles</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     CLOSING CTA — dark, institutional
+═══════════════════════════════════════════════════════════ -->
+<section class="section bg-navy closing-cta" aria-label="Closing call to action">
+  <div class="wrap wrap--narrow" style="text-align:center">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--inv" style="display:block;margin-bottom:var(--sp-6)">Selective. Disciplined. Permanent.</span>
+      <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;color:white;letter-spacing:-0.02em;line-height:1.05;margin-bottom:var(--sp-6)">
+        The cybersecurity consolidation<br>platform built to last.
+      </h2>
+      <p style="color:var(--color-text-inv-muted);font-size:var(--text-md);line-height:1.7;max-width:52ch;margin-inline:auto;margin-bottom:var(--sp-10)">
+        We are not a fund chasing a quick exit. We are building a permanent institution for U.S. cybersecurity — one disciplined acquisition at a time. If that mission aligns with yours, we want to hear from you.
+      </p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-4);flex-wrap:wrap">
+        <a href="/pages/contact.html" class="btn btn--primary btn--lg">Schedule a confidential call</a>
+        <a href="/pages/about.html" class="btn btn--ghost btn--lg">About Cyber Profound</a>
+      </div>
+    </div>
+  </div>
+  <!-- Background treatment -->
+  <div class="closing-cta__bg" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" fill="none">
+      <defs>
+        <radialGradient id="ctaGlow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0065fc" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#0065fc" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="500" fill="url(#ctaGlow1)"/>
+      <line x1="0" y1="1" x2="1200" y2="1" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="0" y1="499" x2="1200" y2="499" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="nav__logo" style="margin-bottom:var(--sp-2)">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect x="1" y="1" width="30" height="30" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <path d="M7 16C7 11.03 11.03 7 16 7" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/>
+            <path d="M25 16C25 20.97 20.97 25 16 25" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="3.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="1" fill="#0065fc"/>
+          </svg>
+          <span style="font-family:var(--font-display);font-size:1rem;font-weight:600;color:white;letter-spacing:0.02em">Cyber Profound</span>
+        </a>
+        <p class="footer__tagline">America's permanent-capital platform for cybersecurity services — acquiring, integrating, and scaling high-quality firms under institutional governance.</p>
+        <div style="display:flex;gap:var(--sp-3);margin-top:var(--sp-2)">
+          <a href="https://linkedin.com/company/cyberprofoundinc" class="footer__links" style="display:flex;align-items:center;gap:var(--sp-2);font-size:var(--text-xs);color:var(--color-text-inv-faint);transition:color var(--t-fast)" aria-label="LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Platform</p>
+        <ul class="footer__links" role="list">
+          <li><a href="/pages/about.html">About</a></li>
+          <li><a href="/pages/platform.html">Platform &amp; Operating Model</a></li>
+          <li><a href="/pages/governance.html">Governance &amp; Leadership</a></li>
+          <li><a href="/pages/newsroom.html">Newsroom</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Engage</p>
+        <ul class="footer__links" role="list">
+          <li><a href="/pages/contact.html">For Founders</a></li>
+          <li><a href="/pages/contact.html">For Investors</a></li>
+          <li><a href="/pages/careers.html">Careers</a></li>
+          <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <ul class="footer__links" role="list">
+          <li><a href="mailto:Ngjinaj@cyberprofound.com">Ngjinaj@cyberprofound.com</a></li>
+          <li><a href="tel:+18889007343">+1 (888) 900-7343</a></li>
+          <li style="color:var(--color-text-inv-faint);font-size:var(--text-xs);margin-top:var(--sp-2)">New Baltimore, Michigan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__legal">&copy; 2026 Cyber Profound Inc. All rights reserved.</p>
+      <div style="display:flex;gap:var(--sp-6)">
+        <a href="#" style="font-size:var(--text-xs);color:var(--color-text-inv-faint);transition:color var(--t-fast)">Privacy Policy</a>
+        <a href="#" style="font-size:var(--text-xs);color:var(--color-text-inv-faint);transition:color var(--t-fast)">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
