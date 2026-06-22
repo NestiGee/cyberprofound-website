@@ -514,7 +514,11 @@
 
     /* ── LEADERSHIP ── */
     .hp-leaders__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
-    .hp-leader { border: 1px solid var(--border); background: #fff; border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2rem); }
+    .hp-leader { border: 1px solid var(--border); background: #fff; border-radius: 4px; overflow: hidden; }
+    .hp-leader__photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center top; display: block; }
+    .hp-leader__photo-placeholder { width: 100%; aspect-ratio: 4/3; background: var(--off); display: flex; align-items: center; justify-content: center; }
+    .hp-leader__photo-placeholder svg { width: 48px; height: 48px; color: var(--border); }
+    .hp-leader__card-body { padding: clamp(1.25rem, 2vw, 1.75rem); }
     .hp-leader__role { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-top: 0.5rem; }
     .hp-leader__name { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: var(--navy); letter-spacing: -0.01em; line-height: 1.2; }
     .hp-leader--conf .hp-leader__name { color: var(--muted); font-style: italic; }
@@ -942,27 +946,36 @@
     <h3 class="hp-section-title hp-reveal">Board of Directors</h3>
     <div class="hp-leaders__grid">
       <div class="hp-leader hp-reveal">
-        <div class="hp-leader__name">Gautam Banerjea</div>
-        <div class="hp-leader__role">Chairman of the Board</div>
-        <div class="hp-leader__actions">
-          <a href="https://www.linkedin.com/in/gbanerjea" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <button class="hp-leader__bio-btn" data-bio="gautam">View Profile &rsaquo;</button>
+        <img class="hp-leader__photo" src="assets/headshot-banerjea.jpg" alt="Gautam Banerjea" loading="lazy" />
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name">Gautam Banerjea</div>
+          <div class="hp-leader__role">Chairman of the Board</div>
+          <div class="hp-leader__actions">
+            <a href="https://www.linkedin.com/in/gbanerjea" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <button class="hp-leader__bio-btn" data-bio="gautam">View Profile &rsaquo;</button>
+          </div>
         </div>
       </div>
       <div class="hp-leader hp-reveal">
-        <div class="hp-leader__name">Nest Gjinaj</div>
-        <div class="hp-leader__role">Founder &amp; Managing Director</div>
-        <div class="hp-leader__actions">
-          <a href="https://www.linkedin.com/in/nest-gjinaj-929b9863" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <button class="hp-leader__bio-btn" data-bio="nest">View Profile &rsaquo;</button>
+        <img class="hp-leader__photo" src="assets/headshot-gjinaj.jpg" alt="Nest Gjinaj" loading="lazy" />
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name">Nest Gjinaj</div>
+          <div class="hp-leader__role">Founder &amp; Managing Director</div>
+          <div class="hp-leader__actions">
+            <a href="https://www.linkedin.com/in/nest-gjinaj-929b9863" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <button class="hp-leader__bio-btn" data-bio="nest">View Profile &rsaquo;</button>
+          </div>
         </div>
       </div>
       <div class="hp-leader hp-reveal">
-        <div class="hp-leader__name">Susan Miller</div>
-        <div class="hp-leader__role">Chief Executive Officer</div>
-        <div class="hp-leader__actions">
-          <a href="https://www.linkedin.com/in/susanroxstrommiller" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <button class="hp-leader__bio-btn" data-bio="susan">View Profile &rsaquo;</button>
+        <img class="hp-leader__photo" src="assets/headshot-miller.jpg" alt="Susan Miller" loading="lazy" />
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name">Susan Miller</div>
+          <div class="hp-leader__role">Chief Executive Officer</div>
+          <div class="hp-leader__actions">
+            <a href="https://www.linkedin.com/in/susanroxstrommiller" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <button class="hp-leader__bio-btn" data-bio="susan">View Profile &rsaquo;</button>
+          </div>
         </div>
       </div>
     </div>
@@ -973,35 +986,53 @@
     </div>
     <div class="hp-leaders__grid">
       <div class="hp-leader hp-reveal hp-leader--conf">
-        <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
-        <div class="hp-leader__role">Chief Financial Officer</div>
-      </div>
-      <div class="hp-leader hp-reveal hp-leader--conf">
-        <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
-        <div class="hp-leader__role">Chief Legal Officer</div>
-      </div>
-      <div class="hp-leader hp-reveal hp-leader--conf">
-        <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
-        <div class="hp-leader__role">Investment Banker</div>
-      </div>
-      <div class="hp-leader hp-reveal">
-        <div class="hp-leader__name">Manvedeep Singh</div>
-        <div class="hp-leader__role">Non-Executive Director</div>
-        <div class="hp-leader__actions">
-          <a href="https://www.linkedin.com/in/manvedeepsingh" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <button class="hp-leader__bio-btn" data-bio="manvedeep">View Profile &rsaquo;</button>
-        </div>
-      </div>
-      <div class="hp-leader hp-reveal">
-        <div class="hp-leader__name">Jonathan Loretto</div>
-        <div class="hp-leader__role">Non-Executive Director</div>
-        <div class="hp-leader__actions">
-          <button class="hp-leader__bio-btn" data-bio="jonathan">View Profile &rsaquo;</button>
+        <div class="hp-leader__photo-placeholder"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
+          <div class="hp-leader__role">Chief Financial Officer</div>
         </div>
       </div>
       <div class="hp-leader hp-reveal hp-leader--conf">
-        <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
-        <div class="hp-leader__role">Non-Executive Director</div>
+        <div class="hp-leader__photo-placeholder"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
+          <div class="hp-leader__role">Chief Legal Officer</div>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal hp-leader--conf">
+        <div class="hp-leader__photo-placeholder"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
+          <div class="hp-leader__role">Investment Banker</div>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <img class="hp-leader__photo" src="assets/headshot-singh.jpg" alt="Manvedeep Singh" loading="lazy" />
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name">Manvedeep Singh</div>
+          <div class="hp-leader__role">Non-Executive Director</div>
+          <div class="hp-leader__actions">
+            <a href="https://www.linkedin.com/in/manvedeepsingh" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <button class="hp-leader__bio-btn" data-bio="manvedeep">View Profile &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <img class="hp-leader__photo" src="assets/headshot-loretto.jpg" alt="Jonathan Loretto" loading="lazy" />
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name">Jonathan Loretto</div>
+          <div class="hp-leader__role">Non-Executive Director</div>
+          <div class="hp-leader__actions">
+            <button class="hp-leader__bio-btn" data-bio="jonathan">View Profile &rsaquo;</button>
+          </div>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal hp-leader--conf">
+        <div class="hp-leader__photo-placeholder"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="hp-leader__card-body">
+          <div class="hp-leader__name" style="color:var(--muted);font-style:italic;">Confidential</div>
+          <div class="hp-leader__role">Non-Executive Director</div>
+        </div>
       </div>
     </div>
     <p class="hp-leaders__note hp-reveal">Certain appointments are not disclosed at this stage. Full governance disclosure is available to qualified investors and acquisition counterparties under NDA. <a href="pages/about.html">View full leadership →</a></p>
