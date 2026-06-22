@@ -442,8 +442,8 @@
 
   if (!banner) return;
 
-  // Check if already responded
-  if (localStorage.getItem('cp_cookie_consent')) return;
+  // Check if already responded this session (in-memory only — no localStorage needed)
+  if (window._cpCookieConsented) return;
 
   // Show banner after 1.5s delay
   setTimeout(function() {
@@ -451,7 +451,7 @@
   }, 1500);
 
   function hideBanner(value) {
-    localStorage.setItem('cp_cookie_consent', value);
+    window._cpCookieConsented = value;
     banner.classList.remove('visible');
   }
 
