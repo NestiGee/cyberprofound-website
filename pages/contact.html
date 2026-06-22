@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Cyber Profound</title>
+<meta name="description" content="Begin a confidential conversation with Cyber Profound. Inquiries from MSSP founders and institutional investors are reviewed directly by the Managing Director." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --blue: #0065fc; --blue-hover: #0050d0; --navy: #0A1B2E; --navy-2: #0d2340;
+  --white: #ffffff; --off: #f5f7fb; --border: #dde3ef;
+  --mid: #3a506b; --muted: #6b8096;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'Inter', sans-serif;
+  --nav-h: 68px; --max: 1120px; --gut: clamp(1.5rem, 5vw, 3.5rem);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 200; background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); transition: box-shadow 240ms var(--ease); }
+.nav.raised { box-shadow: 0 2px 24px rgba(10,27,46,0.08); }
+.nav__row { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.nav__logo img { height: 36px; width: auto; }
+.nav__center { display: flex; align-items: center; gap: 0; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav__center a { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--mid); padding: 0.45rem 0.9rem; border-radius: 4px; letter-spacing: 0.01em; white-space: nowrap; transition: color 140ms, background 140ms; }
+.nav__center a:hover, .nav__center a.active { color: var(--navy); }
+.nav__center a.active { font-weight: 600; }
+.nav__right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.nav__talk { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--blue); color: #fff; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.025em; padding: 0.55rem 1.2rem; border-radius: 3px; white-space: nowrap; transition: background 160ms, box-shadow 160ms, transform 120ms; }
+.nav__talk:hover { background: var(--blue-hover); box-shadow: 0 6px 20px rgba(0,101,252,0.26); transform: translateY(-1px); }
+.nav__talk.is-current { background: var(--blue); cursor: default; }
+.nav__talk.is-current:hover { transform: none; box-shadow: none; }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav__burger span { display: block; width: 22px; height: 1.5px; background: var(--navy); transition: transform 200ms var(--ease), opacity 140ms; border-radius: 2px; }
+.nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav__drawer { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 1.25rem var(--gut) 1.75rem; box-shadow: 0 20px 50px rgba(10,27,46,0.11); z-index: 199; }
+.nav__drawer.is-open { display: block; }
+.nav__drawer ul { list-style: none; }
+.nav__drawer ul li { border-bottom: 1px solid var(--border); }
+.nav__drawer ul li a { display: block; padding: 0.9rem 0; font-size: 0.9375rem; font-weight: 500; color: var(--navy); }
+.nav__drawer .nav__talk { display: flex; justify-content: center; width: 100%; margin-top: 1.25rem; padding: 0.875rem; }
+@media (max-width: 880px) { .nav__center { display: none; } .nav__right .nav__talk { display: none; } .nav__burger { display: flex; } }
+
+/* ===== SHARED ===== */
+.section { padding: clamp(5rem, 9vw, 9rem) 0; }
+.eyebrow { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 1.5rem; }
+.body { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
+.h-display { font-family: var(--font-d); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; }
+
+/* ===== HERO (shorter) ===== */
+.hero { position: relative; background: var(--navy); color: #fff; padding: calc(var(--nav-h) + clamp(3.5rem, 8vw, 6rem)) 0 clamp(3.5rem, 8vw, 6rem); overflow: hidden; }
+.hero__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); }
+.hero__glow { position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; background: radial-gradient(circle, rgba(0,101,252,0.28) 0%, rgba(0,101,252,0.08) 35%, transparent 68%); filter: blur(20px); pointer-events: none; }
+.hero__inner { position: relative; max-width: 880px; }
+.hero h1 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.04; letter-spacing: -0.015em; color: #fff; margin-bottom: 1.5rem; }
+.hero__sub { font-size: clamp(1rem, 1.7vw, 1.1875rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 60ch; }
+
+/* ===== PATH SELECTOR + FORMS ===== */
+.paths__head { max-width: 760px; margin-bottom: clamp(2.25rem, 4vw, 3rem); }
+.paths__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.875rem, 4vw, 2.5rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1rem; }
+.paths__intro { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 58ch; }
+.path-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: clamp(2.75rem, 5vw, 4rem); }
+.path-card { position: relative; text-align: left; width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; cursor: pointer; font-family: var(--font-b); transition: border-color 160ms, box-shadow 160ms, background 160ms, transform 120ms; }
+.path-card:hover { border-color: var(--blue); box-shadow: 0 6px 22px rgba(10,27,46,0.07); }
+.path-card.is-active { border-left: 3px solid var(--blue); background: var(--off); box-shadow: 0 8px 26px rgba(10,27,46,0.09); transform: translateY(-2px); }
+.path-card__tag { display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--blue); font-weight: 600; margin-bottom: 0.85rem; }
+.path-card__title { display: block; font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; line-height: 1.2; color: var(--navy); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+.path-card__desc { display: block; font-size: 0.875rem; line-height: 1.6; color: var(--mid); }
+
+/* ===== FORM ===== */
+.form-section { max-width: 640px; margin: 0 auto; }
+.form-section[hidden] { display: none; }
+.form__head { margin-bottom: clamp(1.75rem, 3vw, 2.25rem); }
+.form__head h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.625rem, 3.4vw, 2.125rem); line-height: 1.14; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 0.85rem; }
+.form__head p { font-size: 0.9375rem; line-height: 1.7; color: var(--mid); }
+.field { margin-bottom: 1.25rem; }
+.field label { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--navy); margin-bottom: 0.35rem; }
+.field .req { color: var(--blue); }
+.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 1rem; font-family: var(--font-b); font-size: 0.9375rem; color: var(--navy); background: #fff; transition: border-color 140ms, box-shadow 140ms; }
+.field textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+.field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236b8096' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,101,252,0.12); }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: #dc2626; }
+.field__error { display: none; font-size: 0.8125rem; color: #dc2626; margin-top: 0.35rem; }
+.field.has-error .field__error { display: block; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+/* checkbox */
+.checkfield { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 1.5rem; cursor: pointer; }
+.checkfield input { position: absolute; opacity: 0; width: 0; height: 0; }
+.checkfield .box { flex-shrink: 0; width: 18px; height: 18px; border: 1px solid var(--border); border-radius: 3px; background: #fff; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: background 140ms, border-color 140ms; }
+.checkfield .box svg { opacity: 0; transition: opacity 120ms; }
+.checkfield input:checked + .box { background: var(--blue); border-color: var(--blue); }
+.checkfield input:checked + .box svg { opacity: 1; }
+.checkfield input:focus-visible + .box { box-shadow: 0 0 0 3px rgba(0,101,252,0.12); }
+.checkfield .check-label { font-size: 0.8125rem; line-height: 1.5; color: var(--mid); }
+.checkfield.has-error .box { border-color: #dc2626; }
+.check-error { display: none; font-size: 0.8125rem; color: #dc2626; margin: -0.75rem 0 1.25rem; }
+.checkfield.has-error ~ .check-error { display: block; }
+
+.form-submit { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--blue); color: #fff; font-family: var(--font-b); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.9rem 1.75rem; border: none; border-radius: 3px; cursor: pointer; transition: background 160ms, box-shadow 160ms, transform 120ms; }
+.form-submit:hover { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(0,101,252,0.26); transform: translateY(-1px); }
+
+/* success */
+.form-success { display: none; max-width: 640px; margin: 0 auto; border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 4px; background: var(--off); padding: clamp(2rem, 4vw, 3rem); }
+.form-success.is-shown { display: block; }
+.form-success h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.625rem, 3.4vw, 2.125rem); line-height: 1.14; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 1rem; }
+.form-success p { font-size: 0.9375rem; line-height: 1.7; color: var(--mid); margin-bottom: 1.25rem; }
+.form-success .small { font-size: 0.8125rem; color: var(--muted); margin-bottom: 0; }
+.form-success .small a { color: var(--blue); }
+
+/* ===== DIRECT CONTACT ===== */
+.direct { background: var(--off); }
+.direct__head { max-width: 720px; }
+.direct__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.25rem; }
+.direct__head p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 56ch; margin-bottom: clamp(2rem, 4vw, 2.75rem); }
+.direct__lines { display: flex; flex-direction: column; gap: 0.85rem; }
+.direct__email { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.5rem, 3.6vw, 2.25rem); color: var(--navy); letter-spacing: -0.01em; transition: color 140ms; }
+.direct__email:hover { color: var(--blue); }
+.direct__line { font-size: 1rem; color: var(--mid); }
+.direct__line a { color: var(--mid); transition: color 140ms; }
+.direct__line a:hover { color: var(--blue); }
+
+/* ===== CONFIDENTIALITY ===== */
+.confid { text-align: center; }
+.confid p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.8; color: var(--muted); max-width: 60ch; margin: 0 auto; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--navy); color: #fff; padding: clamp(3.5rem, 6vw, 5rem) 0 2rem; }
+.footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start; }
+.footer__brand { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: #fff; letter-spacing: -0.01em; }
+.footer__tag { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: rgba(255,255,255,0.45); max-width: 30ch; }
+.footer__nav { display: flex; flex-direction: column; gap: 0.65rem; }
+.footer__nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); transition: color 140ms; }
+.footer__nav a:hover { color: #fff; }
+.footer__contact { text-align: right; }
+.footer__contact a { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; transition: color 140ms; }
+.footer__contact a:hover { color: #fff; }
+.footer__rule { height: 1px; background: rgba(255,255,255,0.08); margin: clamp(2.5rem, 5vw, 3.5rem) 0 1.75rem; }
+.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 880px) {
+  .path-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__contact { text-align: left; }
+  .form-submit { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav__row">
+    <a href="../index.html" class="nav__logo" aria-label="Cyber Profound home">
+      <img src="../images/logo-nav.png" alt="Cyber Profound" />
+    </a>
+    <ul class="nav__center">
+      <li><a href="about.html">About</a></li>
+      <li><a href="platform.html">Platform</a></li>
+      <li><a href="criteria.html">Acquisition Criteria</a></li>
+      <li><a href="governance.html">Governance</a></li>
+      <li><a href="newsroom.html">Newsroom</a></li>
+    </ul>
+    <div class="nav__right">
+      <span class="nav__talk is-current" aria-current="page">
+        Request a Conversation
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav__drawer" id="drawer">
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="platform.html">Platform</a></li>
+    <li><a href="criteria.html">Acquisition Criteria</a></li>
+    <li><a href="governance.html">Governance</a></li>
+    <li><a href="newsroom.html">Newsroom</a></li>
+  </ul>
+  <span class="nav__talk is-current" style="display:flex;justify-content:center;width:100%;margin-top:1.25rem;padding:0.875rem;opacity:0.6;cursor:default;" aria-current="page">You&rsquo;re here &mdash; Contact</span>
+</div>
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__inner reveal">
+      <span class="eyebrow">Contact</span>
+      <h1>Begin a Conversation</h1>
+      <p class="hero__sub">All inquiries are treated with discretion. We do not share your name, firm, or information with any third party. Initial conversations carry no obligation.</p>
+    </div>
+  </div>
+</header>
+
+<!-- 2. PATH SELECTOR + FORMS -->
+<section class="section">
+  <div class="wrap">
+    <div class="paths__head reveal">
+      <h2>Select your path.</h2>
+      <p class="paths__intro">Choose the inquiry path that applies to you. The relevant form will appear below.</p>
+    </div>
+
+    <div class="path-cards reveal">
+      <button type="button" class="path-card" data-path="founder" aria-pressed="false">
+        <span class="path-card__tag">MSSP Founders</span>
+        <span class="path-card__title">Acquisition Inquiry</span>
+        <span class="path-card__desc">I am a founder or operator considering a confidential conversation about my firm.</span>
+      </button>
+      <button type="button" class="path-card" data-path="investor" aria-pressed="false">
+        <span class="path-card__tag">Institutional Investors</span>
+        <span class="path-card__title">Investor Inquiry</span>
+        <span class="path-card__desc">I represent an institutional investor evaluating the platform or seeking co-investment information.</span>
+      </button>
+    </div>
+
+    <!-- FORM A — MSSP Founders -->
+    <div class="form-section reveal" id="section-founder" hidden>
+      <form id="form-founder" novalidate>
+        <div class="form__head">
+          <h3>Acquisition Inquiry</h3>
+          <p>Complete the form below to begin a confidential conversation about your firm. We respond to all qualified inquiries within two business days.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Your Name <span class="req">*</span></label>
+            <input type="text" id="f-name" name="name" data-required autocomplete="name" />
+            <div class="field__error">Please enter your name.</div>
+          </div>
+          <div class="field">
+            <label for="f-title">Your Title <span class="req">*</span></label>
+            <input type="text" id="f-title" name="title" data-required autocomplete="organization-title" />
+            <div class="field__error">Please enter your title.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-firm">Firm Name <span class="req">*</span></label>
+          <input type="text" id="f-firm" name="firm" data-required autocomplete="organization" />
+          <div class="field__error">Please enter your firm name.</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-revenue">Annual Revenue</label>
+            <select id="f-revenue" name="revenue">
+              <option value="">Select one</option>
+              <option>Under $3M</option>
+              <option>$3M &ndash; $5M</option>
+              <option>$5M &ndash; $10M</option>
+              <option>$10M &ndash; $20M</option>
+              <option>$20M+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-service">Primary Service Type</label>
+            <select id="f-service" name="service">
+              <option value="">Select one</option>
+              <option>SOC / SIEM</option>
+              <option>Cloud Security</option>
+              <option>Endpoint Protection</option>
+              <option>Identity &amp; Access</option>
+              <option>Network Security</option>
+              <option>Multi-Service MSSP</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-years">Years in Operation</label>
+            <select id="f-years" name="years">
+              <option value="">Select one</option>
+              <option>Under 2 years</option>
+              <option>2&ndash;5 years</option>
+              <option>5&ndash;10 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-recurring">Recurring Revenue %</label>
+            <select id="f-recurring" name="recurring">
+              <option value="">Select one</option>
+              <option>Under 50%</option>
+              <option>50&ndash;70%</option>
+              <option>70&ndash;85%</option>
+              <option>85%+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Your Email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" data-required data-email autocomplete="email" />
+            <div class="field__error">Please enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="f-phone">Your Phone</label>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" />
+            <div class="field__error">Please enter a valid phone number.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" placeholder="Briefly describe your firm, your goals, and what prompted your inquiry."></textarea>
+          <div class="field__error">Please enter a message.</div>
+        </div>
+
+        <label class="checkfield" for="f-consent">
+          <input type="checkbox" id="f-consent" name="consent" data-required-check />
+          <span class="box" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5L4.3 8 9 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="check-label">I understand this inquiry is confidential and carries no obligation.</span>
+        </label>
+        <div class="check-error">Please confirm you understand before submitting.</div>
+
+        <button type="submit" class="form-submit">Submit Inquiry</button>
+      </form>
+
+      <div class="form-success" id="success-founder">
+        <h3>Your inquiry has been received.</h3>
+        <p>We will respond within two business days. All information you provided is treated as strictly confidential.</p>
+        <p class="small">If you need to reach us directly: <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a></p>
+      </div>
+    </div>
+
+    <!-- FORM B — Institutional Investors -->
+    <div class="form-section reveal" id="section-investor" hidden>
+      <form id="form-investor" novalidate>
+        <div class="form__head">
+          <h3>Investor Inquiry</h3>
+          <p>Complete the form below to request information about Cyber Profound's investment thesis, capital structure, or investor relations.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="i-name">Your Name <span class="req">*</span></label>
+            <input type="text" id="i-name" name="name" data-required autocomplete="name" />
+            <div class="field__error">Please enter your name.</div>
+          </div>
+          <div class="field">
+            <label for="i-title">Your Title <span class="req">*</span></label>
+            <input type="text" id="i-title" name="title" data-required autocomplete="organization-title" />
+            <div class="field__error">Please enter your title.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="i-org">Organization Name <span class="req">*</span></label>
+          <input type="text" id="i-org" name="org" data-required autocomplete="organization" />
+          <div class="field__error">Please enter your organization name.</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="i-orgtype">Organization Type</label>
+            <select id="i-orgtype" name="orgtype">
+              <option value="">Select one</option>
+              <option>Family Office</option>
+              <option>Endowment</option>
+              <option>Pension Fund</option>
+              <option>Sovereign Wealth Fund</option>
+              <option>Insurance Company</option>
+              <option>Fund of Funds</option>
+              <option>Other Institutional</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="i-aum">AUM Range</label>
+            <select id="i-aum" name="aum">
+              <option value="">Select one</option>
+              <option>Under $500M</option>
+              <option>$500M &ndash; $2B</option>
+              <option>$2B &ndash; $10B</option>
+              <option>$10B+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="i-interest">Primary Interest</label>
+          <select id="i-interest" name="interest">
+            <option value="">Select one</option>
+            <option>Equity Co-Investment</option>
+            <option>Debt / Senior Lending</option>
+            <option>Strategic Partnership</option>
+            <option>General Information</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="i-email">Your Email <span class="req">*</span></label>
+            <input type="email" id="i-email" name="email" data-required data-email autocomplete="email" />
+            <div class="field__error">Please enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="i-phone">Your Phone</label>
+            <input type="tel" id="i-phone" name="phone" autocomplete="tel" />
+            <div class="field__error">Please enter a valid phone number.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="i-message">Message</label>
+          <textarea id="i-message" name="message" placeholder="Describe your organization's interest and any specific information you are seeking."></textarea>
+          <div class="field__error">Please enter a message.</div>
+        </div>
+
+        <label class="checkfield" for="i-consent">
+          <input type="checkbox" id="i-consent" name="consent" data-required-check />
+          <span class="box" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5L4.3 8 9 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="check-label">I understand this inquiry is confidential.</span>
+        </label>
+        <div class="check-error">Please confirm you understand before submitting.</div>
+
+        <button type="submit" class="form-submit">Submit Inquiry</button>
+      </form>
+
+      <div class="form-success" id="success-investor">
+        <h3>Your inquiry has been received.</h3>
+        <p>We will respond within two business days. All information you provided is treated as strictly confidential.</p>
+        <p class="small">If you need to reach us directly: <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DIRECT CONTACT -->
+<section class="section direct">
+  <div class="wrap">
+    <div class="direct__head reveal">
+      <span class="eyebrow">Direct Contact</span>
+      <h2>Prefer to write directly?</h2>
+      <p>All inquiries sent to the address below are reviewed by the Managing Director.</p>
+      <div class="direct__lines">
+        <a href="mailto:ngjinaj@cyberprofound.com" class="direct__email">ngjinaj@cyberprofound.com</a>
+        <p class="direct__line"><a href="tel:+18889007343">+1 (888) 900-7343</a></p>
+        <p class="direct__line">New Baltimore, Michigan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CONFIDENTIALITY STATEMENT -->
+<section class="section confid">
+  <div class="wrap">
+    <div class="reveal">
+      <p>Cyber Profound does not share, sell, or disclose the identity of any party that contacts us. Acquisition inquiries are held in confidence indefinitely. Investor inquiries are governed by the terms of any subsequently executed NDA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Cyber Profound</div>
+        <p class="footer__tag">A permanent-capital platform for cybersecurity services.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="platform.html">Platform</a>
+        <a href="criteria.html">Acquisition Criteria</a>
+        <a href="governance.html">Governance</a>
+        <a href="newsroom.html">Newsroom</a>
+      </nav>
+      <div class="footer__contact">
+        <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a>
+        <a href="tel:+18889007343">+1 (888) 900-7343</a>
+      </div>
+    </div>
+    <div class="footer__rule" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cyber Profound Inc. All rights reserved.</span>
+      <span>New Baltimore, Michigan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== NAV ===== */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('raised', window.scrollY > 8); }, { passive: true });
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger.addEventListener('click', () => {
+  const open = drawer.classList.toggle('is-open');
+  burger.classList.toggle('is-open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    drawer.classList.remove('is-open'); burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  });
+});
+
+/* ===== PATH SELECTOR ===== */
+const cards = document.querySelectorAll('.path-card');
+const sectionFounder = document.getElementById('section-founder');
+const sectionInvestor = document.getElementById('section-investor');
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const path = card.dataset.path;
+    cards.forEach(c => { c.classList.toggle('is-active', c === card); c.setAttribute('aria-pressed', String(c === card)); });
+    sectionFounder.hidden = path !== 'founder';
+    sectionInvestor.hidden = path !== 'investor';
+  });
+});
+
+/* ===== VALIDATION + MAILTO SUBMISSION ===== */
+function emailValid(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+
+function clearError(field) { field.classList.remove('has-error'); }
+
+function validateForm(form) {
+  let ok = true;
+  let firstInvalid = null;
+  // text/email/select required
+  form.querySelectorAll('[data-required]').forEach(input => {
+    const field = input.closest('.field');
+    const empty = !input.value.trim();
+    const badEmail = input.hasAttribute('data-email') && input.value.trim() && !emailValid(input.value);
+    if (empty || badEmail) {
+      field.classList.add('has-error'); ok = false;
+      if (!firstInvalid) firstInvalid = input;
+    } else {
+      field.classList.remove('has-error');
+    }
+  });
+  // checkbox required
+  form.querySelectorAll('[data-required-check]').forEach(cb => {
+    const wrap = cb.closest('.checkfield');
+    if (!cb.checked) {
+      wrap.classList.add('has-error'); ok = false;
+      if (!firstInvalid) firstInvalid = cb;
+    } else {
+      wrap.classList.remove('has-error');
+    }
+  });
+  if (firstInvalid) firstInvalid.focus({ preventScroll: false });
+  return ok;
+}
+
+function bindLiveClear(form) {
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+    const evt = el.type === 'checkbox' ? 'change' : 'input';
+    el.addEventListener(evt, () => {
+      if (el.type === 'checkbox') { el.closest('.checkfield').classList.remove('has-error'); }
+      else { const f = el.closest('.field'); if (f) f.classList.remove('has-error'); }
+    });
+  });
+}
+
+function val(form, name) { const el = form.querySelector('[name="' + name + '"]'); return el ? el.value.trim() : ''; }
+
+function handleSubmit(formId, successId, type) {
+  const form = document.getElementById(formId);
+  bindLiveClear(form);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateForm(form)) return;
+
+    let subject, body;
+    if (type === 'founder') {
+      const firm = val(form, 'firm');
+      subject = 'Acquisition Inquiry — ' + (firm || 'Unnamed Firm');
+      body =
+        'Name: ' + val(form, 'name') + '\n' +
+        'Title: ' + val(form, 'title') + '\n' +
+        'Firm: ' + firm + '\n' +
+        'Annual Revenue: ' + val(form, 'revenue') + '\n' +
+        'Primary Service Type: ' + val(form, 'service') + '\n' +
+        'Years in Operation: ' + val(form, 'years') + '\n' +
+        'Recurring Revenue %: ' + val(form, 'recurring') + '\n' +
+        'Email: ' + val(form, 'email') + '\n' +
+        'Phone: ' + val(form, 'phone') + '\n\n' +
+        'Message:\n' + val(form, 'message');
+    } else {
+      const org = val(form, 'org');
+      subject = 'Investor Inquiry — ' + (org || 'Unnamed Organization');
+      body =
+        'Name: ' + val(form, 'name') + '\n' +
+        'Title: ' + val(form, 'title') + '\n' +
+        'Organization: ' + org + '\n' +
+        'Organization Type: ' + val(form, 'orgtype') + '\n' +
+        'AUM Range: ' + val(form, 'aum') + '\n' +
+        'Primary Interest: ' + val(form, 'interest') + '\n' +
+        'Email: ' + val(form, 'email') + '\n' +
+        'Phone: ' + val(form, 'phone') + '\n\n' +
+        'Message:\n' + val(form, 'message');
+    }
+
+    const mailto = 'mailto:ngjinaj@cyberprofound.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+
+    form.style.display = 'none';
+    document.getElementById(successId).classList.add('is-shown');
+  });
+}
+
+handleSubmit('form-founder', 'success-founder', 'founder');
+handleSubmit('form-investor', 'success-investor', 'investor');
+
+/* ===== SCROLL REVEAL ===== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = (idx > 0 ? idx * 80 : 0) + 'ms';
+      el.classList.add('in');
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+}, 100);
+</script>
+</body>
+</html>

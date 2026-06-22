@@ -1,900 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-     ______                            __
-    / ____/___  ____ ___  ____  __  __/ /____  _____
-   / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
-  / /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
-  \____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
-                      /_/
-          Created with Perplexity Computer
-          https://www.perplexity.ai/computer
-  -->
-  <meta name="generator" content="Perplexity Computer">
-  <meta name="author" content="Perplexity Computer">
-  <meta property="og:see_also" content="https://www.perplexity.ai/computer">
-  <link rel="author" href="https://www.perplexity.ai/computer">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Profound — Permanent-Capital Cybersecurity Platform</title>
+  <meta name="description" content="Cyber Profound acquires, integrates, and scales premier managed security service providers under one permanent-capital platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber Profound — Cybersecurity Consolidation Platform</title>
-  <meta name="description" content="Cyber Profound is a U.S.-based cybersecurity services platform that acquires, supports, and scales high-quality firms through disciplined governance.">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Cyber Profound — Cybersecurity Consolidation Platform">
-  <meta property="og:description" content="Cyber Profound is a U.S.-based cybersecurity services platform that acquires, supports, and scales high-quality firms through disciplined governance.">
-  <meta property="og:url" content="https://cyberprofound.com/">
-  <meta property="og:image" content="https://cyberprofound.com/assets/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="Cyber Profound">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cyber Profound — Cybersecurity Consolidation Platform">
-  <meta name="twitter:description" content="Cyber Profound is a U.S.-based cybersecurity services platform that acquires, supports, and scales high-quality firms through disciplined governance.">
-  <meta name="twitter:image" content="https://cyberprofound.com/assets/og-image.png">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background: #fff;
+      color: #0A1B2E;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    /* ── TOKENS ── */
+    :root {
+      --blue:       #0065fc;
+      --blue-hover: #0050d0;
+      --navy:       #0A1B2E;
+      --navy-2:     #0d2340;
+      --white:      #ffffff;
+      --off:        #f5f7fb;
+      --border:     #dde3ef;
+      --mid:        #3a506b;
+      --muted:      #6b8096;
+      --font-d:     'Cormorant Garamond', Georgia, serif;
+      --font-b:     'Inter', sans-serif;
+      --nav-h:      68px;
+      --max:        1120px;
+      --gut:        clamp(1.5rem, 5vw, 3.5rem);
+      --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-  <link rel="stylesheet" href="./base.css">
-  <link rel="stylesheet" href="./style.css">
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gut);
+    }
 
-  <link rel="icon" type="image/x-icon" href="./favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
-  <link rel="manifest" href="./site.webmanifest">
+    /* ════════════════════════════════════════════════
+       NAVIGATION — clean white, two-zone layout
+    ════════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 200;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: box-shadow 240ms var(--ease);
+    }
+    .nav.raised { box-shadow: 0 2px 24px rgba(10,27,46,0.08); }
+
+    .nav__row {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Logo */
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 0;
+    }
+    .nav__logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    /* Center links */
+    .nav__center {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .nav__center a {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--mid);
+      padding: 0.45rem 0.9rem;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      transition: color 140ms, background 140ms;
+    }
+    .nav__center a:hover {
+      color: var(--navy);
+      background: var(--off);
+    }
+
+    /* Right CTA */
+    .nav__right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+    .nav__talk {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      padding: 0.55rem 1.2rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: background 160ms var(--ease), box-shadow 160ms var(--ease), transform 120ms;
+    }
+    .nav__talk:hover {
+      background: var(--blue-hover);
+      box-shadow: 0 6px 20px rgba(0,101,252,0.26);
+      transform: translateY(-1px);
+    }
+    .nav__talk svg { flex-shrink: 0; }
+
+    /* Hamburger */
+    .nav__burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav__burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--navy);
+      transition: transform 200ms var(--ease), opacity 140ms;
+      border-radius: 2px;
+    }
+    .nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav__burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav__drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem var(--gut) 1.75rem;
+      box-shadow: 0 20px 50px rgba(10,27,46,0.11);
+      z-index: 199;
+    }
+    .nav__drawer.is-open { display: block; }
+    .nav__drawer ul { list-style: none; }
+    .nav__drawer ul li { border-bottom: 1px solid var(--border); }
+    .nav__drawer ul li:last-child { border-bottom: none; }
+    .nav__drawer ul li a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .nav__drawer .nav__talk {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 0.875rem;
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 880px) {
+      .nav__center { display: none; }
+      .nav__right .nav__talk { display: none; }
+      .nav__burger { display: flex; }
+    }
+    @media (max-width: 400px) {
+      .nav__logo img { height: 30px; }
+    }
+
+
+    /* ════════════════════════════════════════════════
+       HERO — full-bleed navy, clean, no data dump
+    ════════════════════════════════════════════════ */
+    .hero {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 65% 55% at 80% 45%, rgba(0,101,252,0.11) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 60% at -5% 85%, rgba(0,101,252,0.07) 0%, transparent 60%);
+    }
+
+    /* Very subtle grid lines */
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+
+
+    /* Particle canvas */
+    .hero__particles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    /* Thin blue vertical accent line */
+    .hero__accent-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: 42%;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(0,101,252,0.25) 20%,
+        rgba(0,101,252,0.25) 80%,
+        transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: flex-start;
+      padding: clamp(5rem, 9vw, 8rem) 0 5rem;
+      width: 100%;
+    }
+
+    /* ── Left copy ── */
+    .hero__eyebrow {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero__title {
+      font-family: var(--font-d);
+      font-size: clamp(3.25rem, 6.5vw, 6rem);
+      font-weight: 600;
+      line-height: 1.04;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.38);
+    }
+
+    .hero__rule {
+      width: 48px;
+      height: 2px;
+      background: var(--blue);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero__body {
+      font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+      font-weight: 400;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.58);
+      max-width: 500px;
+      margin-bottom: 2.75rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      transition: background 160ms var(--ease), transform 120ms, box-shadow 160ms var(--ease);
+    }
+    .btn-solid:hover {
+      background: var(--blue-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(0,101,252,0.3);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.8rem 1.75rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: border-color 160ms, color 160ms, background 160ms, transform 120ms;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-1px);
+    }
+
+    /* ── Right panel: three audience doors ── */
+    .hero__doors {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .door {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: background 180ms var(--ease);
+      text-decoration: none;
+    }
+    .door:last-child { border-bottom: none; }
+    .door:hover { background: rgba(0,101,252,0.1); }
+    .door:hover .door__arrow { opacity: 1; transform: translateX(3px); }
+
+    .door__left {}
+    .door__tag {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.35rem;
+    }
+    .door__label {
+      display: block;
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .door__sub {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.42);
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .door__arrow {
+      flex-shrink: 0;
+      opacity: 0.3;
+      color: #fff;
+      transition: opacity 180ms, transform 180ms var(--ease);
+      margin-left: 1rem;
+    }
+
+    /* Bottom trust strip */
+    .hero__trust {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      z-index: 2;
+    }
+    .hero__trust__inner {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 1.1rem 0;
+      overflow-x: auto;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .trust-item__dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+    .trust-item__text {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+    .trust-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 860px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: clamp(4rem, 8vw, 6rem) 0 6rem;
+      }
+      .hero__accent-line { display: none; }
+      .hero__doors { max-width: 480px; }
+      .hero__trust__inner { gap: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .hero__actions { flex-direction: column; }
+      .btn-solid, .btn-outline { justify-content: center; }
+    }
+
+    /* ── placeholder ── */
+    .next-section {
+      padding: 5rem 0;
+      text-align: center;
+      background: var(--off);
+      border-top: 1px solid var(--border);
+    }
+    .next-section p { color: var(--muted); font-size: 0.875rem; }
+
+    /* ═══════════════════════════════════════════
+       HOMEPAGE BODY SECTIONS — shared utilities
+    ═══════════════════════════════════════════ */
+    .hp-section { padding: clamp(5rem, 9vw, 9rem) 0; }
+    .hp-bg-off  { background: var(--off); }
+    .hp-bg-navy { background: var(--navy); color: #fff; }
+
+    .hp-eyebrow { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 1.5rem; }
+    .hp-eyebrow--light { color: rgba(0,101,252,0.75); }
+
+    .hp-section__head { max-width: 800px; margin-bottom: clamp(3rem, 6vw, 5rem); }
+    .hp-h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.8vw, 3.25rem); line-height: 1.08; letter-spacing: -0.015em; color: var(--navy); margin-bottom: 1.25rem; }
+    .hp-h2--light { color: #fff; }
+    .hp-intro { font-size: clamp(0.9375rem, 1.5vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 64ch; }
+
+    /* Scroll reveal */
+    .hp-reveal { opacity: 0; transform: translateY(20px); transition: opacity 560ms ease-out, transform 560ms ease-out; }
+    .hp-reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .hp-reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── PLATFORM OVERVIEW ── */
+    .hp-platform__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .hp-platform__card { border-top: 2px solid var(--border); padding-top: 1.75rem; }
+    .hp-platform__label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+    .hp-platform__card h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.25; color: var(--navy); letter-spacing: -0.01em; }
+
+    /* ── PRINCIPLES ── */
+    .hp-principles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 3.5rem); }
+    .hp-principle { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+    .hp-principle__num { font-family: var(--font-d); font-weight: 600; font-size: 1.25rem; color: var(--blue); margin-bottom: 0.85rem; }
+    .hp-principle h3 { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; line-height: 1.2; color: var(--navy); margin-bottom: 0.875rem; letter-spacing: -0.01em; }
+    .hp-principle p { font-size: 0.9375rem; line-height: 1.75; color: var(--mid); }
+
+    /* ── WHY CYBER PROFOUND (dark) ── */
+    .hp-why__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
+    .hp-why__body { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 54ch; }
+    .hp-why__stats { display: flex; flex-direction: column; gap: 2.25rem; }
+    .hp-stat__num { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1; color: #fff; letter-spacing: -0.02em; }
+    .hp-stat__num span { font-size: 0.65em; color: var(--blue); }
+    .hp-stat__label { font-size: 0.8125rem; color: rgba(255,255,255,0.45); margin-top: 0.35rem; letter-spacing: 0.01em; }
+    .hp-why__rule { width: 48px; height: 2px; background: var(--blue); margin-bottom: 2.5rem; }
+    .hp-why__quote { font-family: var(--font-d); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.35; color: #fff; max-width: 20ch; margin-bottom: 1.75rem; font-weight: 400; letter-spacing: -0.005em; }
+    .hp-why__attr { font-size: 0.8125rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-bottom: 2.5rem; }
+    .hp-why__link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; color: var(--blue); letter-spacing: 0.015em; transition: gap 160ms; }
+    .hp-why__link:hover { gap: 0.75rem; }
+
+    /* ── ACQUISITION TARGET PROFILES ── */
+    .hp-targets__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .hp-target { border: 1px solid var(--border); border-radius: 4px; padding: clamp(1.75rem, 3vw, 2.5rem); display: flex; flex-direction: column; gap: 0.875rem; }
+    .hp-target__tag { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); }
+    .hp-target h3 { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; line-height: 1.2; color: var(--navy); letter-spacing: -0.01em; }
+    .hp-target p { font-size: 0.9375rem; line-height: 1.7; color: var(--mid); flex: 1; }
+    .hp-target__link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; font-weight: 600; color: var(--blue); letter-spacing: 0.015em; margin-top: 0.5rem; transition: gap 160ms; }
+    .hp-target__link:hover { gap: 0.65rem; }
+
+    /* ── LEADERSHIP ── */
+    .hp-leaders__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+    .hp-leader { border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; }
+    .hp-leader__role { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .hp-leader__name { font-family: var(--font-d); font-weight: 600; font-size: 1.25rem; color: var(--navy); letter-spacing: -0.01em; }
+    .hp-leader--conf .hp-leader__name { color: var(--muted); font-style: italic; font-size: 1rem; }
+    .hp-leaders__note { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
+    .hp-leaders__note a { color: var(--blue); font-weight: 500; }
+    .hp-leaders__note a:hover { text-decoration: underline; }
+    /* LinkedIn icon */
+    .hp-leader__li { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 3px; background: #0065fc; color: #fff; text-decoration: none; margin-top: 0.875rem; transition: background 0.18s; }
+    .hp-leader__li:hover { background: #0050d0; }
+    .hp-leader__li svg { width: 14px; height: 14px; fill: #fff; display: block; }
+    /* Bio button */
+    .hp-leader__bio-btn { display: inline-flex; align-items: center; gap: 5px; margin-top: 0.875rem; margin-left: 0.5rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blue); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.18s; }
+    .hp-leader__bio-btn:hover { color: #0050d0; }
+    .hp-leader__actions { display: flex; align-items: center; flex-wrap: wrap; }
+    /* Modal overlay */
+    .cpx-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(10,27,46,0.72); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1.5rem; }
+    .cpx-modal.is-open { display: flex; }
+    .cpx-modal__box { background: #fff; border-radius: 6px; max-width: 560px; width: 100%; padding: clamp(2rem,5vw,2.75rem); position: relative; box-shadow: 0 24px 64px rgba(10,27,46,0.22); }
+    .cpx-modal__close { position: absolute; top: 1.125rem; right: 1.25rem; background: none; border: none; cursor: pointer; color: #6b8096; font-size: 1.375rem; line-height: 1; padding: 0.25rem; transition: color 0.18s; }
+    .cpx-modal__close:hover { color: var(--navy); }
+    .cpx-modal__role { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .cpx-modal__name { font-family: var(--font-d); font-weight: 600; font-size: 1.75rem; color: var(--navy); letter-spacing: -0.015em; line-height: 1.15; margin-bottom: 1.25rem; }
+    .cpx-modal__bio { font-size: 0.9375rem; line-height: 1.75; color: #3a506b; }
+    .cpx-modal__li { display: inline-flex; align-items: center; gap: 7px; margin-top: 1.5rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: #fff; background: #0065fc; padding: 0.5rem 1rem; border-radius: 3px; text-decoration: none; transition: background 0.18s; }
+    .cpx-modal__li:hover { background: #0050d0; }
+    .cpx-modal__li svg { width: 14px; height: 14px; fill: #fff; }
+
+    /* ── HOMEPAGE CTA (dark) ── */
+    .hp-cta__inner { display: grid; grid-template-columns: 1fr auto; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+    .hp-cta__text { max-width: 52ch; }
+    .hp-cta__body { font-size: clamp(0.9375rem, 1.5vw, 1.0625rem); line-height: 1.75; color: rgba(255,255,255,0.6); margin-top: 1.25rem; }
+    .hp-cta__actions { display: flex; flex-direction: column; gap: 0.875rem; align-items: flex-start; }
+    .hp-cta__note { grid-column: 1 / -1; font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 1.5rem; letter-spacing: 0.01em; }
+
+    /* ── FOOTER ── */
+    .hp-footer { background: var(--navy); color: #fff; padding: clamp(3.5rem, 6vw, 5.5rem) 0 2rem; }
+    .hp-footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .hp-footer__name { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: #fff; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+    .hp-footer__tag { font-size: 0.8125rem; line-height: 1.6; color: rgba(255,255,255,0.4); max-width: 28ch; }
+    .hp-footer__nav { display: flex; flex-direction: column; gap: 0.6rem; }
+    .hp-footer__nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.55); transition: color 140ms; }
+    .hp-footer__nav a:hover { color: #fff; }
+    .hp-footer__contact { text-align: right; }
+    .hp-footer__contact a { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; transition: color 140ms; }
+    .hp-footer__contact a:hover { color: #fff; }
+    .hp-footer__rule { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 1.75rem; }
+    .hp-footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hp-why__inner { grid-template-columns: 1fr; }
+      .hp-cta__inner { grid-template-columns: 1fr; }
+      .hp-cta__actions { flex-direction: row; flex-wrap: wrap; }
+    }
+    @media (max-width: 768px) {
+      .hp-platform__grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+      .hp-principles__grid { grid-template-columns: 1fr 1fr; }
+      .hp-targets__grid { grid-template-columns: 1fr; }
+      .hp-leaders__grid { grid-template-columns: repeat(2, 1fr); }
+      .hp-footer__top { grid-template-columns: 1fr; gap: 2rem; }
+      .hp-footer__contact { text-align: left; }
+    }
+    @media (max-width: 480px) {
+      .hp-principles__grid { grid-template-columns: 1fr; }
+      .hp-leaders__grid { grid-template-columns: 1fr; }
+      .hp-cta__actions { flex-direction: column; }
+      .btn-solid, .btn-outline { justify-content: center; }
+    }
+
+  </style>
 </head>
 <body>
 
-  <!-- TOP BANNER -->
-  <div class="top-banner">
-    <span>Cyber Profound — One platform. Fewer vendors. Better security.</span>
-    <a href="./about.html">Learn more &rarr;</a>
-  </div>
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav__row">
 
-  <!-- HEADER -->
-  <header class="header" id="header">
-    <div class="container">
-
-      <div class="header-main">
-        <a href="./index.html" class="logo" aria-label="Cyber Profound Home">
-          <img class="logo-mark" src="./assets/logo-c.png" alt="Cyber Profound" width="32" height="32">
-          <span class="logo-text">Cyber <span>Profound</span></span>
-        </a>
-
-        <ul class="nav-links" role="list">
-  <li class="nav-item has-dropdown">
-    <a href="./about.html" class="nav-link">
-      About
-      <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+    <a href="/" class="nav__logo" aria-label="Cyber Profound home">
+      <img src="images/logo-nav.png" alt="Cyber Profound" />
     </a>
-    <div class="nav-dropdown">
-      <div class="dropdown-inner">
-        <a href="./about.html#mission" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Mission &amp; Vision</span>
-            <span class="dropdown-desc">Our purpose and where we're headed</span>
-          </span>
-        </a>
-        <a href="./index.html#leadership" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Leadership</span>
-            <span class="dropdown-desc">Board of Directors and executive team</span>
-          </span>
-        </a>
-        <a href="./about.html#approach" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Our Approach</span>
-            <span class="dropdown-desc">How we acquire, integrate, and scale</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </li>
-  <li class="nav-item has-dropdown">
-    <a href="./index.html#platform" class="nav-link">
-      Platform
-      <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
-    <div class="nav-dropdown">
-      <div class="dropdown-inner">
-        <a href="./index.html#platform" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Platform Overview</span>
-            <span class="dropdown-desc">National-scale cybersecurity infrastructure</span>
-          </span>
-        </a>
-        <a href="./index.html#targets" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Acquisition Criteria</span>
-            <span class="dropdown-desc">What we look for in target companies</span>
-          </span>
-        </a>
-        <a href="./about.html#opportunity" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Market Opportunity</span>
-            <span class="dropdown-desc">The $200B+ cybersecurity consolidation wave</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </li>
-  <li class="nav-item has-dropdown">
-    <a href="./index.html#leadership" class="nav-link">
-      Governance
-      <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-    </a>
-    <div class="nav-dropdown">
-      <div class="dropdown-inner">
-        <a href="./index.html#leadership" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Board of Directors</span>
-            <span class="dropdown-desc">Industry leaders guiding our strategy</span>
-          </span>
-        </a>
-        <a href="./privacy.html" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Privacy Policy</span>
-            <span class="dropdown-desc">How we handle and protect data</span>
-          </span>
-        </a>
-        <a href="./terms.html" class="dropdown-item">
-          <span class="dropdown-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </span>
-          <span class="dropdown-text">
-            <span class="dropdown-title">Terms of Service</span>
-            <span class="dropdown-desc">Website usage terms and conditions</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </li>
-  <li class="nav-item">
-    <a href="./news.html" class="nav-link">News</a>
-  </li>
-  <li class="nav-item">
-    <a href="./careers.html" class="nav-link">Careers</a>
-  </li>
-</ul>
 
-        <div class="nav-right">
-          <button class="nav-icon-btn" id="searchToggle" aria-label="Search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </button>
-          <a href="https://www.linkedin.com/company/cyberprofoundinc/" class="nav-icon-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="#contact" class="btn-primary">
-            Contact us
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+    <ul class="nav__center">
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/platform.html">Platform</a></li>
+      <li><a href="pages/criteria.html">Acquisition Criteria</a></li>
+      <li><a href="pages/governance.html">Governance</a></li>
+      <li><a href="pages/newsroom.html">Newsroom</a></li>
+    </ul>
 
-        <button class="mobile-toggle" aria-label="Open menu" id="mobileOpen">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <line x1="3" y1="12" x2="21" y2="12"/>
-            <line x1="3" y1="18" x2="21" y2="18"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-  <div class="dropdown-overlay" id="dropdownOverlay"></div>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose" aria-label="Close menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-    <a href="./about.html">About</a>
-    <a href="#platform">Platform</a>
-    <a href="#targets">Acquisitions</a>
-    <a href="#leadership">Governance</a>
-    <a href="./news.html">News</a>
-    <a href="./careers.html">Careers</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-split">
-          <div class="hero-left">
-            <h1 class="hero-title hero-reveal" style="--reveal-d:0">
-              <span class="hero-word-line">Acquire.</span>
-              <span class="hero-word-line">Integrate.</span>
-              <span class="hero-word-line">Scale. <em>Protect.</em></span>
-            </h1>
-          </div>
-          <div class="hero-right hero-reveal" style="--reveal-d:2">
-            <p class="hero-description">
-              Cyber Profound is a U.S.-based cybersecurity consolidation platform. We acquire, support, and scale high-quality firms through disciplined governance and operational leadership.
-            </p>
-            <div class="hero-actions">
-              <a href="#contact" class="btn-primary">
-                Schedule a confidential call
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#platform" class="btn-outline">
-                Explore the platform
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-image-wrap hero-reveal" style="--reveal-d:3">
-        <div class="container">
-          <img src="./assets/hero-image.jpg" alt="Modern corporate skyline" class="hero-image" loading="eager">
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED ROW -->
-    <div class="featured-row">
-      <div class="container">
-        <div class="featured-grid">
-          <div class="featured-card">
-            <div class="featured-tag">Platform</div>
-            <h3>Acquiring and unifying best-in-class U.S. cybersecurity firms under one platform</h3>
-          </div>
-          <div class="featured-card">
-            <div class="featured-tag">Governance</div>
-            <h3>Institutional-grade governance with 400+ years combined leadership experience</h3>
-          </div>
-          <div class="featured-card">
-            <div class="featured-tag">National Scale</div>
-            <h3>Building coast-to-coast coverage across managed security, IAM, and cloud</h3>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PLATFORM -->
-    <section class="platform-section" id="platform">
-      <div class="container">
-        <div class="platform-layout">
-          <div class="platform-text fade-in">
-            <p class="section-label">The Platform</p>
-            <h2 class="section-title">One platform.<br>Total protection.</h2>
-            <p class="section-desc">
-              Building a disciplined national cybersecurity services platform focused on operational excellence, risk management, and long-term value creation. We acquire and scale U.S. cybersecurity firms into a unified platform with centralized governance and shared resources.
-            </p>
-            <a href="#contact" class="btn-primary">
-              Learn more
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-          <div class="platform-image fade-in">
-            <div class="platform-graphic">
-              <div class="pg-ring pg-ring-1"></div>
-              <div class="pg-ring pg-ring-2"></div>
-              <div class="pg-ring pg-ring-3"></div>
-              <div class="pg-shield">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div class="pg-node pg-n1"></div>
-              <div class="pg-node pg-n2"></div>
-              <div class="pg-node pg-n3"></div>
-              <div class="pg-node pg-n4"></div>
-              <div class="pg-node pg-n5"></div>
-              <div class="pg-node pg-n6"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS BAR -->
-    <div class="stats-bar">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item fade-in">
-            <div class="stat-number" data-target="100">0<span class="accent">%</span></div>
-            <div class="stat-desc">Cybersecurity focused</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number" data-target="400">0<span class="accent">+</span></div>
-            <div class="stat-desc">Years combined expertise</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number" data-target="24">0<span class="accent">/7</span></div>
-            <div class="stat-desc">Operational support</div>
-          </div>
-          <div class="stat-item fade-in">
-            <div class="stat-number" data-target="50">0<span class="accent">+</span></div>
-            <div class="stat-desc">States covered</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TRUST SIGNALS -->
-    <section class="trust-bar fade-in">
-      <div class="container">
-        <p class="trust-label">Leadership experience from</p>
-        <div class="trust-logos">
-          <div class="trust-logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 12h10M7 9h10M7 15h7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
-            Oracle
-          </div>
-          <div class="trust-logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" opacity="0.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            IBM
-          </div>
-          <div class="trust-logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 22,22 2,22"/></svg>
-            Ernst &amp; Young
-          </div>
-          <div class="trust-logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2c3 4 3 16 0 20M12 2c-3 4-3 16 0 20"/></svg>
-            Wharton
-          </div>
-          <div class="trust-logo">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 3L3 8v3h18V8L12 3zM5 11v7M9 11v7M15 11v7M19 11v7M3 18h18"/></svg>
-            UVA
-          </div>
-          <div class="trust-logo">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            HSBC
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SOLUTIONS -->
-    <section class="solutions-section" id="solutions">
-      <div class="container">
-        <div class="solutions-header fade-in">
-          <p class="section-label">Our Approach</p>
-          <h2 class="section-title">Key Principles That Define Cyber Profound</h2>
-        </div>
-        <div class="solutions-grid">
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3>Disciplined Acquisition</h3>
-            <p>Selective acquisitions evaluated through rigorous diligence focused on financial resilience, leadership quality, customer loyalty, and strategic alignment with our platform.</p>
-          </div>
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
-            </div>
-            <h3>Long-Term Ownership</h3>
-            <p>We invest with a permanent capital mindset, prioritizing sustainable growth and disciplined governance over short-term exit strategies common in traditional PE models.</p>
-          </div>
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
-            </div>
-            <h3>Platform Value Creation</h3>
-            <p>Integration into a unified national platform through centralized governance, operational best practices, shared resources, and a unified national strategy.</p>
-          </div>
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-              </svg>
-            </div>
-            <h3>Operational Excellence</h3>
-            <p>Structured processes and strong governance drive consistent performance across the portfolio. We bring institutional discipline to entrepreneurial cybersecurity firms.</p>
-          </div>
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-            </div>
-            <h3>Risk Management</h3>
-            <p>Comprehensive risk governance framework ensuring each portfolio company meets the highest standards for security controls, compliance, and regulatory alignment.</p>
-          </div>
-          <div class="solution-card fade-in">
-            <div class="solution-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-            </div>
-            <h3>National Scale</h3>
-            <p>Building coast-to-coast coverage through strategic acquisitions that fill geographic and capability gaps, creating the preeminent national cybersecurity services platform.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- THREAT INTELLIGENCE FULL-BLEED -->
-    <section class="threat-section" id="threat">
-      <div class="threat-bg"></div>
-      <div class="container threat-content fade-in">
-        <p class="section-label">Why Cyber Profound</p>
-        <h2 class="section-title">Permanent capital. Disciplined governance. National reach.</h2>
-        <p class="section-desc">
-          Unlike traditional private equity, we don't flip companies on 3-5 year timelines. Cyber Profound is built for long-term ownership, giving portfolio companies the stability and investment horizon needed to truly scale their capabilities and serve their customers.
-        </p>
-        <a href="#contact" class="btn-primary">
-          Schedule a confidential call
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ACQUISITION TARGETS -->
-    <section class="targets-section" id="targets">
-      <div class="container">
-        <div class="targets-header fade-in">
-          <p class="section-label">Acquisition Focus</p>
-          <h2 class="section-title">Target Profiles</h2>
-        </div>
-        <div class="targets-grid">
-          <div class="target-card fade-in">
-            <div class="target-card-top">
-              <h3>Cloud Security Providers</h3>
-            </div>
-            <div class="target-card-body">
-              <p>Providers specializing in cloud-native security solutions, CASB, CSPM, and multi-cloud protection architectures for enterprise environments.</p>
-              <div class="tags">
-                <span class="tag">CASB</span>
-                <span class="tag">CSPM</span>
-                <span class="tag">CNAPP</span>
-                <span class="tag">Zero Trust</span>
-              </div>
-            </div>
-          </div>
-          <div class="target-card fade-in">
-            <div class="target-card-top">
-              <h3>Managed Security (MSSP)</h3>
-            </div>
-            <div class="target-card-body">
-              <p>Managed security service providers delivering 24/7 monitoring, threat detection, incident response, and security operations to mid-market clients.</p>
-              <div class="tags">
-                <span class="tag">SOC</span>
-                <span class="tag">MDR</span>
-                <span class="tag">SIEM</span>
-                <span class="tag">IR</span>
-              </div>
-            </div>
-          </div>
-          <div class="target-card fade-in">
-            <div class="target-card-top">
-              <h3>Identity & Access (IAM)</h3>
-            </div>
-            <div class="target-card-body">
-              <p>Companies focused on identity governance, privileged access management, multi-factor authentication, and identity-centric security architectures.</p>
-              <div class="tags">
-                <span class="tag">PAM</span>
-                <span class="tag">MFA</span>
-                <span class="tag">IGA</span>
-                <span class="tag">SSO</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEADERSHIP -->
-    <section class="leadership-section" id="leadership">
-      <div class="container">
-        <div class="leadership-header fade-in">
-          <p class="section-label">Board of Directors</p>
-          <h2 class="section-title">Global Leadership Team</h2>
-          <p class="leadership-desc">Cyber Profound is led by a distinguished board of directors and senior operators whose collective experience spans more than four decades of U.S. cybersecurity innovation, enterprise leadership, national infrastructure protection, and mergers and acquisitions. Together, our leadership team brings over <strong>400+ years of combined executive and cybersecurity expertise</strong>, guiding our strategy, governance, and national roll-up execution.</p>
-        </div>
-        <div class="team-grid">
-          <!-- Row 1: Banerjea, Gjinaj, CFO -->
-          <div class="team-card fade-in" data-member="banerjea">
-            <div class="team-photo">
-              <img class="team-photo-img" src="./assets/headshot-banerjea.jpg" alt="Gautam Banerjea" loading="lazy">
-              <div class="card-social">
-                <a href="https://www.linkedin.com/in/gbanerjea/" target="_blank" rel="noopener noreferrer" class="social-linkedin" aria-label="LinkedIn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Chairman of the Board</p>
-            <h4 class="team-name">Gautam Banerjea</h4>
-          </div>
-
-          <div class="team-card fade-in" data-member="gjinaj">
-            <div class="team-photo">
-              <img class="team-photo-img" src="./assets/headshot-gjinaj.jpg" alt="Nest Gjinaj" loading="lazy">
-              <div class="card-social">
-                <a href="https://www.linkedin.com/in/nest-gjinaj-929b9863/" target="_blank" rel="noopener noreferrer" class="social-linkedin" aria-label="LinkedIn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Founder & Managing Director</p>
-            <h4 class="team-name">Nest Gjinaj</h4>
-          </div>
-
-          <div class="team-card fade-in" data-member="miller">
-            <div class="team-photo">
-              <img class="team-photo-img" src="./assets/headshot-miller.jpg" alt="Susan Miller" loading="lazy">
-              <div class="card-social">
-                <a href="https://www.linkedin.com/in/susanroxstrommiller/" target="_blank" rel="noopener noreferrer" class="social-linkedin" aria-label="LinkedIn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Chief Executive Officer</p>
-            <h4 class="team-name">Susan Miller</h4>
-          </div>
-
-          <!-- Row 2: CFO, CLO, Singh, Loretto -->
-          <div class="team-card fade-in is-confidential">
-            <div class="team-photo">
-              <div class="team-photo-img confidential-pattern"></div>
-              <div class="card-social">
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Chief Financial Officer</p>
-            <h4 class="team-name">Confidential</h4>
-          </div>
-
-          <div class="team-card fade-in is-confidential">
-            <div class="team-photo">
-              <div class="team-photo-img confidential-pattern"></div>
-              <div class="card-social">
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Chief Legal Officer</p>
-            <h4 class="team-name">Confidential</h4>
-          </div>
-
-          <div class="team-card fade-in" data-member="singh">
-            <div class="team-photo">
-              <img class="team-photo-img" src="./assets/headshot-singh.jpg" alt="Manvedeep Singh" loading="lazy">
-              <div class="card-social">
-                <a href="https://www.linkedin.com/in/manvedeepsingh/" target="_blank" rel="noopener noreferrer" class="social-linkedin" aria-label="LinkedIn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Non-Executive Director</p>
-            <h4 class="team-name">Manvedeep Singh</h4>
-          </div>
-
-          <div class="team-card fade-in" data-member="loretto">
-            <div class="team-photo">
-              <img class="team-photo-img" src="./assets/headshot-loretto.jpg" alt="Jonathan Loretto" loading="lazy">
-              <div class="card-social">
-                <a href="https://www.linkedin.com/in/jloretto/" target="_blank" rel="noopener noreferrer" class="social-linkedin" aria-label="LinkedIn">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Non-Executive Director</p>
-            <h4 class="team-name">Jonathan Loretto</h4>
-          </div>
-
-          <!-- Row 3: Investment Banker & Non-Executive Director (Confidential) -->
-          <div class="team-card fade-in is-confidential">
-            <div class="team-photo">
-              <div class="team-photo-img confidential-pattern"></div>
-              <div class="card-social">
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Investment Banker</p>
-            <h4 class="team-name">Confidential</h4>
-          </div>
-
-          <div class="team-card fade-in is-confidential">
-            <div class="team-photo">
-              <div class="team-photo-img confidential-pattern"></div>
-              <div class="card-social">
-                <button class="card-plus" aria-label="Toggle social links">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-            <p class="team-role">Non-Executive Director</p>
-            <h4 class="team-name">Confidential</h4>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- BIO MODAL -->
-    <div class="bio-modal-overlay" id="bioModal">
-      <div class="bio-modal">
-        <button class="bio-modal-close" aria-label="Close">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-        <div class="bio-modal-content">
-          <div class="bio-modal-photo">
-            <img id="bioModalPhoto" src="" alt="">
-          </div>
-          <div class="bio-modal-info">
-            <p class="bio-modal-role" id="bioModalRole"></p>
-            <h3 class="bio-modal-name" id="bioModalName"></h3>
-            <p class="bio-modal-text" id="bioModalText"></p>
-            <a href="" target="_blank" rel="noopener noreferrer" class="bio-modal-linkedin" id="bioModalLinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              View LinkedIn Profile
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NEWS -->
-    <section class="news-section" id="news">
-      <div class="container">
-        <div class="news-header fade-in">
-          <p class="section-label">Newsroom</p>
-          <h2 class="section-title">Latest News</h2>
-        </div>
-        <div class="news-grid">
-          <a href="https://www.linkedin.com/posts/nest-gjinaj-929b9863_cyberprofound-boardleadership-cybersecurity-activity-7436775051854536704-qL_3" target="_blank" rel="noopener noreferrer" class="news-card fade-in" style="text-decoration:none;color:inherit;">
-            <div class="news-thumb news-thumb-1">
-              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <circle cx="12" cy="8" r="5"/>
-                <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
-              </svg>
-            </div>
-            <div class="news-body">
-              <p class="news-date">Leadership Appointment &mdash; Mar 10, 2026</p>
-              <h3>Mary Ann Davidson Appointed Chair of the Board</h3>
-              <p>We are honored to welcome Mary Ann Davidson, one of cybersecurity's most respected voices with nearly 40 years as CSO at Oracle, as Chair of the Board at Cyber Profound.</p>
-            </div>
-          </a>
-          <div class="news-card fade-in">
-            <div class="news-thumb news-thumb-2">
-              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-              </svg>
-            </div>
-            <div class="news-body">
-              <p class="news-date">Market Intelligence</p>
-              <h3>Why U.S. Cybersecurity Consolidation Is Accelerating</h3>
-              <p>An analysis of the consolidation wave reshaping the cybersecurity services market and what it means for business owners.</p>
-            </div>
-          </div>
-          <div class="news-card fade-in">
-            <div class="news-thumb news-thumb-3">
-              <svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <div class="news-body">
-              <p class="news-date">Platform Strategy</p>
-              <h3>How Integrated Security Platforms Improve Outcomes</h3>
-              <p>Understanding how unified governance and shared resources create better security outcomes for clients.</p>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; margin-top:var(--space-10);">
-          <a href="./news.html" class="btn-outline" style="display:inline-flex; align-items:center; gap:var(--space-2);">
-            View all news
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA / CONTACT FORM -->
-    <section class="cta-section" id="contact">
-      <div class="container cta-content">
-        <h2 class="section-title">Ready to explore a partnership?</h2>
-        <p>Whether you're a cybersecurity founder exploring options or an investor seeking institutional-grade security holdings, we'd welcome a confidential conversation.</p>
-        <form class="contact-form" name="contact" action="/thank-you.html" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hidden-field" style="display:none"><input name="bot-field"></p>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-name">Full Name</label>
-              <input type="text" id="contact-name" name="name" placeholder="Your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="contact-company">Company</label>
-              <input type="text" id="contact-company" name="company" placeholder="Your company">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-email">Email</label>
-              <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
-            </div>
-            <div class="form-group">
-              <label for="contact-phone">Phone</label>
-              <input type="tel" id="contact-phone" name="phone" placeholder="+(000) 000-0000">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="contact-interest">I'm interested in</label>
-            <select id="contact-interest" name="interest">
-              <option value="" disabled selected>Select an option</option>
-              <option value="selling">Selling my cybersecurity business</option>
-              <option value="partnership">Strategic partnership</option>
-              <option value="investment">Investment opportunity</option>
-              <option value="careers">Career opportunities</option>
-              <option value="other">Other inquiry</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" rows="4" placeholder="Tell us about your business or inquiry. All conversations are confidential."></textarea>
-          </div>          <button type="submit" class="btn-primary form-submit">
-            Send message
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="./index.html" class="logo" style="margin-bottom: var(--space-2); display: inline-flex;">
-            <img class="logo-mark" src="./assets/logo-c.png" alt="Cyber Profound" width="32" height="32">
-            <span class="logo-text">Cyber <span>Profound</span></span>
-          </a>
-          <p>One platform. Fewer vendors. Better security.</p>
-          <p style="margin-top: var(--space-3); color: rgba(255,255,255,0.4);">
-            Ngjinaj@cyberprofound.com<br>
-            +(888) 900-7343
-          </p>
-        </div>
-        <div class="footer-col">
-          <h5>Company</h5>
-          <ul role="list">
-            <li><a href="./about.html">About</a></li>
-            <li><a href="#platform">Platform</a></li>
-            <li><a href="#targets">Acquisitions</a></li>
-            <li><a href="#leadership">Governance</a></li>
-            <li><a href="./careers.html">Careers</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Resources</h5>
-          <ul role="list">
-            <li><a href="./news.html">News</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul role="list">
-            <li><a href="./privacy.html">Privacy Policy</a></li>
-            <li><a href="./terms.html">Terms of Service</a></li>
-            <li><a href="mailto:Ngjinaj@cyberprofound.com">Email Us</a></li>
-            <li><a href="tel:+18889007343">+(888) 900-7343</a></li>
-          </ul>
-        </div>
-        <div class="footer-col footer-newsletter">
-          <h5>Stay Informed</h5>
-          <p style="font-size: var(--text-sm); color: rgba(255,255,255,0.55); margin-bottom: var(--space-4);">Get updates on cybersecurity M&A and industry insights.</p>
-          <form class="newsletter-form" id="newsletterForm" name="newsletter" action="/thank-you.html" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="newsletter">
-          <p class="hidden-field" style="display:none"><input name="bot-field"></p>            <input type="email" name="email" class="newsletter-input" placeholder="Enter your email" required>
-            <button type="submit" class="newsletter-btn" aria-label="Subscribe">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Cyber Profound Inc. All rights reserved.</p>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/cyberprofoundinc/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-
-
-  <!-- COOKIE CONSENT -->
-  <div class="cookie-consent" id="cookieConsent">
-    <div class="cookie-consent-inner">
-      <div class="cookie-consent-icon">🍪</div>
-      <h4>We Value Your Privacy</h4>
-      <p>We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All," you consent to our use of cookies. <a href="./privacy.html">Privacy Policy</a></p>
-      <div class="cookie-consent-actions">
-        <button class="cookie-accept" id="cookieAccept">Accept All</button>
-        <button class="cookie-decline" id="cookieDecline">Decline</button>
-      </div>
-    </div>
-  </div>
-  <!-- SEARCH OVERLAY -->
-  <div class="search-overlay" id="searchOverlay">
-    <div class="search-overlay-inner">
-      <button class="search-close" id="searchClose" aria-label="Close search">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <div class="nav__right">
+      <a href="pages/contact.html" class="nav__talk">
+        Request a Conversation
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
-      <div class="search-container">
-        <div class="search-input-wrap">
-          <svg class="search-input-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" class="search-input" id="searchInput" placeholder="Search Cyber Profound..." autocomplete="off">
-        </div>
-        <div class="search-results" id="searchResults"></div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav__drawer" id="drawer" role="dialog" aria-label="Navigation menu">
+  <ul>
+    <li><a href="pages/about.html">About</a></li>
+    <li><a href="pages/platform.html">Platform</a></li>
+    <li><a href="pages/criteria.html">Acquisition Criteria</a></li>
+    <li><a href="pages/governance.html">Governance</a></li>
+    <li><a href="pages/newsroom.html">Newsroom</a></li>
+  </ul>
+  <a href="pages/contact.html" class="nav__talk">Request a Conversation</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="hero__grid"></div>
+  <canvas class="hero__particles" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero__accent-line"></div>
+
+  <div class="wrap hero__inner">
+
+    <!-- Left: positioning copy -->
+    <div class="hero__copy">
+      <span class="hero__eyebrow">Permanent Capital &middot; Cybersecurity Services</span>
+
+      <h1 class="hero__title">
+        Acquire.<br>
+        Integrate.<br>
+        Scale.<br>
+        <em>Protect.</em>
+      </h1>
+
+      <div class="hero__rule"></div>
+
+      <p class="hero__body">
+        Cyber Profound is a permanent-capital cybersecurity platform — acquiring, integrating, and scaling premier managed security service providers under institutional governance and long-term ownership.
+      </p>
+
+      <div class="hero__actions">
+        <a href="pages/criteria.html" class="btn-solid">
+          Our Acquisition Criteria
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="pages/contact.html" class="btn-outline">Request a Conversation</a>
       </div>
+    </div>
+
+    <!-- Right: three audience doors -->
+    <div class="hero__doors" role="navigation" aria-label="Who we work with">
+
+      <a href="pages/criteria.html" class="door">
+        <div class="door__left">
+          <span class="door__tag">MSSP Founders</span>
+          <span class="door__label">Explore a Partnership</span>
+          <span class="door__sub">Long-term ownership. Institutional governance. No exit timeline.</span>
+        </div>
+        <svg class="door__arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a href="pages/platform.html" class="door">
+        <div class="door__left">
+          <span class="door__tag">Institutional Investors</span>
+          <span class="door__label">Review Our Investment Thesis</span>
+          <span class="door__sub">Disciplined capital deployed in an essential, growing market</span>
+        </div>
+        <svg class="door__arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a href="pages/careers.html" class="door">
+        <div class="door__left">
+          <span class="door__tag">Executives &amp; Operators</span>
+          <span class="door__label">Executive Appointments</span>
+          <span class="door__sub">Leadership roles across our cybersecurity platform</span>
+        </div>
+        <svg class="door__arrow" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 9h12M11 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
     </div>
   </div>
 
-  <!-- BACK TO TOP -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
-  </button>
-  <script src="./app.js" defer></script>
+  <!-- Trust strip at bottom -->
+  <div class="hero__trust">
+    <div class="wrap hero__trust__inner">
+      <div class="trust-item">
+        <div class="trust-item__dot"></div>
+        <span class="trust-item__text">Permanent Capital</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-item__dot"></div>
+        <span class="trust-item__text">Board-Led Governance</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-item__dot"></div>
+        <span class="trust-item__text">Shared Security Infrastructure</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-item__dot"></div>
+        <span class="trust-item__text">Long-Term Ownership</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <div class="trust-item__dot"></div>
+        <span class="trust-item__text">400+ Years Combined Leadership Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — THE PLATFORM OVERVIEW
+══════════════════════════════════════════ -->
+<section class="hp-section hp-platform" id="platform">
+  <div class="wrap">
+    <div class="hp-section__head hp-reveal">
+      <span class="hp-eyebrow">The Platform</span>
+      <h2 class="hp-h2">One platform. Permanent protection.</h2>
+      <p class="hp-intro">Cyber Profound acquires and scales U.S. managed security service providers into a unified platform — centralizing governance, AI-driven infrastructure, and institutional capital behind firms that protect critical infrastructure across the country.</p>
+    </div>
+    <div class="hp-platform__grid">
+      <div class="hp-platform__card hp-reveal">
+        <div class="hp-platform__label">Platform</div>
+        <h3>Acquiring U.S. cybersecurity firms and consolidating them under one permanent-capital structure</h3>
+      </div>
+      <div class="hp-platform__card hp-reveal">
+        <div class="hp-platform__label">Governance</div>
+        <h3>Board-led governance with 400+ years of combined leadership experience</h3>
+      </div>
+      <div class="hp-platform__card hp-reveal">
+        <div class="hp-platform__label">National Scale</div>
+        <h3>Building coast-to-coast coverage across managed security, identity, and cloud</h3>
+      </div>
+      <div class="hp-platform__card hp-reveal">
+        <div class="hp-platform__label">Operational Intelligence</div>
+        <h3>AI-driven detection and response infrastructure shared across every platform company</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — KEY PRINCIPLES
+══════════════════════════════════════════ -->
+<section class="hp-section hp-principles hp-bg-off" id="approach">
+  <div class="wrap">
+    <div class="hp-section__head hp-reveal">
+      <span class="hp-eyebrow">Our Approach</span>
+      <h2 class="hp-h2">The principles that govern every decision</h2>
+    </div>
+    <div class="hp-principles__grid">
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">01</div>
+        <h3>Disciplined Acquisition</h3>
+        <p>Every acquisition is evaluated against defined financial and operational criteria — revenue, margin, client retention, and leadership continuity. We do not move for speed, and we do not overpay.</p>
+      </div>
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">02</div>
+        <h3>Long-Term Ownership</h3>
+        <p>We deploy permanent capital. We do not manage to a fund cycle or an exit timeline. Every firm we acquire is held with the intention of owning indefinitely.</p>
+      </div>
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">03</div>
+        <h3>Shared Infrastructure</h3>
+        <p>Acquired firms gain access to shared AI-driven detection and response infrastructure, centralized compliance and legal support, and capabilities they would otherwise have to build alone. <a href="pages/platform.html#technology" style="color:var(--blue);font-weight:600;">How it works &rsaquo;</a></p>
+      </div>
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">04</div>
+        <h3>Operational Excellence</h3>
+        <p>Institutional governance structures and defined operating frameworks drive consistent performance across the portfolio. We bring board-level discipline to founder-owned cybersecurity firms.</p>
+      </div>
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">05</div>
+        <h3>Risk Governance</h3>
+        <p>Each portfolio firm operates within a governance framework that holds it to defined security controls, regulatory requirements, and client commitments. Compliance is a condition of ownership, not a milestone.</p>
+      </div>
+      <div class="hp-principle hp-reveal">
+        <div class="hp-principle__num">06</div>
+        <h3>National Scale</h3>
+        <p>Strategic acquisitions fill geographic and capability gaps — building a firm with coast-to-coast presence across managed security, identity and access, and cloud security services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — WHY CYBER PROFOUND (dark)
+══════════════════════════════════════════ -->
+<section class="hp-section hp-why hp-bg-navy">
+  <div class="wrap">
+    <div class="hp-why__inner">
+      <div class="hp-why__left hp-reveal">
+        <span class="hp-eyebrow hp-eyebrow--light">Why Cyber Profound</span>
+        <h2 class="hp-h2 hp-h2--light">Permanent capital. Disciplined governance. National reach.</h2>
+        <p class="hp-why__body">Private equity acquires to exit. Strategic buyers absorb and rebrand. Cyber Profound does neither. We acquire firms that meet our criteria and hold them indefinitely — providing the capital, infrastructure, and institutional governance that founder-owned MSSPs cannot access on their own.</p>
+        <div class="hp-why__stats">
+          <div class="hp-stat">
+            <div class="hp-stat__num" data-count="400" data-suffix="+"><span class="stat-val">400</span><span>+</span></div>
+            <div class="hp-stat__label">Years combined leadership experience</div>
+          </div>
+          <div class="hp-stat">
+            <div class="hp-stat__num" data-count="50" data-prefix="$" data-suffix="B+"><span class="stat-val">$50B</span><span>+</span></div>
+            <div class="hp-stat__label">Addressable market in North America</div>
+          </div>
+          <div class="hp-stat">
+            <div class="hp-stat__num" data-count="15" data-suffix="K+"><span class="stat-val">15K</span><span>+</span></div>
+            <div class="hp-stat__label">MSSPs operating without institutional backing</div>
+          </div>
+        </div>
+      </div>
+      <div class="hp-why__right hp-reveal">
+        <div class="hp-why__rule" aria-hidden="true"></div>
+        <blockquote class="hp-why__quote">"We do not manage to an exit. We manage to endure."</blockquote>
+        <p class="hp-why__attr">— Nest Gjinaj, Founder &amp; Managing Director</p>
+        <a href="pages/platform.html" class="hp-why__link">Review the Platform <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — ACQUISITION TARGET PROFILES
+══════════════════════════════════════════ -->
+<section class="hp-section hp-targets" id="targets">
+  <div class="wrap">
+    <div class="hp-section__head hp-reveal">
+      <span class="hp-eyebrow">Acquisition Focus</span>
+      <h2 class="hp-h2">The firms we acquire</h2>
+      <p class="hp-intro">We focus on managed security service providers across three primary service disciplines. Target firms carry $3M–$20M in annual revenue, 70%+ recurring contracts, and leadership willing to remain post-close.</p>
+    </div>
+    <div class="hp-targets__grid">
+      <div class="hp-target hp-reveal">
+        <div class="hp-target__tag">Cloud Security</div>
+        <h3>Cloud Security Providers</h3>
+        <p>Firms delivering cloud-native security, CASB, CSPM, and multi-cloud protection to enterprise and mid-market clients.</p>
+        <a href="pages/criteria.html" class="hp-target__link">View Criteria <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="hp-target hp-reveal">
+        <div class="hp-target__tag">Managed Security</div>
+        <h3>MSSP — Managed Security Service Providers</h3>
+        <p>Firms delivering 24/7 monitoring, threat detection, incident response, and security operations to mid-market and enterprise clients.</p>
+        <a href="pages/criteria.html" class="hp-target__link">View Criteria <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="hp-target hp-reveal">
+        <div class="hp-target__tag">Identity &amp; Access</div>
+        <h3>Identity &amp; Access Management</h3>
+        <p>Firms specializing in identity governance, privileged access management, multi-factor authentication, and identity-centric security architectures.</p>
+        <a href="pages/criteria.html" class="hp-target__link">View Criteria <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 — LEADERSHIP STRIP
+══════════════════════════════════════════ -->
+<section class="hp-section hp-leadership hp-bg-off" id="leadership">
+  <div class="wrap">
+    <div class="hp-section__head hp-reveal">
+      <span class="hp-eyebrow">Leadership</span>
+      <h2 class="hp-h2">Board &amp; Executive Team</h2>
+      <p class="hp-intro">Cyber Profound is governed by a board with direct expertise in cybersecurity, law, finance, and enterprise technology. Leadership backgrounds include Oracle, IBM, Ernst &amp; Young, Wharton, HSBC, and UVA.</p>
+    </div>
+    <div class="hp-leaders__grid">
+      <div class="hp-leader hp-reveal">
+        <div class="hp-leader__role">Chairman of the Board</div>
+        <div class="hp-leader__name">Gautam Banerjea</div>
+        <div class="hp-leader__actions">
+          <a href="https://www.linkedin.com/in/gbanerjea" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <button class="hp-leader__bio-btn" data-bio="gautam">View Profile &rsaquo;</button>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <div class="hp-leader__role">Founder &amp; Managing Director</div>
+        <div class="hp-leader__name">Nest Gjinaj</div>
+        <div class="hp-leader__actions">
+          <a href="https://www.linkedin.com/in/nest-gjinaj-929b9863" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <button class="hp-leader__bio-btn" data-bio="nest">View Profile &rsaquo;</button>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <div class="hp-leader__role">Chief Executive Officer</div>
+        <div class="hp-leader__name">Susan Miller</div>
+        <div class="hp-leader__actions">
+          <a href="https://www.linkedin.com/in/susanroxstrommiller" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <button class="hp-leader__bio-btn" data-bio="susan">View Profile &rsaquo;</button>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <div class="hp-leader__role">Non-Executive Director</div>
+        <div class="hp-leader__name">Manvedeep Singh</div>
+        <div class="hp-leader__actions">
+          <a href="https://www.linkedin.com/in/manvedeepsingh" target="_blank" rel="noopener" class="hp-leader__li" aria-label="LinkedIn"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <button class="hp-leader__bio-btn" data-bio="manvedeep">View Profile &rsaquo;</button>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal">
+        <div class="hp-leader__role">Non-Executive Director</div>
+        <div class="hp-leader__name">Jonathan Loretto</div>
+        <div class="hp-leader__actions">
+          <button class="hp-leader__bio-btn" data-bio="jonathan">View Profile &rsaquo;</button>
+        </div>
+      </div>
+      <div class="hp-leader hp-reveal hp-leader--conf">
+        <div class="hp-leader__role">Chief Financial Officer</div>
+        <div class="hp-leader__name">Confidential</div>
+      </div>
+      <div class="hp-leader hp-reveal hp-leader--conf">
+        <div class="hp-leader__role">Chief Legal Officer</div>
+        <div class="hp-leader__name">Confidential</div>
+      </div>
+    </div>
+    <p class="hp-leaders__note hp-reveal">Certain appointments are not disclosed at this stage. Full governance disclosure is available to qualified investors and acquisition counterparties under NDA. <a href="pages/about.html">View full leadership →</a></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 7 — HOMEPAGE CTA (dark)
+══════════════════════════════════════════ -->
+<section class="hp-section hp-cta hp-bg-navy">
+  <div class="wrap hp-cta__inner hp-reveal">
+    <div class="hp-cta__text">
+      <h2 class="hp-h2 hp-h2--light">The conversation is confidential.<br>The decision is yours.</h2>
+      <p class="hp-cta__body">If you are a cybersecurity founder considering your options, an institutional investor evaluating the thesis, or an executive seeking a leadership role — begin a private conversation.</p>
+    </div>
+    <div class="hp-cta__actions">
+      <a href="pages/criteria.html" class="btn-solid">Our Acquisition Criteria <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="pages/contact.html" class="btn-outline">Request a Conversation</a>
+    </div>
+    <p class="hp-cta__note">All conversations are confidential. We do not contact clients, employees, or competitors.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="hp-footer">
+  <div class="wrap">
+    <div class="hp-footer__top">
+      <div class="hp-footer__brand">
+        <div class="hp-footer__name">Cyber Profound</div>
+        <p class="hp-footer__tag">A permanent-capital platform for cybersecurity services.</p>
+      </div>
+      <nav class="hp-footer__nav" aria-label="Footer navigation">
+        <a href="pages/about.html">About</a>
+        <a href="pages/platform.html">Platform</a>
+        <a href="pages/criteria.html">Acquisition Criteria</a>
+        <a href="pages/governance.html">Governance</a>
+        <a href="pages/newsroom.html">Newsroom</a>
+      </nav>
+      <div class="hp-footer__contact">
+        <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a>
+        <a href="tel:+18889007343">+1 (888) 900-7343</a>
+      </div>
+    </div>
+    <div class="hp-footer__rule" aria-hidden="true"></div>
+    <div class="hp-footer__bottom">
+      <span>&copy; 2026 Cyber Profound Inc. All rights reserved.</span>
+      <span>New Baltimore, Michigan</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Bio Modal Overlay -->
+<div class="cpx-modal" id="cpxModal" role="dialog" aria-modal="true" aria-labelledby="cpxModalName">
+  <div class="cpx-modal__box">
+    <button class="cpx-modal__close" id="cpxModalClose" aria-label="Close">&#x2715;</button>
+    <div class="cpx-modal__role" id="cpxModalRole"></div>
+    <div class="cpx-modal__name" id="cpxModalName"></div>
+    <div class="cpx-modal__bio" id="cpxModalBio"></div>
+    <a href="#" class="cpx-modal__li" id="cpxModalLi" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      View on LinkedIn
+    </a>
+  </div>
+</div>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('raised', window.scrollY > 8);
+  }, { passive: true });
+
+  // Mobile burger
+  const burger = document.getElementById('burger');
+  const drawer = document.getElementById('drawer');
+  burger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('is-open');
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  // Close drawer on nav link click
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('is-open');
+      burger.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Scroll reveal for homepage body sections
+  const hpIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('hp-reveal'));
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx > 0 ? idx * 70 : 0) + 'ms';
+        el.classList.add('in');
+        hpIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.hp-reveal').forEach(el => hpIO.observe(el));
+  // Fallback: ensure all reveals fire after short delay
+  setTimeout(() => {
+    document.querySelectorAll('.hp-reveal:not(.in)').forEach(el => el.classList.add('in'));
+  }, 150);
+
+  // Bio modal data
+  const cpxBios = {
+    gautam: {
+      name: 'Gautam Banerjea',
+      role: 'Chairman of the Board',
+      li: 'https://www.linkedin.com/in/gbanerjea',
+      bio: 'Gautam Banerjea serves as Chairman of the Board of Cyber Profound. He brings extensive experience in institutional finance, enterprise technology, and board governance. He has held senior advisory and board-level roles across multiple sectors and brings the discipline of institutional capital allocation to the Cyber Profound platform. His background spans structured transactions, long-term equity positioning, and the governance frameworks required to scale a multi-company enterprise.'
+    },
+    nest: {
+      name: 'Nest Gjinaj',
+      role: 'Founder & Managing Director',
+      li: 'https://www.linkedin.com/in/nest-gjinaj-929b9863',
+      bio: 'Nest Gjinaj is the Founder and Managing Director of Cyber Profound. He established the firm to address the structural fragmentation of the managed security services market through a permanent-capital acquisition model. He leads platform strategy, acquisition sourcing, and the build-out of the operational and governance infrastructure that supports acquired companies. Prior to founding Cyber Profound, he developed expertise in business development, financial structuring, and the operational mechanics of scaling a multi-entity enterprise.'
+    },
+    susan: {
+      name: 'Susan Miller',
+      role: 'Chief Executive Officer',
+      li: 'https://www.linkedin.com/in/susanroxstrommiller',
+      bio: 'Susan Miller serves as Chief Executive Officer of Cyber Profound. She brings senior operating experience in cybersecurity and enterprise technology, with a career that includes executive leadership across managed services, technology platforms, and corporate governance. She is responsible for directing the firm\'s operating strategy, integration of acquired companies, and the execution of Cyber Profound\'s long-term growth plan. Her appointment reflects the board\'s commitment to professional management at the operating level.'
+    },
+    manvedeep: {
+      name: 'Manvedeep Singh',
+      role: 'Non-Executive Director',
+      li: 'https://www.linkedin.com/in/manvedeepsingh',
+      bio: 'Manvedeep Singh serves as a Non-Executive Director of Cyber Profound. He brings a background in enterprise technology, financial services, and institutional advisory, with experience across the financial and technology sectors including HSBC. In his board role, he contributes independent oversight across capital deployment decisions, strategic risk assessment, and the governance frameworks that underpin the Cyber Profound platform.'
+    },
+    jonathan: {
+      name: 'Jonathan Loretto',
+      role: 'Non-Executive Director',
+      li: null,
+      bio: 'Jonathan Loretto serves as a Non-Executive Director of Cyber Profound. He provides independent governance oversight and contributes expertise in organizational management, compliance, and the operational standards required for a multi-company holding structure. His appointment reflects the board\'s commitment to maintaining director independence across all material governance functions.'
+    }
+  };
+
+  // Modal logic
+  const cpxModal = document.getElementById('cpxModal');
+  const cpxModalClose = document.getElementById('cpxModalClose');
+  const cpxModalLi = document.getElementById('cpxModalLi');
+
+  function openBioModal(key) {
+    const d = cpxBios[key];
+    if (!d) return;
+    document.getElementById('cpxModalRole').textContent = d.role;
+    document.getElementById('cpxModalName').textContent = d.name;
+    document.getElementById('cpxModalBio').textContent = d.bio;
+    if (d.li) {
+      cpxModalLi.href = d.li;
+      cpxModalLi.style.display = 'inline-flex';
+    } else {
+      cpxModalLi.style.display = 'none';
+    }
+    cpxModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBioModal() {
+    cpxModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-bio]').forEach(btn => {
+    btn.addEventListener('click', () => openBioModal(btn.dataset.bio));
+  });
+  cpxModalClose.addEventListener('click', closeBioModal);
+  cpxModal.addEventListener('click', e => { if (e.target === cpxModal) closeBioModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBioModal(); });
+
+  /* ══════════════════════════════════════════
+     PARTICLE NETWORK — hero canvas
+     Low node count, low alpha: signals technical depth, not distraction.
+  ══════════════════════════════════════════ */
+  (function() {
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      canvas.style.display = 'none';
+      return;
+    }
+
+    const NODE_COLOR   = 'rgba(0,101,252,NODE_ALPHA)';
+    const EDGE_COLOR   = 'rgba(0,101,252,EDGE_ALPHA)';
+    const NODE_COUNT   = 38;
+    const SPEED        = 0.18;   // very slow drift
+    const MAX_DIST     = 160;    // connection threshold in px
+    const NODE_R       = 1.6;
+
+    let W, H, nodes = [];
+    let raf;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function createNodes() {
+      nodes = [];
+      for (let i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * SPEED,
+          vy: (Math.random() - 0.5) * SPEED,
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Update positions with gentle wrap
+      for (const n of nodes) {
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < -10) n.x = W + 10;
+        if (n.x > W + 10) n.x = -10;
+        if (n.y < -10) n.y = H + 10;
+        if (n.y > H + 10) n.y = -10;
+      }
+
+      // Draw edges
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MAX_DIST) {
+            const alpha = (1 - dist / MAX_DIST) * 0.22;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0,101,252,${alpha})`;
+            ctx.lineWidth = 0.7;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      for (const n of nodes) {
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, NODE_R, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0,101,252,0.5)';
+        ctx.fill();
+      }
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    // Init
+    resize();
+    createNodes();
+    draw();
+
+    // Pause when tab is hidden (saves CPU)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(raf);
+      } else {
+        draw();
+      }
+    });
+
+    // Debounced resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        resize();
+        createNodes();
+      }, 150);
+    });
+  })();
+
+  /* ══════════════════════════════════════════
+     STAT COUNTER — count up on scroll into view
+  ══════════════════════════════════════════ */
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const DURATION = 1800; // ms
+    const EASING = t => 1 - Math.pow(1 - t, 3); // ease-out cubic
+
+    function animateStat(el) {
+      const target  = parseInt(el.dataset.count, 10);
+      const prefix  = el.dataset.prefix  || '';
+      const suffix  = el.dataset.suffix  || '';
+      const valEl   = el.querySelector('.stat-val');
+      if (!valEl) return;
+
+      const start = performance.now();
+
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / DURATION, 1);
+        const eased = EASING(progress);
+        const current = Math.round(eased * target);
+
+        // Format with suffix (handles K+, B+, + etc.)
+        let display = prefix + current;
+        // Replace B+ → append B
+        if (suffix.includes('B')) display = prefix + current + 'B';
+        else if (suffix.includes('K')) display = prefix + current + 'K';
+
+        valEl.textContent = display;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          // Set final value exactly
+          if (suffix.includes('B')) valEl.textContent = prefix + target + 'B';
+          else if (suffix.includes('K')) valEl.textContent = prefix + target + 'K';
+          else valEl.textContent = prefix + target;
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    const statEls = document.querySelectorAll('[data-count]');
+    if (!statEls.length) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStat(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    statEls.forEach(el => io.observe(el));
+  })();
+
+</script>
+
 </body>
 </html>
