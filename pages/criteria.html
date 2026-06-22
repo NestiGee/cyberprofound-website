@@ -94,6 +94,22 @@
     body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
+
+    /* ===== EDITORIAL IMAGES ===== */
+    .section-img-banner {
+      width: 100%; height: clamp(200px, 26vw, 300px);
+      object-fit: cover; object-position: center 30%;
+      display: block; border-radius: 3px;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      filter: brightness(0.85) saturate(0.8);
+    }
+    .img-credit {
+      font-size: 0.6875rem; color: var(--muted);
+      margin-top: 0.375rem; margin-bottom: 1.5rem;
+      text-align: right;
+    }
+    .img-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
     .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
 
     /* ===== NAV ===== */
@@ -592,6 +608,10 @@
 <!-- 6. PROCESS OVERVIEW -->
 <section class="section proc">
   <div class="wrap">
+    <figure style="margin:0;">
+      <img src="../assets/img-deal.jpg" class="section-img-banner" alt="M&A advisory — acquisition process" loading="lazy" />
+      <figcaption class="img-credit">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+    </figure>
     <div class="sec-head reveal">
       <span class="eyebrow">How We Engage</span>
       <h2>A Defined, Private Process</h2>

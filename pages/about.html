@@ -94,6 +94,28 @@
     body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
+
+    /* ===== EDITORIAL IMAGE — THE FIRM ===== */
+    .firm-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem); align-items: start;
+    }
+    .firm-split__img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; object-position: center;
+      border-radius: 3px; display: block;
+      filter: brightness(0.9) saturate(0.85);
+    }
+    .firm-split__content { display: flex; flex-direction: column; gap: 1.5rem; }
+    .img-credit {
+      font-size: 0.6875rem; color: var(--muted);
+      margin-top: 0.375rem; text-align: right;
+    }
+    .img-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width: 768px) {
+      .firm-split { grid-template-columns: 1fr; }
+    }
+
     .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
 
     /* ===== NAV ===== */
@@ -555,7 +577,8 @@
 <!-- 2. THE FIRM -->
 <section class="section">
   <div class="wrap">
-    <div class="firm__grid">
+    <div class="firm-split">
+      <div class="firm-split__content"><div class="firm__grid">
       <div class="firm__head reveal">
         <span class="eyebrow">The Firm</span>
         <h2>A Permanent-Capital Holding Company</h2>
@@ -581,8 +604,13 @@
           <div class="stat__note">The majority founder-owned with no institutional backing</div>
         </div>
       </div>
+    </div></div>
+      <figure style="margin:0;">
+        <img src="../assets/img-boardroom.jpg" class="firm-split__img" alt="Executive boardroom" loading="lazy" />
+        <figcaption class="img-credit">Photo: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></figcaption>
+      </figure>
     </div>
-  </div>
+  
 </section>
 
 <!-- 3. OUR PRINCIPLES -->
