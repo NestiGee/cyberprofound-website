@@ -10,6 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    :root {
+      --blue:       #0065fc;
+      --blue-hover: #0050d0;
+      --navy:       #0A1B2E;
+      --navy-2:     #0d2340;
+      --white:      #ffffff;
+      --off:        #f5f7fb;
+      --border:     #dde3ef;
+      --mid:        #3a506b;
+      --muted:      #6b8096;
+      --font-d:     'Cormorant Garamond', Georgia, serif;
+      --font-b:     'Inter', sans-serif;
+      --nav-h:      80px;
+      --max:        1120px;
+      --gut:        clamp(1.5rem, 5vw, 3.5rem);
+      --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+
     /* ===== NAV ===== */
     .nav {
       position: fixed; top: 0; left: 0; right: 0;
