@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cyberprofound.com/sitemap.xml
+
+# Block common non-content paths
+Disallow: /assets/headshot-*.jpg
