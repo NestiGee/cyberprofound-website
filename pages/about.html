@@ -172,21 +172,20 @@
 .principle h3 { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; line-height: 1.2; color: var(--navy); margin-bottom: 1rem; letter-spacing: -0.01em; }
 .principle p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
 
-/* ===== LEADERSHIP (dark) ===== */
-.lead { background: var(--navy); color: #fff; }
+/* ===== LEADERSHIP (light — matches Governance style) ===== */
+.lead { background: var(--off); }
 .lead__head { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.lead__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: #fff; margin-bottom: 1.5rem; }
-.lead__sub { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 62ch; }
-.lead__label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 600; margin: clamp(2rem, 4vw, 3rem) 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.lead__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.5rem; }
+.lead__sub { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; color: var(--mid); max-width: 62ch; }
     .lead__section-head { margin-bottom: 1.75rem; }
-    .lead__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: #fff; letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .lead__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: var(--navy); letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid var(--border); }
 .lead__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .lead__grid--3col { grid-template-columns: repeat(3, 1fr); }
-.lead__card { border: 1px solid rgba(255,255,255,0.12); background: var(--navy-2); border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2rem); }
-.lead__name { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; color: #fff; line-height: 1.2; letter-spacing: -0.01em; }
-.lead__role { margin-top: 0.5rem; font-size: 0.8125rem; letter-spacing: 0.02em; color: rgba(255,255,255,0.6); }
-.lead__name.conf { color: rgba(255,255,255,0.62); font-style: italic; }
-.lead__note { margin-top: clamp(2.25rem, 4vw, 3rem); font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 78ch; }
+.lead__card { border: 1px solid var(--border); background: #fff; border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2rem); }
+.lead__name { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: var(--navy); line-height: 1.2; letter-spacing: -0.01em; }
+.lead__role { margin-top: 0.5rem; font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.lead__name.conf { color: var(--muted); font-style: italic; }
+.lead__note { margin-top: clamp(2.25rem, 4vw, 3rem); font-size: 0.875rem; line-height: 1.7; color: var(--muted); max-width: 78ch; }
 
 /* ===== INSTITUTIONS ===== */
 .inst { text-align: center; }
@@ -231,7 +230,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 880px) {
   .lead__grid { grid-template-columns: repeat(2, 1fr); }
-      .lead__grid--3col { grid-template-columns: repeat(2, 1fr); }
+  .lead__grid--3col { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .firm__grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -245,7 +244,7 @@
 }
 
     /* LinkedIn + modal */
-    .lead__actions { display: flex; align-items: center; flex-wrap: wrap; margin-top: 0.875rem; }
+    .lead__actions { display: flex; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
     .lead__li { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 3px; background: #0065fc; color: #fff; text-decoration: none; transition: background 0.18s; }
     .lead__li:hover { background: #0050d0; }
     .lead__li svg { width: 14px; height: 14px; fill: #fff; display: block; }
