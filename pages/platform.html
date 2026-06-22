@@ -1,259 +1,433 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Platform — Cyber Profound</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
-  <link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,450,500,550,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/tokens.css" /><link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/inner.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Platform — The Case for Consolidation | Cyber Profound</title>
+<meta name="description" content="The cybersecurity market is large and deeply fragmented. Cyber Profound acquires and scales managed security service providers under institutional governance, shared infrastructure, and permanent-capital ownership." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --blue: #0065fc; --blue-hover: #0050d0; --navy: #0A1B2E; --navy-2: #0d2340;
+  --white: #ffffff; --off: #f5f7fb; --border: #dde3ef;
+  --mid: #3a506b; --muted: #6b8096;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'Inter', sans-serif;
+  --nav-h: 68px; --max: 1120px; --gut: clamp(1.5rem, 5vw, 3.5rem);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 200; background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); transition: box-shadow 240ms var(--ease); }
+.nav.raised { box-shadow: 0 2px 24px rgba(10,27,46,0.08); }
+.nav__row { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.nav__logo img { height: 36px; width: auto; }
+.nav__center { display: flex; align-items: center; gap: 0; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav__center a { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--mid); padding: 0.45rem 0.9rem; border-radius: 4px; letter-spacing: 0.01em; white-space: nowrap; transition: color 140ms, background 140ms; }
+.nav__center a:hover, .nav__center a.active { color: var(--navy); }
+.nav__center a.active { font-weight: 600; }
+.nav__right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.nav__talk { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--blue); color: #fff; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.025em; padding: 0.55rem 1.2rem; border-radius: 3px; white-space: nowrap; transition: background 160ms, box-shadow 160ms, transform 120ms; }
+.nav__talk:hover { background: var(--blue-hover); box-shadow: 0 6px 20px rgba(0,101,252,0.26); transform: translateY(-1px); }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav__burger span { display: block; width: 22px; height: 1.5px; background: var(--navy); transition: transform 200ms var(--ease), opacity 140ms; border-radius: 2px; }
+.nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav__drawer { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 1.25rem var(--gut) 1.75rem; box-shadow: 0 20px 50px rgba(10,27,46,0.11); z-index: 199; }
+.nav__drawer.is-open { display: block; }
+.nav__drawer ul { list-style: none; }
+.nav__drawer ul li { border-bottom: 1px solid var(--border); }
+.nav__drawer ul li a { display: block; padding: 0.9rem 0; font-size: 0.9375rem; font-weight: 500; color: var(--navy); }
+.nav__drawer .nav__talk { display: flex; justify-content: center; width: 100%; margin-top: 1.25rem; padding: 0.875rem; }
+@media (max-width: 880px) { .nav__center { display: none; } .nav__right .nav__talk { display: none; } .nav__burger { display: flex; } }
+
+/* ===== SHARED ===== */
+.section { padding: clamp(5rem, 9vw, 9rem) 0; }
+.eyebrow { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 1.5rem; }
+.body { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
+.h-display { font-family: var(--font-d); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; }
+
+/* ===== HERO ===== */
+.hero { position: relative; background: var(--navy); color: #fff; padding: calc(var(--nav-h) + clamp(5.5rem, 12vw, 9rem)) 0 clamp(5.5rem, 12vw, 9rem); overflow: hidden; }
+.hero__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); }
+.hero__glow { position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; background: radial-gradient(circle, rgba(0,101,252,0.28) 0%, rgba(0,101,252,0.08) 35%, transparent 68%); filter: blur(20px); pointer-events: none; }
+.hero__inner { position: relative; max-width: 880px; }
+.hero h1 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.75rem, 7vw, 4.5rem); line-height: 1.04; letter-spacing: -0.015em; color: #fff; margin-bottom: 1.75rem; }
+.hero__sub { font-size: clamp(1rem, 1.7vw, 1.1875rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 60ch; }
+
+/* ===== THESIS ===== */
+.thesis__head { max-width: 800px; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.thesis__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); }
+.thesis__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 3.5rem); }
+.thesis__col { border-top: 1px solid var(--border); padding-top: 1.75rem; }
+.thesis__num { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: var(--blue); margin-bottom: 1rem; }
+.thesis__col h3 { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; line-height: 1.2; color: var(--navy); margin-bottom: 1rem; letter-spacing: -0.01em; }
+.thesis__col p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
+
+/* ===== PULL QUOTE ===== */
+.quote { background: var(--navy); color: #fff; padding: clamp(5rem, 9vw, 8rem) 0; text-align: center; }
+.quote__rule { width: 56px; height: 2px; background: var(--blue); margin: 0 auto 2.5rem; }
+.quote blockquote { font-family: var(--font-d); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3.6vw, 2.6rem); line-height: 1.32; color: #fff; max-width: 22ch; margin: 0 auto; letter-spacing: -0.005em; }
+.quote__attr { margin-top: 2.5rem; font-size: 0.8125rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.55); font-weight: 500; }
+
+/* ===== MODEL ===== */
+.model__head { max-width: 760px; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+.model__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); }
+.step { display: grid; grid-template-columns: 120px 1fr; gap: clamp(1.5rem, 4vw, 4rem); padding: clamp(2.25rem, 4vw, 3rem) 0; border-top: 1px solid var(--border); }
+.step:last-child { border-bottom: 1px solid var(--border); }
+.step__num { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; color: var(--blue); }
+.step__title { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.15; color: var(--navy); margin-bottom: 1rem; letter-spacing: -0.01em; }
+.step__text { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 60ch; }
+
+
+/* ===== OPINT (Operational Intelligence — light bg) ===== */
+.opint { background: #fff; }
+.opint__head { max-width: 800px; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+.opint__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.5rem; }
+.opint__sub { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 64ch; }
+.opint__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.opint__card { border: 1px solid var(--border); background: var(--off); border-radius: 4px; padding: clamp(1.75rem, 3vw, 2.5rem); }
+.opint__label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+.opint__card h3 { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; color: var(--navy); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 0.875rem; }
+.opint__card p { font-size: 0.9375rem; line-height: 1.75; color: var(--mid); }
+.opint__note { margin-top: clamp(2.5rem, 5vw, 3.5rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--border); font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.75; color: var(--mid); max-width: 72ch; }
+.opint__note strong { color: var(--navy); font-weight: 600; }
+@media (max-width: 768px) { .opint__grid { grid-template-columns: 1fr; } }
+
+/* ===== INFRA (dark) ===== */
+.infra { background: var(--navy); color: #fff; }
+.infra__head { max-width: 760px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.infra__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: #fff; margin-bottom: 1.5rem; }
+.infra__sub { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 58ch; }
+.infra__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.infra__card { border: 1px solid rgba(255,255,255,0.12); background: var(--navy-2); border-radius: 4px; padding: clamp(1.75rem, 3vw, 2.5rem); }
+.infra__cat { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; color: #fff; margin-bottom: 1rem; letter-spacing: -0.01em; }
+.infra__tools { font-size: 0.9375rem; line-height: 1.85; color: rgba(255,255,255,0.62); }
+.infra__note { margin-top: clamp(2.25rem, 4vw, 3rem); font-size: 0.9375rem; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 70ch; }
+
+/* ===== CTA ===== */
+.cta { text-align: center; }
+.cta h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.12; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 2.5rem; max-width: 22ch; margin-inline: auto; }
+.cta__btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.9rem 1.75rem; border-radius: 3px; transition: background 160ms, box-shadow 160ms, transform 120ms, border-color 160ms, color 160ms; }
+.btn--primary { background: var(--blue); color: #fff; }
+.btn--primary:hover { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(0,101,252,0.26); transform: translateY(-1px); }
+.btn--ghost { border: 1px solid var(--navy); color: var(--navy); background: transparent; }
+.btn--ghost:hover { background: var(--navy); color: #fff; transform: translateY(-1px); }
+.cta__note { margin-top: 1.75rem; font-size: 0.8125rem; color: var(--muted); }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--navy); color: #fff; padding: clamp(3.5rem, 6vw, 5rem) 0 2rem; }
+.footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start; }
+.footer__brand { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: #fff; letter-spacing: -0.01em; }
+.footer__tag { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: rgba(255,255,255,0.45); max-width: 30ch; }
+.footer__nav { display: flex; flex-direction: column; gap: 0.65rem; }
+.footer__nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); transition: color 140ms; }
+.footer__nav a:hover { color: #fff; }
+.footer__contact { text-align: right; }
+.footer__contact a { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; transition: color 140ms; }
+.footer__contact a:hover { color: #fff; }
+.footer__rule { height: 1px; background: rgba(255,255,255,0.08); margin: clamp(2.5rem, 5vw, 3.5rem) 0 1.75rem; }
+.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.in { opacity: 1; transform: none; }
+/* Ensure visibility if JS/IO not available */
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .thesis__cols { grid-template-columns: 1fr; gap: 2.5rem; }
+  .model .step { grid-template-columns: 1fr; gap: 0.75rem; }
+  .step__num { font-size: 2.5rem; }
+  .infra__grid { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__contact { text-align: left; }
+  .cta__btns { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; }
+}
+</style>
 </head>
 <body>
-<header class="nav nav--hero" id="nav">
-  <div class="nav__inner">
-    <a href="/" class="nav__logo"><svg class="nav__logo-mark" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="4" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><path d="M7 16C7 11.03 11.03 7 16 7" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/><path d="M25 16C25 20.97 20.97 25 16 25" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="3.5" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><circle cx="16" cy="16" r="1" fill="#0065fc"/></svg><span class="nav__logo-wordmark">Cyber Profound</span></a>
-    <nav><ul class="nav__links" role="list"><li><a href="/pages/about.html">About</a></li><li><a href="/pages/platform.html" style="color:var(--color-accent)">Platform</a></li><li><a href="/pages/governance.html">Governance</a></li><li><a href="/pages/newsroom.html">Newsroom</a></li><li><a href="/pages/careers.html">Careers</a></li></ul></nav>
-    <div class="nav__actions"><button class="nav__theme-btn" data-theme-toggle aria-label="Switch theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a href="/pages/contact.html" class="btn btn--primary btn--sm">Request a conversation</a></div>
-    <button class="nav__mobile-btn" id="mobileMenuBtn" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav__row">
+    <a href="../index.html" class="nav__logo" aria-label="Cyber Profound home">
+      <img src="../images/logo-nav.png" alt="Cyber Profound" />
+    </a>
+    <ul class="nav__center">
+      <li><a href="about.html">About</a></li>
+      <li><a href="platform.html" class="active">Platform</a></li>
+      <li><a href="criteria.html">Acquisition Criteria</a></li>
+      <li><a href="governance.html">Governance</a></li>
+      <li><a href="newsroom.html">Newsroom</a></li>
+    </ul>
+    <div class="nav__right">
+      <a href="contact.html" class="nav__talk">
+        Request a Conversation
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav__drawer" id="drawer">
+  <ul>
+    <li><a href="about.html">About</a></li>
+    <li><a href="platform.html">Platform</a></li>
+    <li><a href="criteria.html">Acquisition Criteria</a></li>
+    <li><a href="governance.html">Governance</a></li>
+    <li><a href="newsroom.html">Newsroom</a></li>
+  </ul>
+  <a href="contact.html" class="nav__talk">Request a Conversation</a>
+</div>
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__inner reveal">
+      <span class="eyebrow">The Platform</span>
+      <h1>The Case for Consolidation</h1>
+      <p class="hero__sub">The cybersecurity market is large and deeply fragmented. Thousands of managed security service providers protect critical infrastructure with no institutional backing, aging ownership, and no succession plan. Artificial intelligence is raising the cost of staying current. Scale, shared infrastructure, and disciplined capital now separate the firms that endure from those that do not.</p>
+    </div>
   </div>
 </header>
-<nav class="nav__drawer" id="mobileDrawer"><a href="/pages/about.html">About</a><a href="/pages/platform.html">Platform</a><a href="/pages/governance.html">Governance</a><a href="/pages/newsroom.html">Newsroom</a><a href="/pages/careers.html">Careers</a><a href="/pages/contact.html" style="color:var(--color-accent);margin-top:var(--sp-4)">Request a conversation →</a></nav>
 
-<!-- Hero -->
-<section class="page-hero bg-navy">
+<!-- 2. MARKET THESIS -->
+<section class="section">
   <div class="wrap">
-    <div class="page-hero__content reveal">
-      <span class="eyebrow eyebrow--inv">Platform &amp; Operating Model</span>
-      <h1 class="page-hero__heading">AI-native infrastructure,<br>deployed at platform scale.</h1>
-      <p class="page-hero__sub">Our operating model combines institutional governance, shared AI security infrastructure, and a repeatable integration playbook — making each acquired firm more capable than it could be alone.</p>
+    <div class="thesis__head reveal">
+      <span class="eyebrow">The Opportunity</span>
+      <h2>A $50B market. Thousands of owners. No dominant platform.</h2>
     </div>
-  </div>
-  <div class="page-hero__bar"></div>
-</section>
-
-<!-- Post-Acquisition Integration Roadmap -->
-<section class="section">
-  <div class="wrap wrap--default">
-    <div class="section-header reveal">
-      <span class="eyebrow">Integration Model</span>
-      <h2 class="section-header__heading">Day 1 to Day 365 — a deliberate roadmap.</h2>
-      <p class="section-header__sub">Every acquisition follows the same three-phase integration model. Commercial, technical, and people tracks run in parallel — no disruption to customer service delivery.</p>
-    </div>
-
-    <div class="integration-phases reveal d1">
-      <div class="int-phase">
-        <div class="int-phase__header">
-          <span class="int-phase__period">Day 1–90</span>
-          <h3 class="int-phase__title">Foundation</h3>
-        </div>
-        <div class="int-phase__tracks">
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Commercial</div>
-            <ul class="int-phase__items"><li>Sub-brand alignment</li><li>Contract transfer</li><li>Pricing model alignment</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Technical</div>
-            <ul class="int-phase__items"><li>API &amp; data flow inventory</li><li>SSO integration</li><li>Tooling assessment</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">People</div>
-            <ul class="int-phase__items"><li>Retention agreements</li><li>Culture onboarding</li><li>Reporting structure</li></ul>
-          </div>
-        </div>
+    <div class="thesis__cols">
+      <div class="thesis__col reveal">
+        <div class="thesis__num">01</div>
+        <h3>The Fragmentation Problem</h3>
+        <p>15,000+ MSSPs operate across North America. Most are founder-owned, with revenue of roughly $3M–$20M (our acquisition band), no institutional backing, and no clear succession path. They protect hospitals, utilities, and government agencies without institutional capital or a succession path.</p>
       </div>
-      <div class="int-phase">
-        <div class="int-phase__header">
-          <span class="int-phase__period">Day 91–180</span>
-          <h3 class="int-phase__title">Integration</h3>
-        </div>
-        <div class="int-phase__tracks">
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Commercial</div>
-            <ul class="int-phase__items"><li>Full Cyber Profound branding</li><li>Cross-sell to existing clients</li><li>Unified SLA framework</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Technical</div>
-            <ul class="int-phase__items"><li>Data lake ingestion</li><li>AI model training on new data</li><li>Dashboard unification</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">People</div>
-            <ul class="int-phase__items"><li>Merged SOC team rotation</li><li>Joint AIOC protocols</li><li>Shared on-call structure</li></ul>
-          </div>
-        </div>
+      <div class="thesis__col reveal d1">
+        <div class="thesis__num">02</div>
+        <h3>The AI Imperative</h3>
+        <p>CrowdStrike, Palo Alto Networks, and Microsoft are automating the security operations center. Advantage now belongs to firms with shared AI infrastructure, data scale, and the capital to keep upgrading — not to those relying on individual talent alone. Funding that infrastructure is beyond the reach of a standalone $5M MSSP. A platform of ten firms can carry it.</p>
       </div>
-      <div class="int-phase">
-        <div class="int-phase__header">
-          <span class="int-phase__period">Day 181–365</span>
-          <h3 class="int-phase__title">Scale</h3>
-        </div>
-        <div class="int-phase__tracks">
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Commercial</div>
-            <ul class="int-phase__items"><li>Full platform packaging</li><li>Net new logo acquisition</li><li>ARR uplift targets met</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">Technical</div>
-            <ul class="int-phase__items"><li>Legacy stack sunset</li><li>Full platform migration</li><li>KPI monitoring active</li></ul>
-          </div>
-          <div class="int-phase__track">
-            <div class="int-phase__track-label">People</div>
-            <ul class="int-phase__items"><li>Org chart finalized</li><li>Incentive plans aligned</li><li>Integration complete</li></ul>
-          </div>
-        </div>
+      <div class="thesis__col reveal d2">
+        <div class="thesis__num">03</div>
+        <h3>The Permanent Capital Advantage</h3>
+        <p>Private equity acquires to exit. Strategic acquirers absorb and rebrand. Cyber Profound does neither. We acquire with the intention of owning indefinitely — keeping the brand, keeping the team, and adding institutional infrastructure. That is a fundamentally different commitment.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AI Technology Stack -->
-<section class="section bg-surface">
-  <div class="wrap wrap--default">
-    <div class="section-header reveal">
-      <span class="eyebrow">AI Technology Stack</span>
-      <h2 class="section-header__heading">Best-in-class tooling, deployed at platform scale.</h2>
-      <p class="section-header__sub">We standardize the portfolio on enterprise-grade, AI-native platforms — negotiated at platform scale, deployed across every firm we acquire. A mid-market firm could never license or operate these capabilities alone.</p>
+<!-- 3. PULL QUOTE -->
+<section class="quote">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="quote__rule" aria-hidden="true"></div>
+      <blockquote>&#8220;The firms that protect America&#8217;s hospitals, utilities, and infrastructure are also the most structurally vulnerable. That is the problem we were formed to address.&#8221;</blockquote>
+      <p class="quote__attr">— Nest Gjinaj, Founder &amp; Managing Director</p>
     </div>
-    <div class="tech-stack-grid reveal d1">
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 1 — AI &amp; Intelligence</span>
-        <h3 class="tech-stack-card__title">AI/ML Orchestration</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">LangChain / AutoGen — LLM orchestration</div>
-          <div class="tech-stack-card__tool">Graph Neural Networks — threat graph analysis</div>
-          <div class="tech-stack-card__tool">Anomaly Detection ML — Isolation Forest, VAE</div>
-          <div class="tech-stack-card__tool">NLP — log parsing &amp; alert triage</div>
-        </div>
-      </div>
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 2 — Detection &amp; Response</span>
-        <h3 class="tech-stack-card__title">SOC, SIEM &amp; EDR</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">CrowdStrike Falcon with Charlotte AI</div>
-          <div class="tech-stack-card__tool">Palo Alto Cortex XSIAM</div>
-          <div class="tech-stack-card__tool">Microsoft Sentinel with Security Copilot</div>
-          <div class="tech-stack-card__tool">Google Security Operations</div>
-        </div>
-      </div>
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 3 — Cloud Security</span>
-        <h3 class="tech-stack-card__title">CNAPP &amp; Posture Management</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">Wiz (Google Cloud) — multi-cloud CNAPP</div>
-          <div class="tech-stack-card__tool">Palo Alto Prisma Cloud</div>
-          <div class="tech-stack-card__tool">Microsoft Defender for Cloud</div>
-          <div class="tech-stack-card__tool">Orca Security</div>
-        </div>
-      </div>
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 4 — Identity &amp; Access</span>
-        <h3 class="tech-stack-card__title">IAM &amp; ITDR</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">Microsoft Entra — identity governance</div>
-          <div class="tech-stack-card__tool">Okta — workforce identity</div>
-          <div class="tech-stack-card__tool">CyberArk (Palo Alto Idira) — PAM</div>
-          <div class="tech-stack-card__tool">Ping Identity</div>
-        </div>
-      </div>
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 5 — Data Security</span>
-        <h3 class="tech-stack-card__title">AI Data Security &amp; DSPM</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">Cyera — AI-driven DSPM</div>
-          <div class="tech-stack-card__tool">BigID — data intelligence</div>
-          <div class="tech-stack-card__tool">Varonis — data security</div>
-          <div class="tech-stack-card__tool">Microsoft Purview</div>
-        </div>
-      </div>
-      <div class="tech-stack-card">
-        <span class="tech-stack-card__layer">Layer 6 — AI Governance</span>
-        <h3 class="tech-stack-card__title">AI-SPM &amp; Posture Governance</h3>
-        <div class="tech-stack-card__tools">
-          <div class="tech-stack-card__tool">SAFE AI-SPM — AI security posture</div>
-          <div class="tech-stack-card__tool">Securiti — AI data governance</div>
-          <div class="tech-stack-card__tool">Protect AI — model security</div>
-          <div class="tech-stack-card__tool">Wiz AI-SPM — shadow AI discovery</div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--sp-8);max-width:70ch;line-height:1.6" class="reveal d2">Vendor selections are illustrative of our reference architecture and are finalized through platform-level partnerships and diligence. We remain deliberately best-of-breed: the right tool per portfolio company, standardized where it compounds value.</p>
   </div>
 </section>
 
-<!-- Due Diligence Framework -->
-<section class="section">
-  <div class="wrap wrap--default">
-    <div class="section-header reveal">
-      <span class="eyebrow">Due Diligence</span>
-      <h2 class="section-header__heading">Function priority framework.</h2>
-      <p class="section-header__sub">All Cyber Profound cybersecurity functions are classified by priority tier to guide acquisition due diligence mapping.</p>
+<!-- 4. PLATFORM MODEL -->
+<section class="section model">
+  <div class="wrap">
+    <div class="model__head reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Acquire. Integrate. Scale. Protect.</h2>
     </div>
-    <div class="priority-grid reveal d1">
-      <div class="priority-tier priority-tier--p1">
-        <div class="priority-tier__badge">P1 — Critical</div>
-        <p class="priority-tier__desc">Must-have. Non-negotiable for service delivery. Gaps here are a red flag for any acquisition.</p>
-        <div class="priority-tier__items">
-          <span class="tag">EDR</span><span class="tag">Network Security Monitoring</span><span class="tag">Identity &amp; Access Management</span>
-        </div>
+    <div class="step reveal">
+      <div class="step__num">01</div>
+      <div class="step__body">
+        <h3 class="step__title">Acquire</h3>
+        <p class="step__text">We identify MSSP firms with $3M–$20M in revenue, 70%+ recurring contracts, strong client retention, and leadership willing to stay. We move with discipline — no auctions, no rushed timelines. Every conversation starts with a confidential call.</p>
       </div>
-      <div class="priority-tier priority-tier--p2">
-        <div class="priority-tier__badge">P2 — High</div>
-        <p class="priority-tier__desc">Essential for enterprise-grade offering. Target full coverage within 12 months of acquisition.</p>
-        <div class="priority-tier__items">
-          <span class="tag">CSPM</span><span class="tag">AppSec Testing</span><span class="tag">SIEM</span><span class="tag">UEBA</span><span class="tag">Threat Intelligence</span>
-        </div>
+    </div>
+    <div class="step reveal d1">
+      <div class="step__num">02</div>
+      <div class="step__body">
+        <h3 class="step__title">Integrate</h3>
+        <p class="step__text">Acquired firms join the platform and gain access to shared AI-driven SOC infrastructure — CrowdStrike Falcon, Microsoft Sentinel, Palo Alto Cortex XSIAM — centralized compliance and legal support, and shared back-office operations. The brand and client relationships remain intact.</p>
       </div>
-      <div class="priority-tier priority-tier--p3">
-        <div class="priority-tier__badge">P3 — Medium</div>
-        <p class="priority-tier__desc">Differentiating capabilities. Adds depth and competitive moat. Target coverage in 18–24 months.</p>
-        <div class="priority-tier__items">
-          <span class="tag">Incident Response &amp; SOAR</span><span class="tag">GRC Automation</span><span class="tag">OT/IoT Security</span>
-        </div>
+    </div>
+    <div class="step reveal d2">
+      <div class="step__num">03</div>
+      <div class="step__body">
+        <h3 class="step__title">Scale</h3>
+        <p class="step__text">Platform firms cross-sell. A healthcare-focused MSSP in the portfolio can now offer identity management, cloud security, and AI governance — capabilities delivered by the platform, not rebuilt from scratch. Revenue per client rises and margins widen as shared capabilities are cross-sold.</p>
       </div>
-      <div class="priority-tier priority-tier--p4">
-        <div class="priority-tier__badge">P4 — Enhancement</div>
-        <p class="priority-tier__desc">Future-state capabilities. Strategic upside. Acquired opportunistically or built organically.</p>
-        <div class="priority-tier__items">
-          <span class="tag">DLP</span><span class="tag">Deception Technology</span>
-        </div>
+    </div>
+    <div class="step reveal d3">
+      <div class="step__num">04</div>
+      <div class="step__body">
+        <h3 class="step__title">Protect</h3>
+        <p class="step__text">Every portfolio firm benefits from Cyber Profound's board-level governance, institutional cybersecurity expertise, and shared threat intelligence. We provide the institutional foundation the firms we own rely on.</p>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer" role="contentinfo">
+<!-- 5. AI-DRIVEN INFRASTRUCTURE -->
+<section class="section infra">
+  <div class="wrap">
+    <div class="infra__head reveal">
+      <span class="eyebrow">AI &amp; Technology</span>
+      <h2>Built on the Tools That Define Enterprise Security</h2>
+      <p class="infra__sub">The platform centralizes access to the leading AI security tools that no individual MSSP could afford to license, staff, or operate alone.</p>
+    </div>
+    <div class="infra__grid">
+      <div class="infra__card reveal">
+        <h3 class="infra__cat">AI-Driven SOC / SIEM</h3>
+        <p class="infra__tools">CrowdStrike Falcon + Charlotte AI · Palo Alto Cortex XSIAM · Microsoft Sentinel + Security Copilot · Google Security Operations</p>
+      </div>
+      <div class="infra__card reveal d1">
+        <h3 class="infra__cat">Cloud Security</h3>
+        <p class="infra__tools">Wiz · Palo Alto Prisma Cloud · Microsoft Defender for Cloud · Orca Security</p>
+      </div>
+      <div class="infra__card reveal d2">
+        <h3 class="infra__cat">Identity &amp; Access</h3>
+        <p class="infra__tools">Microsoft Entra · Okta · CyberArk · Ping Identity</p>
+      </div>
+      <div class="infra__card reveal d3">
+        <h3 class="infra__cat">Data Security &amp; AI Governance</h3>
+        <p class="infra__tools">Cyera · BigID · Varonis · Microsoft Purview · Securiti AI-SPM</p>
+      </div>
+    </div>
+    <p class="infra__note reveal">Platform firms gain access to centralized licensing, shared expertise, and continuous tooling upgrades — without the capital burden of standing up each stack independently.</p>
+  </div>
+</section>
+
+
+<!-- OPERATIONAL INTELLIGENCE -->
+<section class="section opint" id="technology">
+  <div class="wrap">
+    <div class="opint__head reveal">
+      <span class="eyebrow">Operational Intelligence</span>
+      <h2>AI-driven operations, deployed across every platform company.</h2>
+      <p class="opint__sub">Each firm Cyber Profound acquires is integrated into a shared operational intelligence layer — replacing reactive, alert-based security models with continuous, machine-speed monitoring and response.</p>
+    </div>
+    <div class="opint__grid">
+      <div class="opint__card reveal">
+        <div class="opint__label">Core Infrastructure</div>
+        <h3>AI Operations Center</h3>
+        <p>A centralized 24/7 operations hub that orchestrates autonomous monitoring agents across all platform companies. Detection, triage, and response are coordinated through a unified intelligence environment — not managed in silos by individual firms.</p>
+      </div>
+      <div class="opint__card reveal">
+        <div class="opint__label">Threat Detection</div>
+        <h3>Behavioral Analytics &amp; Autonomous Scanning</h3>
+        <p>Machine learning models establish behavioral baselines across endpoints, network flows, identity, and cloud workloads. Continuous scanning identifies deviations and emerging exposures before they become incidents — at a speed and scale no analyst team alone can match.</p>
+      </div>
+      <div class="opint__card reveal">
+        <div class="opint__label">Threat Intelligence</div>
+        <h3>Aggregated Intelligence Platform</h3>
+        <p>Threat intelligence is aggregated across all platform companies, external commercial feeds, and dark web telemetry — correlated at scale to identify patterns that no single MSSP could detect independently. Each acquisition strengthens the collective intelligence of the platform.</p>
+      </div>
+      <div class="opint__card reveal">
+        <div class="opint__label">Incident Response</div>
+        <h3>Automated Response &amp; SOAR Orchestration</h3>
+        <p>Containment, isolation, and remediation playbooks execute autonomously upon confirmed threat classification. Human analysts are engaged at escalation thresholds — not as the first line of response. The result is material reduction in breach detection and containment time.</p>
+      </div>
+    </div>
+    <p class="opint__note reveal"><strong>The compounding effect of scale.</strong> Each company integrated into the platform contributes telemetry, detection patterns, and operational data that improves outcomes for every other firm in the portfolio. This is the structural advantage that individual MSSPs operating in isolation cannot replicate.</p>
+  </div>
+</section>
+
+<!-- 6. CTA -->
+<section class="section cta">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>If you own an established MSSP, begin a confidential conversation.</h2>
+      <div class="cta__btns">
+        <a href="criteria.html" class="btn btn--primary">Explore Acquisition Criteria</a>
+        <a href="contact.html" class="btn btn--ghost">Request a Conversation</a>
+      </div>
+      <p class="cta__note">All initial conversations are strictly confidential.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FOOTER -->
+<footer class="footer">
   <div class="wrap">
     <div class="footer__top">
-      <div class="footer__brand"><a href="/" class="nav__logo"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1"/><path d="M7 16C7 11.03 11.03 7 16 7" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/><path d="M25 16C25 20.97 20.97 25 16 25" stroke="#0065fc" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="3.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="16" cy="16" r="1" fill="#0065fc"/></svg><span style="font-family:var(--font-display);font-size:1rem;font-weight:600;color:white;letter-spacing:0.02em">Cyber Profound</span></a><p class="footer__tagline">America's permanent-capital platform for cybersecurity services.</p></div>
-      <div><p class="footer__col-title">Platform</p><ul class="footer__links" role="list"><li><a href="/pages/about.html">About</a></li><li><a href="/pages/platform.html">Platform</a></li><li><a href="/pages/governance.html">Governance</a></li><li><a href="/pages/newsroom.html">Newsroom</a></li></ul></div>
-      <div><p class="footer__col-title">Engage</p><ul class="footer__links" role="list"><li><a href="/pages/contact.html">For Founders</a></li><li><a href="/pages/contact.html">For Investors</a></li><li><a href="/pages/careers.html">Careers</a></li></ul></div>
-      <div><p class="footer__col-title">Contact</p><ul class="footer__links" role="list"><li><a href="mailto:Ngjinaj@cyberprofound.com">Ngjinaj@cyberprofound.com</a></li><li><a href="tel:+18889007343">+1 (888) 900-7343</a></li></ul></div>
+      <div>
+        <div class="footer__brand">Cyber Profound</div>
+        <p class="footer__tag">A permanent-capital platform for cybersecurity services.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="about.html">About</a>
+        <a href="platform.html">Platform</a>
+        <a href="criteria.html">Acquisition Criteria</a>
+        <a href="governance.html">Governance</a>
+        <a href="newsroom.html">Newsroom</a>
+      </nav>
+      <div class="footer__contact">
+        <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a>
+        <a href="tel:+18889007343">+1 (888) 900-7343</a>
+      </div>
     </div>
-    <div class="footer__bottom"><p class="footer__legal">&copy; 2026 Cyber Profound Inc. All rights reserved.</p><div style="display:flex;gap:var(--sp-6)"><a href="#" style="font-size:var(--text-xs);color:var(--color-text-inv-faint)">Privacy</a><a href="#" style="font-size:var(--text-xs);color:var(--color-text-inv-faint)">Terms</a></div></div>
+    <div class="footer__rule" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cyber Profound Inc. All rights reserved.</span>
+      <span>New Baltimore, Michigan</span>
+    </div>
   </div>
 </footer>
 
-<style>
-.integration-phases { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--sp-4); }
-.int-phase { border: 1px solid var(--color-border); border-radius: var(--r-lg); overflow: hidden; background: var(--color-bg); }
-.int-phase__header { background: var(--color-navy); padding: var(--sp-6) var(--sp-8); border-bottom: 1px solid var(--color-navy-border); }
-.int-phase__period { font-size: var(--text-2xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); display: block; margin-bottom: var(--sp-2); }
-.int-phase__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; color: white; line-height: 1; }
-.int-phase__tracks { padding: var(--sp-6) var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-5); }
-.int-phase__track-label { font-size: var(--text-2xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-faint); margin-bottom: var(--sp-2); }
-.int-phase__items { list-style: none; display: flex; flex-direction: column; gap: var(--sp-2); }
-.int-phase__items li { font-size: var(--text-sm); color: var(--color-text-muted); padding-left: var(--sp-4); position: relative; line-height: 1.4; }
-.int-phase__items li::before { content: '—'; position: absolute; left: 0; color: var(--color-accent); opacity: 0.4; }
-@media (max-width: 860px) { .integration-phases { grid-template-columns: 1fr; } }
-.priority-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--sp-4); }
-.priority-tier { border: 1px solid var(--color-border); border-radius: var(--r-lg); padding: var(--sp-8); display: flex; flex-direction: column; gap: var(--sp-5); background: var(--color-bg); }
-.priority-tier__badge { font-size: var(--text-2xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
-.priority-tier--p1 { border-color: rgba(0,101,252,0.30); background: var(--color-accent-muted); }
-.priority-tier--p1 .priority-tier__badge { color: var(--color-accent); }
-.priority-tier__desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
-.priority-tier__items { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
-@media (max-width: 660px) { .priority-grid { grid-template-columns: 1fr; } }
-</style>
-<script src="../js/main.js"></script>
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('raised', window.scrollY > 8); }, { passive: true });
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger.addEventListener('click', () => {
+  const open = drawer.classList.toggle('is-open');
+  burger.classList.toggle('is-open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    drawer.classList.remove('is-open'); burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  });
+});
+
+/* Scroll reveal with sibling stagger */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = (idx > 0 ? idx * 80 : 0) + 'ms';
+      el.classList.add('in');
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+// Also trigger elements already in viewport on load
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Ensure all reveals fire (catches elements below fold in static renders)
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+}, 100);
+</script>
 </body>
 </html>
