@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-
+    
     /* ===== NAV ===== */
     .nav {
       position: fixed; top: 0; left: 0; right: 0;
@@ -20,25 +20,15 @@
       transition: box-shadow 240ms var(--ease);
     }
     .nav.raised { box-shadow: 0 2px 28px rgba(10,27,46,0.09); }
-    .nav__row {
-      height: 100%; display: flex; align-items: center;
-    }
+    .nav__row { height: 100%; display: flex; align-items: center; }
     .nav__logo { flex-shrink: 0; margin-right: 2.5rem; }
     .nav__logo img { height: 42px; width: auto; display: block; }
-
-    /* Flat links */
-    .nav__menu {
-      display: flex; align-items: center; gap: 0;
-      list-style: none; flex: 1;
-    }
+    .nav__menu { display: flex; align-items: center; gap: 0; list-style: none; flex: 1; }
     .nav__menu a {
-      display: block;
-      font-family: var(--font-b); font-size: 0.9rem; font-weight: 500;
+      display: block; font-family: var(--font-b); font-size: 0.9rem; font-weight: 500;
       color: var(--mid); letter-spacing: 0.02em;
       padding: 0 1.5rem; height: var(--nav-h); line-height: var(--nav-h);
-      white-space: nowrap;
-      transition: color 140ms;
-      position: relative;
+      white-space: nowrap; position: relative; transition: color 140ms;
     }
     .nav__menu a::after {
       content: ''; position: absolute; bottom: 0; left: 1.5rem; right: 1.5rem;
@@ -50,16 +40,13 @@
     .nav__menu a:hover::after { transform: scaleX(1); }
     .nav__menu a.active { color: var(--navy); font-weight: 600; }
     .nav__menu a.active::after { transform: scaleX(1); }
-
-    /* Right section */
     .nav__right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; margin-left: 2rem; }
     .nav__search-btn {
       display: flex; align-items: center; justify-content: center;
       width: 38px; height: 38px; border-radius: 3px;
       background: none; border: 1px solid var(--border);
       cursor: pointer; color: var(--mid);
-      transition: border-color 140ms, color 140ms, background 140ms;
-      flex-shrink: 0;
+      transition: border-color 140ms, color 140ms, background 140ms; flex-shrink: 0;
     }
     .nav__search-btn:hover { border-color: var(--navy); color: var(--navy); background: var(--off); }
     .nav__talk {
@@ -69,312 +56,60 @@
       padding: 0.65rem 1.4rem; border-radius: 3px; white-space: nowrap;
       transition: background 160ms, box-shadow 160ms, transform 120ms;
     }
-    .nav__talk:hover {
-      background: var(--blue-hover);
-      box-shadow: 0 6px 20px rgba(0,101,252,0.26);
-      transform: translateY(-1px);
-    }
+    .nav__talk:hover { background: var(--blue-hover); box-shadow: 0 6px 20px rgba(0,101,252,0.26); transform: translateY(-1px); }
     .nav__talk svg { flex-shrink: 0; }
-
-    /* Hamburger */
     .nav__burger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 6px;
     }
     .nav__burger span {
-      display: block; width: 22px; height: 1.5px;
-      background: var(--navy); border-radius: 2px;
+      display: block; width: 22px; height: 1.5px; background: var(--navy); border-radius: 2px;
       transition: transform 200ms var(--ease), opacity 140ms;
     }
     .nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav__burger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    /* Mobile drawer */
     .nav__drawer {
-      display: none; position: fixed;
-      top: var(--nav-h); left: 0; right: 0;
+      display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
       background: #fff; border-bottom: 1px solid var(--border);
       padding: 0.5rem 0 1.5rem;
-      box-shadow: 0 20px 50px rgba(10,27,46,0.11);
-      z-index: 299;
+      box-shadow: 0 20px 50px rgba(10,27,46,0.11); z-index: 299;
     }
     .nav__drawer.is-open { display: block; }
     .nav__drawer ul { list-style: none; }
     .nav__drawer ul li { border-bottom: 1px solid var(--border); }
     .nav__drawer ul li:last-child { border-bottom: none; }
-    .nav__drawer ul li a {
-      display: block; padding: 0.9rem var(--gut);
-      font-size: 0.9375rem; font-weight: 500; color: var(--navy);
-    }
+    .nav__drawer ul li a { display: block; padding: 0.9rem var(--gut); font-size: 0.9375rem; font-weight: 500; color: var(--navy); }
     .nav__drawer ul li a:hover { color: var(--blue); }
-    .nav__drawer .nav__talk {
-      display: flex; justify-content: center; width: calc(100% - var(--gut) * 2);
-      margin: 1.25rem var(--gut) 0; padding: 0.875rem;
-    }
-
+    .nav__drawer .nav__talk { display: flex; justify-content: center; width: calc(100% - var(--gut) * 2); margin: 1.25rem var(--gut) 0; padding: 0.875rem; }
     @media (max-width: 960px) {
       .nav__menu { display: none; }
       .nav__right .nav__talk { display: none; }
       .nav__burger { display: flex; }
       .nav__logo img { height: 34px; }
     }
-
-    /* ── Search overlay ── */
+    /* Search overlay */
     .search-overlay {
       position: fixed; inset: 0; z-index: 500;
-      background: rgba(10,27,46,0.82);
-      backdrop-filter: blur(12px);
+      background: rgba(10,27,46,0.82); backdrop-filter: blur(12px);
       display: flex; align-items: flex-start; justify-content: center;
       padding-top: clamp(8vh, 14vw, 14vh);
-      opacity: 0; pointer-events: none;
-      transition: opacity 240ms var(--ease);
+      opacity: 0; pointer-events: none; transition: opacity 240ms var(--ease);
     }
     .search-overlay.is-open { opacity: 1; pointer-events: auto; }
-    .search-overlay__inner {
-      width: 100%; max-width: 680px; padding: 0 var(--gut);
-      transform: translateY(14px);
-      transition: transform 260ms var(--ease);
-    }
+    .search-overlay__inner { width: 100%; max-width: 680px; padding: 0 var(--gut); transform: translateY(14px); transition: transform 260ms var(--ease); }
     .search-overlay.is-open .search-overlay__inner { transform: translateY(0); }
-    .search-overlay__label {
-      font-family: var(--font-b); font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; display: block;
-    }
-    .search-overlay__form {
-      display: flex; align-items: center;
-      background: #fff; border-radius: 4px; overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
-    }
-    .search-overlay__icon {
-      flex-shrink: 0; padding: 0 1.1rem;
-      color: var(--muted); display: flex; align-items: center;
-    }
-    .search-overlay__input {
-      flex: 1; border: none; outline: none;
-      font-family: var(--font-b); font-size: 1.0625rem; font-weight: 400;
-      color: var(--navy); background: transparent;
-      padding: 1.1rem 0; caret-color: var(--blue);
-    }
+    .search-overlay__label { font-family: var(--font-b); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; display: block; }
+    .search-overlay__form { display: flex; align-items: center; background: #fff; border-radius: 4px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+    .search-overlay__icon { flex-shrink: 0; padding: 0 1.1rem; color: var(--muted); display: flex; align-items: center; }
+    .search-overlay__input { flex: 1; border: none; outline: none; font-family: var(--font-b); font-size: 1.0625rem; color: var(--navy); background: transparent; padding: 1.1rem 0; caret-color: var(--blue); }
     .search-overlay__input::placeholder { color: var(--muted); }
-    .search-overlay__submit {
-      flex-shrink: 0; padding: 0 1.35rem;
-      background: var(--blue); border: none; cursor: pointer;
-      color: #fff; font-size: 0.8125rem; font-weight: 600;
-      letter-spacing: 0.025em; white-space: nowrap;
-      transition: background 140ms; min-height: 56px;
-    }
+    .search-overlay__submit { flex-shrink: 0; padding: 0 1.35rem; background: var(--blue); border: none; cursor: pointer; color: #fff; font-size: 0.8125rem; font-weight: 600; white-space: nowrap; transition: background 140ms; min-height: 56px; }
     .search-overlay__submit:hover { background: var(--blue-hover); }
-    .search-overlay__close {
-      position: absolute; top: 1.5rem; right: 1.75rem;
-      background: none; border: none; cursor: pointer;
-      color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
-      transition: color 140ms;
-    }
+    .search-overlay__close { position: absolute; top: 1.5rem; right: 1.75rem; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; transition: color 140ms; }
     .search-overlay__close:hover { color: #fff; }
-    .search-overlay__hints {
-      margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.6rem;
-    }
-    .search-overlay__hint {
-      display: inline-block;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.7); border-radius: 2px;
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;
-      padding: 0.4rem 0.85rem; cursor: pointer;
-      transition: background 130ms, color 130ms;
-    }
-    .search-overlay__hint:hover { background: rgba(255,255,255,0.18); color: #fff; }
-
-/* ===== SHARED ===== */
-.section { padding: clamp(5rem, 9vw, 9rem) 0; }
-.eyebrow { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 1.5rem; }
-.body { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
-.h-display { font-family: var(--font-d); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; }
-
-/* ===== HERO (shorter) ===== */
-.hero { position: relative; background: var(--navy); color: #fff; padding: calc(var(--nav-h) + clamp(3.5rem, 8vw, 6rem)) 0 clamp(3.5rem, 8vw, 6rem); overflow: hidden; }
-.hero__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); }
-.hero__glow { position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; background: radial-gradient(circle, rgba(0,101,252,0.28) 0%, rgba(0,101,252,0.08) 35%, transparent 68%); filter: blur(20px); pointer-events: none; }
-.hero__inner { position: relative; max-width: 880px; }
-.hero h1 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.04; letter-spacing: -0.015em; color: #fff; margin-bottom: 1.5rem; }
-.hero__sub { font-size: clamp(1rem, 1.7vw, 1.1875rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 60ch; }
-
-/* ===== PATH SELECTOR + FORMS ===== */
-.paths__head { max-width: 760px; margin-bottom: clamp(2.25rem, 4vw, 3rem); }
-.paths__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.875rem, 4vw, 2.5rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1rem; }
-.paths__intro { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 58ch; }
-.path-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: clamp(2.75rem, 5vw, 4rem); }
-.path-card { position: relative; text-align: left; width: 100%; background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem 2rem; cursor: pointer; font-family: var(--font-b); transition: border-color 160ms, box-shadow 160ms, background 160ms, transform 120ms; }
-.path-card:hover { border-color: var(--blue); box-shadow: 0 6px 22px rgba(10,27,46,0.07); }
-.path-card.is-active { border-left: 3px solid var(--blue); background: var(--off); box-shadow: 0 8px 26px rgba(10,27,46,0.09); transform: translateY(-2px); }
-.path-card__tag { display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--blue); font-weight: 600; margin-bottom: 0.85rem; }
-.path-card__title { display: block; font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; line-height: 1.2; color: var(--navy); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
-.path-card__desc { display: block; font-size: 0.875rem; line-height: 1.6; color: var(--mid); }
-
-/* ===== FORM ===== */
-.form-section { max-width: 640px; margin: 0 auto; }
-.form-section[hidden] { display: none; }
-.form__head { margin-bottom: clamp(1.75rem, 3vw, 2.25rem); }
-.form__head h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.625rem, 3.4vw, 2.125rem); line-height: 1.14; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 0.85rem; }
-.form__head p { font-size: 0.9375rem; line-height: 1.7; color: var(--mid); }
-.field { margin-bottom: 1.25rem; }
-.field label { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--navy); margin-bottom: 0.35rem; }
-.field .req { color: var(--blue); }
-.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--border); border-radius: 3px; padding: 0.75rem 1rem; font-family: var(--font-b); font-size: 0.9375rem; color: var(--navy); background: #fff; transition: border-color 140ms, box-shadow 140ms; }
-.field textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
-.field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236b8096' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer; }
-.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(0,101,252,0.12); }
-.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: #dc2626; }
-.field__error { display: none; font-size: 0.8125rem; color: #dc2626; margin-top: 0.35rem; }
-.field.has-error .field__error { display: block; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-
-/* checkbox */
-.checkfield { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 1.5rem; cursor: pointer; }
-.checkfield input { position: absolute; opacity: 0; width: 0; height: 0; }
-.checkfield .box { flex-shrink: 0; width: 18px; height: 18px; border: 1px solid var(--border); border-radius: 3px; background: #fff; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: background 140ms, border-color 140ms; }
-.checkfield .box svg { opacity: 0; transition: opacity 120ms; }
-.checkfield input:checked + .box { background: var(--blue); border-color: var(--blue); }
-.checkfield input:checked + .box svg { opacity: 1; }
-.checkfield input:focus-visible + .box { box-shadow: 0 0 0 3px rgba(0,101,252,0.12); }
-.checkfield .check-label { font-size: 0.8125rem; line-height: 1.5; color: var(--mid); }
-.checkfield.has-error .box { border-color: #dc2626; }
-.check-error { display: none; font-size: 0.8125rem; color: #dc2626; margin: -0.75rem 0 1.25rem; }
-.checkfield.has-error ~ .check-error { display: block; }
-
-.form-submit { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background: var(--blue); color: #fff; font-family: var(--font-b); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.9rem 1.75rem; border: none; border-radius: 3px; cursor: pointer; transition: background 160ms, box-shadow 160ms, transform 120ms; }
-.form-submit:hover { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(0,101,252,0.26); transform: translateY(-1px); }
-
-/* success */
-.form-success { display: none; max-width: 640px; margin: 0 auto; border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 4px; background: var(--off); padding: clamp(2rem, 4vw, 3rem); }
-.form-success.is-shown { display: block; }
-.form-success h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.625rem, 3.4vw, 2.125rem); line-height: 1.14; letter-spacing: -0.01em; color: var(--navy); margin-bottom: 1rem; }
-.form-success p { font-size: 0.9375rem; line-height: 1.7; color: var(--mid); margin-bottom: 1.25rem; }
-.form-success .small { font-size: 0.8125rem; color: var(--muted); margin-bottom: 0; }
-.form-success .small a { color: var(--blue); }
-
-/* ===== DIRECT CONTACT ===== */
-.direct { background: var(--off); }
-.direct__head { max-width: 720px; }
-.direct__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.25rem; }
-.direct__head p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 56ch; margin-bottom: clamp(2rem, 4vw, 2.75rem); }
-.direct__lines { display: flex; flex-direction: column; gap: 0.85rem; }
-.direct__email { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.5rem, 3.6vw, 2.25rem); color: var(--navy); letter-spacing: -0.01em; transition: color 140ms; }
-.direct__email:hover { color: var(--blue); }
-.direct__line { font-size: 1rem; color: var(--mid); }
-.direct__line a { color: var(--mid); transition: color 140ms; }
-.direct__line a:hover { color: var(--blue); }
-
-/* ===== CONFIDENTIALITY ===== */
-.confid { text-align: center; }
-.confid p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.8; color: var(--muted); max-width: 60ch; margin: 0 auto; }
-
-/* ===== FOOTER ===== */
-.footer { background: var(--navy); color: #fff; padding: clamp(3.5rem, 6vw, 5rem) 0 2rem; }
-.footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start; }
-.footer__brand { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: #fff; letter-spacing: -0.01em; }
-.footer__tag { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: rgba(255,255,255,0.45); max-width: 30ch; }
-.footer__nav { display: flex; flex-direction: column; gap: 0.65rem; }
-.footer__nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); transition: color 140ms; }
-.footer__nav a:hover { color: #fff; }
-.footer__contact { text-align: right; }
-.footer__contact a { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; transition: color 140ms; }
-.footer__contact a:hover { color: #fff; }
-.footer__rule { height: 1px; background: rgba(255,255,255,0.08); margin: clamp(2.5rem, 5vw, 3.5rem) 0 1.75rem; }
-.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
-
-/* ===== REVEAL ===== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
-.no-js .reveal { opacity: 1; transform: none; }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 880px) {
-  .path-cards { grid-template-columns: 1fr; }
-}
-@media (max-width: 768px) {
-  .field-row { grid-template-columns: 1fr; gap: 0; }
-  .footer__top { grid-template-columns: 1fr; gap: 2rem; }
-  .footer__contact { text-align: left; }
-  .form-submit { width: 100%; }
-}
-
-    /* Full-screen overlay */
-    .search-overlay {
-      position: fixed; inset: 0; z-index: 500;
-      background: rgba(10,27,46,0.82);
-      backdrop-filter: blur(12px);
-      display: flex; align-items: flex-start; justify-content: center;
-      padding-top: clamp(8vh, 14vw, 14vh);
-      opacity: 0; pointer-events: none;
-      transition: opacity 240ms var(--ease);
-    }
-    .search-overlay.is-open {
-      opacity: 1; pointer-events: auto;
-    }
-    .search-overlay__inner {
-      width: 100%; max-width: 680px; padding: 0 var(--gut);
-      transform: translateY(14px);
-      transition: transform 260ms var(--ease);
-    }
-    .search-overlay.is-open .search-overlay__inner {
-      transform: translateY(0);
-    }
-    .search-overlay__label {
-      font-family: var(--font-b); font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; display: block;
-    }
-    .search-overlay__form {
-      display: flex; align-items: center;
-      background: #fff; border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
-    }
-    .search-overlay__icon {
-      flex-shrink: 0; padding: 0 1.1rem;
-      color: var(--muted); display: flex; align-items: center;
-    }
-    .search-overlay__input {
-      flex: 1; border: none; outline: none;
-      font-family: var(--font-b); font-size: 1.0625rem; font-weight: 400;
-      color: var(--navy); background: transparent;
-      padding: 1.1rem 0;
-      caret-color: var(--blue);
-    }
-    .search-overlay__input::placeholder { color: var(--muted); }
-    .search-overlay__submit {
-      flex-shrink: 0; padding: 0 1.35rem; height: 100%;
-      background: var(--blue); border: none; cursor: pointer;
-      color: #fff; font-size: 0.8125rem; font-weight: 600;
-      letter-spacing: 0.025em; white-space: nowrap;
-      transition: background 140ms;
-      min-height: 56px;
-    }
-    .search-overlay__submit:hover { background: var(--blue-hover); }
-    .search-overlay__close {
-      position: absolute; top: 1.5rem; right: 1.75rem;
-      background: none; border: none; cursor: pointer;
-      color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
-      transition: color 140ms;
-    }
-    .search-overlay__close:hover { color: #fff; }
-    .search-overlay__hints {
-      margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.6rem;
-    }
-    .search-overlay__hint {
-      display: inline-block;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
-      color: rgba(255,255,255,0.7); border-radius: 2px;
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em;
-      padding: 0.4rem 0.85rem; cursor: pointer;
-      transition: background 130ms, color 130ms;
-    }
+    .search-overlay__hints { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .search-overlay__hint { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.7); border-radius: 2px; font-size: 0.78rem; font-weight: 500; padding: 0.4rem 0.85rem; cursor: pointer; transition: background 130ms, color 130ms; }
     .search-overlay__hint:hover { background: rgba(255,255,255,0.18); color: #fff; }
 
     </style>
@@ -422,178 +157,20 @@
   </ul>
   <a href="contact.html" class="nav__talk">Request a Conversation</a>
 </div>
-
-          <div class="nav__drop-group">
-            <span class="nav__drop-group__label">Governance</span>
-            <a href="governance.html" role="menuitem">
-              Board of Directors
-              <span>Independent oversight and fiduciary leadership</span>
-            </a>
-            <a href="governance.html#principles" role="menuitem">
-              Our Principles
-              <span>The values that define how we operate</span>
-            </a>
-          </div>
-        </div>
-      </li>
-
-      <!-- PLATFORM -->
-      <li class="nav__item" role="none">
-        <button role="menuitem" aria-haspopup="true" aria-expanded="false" data-drop="platform">
-          Platform
-          <svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="nav__drop nav__drop--wide" id="drop-platform" role="menu">
-          <div class="nav__drop-group">
-            <span class="nav__drop-group__label">Our Approach</span>
-            <a href="platform.html" role="menuitem">
-              Platform Overview
-              <span>How we acquire, integrate, and scale MSSPs</span>
-            </a>
-            <a href="criteria.html" role="menuitem">
-              Acquisition Criteria
-              <span>What we look for in a partner firm</span>
-            </a>
-          </div>
-          <div class="nav__drop-group">
-            <span class="nav__drop-group__label">Technology</span>
-            <a href="platform.html#technology" role="menuitem">
-              Operational Intelligence
-              <span>AI-enabled infrastructure across our platform</span>
-            </a>
-            <a href="platform.html#integration" role="menuitem">
-              Integration Model
-              <span>How acquired firms operate within Cyber Profound</span>
-            </a>
-          </div>
-        </div>
-      </li>
-
-      <!-- PERSPECTIVES -->
-      <li class="nav__item" role="none">
-        <button role="menuitem" aria-haspopup="true" aria-expanded="false" data-drop="perspectives">
-          Perspectives
-          <svg class="nav__chevron" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <div class="nav__drop" id="drop-perspectives" role="menu">
-          <a href="newsroom.html" class="nav__drop-item" role="menuitem">
-            Newsroom
-            <span class="nav__drop-item__desc">Leadership appointments and firm announcements</span>
-          </a>
-          <div class="nav__drop-divider"></div>
-          <a href="newsroom.html#market" class="nav__drop-item" role="menuitem">
-            Market Intelligence
-            <span class="nav__drop-item__desc">Institutional perspectives on cybersecurity consolidation</span>
-          </a>
-        </div>
-      </li>
-
-    </ul>
-
-    <div class="nav__right">
-      <button class="nav__search-btn" id="searchBtn" aria-label="Open search">
-        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-          <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M11.5 11.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-            <a href="contact.html" class="nav__talk">
-        Request a Conversation
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <button class="nav__burger" id="burger" aria-label="Open navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-  </div>
-</nav>
-
-<!-- MOBILE DRAWER -->
-<div class="nav__drawer" id="drawer" role="dialog" aria-label="Navigation menu">
-
-  <div class="nav__mob-group">
-    <button class="nav__mob-trigger" data-mob="firm">
-      The Firm
-      <svg width="14" height="14" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav__mob-panel" id="mob-firm">
-      <a href="about.html">About Cyber Profound</a>
-      <a href="about.html#leadership">Leadership</a>
-      <a href="governance.html">Board of Directors</a>
-      <a href="governance.html#principles">Our Principles</a>
-    </div>
-  </div>
-
-  <div class="nav__mob-group">
-    <button class="nav__mob-trigger" data-mob="platform">
-      Platform
-      <svg width="14" height="14" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav__mob-panel" id="mob-platform">
-      <a href="platform.html">Platform Overview</a>
-      <a href="criteria.html">Acquisition Criteria</a>
-      <a href="platform.html#technology">Operational Intelligence</a>
-    </div>
-  </div>
-
-  <div class="nav__mob-group">
-    <button class="nav__mob-trigger" data-mob="perspectives">
-      Perspectives
-      <svg width="14" height="14" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="nav__mob-panel" id="mob-perspectives">
-      <a href="newsroom.html">Newsroom</a>
-      <a href="newsroom.html#market">Market Intelligence</a>
-    </div>
-  </div>
-
-  <div class="nav__mob-cta">
-    <a href="contact.html" class="nav__talk">Request a Conversation</a>
-  </div>
-
-</div>
-
 <!-- SEARCH OVERLAY -->
 <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Site search" aria-modal="true">
   <button class="search-overlay__close" id="searchClose" aria-label="Close search">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     ESC
   </button>
   <div class="search-overlay__inner">
     <span class="search-overlay__label">Search Cyber Profound</span>
     <div class="search-overlay__form" role="search">
-      <span class="search-overlay__icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M11.5 11.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </span>
-      <input
-        class="search-overlay__input"
-        id="searchInput"
-        type="search"
-        placeholder="Search for acquisitions, platform, leadership…"
-        autocomplete="off"
-        aria-label="Search"
-      />
-      <button class="search-overlay__submit" type="submit" id="searchSubmit">Search</button>
+      <span class="search-overlay__icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M11.5 11.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <input class="search-overlay__input" id="searchInput" type="search" placeholder="Search acquisitions, platform, leadership…" autocomplete="off" aria-label="Search" />
+      <button class="search-overlay__submit" id="searchSubmit" type="button">Search</button>
     </div>
-    <div class="search-overlay__hints" aria-label="Quick links">
+    <div class="search-overlay__hints">
       <a href="criteria.html" class="search-overlay__hint">Acquisition Criteria</a>
       <a href="platform.html" class="search-overlay__hint">Platform Overview</a>
       <a href="governance.html" class="search-overlay__hint">Governance</a>
@@ -1037,69 +614,44 @@ setTimeout(() => {
 
 
 <script>
-// ── Nav ───────────────────────────────────────────────────────────────────────
 (function () {
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('raised', window.scrollY > 8);
-  }, { passive: true });
-
-  const burger = document.getElementById('burger');
-  const drawer = document.getElementById('drawer');
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() { nav.classList.toggle('raised', window.scrollY > 8); }, { passive: true });
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
   if (burger && drawer) {
-    burger.addEventListener('click', () => {
-      const open = drawer.classList.toggle('is-open');
+    burger.addEventListener('click', function() {
+      var open = drawer.classList.toggle('is-open');
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
     });
-    drawer.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        drawer.classList.remove('is-open');
-        burger.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+    drawer.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        drawer.classList.remove('is-open'); burger.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
       });
     });
   }
-
-  // Search
-  const searchBtn = document.getElementById('searchBtn');
-  const overlay   = document.getElementById('searchOverlay');
-  const closeBtn  = document.getElementById('searchClose');
-  const input     = document.getElementById('searchInput');
-  const submit    = document.getElementById('searchSubmit');
+  var searchBtn = document.getElementById('searchBtn');
+  var overlay = document.getElementById('searchOverlay');
+  var closeBtn = document.getElementById('searchClose');
+  var input = document.getElementById('searchInput');
+  var submit = document.getElementById('searchSubmit');
   if (!searchBtn || !overlay) return;
-
-  function openSearch() {
-    overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => input && input.focus(), 180);
-  }
-  function closeSearch() {
-    overlay.classList.remove('is-open');
-    document.body.style.overflow = '';
-    if (input) input.value = '';
-  }
-  function doSearch() {
-    const q = input ? input.value.trim() : '';
-    if (!q) return;
-    window.open('https://www.google.com/search?q=site:cyberprofound.com+' + encodeURIComponent(q), '_blank');
-    closeSearch();
-  }
-
+  function openSearch() { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; setTimeout(function(){ input && input.focus(); }, 180); }
+  function closeSearch() { overlay.classList.remove('is-open'); document.body.style.overflow = ''; if (input) input.value = ''; }
+  function doSearch() { var q = input ? input.value.trim() : ''; if (!q) return; window.open('https://www.google.com/search?q=site:cyberprofound.com+' + encodeURIComponent(q), '_blank'); closeSearch(); }
   searchBtn.addEventListener('click', openSearch);
-  closeBtn && closeBtn.addEventListener('click', closeSearch);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
-  submit && submit.addEventListener('click', doSearch);
-  input && input.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
-  document.addEventListener('keydown', e => {
+  if (closeBtn) closeBtn.addEventListener('click', closeSearch);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeSearch(); });
+  if (submit) submit.addEventListener('click', doSearch);
+  if (input) input.addEventListener('keydown', function(e) { if (e.key === 'Enter') doSearch(); });
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && overlay.classList.contains('is-open')) { closeSearch(); return; }
     if (overlay.classList.contains('is-open')) return;
-    if ((e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)) ||
-        ((e.ctrlKey || e.metaKey) && e.key === 'k')) {
-      e.preventDefault(); openSearch();
-    }
+    if ((e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement && document.activeElement.tagName)) ||
+        ((e.ctrlKey || e.metaKey) && e.key === 'k')) { e.preventDefault(); openSearch(); }
   });
 })();
 </script>
