@@ -165,6 +165,9 @@
 .board__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.5rem; }
 .board__intro { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 64ch; }
 .board__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .board__grid--2col { grid-template-columns: repeat(2, 1fr); }
+    .board__section-head { margin-bottom: 1.75rem; }
+    .board__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: var(--navy); letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid var(--border); }
 .board__card { border: 1px solid var(--border); background: #fff; border-radius: 4px; padding: clamp(1.5rem, 3vw, 2rem); }
 .board__name { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; line-height: 1.2; color: var(--navy); letter-spacing: -0.01em; }
 .board__name.conf { color: var(--muted); font-style: italic; }
@@ -452,11 +455,15 @@
 <section class="section board">
   <div class="wrap">
     <div class="board__head reveal">
-      <span class="eyebrow">The Board</span>
-      <h2>Directors</h2>
+      <span class="eyebrow">Leadership</span>
+      <h2>Board of Directors &amp; Executive Team</h2>
       <p class="board__intro">The board is composed of directors with senior-level experience in cybersecurity, enterprise technology, law, and institutional finance. Certain appointments are not publicly disclosed at this stage and are available under NDA to qualified counterparties.</p>
     </div>
-    <div class="board__grid">
+    <!-- ── BOARD OF DIRECTORS ── -->
+    <div class="board__section-head reveal">
+      <h3 class="board__section-title">Board of Directors</h3>
+    </div>
+    <div class="board__grid board__grid--2col">
       <div class="board__card reveal">
         <div class="board__name">Gautam Banerjea</div>
         <div class="board__role">Chairman of the Board</div>
@@ -473,6 +480,25 @@
           <button class="board__bio-btn" data-bio="nest">View Profile &rsaquo;</button>
         </div>
       </div>
+    </div>
+
+    <!-- ── EXECUTIVE TEAM ── -->
+    <div class="board__section-head reveal" style="margin-top: clamp(3rem,5vw,4.5rem);">
+      <h3 class="board__section-title">Executive Team</h3>
+    </div>
+    <div class="board__grid">
+      <div class="board__card reveal">
+        <div class="board__name conf">Confidential</div>
+        <div class="board__role">Chief Financial Officer</div>
+      </div>
+      <div class="board__card reveal">
+        <div class="board__name conf">Confidential</div>
+        <div class="board__role">Chief Legal Officer</div>
+      </div>
+      <div class="board__card reveal">
+        <div class="board__name conf">Confidential</div>
+        <div class="board__role">Investment Banker</div>
+      </div>
       <div class="board__card reveal">
         <div class="board__name">Manvedeep Singh</div>
         <div class="board__role">Non-Executive Director</div>
@@ -487,14 +513,6 @@
         <div class="board__actions">
           <button class="board__bio-btn" data-bio="jonathan">View Profile &rsaquo;</button>
         </div>
-      </div>
-      <div class="board__card reveal">
-        <div class="board__name conf">Confidential</div>
-        <div class="board__role">Chief Financial Officer</div>
-      </div>
-      <div class="board__card reveal">
-        <div class="board__name conf">Confidential</div>
-        <div class="board__role">Chief Legal Officer</div>
       </div>
       <div class="board__card reveal">
         <div class="board__name conf">Confidential</div>

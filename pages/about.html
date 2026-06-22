@@ -178,6 +178,8 @@
 .lead__head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: #fff; margin-bottom: 1.5rem; }
 .lead__sub { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 62ch; }
 .lead__label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 600; margin: clamp(2rem, 4vw, 3rem) 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .lead__section-head { margin-bottom: 1.75rem; }
+    .lead__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: #fff; letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
 .lead__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .lead__grid--2col { grid-template-columns: repeat(2, 1fr); }
 .lead__card { border: 1px solid rgba(255,255,255,0.12); background: var(--navy-2); border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2rem); }
@@ -502,7 +504,10 @@
       <p class="lead__sub">Cyber Profound is governed by a board with direct expertise in cybersecurity, law, finance, and enterprise technology, and led by an executive team with operating experience across the sector.</p>
     </div>
 
-    <div class="lead__label reveal">Board of Directors</div>
+    <!-- ── BOARD OF DIRECTORS ── -->
+    <div class="lead__section-head reveal">
+      <h3 class="lead__section-title">Board of Directors</h3>
+    </div>
     <div class="lead__grid lead__grid--2col">
       <div class="lead__card reveal">
         <div class="lead__name">Gautam Banerjea</div>
@@ -522,7 +527,10 @@
       </div>
     </div>
 
-    <div class="lead__label reveal">Executive</div>
+    <!-- ── EXECUTIVE TEAM ── -->
+    <div class="lead__section-head reveal" style="margin-top: clamp(3rem,5vw,4.5rem);">
+      <h3 class="lead__section-title">Executive Team</h3>
+    </div>
     <div class="lead__grid">
       <div class="lead__card reveal">
         <div class="lead__name conf">Confidential</div>
