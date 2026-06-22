@@ -21,18 +21,19 @@
     .nav.raised { box-shadow: 0 2px 28px rgba(10,27,46,0.09); }
     .nav__row {
       height: 100%; display: flex; align-items: center;
-      justify-content: space-between;
+      gap: 0;
     }
+    .nav__logo { flex-shrink: 0; margin-right: 2rem; }
     .nav__logo img { height: 42px; width: auto; display: block; }
 
     /* Top-level items */
-    .nav__menu { display: flex; align-items: center; gap: 0; list-style: none; }
+    .nav__menu { display: flex; align-items: center; justify-content: center; gap: 0; list-style: none; flex: 1; }
     .nav__item { position: relative; }
     .nav__item > a, .nav__item > button {
       display: flex; align-items: center; gap: 6px;
-      font-family: var(--font-b); font-size: 0.875rem; font-weight: 500;
+      font-family: var(--font-b); font-size: 0.9rem; font-weight: 500;
       color: var(--mid); letter-spacing: 0.02em;
-      padding: 0 1.35rem; height: var(--nav-h);
+      padding: 0 1.6rem; height: var(--nav-h);
       background: none; border: none; cursor: pointer;
       white-space: nowrap;
       transition: color 140ms;
@@ -116,7 +117,7 @@
     }
 
     /* Right section CTA */
-    .nav__right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .nav__right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; margin-left: 2rem; }
     .nav__talk {
       display: inline-flex; align-items: center; gap: 0.45rem;
       background: var(--blue); color: #fff;
