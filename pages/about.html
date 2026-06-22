@@ -179,6 +179,7 @@
 .lead__sub { font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 62ch; }
 .lead__label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 600; margin: clamp(2rem, 4vw, 3rem) 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .lead__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .lead__grid--2col { grid-template-columns: repeat(2, 1fr); }
 .lead__card { border: 1px solid rgba(255,255,255,0.12); background: var(--navy-2); border-radius: 4px; padding: clamp(1.5rem, 2.5vw, 2rem); }
 .lead__name { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; color: #fff; line-height: 1.2; letter-spacing: -0.01em; }
 .lead__role { margin-top: 0.5rem; font-size: 0.8125rem; letter-spacing: 0.02em; color: rgba(255,255,255,0.6); }
@@ -228,6 +229,7 @@
 /* ===== RESPONSIVE ===== */
 @media (max-width: 880px) {
   .lead__grid { grid-template-columns: repeat(2, 1fr); }
+      .lead__grid--2col { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .firm__grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -501,7 +503,7 @@
     </div>
 
     <div class="lead__label reveal">Board of Directors</div>
-    <div class="lead__grid">
+    <div class="lead__grid lead__grid--2col">
       <div class="lead__card reveal">
         <div class="lead__name">Gautam Banerjea</div>
         <div class="lead__role">Chairman of the Board</div>
@@ -518,6 +520,22 @@
           <button class="lead__bio-btn" data-bio="nest">View Profile &rsaquo;</button>
         </div>
       </div>
+    </div>
+
+    <div class="lead__label reveal">Executive</div>
+    <div class="lead__grid">
+      <div class="lead__card reveal">
+        <div class="lead__name conf">Confidential</div>
+        <div class="lead__role">Chief Financial Officer</div>
+      </div>
+      <div class="lead__card reveal">
+        <div class="lead__name conf">Confidential</div>
+        <div class="lead__role">Chief Legal Officer</div>
+      </div>
+      <div class="lead__card reveal">
+        <div class="lead__name conf">Confidential</div>
+        <div class="lead__role">Investment Banker</div>
+      </div>
       <div class="lead__card reveal">
         <div class="lead__name">Manvedeep Singh</div>
         <div class="lead__role">Non-Executive Director</div>
@@ -532,26 +550,6 @@
         <div class="lead__actions">
           <button class="lead__bio-btn" data-bio="jonathan">View Profile &rsaquo;</button>
         </div>
-      </div>
-      <div class="lead__card reveal">
-        <div class="lead__name conf">Confidential</div>
-        <div class="lead__role">Non-Executive Director</div>
-      </div>
-    </div>
-
-    <div class="lead__label reveal">Executive Team</div>
-    <div class="lead__grid">
-      <div class="lead__card reveal">
-        <div class="lead__name conf">Confidential</div>
-        <div class="lead__role">Chief Financial Officer</div>
-      </div>
-      <div class="lead__card reveal">
-        <div class="lead__name conf">Confidential</div>
-        <div class="lead__role">Chief Legal Officer</div>
-      </div>
-      <div class="lead__card reveal">
-        <div class="lead__name conf">Confidential</div>
-        <div class="lead__role">Investment Banker</div>
       </div>
       <div class="lead__card reveal">
         <div class="lead__name conf">Confidential</div>
