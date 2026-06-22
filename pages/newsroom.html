@@ -1,14 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Newsroom — Cyber Profound</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/tokens.css" /><link rel="stylesheet" href="../css/base.css" />
-  <link rel="stylesheet" href="../css/components.css" /><link rel="stylesheet" href="../css/inner.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Newsroom | Cyber Profound</title>
+<meta name="description" content="The latest updates from Cyber Profound — leadership appointments, strategic developments, and institutional perspectives on the cybersecurity market." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --blue: #0065fc; --blue-hover: #0050d0; --navy: #0A1B2E; --navy-2: #0d2340;
+  --white: #ffffff; --off: #f5f7fb; --border: #dde3ef;
+  --mid: #3a506b; --muted: #6b8096;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --font-b: 'Inter', sans-serif;
+  --nav-h: 68px; --max: 1120px; --gut: clamp(1.5rem, 5vw, 3.5rem);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: #fff; color: var(--navy); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+
+/* ===== NAV ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); z-index: 200; background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); transition: box-shadow 240ms var(--ease); }
+.nav.raised { box-shadow: 0 2px 24px rgba(10,27,46,0.08); }
+.nav__row { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+.nav__logo img { height: 36px; width: auto; }
+.nav__center { display: flex; align-items: center; gap: 0; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav__center a { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--mid); padding: 0.45rem 0.9rem; border-radius: 4px; letter-spacing: 0.01em; white-space: nowrap; transition: color 140ms, background 140ms; }
+.nav__center a:hover, .nav__center a.active { color: var(--navy); }
+.nav__center a.active { font-weight: 600; }
+.nav__right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.nav__talk { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--blue); color: #fff; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.025em; padding: 0.55rem 1.2rem; border-radius: 3px; white-space: nowrap; transition: background 160ms, box-shadow 160ms, transform 120ms; }
+.nav__talk:hover { background: var(--blue-hover); box-shadow: 0 6px 20px rgba(0,101,252,0.26); transform: translateY(-1px); }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav__burger span { display: block; width: 22px; height: 1.5px; background: var(--navy); transition: transform 200ms var(--ease), opacity 140ms; border-radius: 2px; }
+.nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { opacity: 0; }
+.nav__burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav__drawer { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 1.25rem var(--gut) 1.75rem; box-shadow: 0 20px 50px rgba(10,27,46,0.11); z-index: 199; }
+.nav__drawer.is-open { display: block; }
+.nav__drawer ul { list-style: none; }
+.nav__drawer ul li { border-bottom: 1px solid var(--border); }
+.nav__drawer ul li a { display: block; padding: 0.9rem 0; font-size: 0.9375rem; font-weight: 500; color: var(--navy); }
+.nav__drawer .nav__talk { display: flex; justify-content: center; width: 100%; margin-top: 1.25rem; padding: 0.875rem; }
+@media (max-width: 880px) { .nav__center { display: none; } .nav__right .nav__talk { display: none; } .nav__burger { display: flex; } }
+
+/* ===== SHARED ===== */
+.section { padding: clamp(5rem, 9vw, 9rem) 0; }
+.eyebrow { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 1.5rem; }
+.body { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); }
+.sec-head { max-width: 760px; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+.sec-head h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1; letter-spacing: -0.012em; color: var(--navy); }
+.sec-head--dark h2 { color: #fff; }
+.sec-head .body { margin-top: 1.5rem; }
+.sec-head--dark .body { color: rgba(255,255,255,0.6); }
+
+/* ===== HERO ===== */
+.hero { position: relative; background: var(--navy); color: #fff; padding: calc(var(--nav-h) + clamp(5.5rem, 12vw, 9rem)) 0 clamp(5.5rem, 12vw, 9rem); overflow: hidden; }
+.hero__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 30%, #000 30%, transparent 80%); }
+.hero__glow { position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; background: radial-gradient(circle, rgba(0,101,252,0.28) 0%, rgba(0,101,252,0.08) 35%, transparent 68%); filter: blur(20px); pointer-events: none; }
+.hero__inner { position: relative; max-width: 880px; }
+.hero h1 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2.75rem, 7vw, 4.5rem); line-height: 1.04; letter-spacing: -0.015em; color: #fff; margin-bottom: 1.75rem; }
+.hero__sub { font-size: clamp(1rem, 1.7vw, 1.1875rem); line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 60ch; }
+
+/* ===== FEATURED ARTICLE ===== */
+.featured { border: 1px solid var(--border); border-radius: 4px; padding: clamp(2rem, 5vw, 3rem); background: var(--off); }
+.featured__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.tag { display: inline-block; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); background: rgba(0,101,252,0.08); padding: 0.3rem 0.75rem; border-radius: 2px; }
+.date { font-size: 0.8125rem; color: var(--muted); }
+.featured h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.12; letter-spacing: -0.015em; color: var(--navy); margin-bottom: 1.5rem; max-width: 28ch; }
+.featured p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 72ch; margin-bottom: 1rem; }
+.featured p:last-of-type { margin-bottom: 1.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; padding: 0.9rem 1.75rem; border-radius: 3px; transition: background 160ms, box-shadow 160ms, transform 120ms, border-color 160ms, color 160ms; }
+.btn--outline { border: 1px solid var(--navy); color: var(--navy); background: transparent; }
+.btn--outline:hover { background: var(--navy); color: #fff; transform: translateY(-1px); }
+.btn--primary { background: var(--blue); color: #fff; }
+.btn--primary:hover { background: var(--blue-hover); box-shadow: 0 8px 24px rgba(0,101,252,0.26); transform: translateY(-1px); }
+.btn--ghost { border: 1px solid rgba(255,255,255,0.4); color: #fff; background: transparent; }
+.btn--ghost:hover { background: #fff; color: var(--navy); border-color: #fff; transform: translateY(-1px); }
+
+/* ===== NEWS GRID ===== */
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.news-card { border: 1px solid var(--border); border-radius: 4px; padding: clamp(1.75rem, 3vw, 2.25rem); background: #fff; display: flex; flex-direction: column; gap: 1rem; }
+.news-card__meta { display: flex; align-items: center; gap: 0.75rem; }
+.news-card h3 { font-family: var(--font-d); font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.2; color: var(--navy); letter-spacing: -0.01em; }
+.news-card p { font-size: 0.9375rem; line-height: 1.75; color: var(--mid); flex: 1; }
+.news-card__link { font-size: 0.8125rem; font-weight: 600; color: var(--blue); letter-spacing: 0.02em; margin-top: auto; display: inline-flex; align-items: center; gap: 0.35rem; transition: gap 160ms; }
+.news-card__link:hover { gap: 0.55rem; }
+
+/* ===== PERSPECTIVES (dark) ===== */
+.perspectives { background: var(--navy); color: #fff; }
+
+/* ===== CTA ===== */
+.cta { background: var(--navy); color: #fff; text-align: center; }
+.cta h2 { font-family: var(--font-d); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.18; letter-spacing: -0.012em; color: #fff; margin-bottom: 2.5rem; max-width: 26ch; margin-inline: auto; }
+.cta__btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta__note { margin-top: 1.75rem; font-size: 0.8125rem; color: rgba(255,255,255,0.5); }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--navy); color: #fff; padding: clamp(3.5rem, 6vw, 5rem) 0 2rem; }
+.footer__top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start; }
+.footer__brand { font-family: var(--font-d); font-weight: 600; font-size: 1.5rem; color: #fff; letter-spacing: -0.01em; }
+.footer__tag { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: rgba(255,255,255,0.45); max-width: 30ch; }
+.footer__nav { display: flex; flex-direction: column; gap: 0.65rem; }
+.footer__nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.6); transition: color 140ms; }
+.footer__nav a:hover { color: #fff; }
+.footer__contact { text-align: right; }
+.footer__contact a { display: block; font-size: 0.8125rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; transition: color 140ms; }
+.footer__contact a:hover { color: #fff; }
+.footer__rule { height: 1px; background: rgba(255,255,255,0.08); margin: clamp(2.5rem, 5vw, 3.5rem) 0 1.75rem; }
+.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease-out, transform 600ms ease-out; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .news-grid { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__contact { text-align: left; }
+  .cta__btns { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; }
+}
+@media (max-width: 960px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
 </head>
 <body>
+
 <nav class="nav" id="nav">
   <div class="wrap nav__row">
     <a href="../index.html" class="nav__logo" aria-label="Cyber Profound home">
@@ -43,77 +171,98 @@
   <a href="contact.html" class="nav__talk">Request a Conversation</a>
 </div>
 
-<!-- Page Hero -->
-<section class="page-hero bg-navy">
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="page-hero__content reveal">
-      <span class="eyebrow eyebrow--inv">Newsroom</span>
-      <h1 class="page-hero__heading">News &amp; Announcements</h1>
-      <p class="page-hero__sub">The latest updates from Cyber Profound — leadership appointments, strategic developments, and institutional perspectives on the cybersecurity market.</p>
+    <div class="hero__inner reveal">
+      <span class="eyebrow">Newsroom</span>
+      <h1>News &amp; Announcements</h1>
+      <p class="hero__sub">The latest updates from Cyber Profound — leadership appointments, strategic developments, and institutional perspectives on the cybersecurity market.</p>
     </div>
   </div>
-  <div class="page-hero__bar"></div>
-</section>
+</header>
 
-<!-- Featured article -->
+<!-- 2. FEATURED ARTICLE -->
 <section class="section">
-  <div class="wrap wrap--default">
-    <div class="featured-article reveal">
-      <div class="featured-article__meta">
-        <span class="news-card__tag">Leadership Appointment</span>
-        <span class="news-card__date" style="margin-left:var(--sp-4)">10 March 2026</span>
+  <div class="wrap">
+    <div class="featured reveal">
+      <div class="featured__meta">
+        <span class="tag">Leadership Appointment</span>
+        <span class="date">10 March 2026</span>
       </div>
-      <h2 class="featured-article__heading">Mary Ann Davidson Joins Cyber Profound Board of Directors</h2>
-      <p class="featured-article__body">We are honored to welcome Mary Ann Davidson as a Director of Cyber Profound. Mary Ann is one of the most respected voices in cybersecurity, having spent nearly 40 years as Chief Security Officer at Oracle Corporation, where she led the company's global software security assurance program.</p>
-      <p class="featured-article__body">Her appointment reflects our commitment to building Cyber Profound with the highest standards of governance, expertise, and integrity as we grow a national cybersecurity services platform.</p>
-      <p class="featured-article__body">As a company built on the conviction that governance is a competitive advantage — not a compliance exercise — bringing Mary Ann's four decades of experience to the board is a statement of intent. She has shaped how enterprise software is built securely at one of the world's largest technology companies. That perspective is exactly what a permanent-capital cybersecurity platform should have at the board level from its earliest days.</p>
-      <div style="margin-top:var(--sp-6)">
-        <a href="https://linkedin.com/company/cyberprofoundinc" class="btn btn--outline btn--sm">Read on LinkedIn →</a>
-      </div>
+      <h2>Mary Ann Davidson Joins Cyber Profound Board of Directors</h2>
+      <p>We are honored to welcome Mary Ann Davidson as a Director of Cyber Profound. Mary Ann is one of the most respected voices in cybersecurity, having spent nearly 40 years as Chief Security Officer at Oracle Corporation, where she led the company's global software security assurance program.</p>
+      <p>Her appointment reflects our commitment to building Cyber Profound with the highest standards of governance, expertise, and integrity as we grow a national cybersecurity services platform.</p>
+      <p>As a firm built on the conviction that governance is a competitive advantage — not a compliance exercise — bringing Mary Ann's four decades of experience to the board is a statement of intent. She has shaped how enterprise software is built securely at one of the world's largest technology companies. That perspective is exactly what a permanent-capital cybersecurity platform should have at the board level from its earliest days.</p>
+      <a href="https://linkedin.com/company/cyberprofoundinc" target="_blank" rel="noopener" class="btn btn--outline">Read on LinkedIn &rsaquo;</a>
     </div>
   </div>
 </section>
 
-<!-- News grid -->
-<section class="section bg-surface">
-  <div class="wrap wrap--default">
-    <div class="section-header reveal">
+<!-- 3. MARKET INTELLIGENCE ARTICLES -->
+<section class="section" style="background: var(--off); padding-top: clamp(5rem,9vw,9rem); padding-bottom: clamp(5rem,9vw,9rem);">
+  <div class="wrap">
+    <div class="sec-head reveal">
       <span class="eyebrow">Market Intelligence</span>
-      <h2 class="section-header__heading">Perspectives from the platform.</h2>
+      <h2>Perspectives from the Platform</h2>
+      <p class="body">Institutional views on cybersecurity market structure, consolidation dynamics, and the long-term case for permanent-capital ownership in managed security services.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-8)">
+    <div class="news-grid">
       <div class="news-card reveal">
-        <div style="display:flex;align-items:center;gap:var(--sp-4)"><span class="news-card__tag">Market Intelligence</span><span class="news-card__date">Mar 2026</span></div>
-        <h3 class="news-card__title">Why U.S. Cybersecurity Consolidation Is Accelerating</h3>
-        <p class="news-card__excerpt">A fragmented market of thousands of capable regional firms, a wave of founder-led businesses approaching succession, and capital that has mostly arrived in the form of short-horizon private equity. The conditions for disciplined consolidation are clear.</p>
-        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+        <div class="news-card__meta">
+          <span class="tag">Market Intelligence</span>
+          <span class="date">Mar 2026</span>
+        </div>
+        <h3>Why U.S. Cybersecurity Consolidation Is Accelerating</h3>
+        <p>A fragmented market of thousands of capable regional firms, a wave of founder-led businesses approaching succession, and capital that has mostly arrived in the form of short-horizon private equity. The conditions for disciplined consolidation are clear.</p>
+        <span class="news-card__link">Read more &rsaquo;</span>
       </div>
-      <div class="news-card reveal d1">
-        <div style="display:flex;align-items:center;gap:var(--sp-4)"><span class="news-card__tag">Platform Strategy</span><span class="news-card__date">Mar 2026</span></div>
-        <h3 class="news-card__title">How Integrated Security Platforms Improve Outcomes</h3>
-        <p class="news-card__excerpt">When cybersecurity firms operate under a shared governance model and unified AI infrastructure, the whole becomes measurably stronger than the sum of its parts — for customers, for retention, and for national coverage.</p>
-        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+      <div class="news-card reveal">
+        <div class="news-card__meta">
+          <span class="tag">Platform Strategy</span>
+          <span class="date">Mar 2026</span>
+        </div>
+        <h3>How Integrated Security Platforms Improve Outcomes</h3>
+        <p>When cybersecurity firms operate under a shared governance model and unified AI infrastructure, the whole becomes measurably stronger than the sum of its parts — for clients, for retention, and for national coverage.</p>
+        <span class="news-card__link">Read more &rsaquo;</span>
       </div>
-      <div class="news-card reveal d2">
-        <div style="display:flex;align-items:center;gap:var(--sp-4)"><span class="news-card__tag">For Founders</span><span class="news-card__date">Mar 2026</span></div>
-        <h3 class="news-card__title">What Cybersecurity Business Owners Should Know Before Selling</h3>
-        <p class="news-card__excerpt">A guide to evaluating acquirers, understanding deal structures, and ensuring the firm you built continues to thrive — on your terms and theirs. The difference between permanent capital and a 5-year flip matters enormously.</p>
-        <span class="btn btn--link" style="margin-top:var(--sp-2)">Read more →</span>
+      <div class="news-card reveal">
+        <div class="news-card__meta">
+          <span class="tag">For Founders</span>
+          <span class="date">Mar 2026</span>
+        </div>
+        <h3>What Cybersecurity Business Owners Should Know Before Selling</h3>
+        <p>A guide to evaluating acquirers, understanding deal structures, and ensuring the firm you built continues to thrive. The difference between permanent capital and a five-year flip matters enormously.</p>
+        <span class="news-card__link">Read more &rsaquo;</span>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="wrap footer__inner">
-    <div class="footer__col footer__col--brand">
-      <a href="../index.html" class="footer__logo">
-        <img src="../images/logo-nav.png" alt="Cyber Profound" />
-      </a>
-      <p class="footer__tag">A permanent-capital platform for cybersecurity services.</p>
+<!-- 4. CTA -->
+<section class="section cta">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Begin a confidential conversation with our team.</h2>
+      <div class="cta__btns">
+        <a href="contact.html" class="btn btn--primary">Request a Conversation</a>
+        <a href="platform.html" class="btn btn--ghost">Review the Platform</a>
+      </div>
+      <p class="cta__note">All initial conversations are strictly confidential.</p>
     </div>
-    <div class="footer__col">
-      <div class="footer__col-head">Platform</div>
+  </div>
+</section>
+
+<!-- 5. FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Cyber Profound</div>
+        <p class="footer__tag">A permanent-capital platform for cybersecurity services.</p>
+      </div>
       <nav class="footer__nav" aria-label="Footer">
         <a href="about.html">About</a>
         <a href="platform.html">Platform</a>
@@ -121,28 +270,52 @@
         <a href="governance.html">Governance</a>
         <a href="newsroom.html">Newsroom</a>
       </nav>
-    </div>
-    <div class="footer__col">
-      <div class="footer__col-head">Contact</div>
-      <nav class="footer__nav" aria-label="Footer contact">
+      <div class="footer__contact">
         <a href="mailto:ngjinaj@cyberprofound.com">ngjinaj@cyberprofound.com</a>
         <a href="tel:+18889007343">+1 (888) 900-7343</a>
-        <a href="contact.html">Request a Conversation</a>
-      </nav>
+      </div>
+    </div>
+    <div class="footer__rule" aria-hidden="true"></div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cyber Profound Inc. All rights reserved.</span>
+      <span>New Baltimore, Michigan</span>
     </div>
   </div>
-  <div class="wrap footer__bottom">
-    <span>&copy; 2026 Cyber Profound Inc. All rights reserved.</span>
-    <span>A permanent-capital cybersecurity platform</span>
-  </div>
 </footer>
-<style>
-.featured-article { border: 1px solid var(--color-border); border-radius: var(--r-lg); padding: var(--sp-12) var(--sp-12) var(--sp-10); background: var(--color-bg); display: flex; flex-direction: column; gap: var(--sp-5); }
-.featured-article__meta { display: flex; align-items: center; }
-.featured-article__heading { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; color: var(--color-text); letter-spacing: -0.02em; line-height: 1.1; max-width: 26ch; }
-.featured-article__body { font-size: var(--text-md); color: var(--color-text-muted); line-height: 1.75; max-width: 70ch; }
-@media (max-width: 640px) { .featured-article { padding: var(--sp-8) var(--sp-6); } }
-</style>
-<script src="../js/main.js"></script>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('raised', window.scrollY > 8); }, { passive: true });
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger.addEventListener('click', () => {
+  const open = drawer.classList.toggle('is-open');
+  burger.classList.toggle('is-open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+drawer.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    drawer.classList.remove('is-open'); burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  });
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = (idx > 0 ? idx * 80 : 0) + 'ms';
+      el.classList.add('in');
+      io.unobserve(el);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+}, 100);
+</script>
 </body>
 </html>
