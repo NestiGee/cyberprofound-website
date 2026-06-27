@@ -476,7 +476,351 @@
     }
     .search-overlay__hint:hover { background: rgba(255,255,255,0.18); color: #fff; }
 
-    
+
+    /* ═══════════════════════════════════════════════════════════
+       MODULE A — PLATFORM ARCHITECTURE (interactive diagram)
+    ═══════════════════════════════════════════════════════════ */
+    .arch { background: var(--off); }
+    .arch__head { max-width: 760px; margin-bottom: clamp(3.5rem, 6vw, 5rem); }
+    .arch__head h2 { font-family: var(--font-d); font-weight: 600;
+      font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1;
+      letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.25rem; }
+    .arch__head p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+      line-height: 1.75; color: var(--mid); max-width: 58ch; }
+
+    /* Tab bar */
+    .arch__tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border);
+      margin-bottom: clamp(2.5rem, 5vw, 4rem); overflow-x: auto; }
+    .arch__tab { flex-shrink: 0; font-family: var(--font-b); font-size: 0.8125rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--muted); padding: 0.85rem 1.75rem; border: none;
+      background: none; cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: color 160ms, border-color 160ms; }
+    .arch__tab:hover { color: var(--navy); }
+    .arch__tab.is-active { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* Tab panels */
+    .arch__panel { display: none; }
+    .arch__panel.is-active { display: block; }
+
+    /* Diagram canvas */
+    .arch__diagram {
+      border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; overflow: hidden; position: relative;
+    }
+
+    /* Root node row */
+    .arch__root-row {
+      display: flex; justify-content: center; padding: 2.5rem 2rem 0;
+    }
+    .arch__root-node {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--navy); color: #fff; border-radius: 40px;
+      padding: 0.65rem 1.5rem 0.65rem 0.75rem;
+      font-family: var(--font-b); font-size: 0.8125rem; font-weight: 600;
+      letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(10,27,46,0.18);
+    }
+    .arch__root-badge {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
+    .arch__root-badge svg { display: block; }
+
+    /* SVG connector lines */
+    .arch__connectors { display: block; width: 100%; height: 56px; overflow: visible; }
+
+    /* Pillar row */
+    .arch__pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); margin: 0;
+    }
+    .arch__pillar {
+      background: #fff; padding: 1.75rem 1.5rem 1.5rem;
+      cursor: pointer; transition: background 160ms;
+      border-bottom: 2px solid transparent; position: relative;
+    }
+    .arch__pillar:hover { background: var(--off); }
+    .arch__pillar.is-active { background: var(--off); border-bottom-color: var(--blue); }
+    .arch__pillar-num {
+      font-family: var(--font-d); font-size: 0.875rem; font-weight: 600;
+      color: var(--blue); margin-bottom: 0.75rem; opacity: 0.6;
+    }
+    .arch__pillar h3 {
+      font-family: var(--font-b); font-size: 0.9375rem; font-weight: 600;
+      color: var(--navy); margin: 0 0 0.375rem; letter-spacing: -0.01em;
+    }
+    .arch__pillar p {
+      font-size: 0.8125rem; color: var(--muted); line-height: 1.55; margin: 0;
+    }
+    .arch__pillar-arrow {
+      position: absolute; bottom: 1rem; right: 1.25rem;
+      font-size: 0.75rem; color: var(--blue); opacity: 0;
+      transition: opacity 160ms, transform 160ms;
+    }
+    .arch__pillar:hover .arch__pillar-arrow,
+    .arch__pillar.is-active .arch__pillar-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* Detail band */
+    .arch__detail {
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      border-top: 1px solid var(--border);
+      background: #f9fafd;
+    }
+    .arch__detail-label {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem;
+    }
+    .arch__detail-content { display: none; }
+    .arch__detail-content.is-active { display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+    .arch__detail-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 3px;
+      padding: 1.25rem 1.25rem 1.125rem;
+    }
+    .arch__detail-card h4 {
+      font-family: var(--font-b); font-size: 0.875rem; font-weight: 600;
+      color: var(--navy); margin: 0 0 0.5rem; letter-spacing: -0.01em;
+    }
+    .arch__detail-card p {
+      font-size: 0.8125rem; color: var(--mid); line-height: 1.6; margin: 0;
+    }
+    .arch__detail-card .arch__tag {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      background: rgba(0,101,252,0.07); padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* Foundation strip */
+    .arch__foundation {
+      padding: 1.25rem 1.75rem; border-top: 1px solid var(--border);
+      background: var(--navy); display: flex; align-items: center;
+      gap: 1.25rem; flex-wrap: wrap;
+    }
+    .arch__foundation-label {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4); flex-shrink: 0;
+      padding-right: 1.25rem; border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .arch__foundation-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .arch__chip {
+      font-size: 0.7125rem; font-weight: 500;
+      color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+      padding: 0.3rem 0.75rem; white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .arch__pillars { grid-template-columns: 1fr; }
+      .arch__detail-content.is-active { grid-template-columns: 1fr; }
+      .arch__tab { padding: 0.75rem 1.1rem; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MODULE B — SHARED SERVICES TECHNICAL BREAKDOWN
+    ═══════════════════════════════════════════════════════════ */
+    .svc { background: var(--navy); color: #fff; }
+    .svc__head { max-width: 760px; margin-bottom: clamp(3rem, 6vw, 5rem); }
+    .svc__head h2 { font-family: var(--font-d); font-weight: 600;
+      font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1;
+      letter-spacing: -0.012em; color: #fff; margin-bottom: 1.25rem; }
+    .svc__head p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+      line-height: 1.75; color: rgba(255,255,255,0.58); max-width: 58ch; }
+
+    .svc__layout { display: grid; grid-template-columns: 280px 1fr; gap: 1px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px; overflow: hidden; }
+
+    /* Left nav column */
+    .svc__nav { background: rgba(255,255,255,0.04); display: flex;
+      flex-direction: column; }
+    .svc__nav-item {
+      padding: 1.25rem 1.5rem; cursor: pointer; border: none;
+      background: none; color: rgba(255,255,255,0.55); text-align: left;
+      display: flex; align-items: center; gap: 0.875rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06); width: 100%;
+      transition: background 160ms, color 160ms; position: relative;
+    }
+    .svc__nav-item:last-child { border-bottom: none; }
+    .svc__nav-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85); }
+    .svc__nav-item.is-active { background: rgba(0,101,252,0.18); color: #fff; }
+    .svc__nav-item.is-active::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--blue);
+    }
+    .svc__nav-icon {
+      width: 32px; height: 32px; border-radius: 3px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);
+      transition: background 160ms, color 160ms;
+    }
+    .svc__nav-item.is-active .svc__nav-icon { background: var(--blue); color: #fff; }
+    .svc__nav-label { font-family: var(--font-b); font-size: 0.8125rem;
+      font-weight: 600; letter-spacing: -0.005em; }
+
+    /* Right content panel */
+    .svc__panels { background: rgba(255,255,255,0.03); }
+    .svc__panel { display: none; padding: clamp(2rem, 3.5vw, 2.75rem); }
+    .svc__panel.is-active { display: block; }
+    .svc__panel-eyebrow {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
+    }
+    .svc__panel h3 {
+      font-family: var(--font-d); font-weight: 600;
+      font-size: clamp(1.5rem, 2.8vw, 2rem); line-height: 1.15;
+      letter-spacing: -0.01em; color: #fff; margin-bottom: 1.25rem;
+    }
+    .svc__panel-desc {
+      font-size: 0.9375rem; line-height: 1.75;
+      color: rgba(255,255,255,0.58); max-width: 52ch; margin-bottom: 2rem;
+    }
+    .svc__panel-specs { display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: rgba(255,255,255,0.08); border-radius: 3px;
+      overflow: hidden; margin-bottom: 2rem; }
+    .svc__spec {
+      background: rgba(255,255,255,0.04); padding: 1.25rem 1.25rem 1.125rem;
+    }
+    .svc__spec-label {
+      font-size: 0.6125rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.5rem;
+    }
+    .svc__spec-value {
+      font-family: var(--font-b); font-size: 0.9375rem; font-weight: 600;
+      color: rgba(255,255,255,0.88);
+    }
+    .svc__tools-label {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 0.875rem;
+    }
+    .svc__tools { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .svc__tool {
+      font-size: 0.75rem; font-weight: 500;
+      color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+      padding: 0.3rem 0.7rem; white-space: nowrap;
+    }
+
+    @media (max-width: 720px) {
+      .svc__layout { grid-template-columns: 1fr; }
+      .svc__nav { flex-direction: row; overflow-x: auto; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .svc__nav-item { flex-direction: column; gap: 0.4rem; text-align: center;
+        min-width: 100px; padding: 1rem 0.75rem; border-bottom: none;
+        border-right: 1px solid rgba(255,255,255,0.06); }
+      .svc__nav-item.is-active::before { top: 0; right: 0; bottom: auto; left: 0; width: auto; height: 2px; }
+      .svc__panel-specs { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MODULE C — SECURITY MESH (conceptual)
+    ═══════════════════════════════════════════════════════════ */
+    .mesh { background: #fff; overflow: hidden; position: relative; }
+
+    /* Decorative grid overlay */
+    .mesh::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,101,252,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,101,252,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 70% at 70% 50%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 70% 50%, #000 20%, transparent 75%);
+    }
+
+    .mesh__head { max-width: 760px; margin-bottom: clamp(3.5rem, 6vw, 5rem);
+      position: relative; z-index: 1; }
+    .mesh__head h2 { font-family: var(--font-d); font-weight: 600;
+      font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.1;
+      letter-spacing: -0.012em; color: var(--navy); margin-bottom: 1.25rem; }
+    .mesh__head p { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+      line-height: 1.75; color: var(--mid); max-width: 58ch; }
+
+    /* Main layout: SVG mesh left + metric column right */
+    .mesh__layout { display: grid; grid-template-columns: 1fr 360px;
+      gap: clamp(2.5rem, 5vw, 5rem); align-items: start;
+      position: relative; z-index: 1; }
+
+    /* SVG mesh canvas */
+    .mesh__canvas-wrap { position: relative; }
+    .mesh__svg { width: 100%; height: auto; display: block; }
+
+    /* Node styles (applied via JS classes on SVG) */
+    .mesh-node-core { cursor: default; }
+    .mesh-node-ring { cursor: pointer; transition: opacity 200ms; }
+    .mesh-node-ring:hover { opacity: 0.85; }
+
+    /* Pulse animation for core node */
+    @keyframes meshPulse {
+      0%, 100% { r: 38; opacity: 1; }
+      50% { r: 44; opacity: 0.5; }
+    }
+    .mesh-pulse { animation: meshPulse 3s ease-in-out infinite; }
+
+    /* Right column: metrics + capability list */
+    .mesh__meta { display: flex; flex-direction: column; gap: 1.5rem; }
+    .mesh__metric {
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 1.5rem 1.5rem 1.375rem; background: var(--off);
+      display: flex; flex-direction: column; gap: 0.375rem;
+    }
+    .mesh__metric-num {
+      font-family: var(--font-d); font-size: 2.5rem; font-weight: 300;
+      line-height: 1; color: var(--blue); letter-spacing: -0.03em;
+    }
+    .mesh__metric-label {
+      font-family: var(--font-b); font-size: 0.75rem; font-weight: 600;
+      color: var(--navy); letter-spacing: 0.01em; text-transform: uppercase;
+      font-size: 0.625rem; letter-spacing: 0.12em;
+    }
+    .mesh__metric-desc {
+      font-size: 0.8125rem; color: var(--muted); line-height: 1.55; margin-top: 0.25rem;
+    }
+    .mesh__capability-list { display: flex; flex-direction: column; gap: 0; }
+    .mesh__cap {
+      display: flex; align-items: flex-start; gap: 0.875rem;
+      padding: 1.125rem 0; border-bottom: 1px solid var(--border);
+    }
+    .mesh__cap:last-child { border-bottom: none; }
+    .mesh__cap-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+      flex-shrink: 0; margin-top: 5px; opacity: 0.6;
+    }
+    .mesh__cap-body {}
+    .mesh__cap h4 {
+      font-family: var(--font-b); font-size: 0.875rem; font-weight: 600;
+      color: var(--navy); margin: 0 0 0.3rem; letter-spacing: -0.01em;
+    }
+    .mesh__cap p { font-size: 0.8125rem; color: var(--mid); line-height: 1.6; margin: 0; }
+
+    /* Tooltip for SVG nodes */
+    .mesh__tooltip {
+      position: absolute; pointer-events: none;
+      background: var(--navy); color: #fff; border-radius: 3px;
+      padding: 0.6rem 1rem; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.01em; white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(10,27,46,0.25);
+      opacity: 0; transition: opacity 160ms; z-index: 10;
+      transform: translateX(-50%) translateY(-130%);
+    }
+    .mesh__tooltip.is-visible { opacity: 1; }
+    .mesh__tooltip::after {
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 5px solid transparent; border-top-color: var(--navy);
+    }
+
+    @media (max-width: 900px) {
+      .mesh__layout { grid-template-columns: 1fr; }
+      .mesh__meta { flex-direction: row; flex-wrap: wrap; }
+      .mesh__metric { flex: 1; min-width: 160px; }
+      .mesh__capability-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; width: 100%; }
+    }
+    @media (max-width: 540px) {
+      .mesh__meta { flex-direction: column; }
+      .mesh__capability-list { grid-template-columns: 1fr; }
+    }
+
     </style>
 </head>
 <body>
@@ -625,6 +969,305 @@
   </div>
 </section>
 
+
+
+<!-- ══ MODULE A — PLATFORM ARCHITECTURE ══ -->
+<section class="section arch" id="architecture">
+  <div class="wrap">
+    <div class="arch__head reveal">
+      <span class="eyebrow">Platform Architecture</span>
+      <h2>A unified operating system for acquired cybersecurity firms.</h2>
+      <p>Every company that joins the Cyber Profound platform is integrated into a three-layer architecture — Acquire, Operate, and Govern — that replaces fragmented, owner-dependent operations with institutional-grade infrastructure.</p>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="arch__tabs" role="tablist" aria-label="Architecture layers">
+      <button class="arch__tab is-active" role="tab" data-arch-tab="acquire" aria-selected="true">Acquisition Layer</button>
+      <button class="arch__tab" role="tab" data-arch-tab="operate" aria-selected="false">Operating Layer</button>
+      <button class="arch__tab" role="tab" data-arch-tab="govern" aria-selected="false">Governance Layer</button>
+    </div>
+
+    <!-- PANEL: Acquisition Layer -->
+    <div class="arch__panel is-active" id="arch-panel-acquire">
+      <div class="arch__diagram reveal">
+        <!-- Root node -->
+        <div class="arch__root-row">
+          <div class="arch__root-node">
+            <div class="arch__root-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M7 1L13 4.5V9.5L7 13L1 9.5V4.5L7 1Z" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+              </svg>
+            </div>
+            Cyber Profound — Acquisition Layer
+          </div>
+        </div>
+        <!-- SVG connector lines -->
+        <svg class="arch__connectors" viewBox="0 0 900 56" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M450 0 L150 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L450 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L750 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <circle cx="450" cy="0" r="4" fill="#0065fc"/>
+          <circle cx="150" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="450" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="750" cy="56" r="4" fill="#dde3ef"/>
+        </svg>
+        <!-- Three pillars -->
+        <div class="arch__pillars">
+          <div class="arch__pillar is-active" data-arch-pillar="acq-source" tabindex="0">
+            <div class="arch__pillar-num">01</div>
+            <h3>Sourcing &amp; Qualification</h3>
+            <p>Proprietary deal pipeline targeting founder-owned MSSPs with $3M–$20M revenue, 70%+ recurring contracts, and demonstrated client retention.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="acq-due" tabindex="0">
+            <div class="arch__pillar-num">02</div>
+            <h3>Diligence Framework</h3>
+            <p>Structured financial, operational, and cybersecurity-specific diligence — including technical stack review, client concentration analysis, and EBITDA normalization.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="acq-close" tabindex="0">
+            <div class="arch__pillar-num">03</div>
+            <h3>Transaction &amp; Integration</h3>
+            <p>SBA 7(a) and institutional debt structures. 90-day integration sprint. Brand and client relationships preserved. Equity participation available to founders who remain.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+        </div>
+        <!-- Detail band -->
+        <div class="arch__detail">
+          <div class="arch__detail-label">Layer Detail</div>
+          <div class="arch__detail-content is-active" id="detail-acq-source">
+            <div class="arch__detail-card">
+              <h4>Target Criteria Engine</h4>
+              <p>EBITDA $1M+, revenue $3M–$20M, recurring contract base ≥70%, no single-client concentration above 25%.</p>
+              <span class="arch__tag">Quantitative Screen</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Outreach &amp; Confidentiality</h4>
+              <p>All initial contact is confidential. No intermediaries, no auction process. Direct principal-to-principal conversations only.</p>
+              <span class="arch__tag">Direct Sourcing</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Sector Focus</h4>
+              <p>Healthcare, financial services, government, critical infrastructure MSSPs. Vertically specialized firms carry premium valuations within the platform.</p>
+              <span class="arch__tag">Vertical Priority</span>
+            </div>
+          </div>
+          <div class="arch__detail-content" id="detail-acq-due">
+            <div class="arch__detail-card">
+              <h4>Financial Diligence</h4>
+              <p>3-year P&amp;L normalization, EBITDA addback analysis, working capital assessment, and deferred revenue review.</p>
+              <span class="arch__tag">Financial</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Technical Stack Audit</h4>
+              <p>Security tooling inventory, infrastructure documentation, staffing dependencies, and vendor contract transferability.</p>
+              <span class="arch__tag">Technical</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Client Portfolio Review</h4>
+              <p>NPS, churn rate, contract terms, renewal schedules, and revenue visibility assessment across the full client base.</p>
+              <span class="arch__tag">Commercial</span>
+            </div>
+          </div>
+          <div class="arch__detail-content" id="detail-acq-close">
+            <div class="arch__detail-card">
+              <h4>Capital Structure</h4>
+              <p>SBA 7(a) debt combined with institutional equity. Seller note available where appropriate. No forced leveraged recapitalization.</p>
+              <span class="arch__tag">Financing</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Day 1 Integration Protocol</h4>
+              <p>Shared payroll, legal, compliance, and financial reporting activated immediately post-close. Operational disruption minimized.</p>
+              <span class="arch__tag">Integration</span>
+            </div>
+            <div class="arch__detail-card">
+              <h4>Founder Retention</h4>
+              <p>Equity participation available to founders who remain in operational roles. Management incentive plan aligned to platform performance.</p>
+              <span class="arch__tag">Retention</span>
+            </div>
+          </div>
+        </div>
+        <!-- Foundation strip -->
+        <div class="arch__foundation">
+          <span class="arch__foundation-label">Platform Foundation</span>
+          <div class="arch__foundation-chips">
+            <span class="arch__chip">SBA 7(a) Capital</span>
+            <span class="arch__chip">Institutional Equity</span>
+            <span class="arch__chip">Proprietary Pipeline</span>
+            <span class="arch__chip">Board Oversight</span>
+            <span class="arch__chip">Seller Retention Equity</span>
+          </div>
+        </div>
+      </div><!-- /arch__diagram -->
+    </div><!-- /panel acquire -->
+
+    <!-- PANEL: Operating Layer -->
+    <div class="arch__panel" id="arch-panel-operate">
+      <div class="arch__diagram reveal">
+        <div class="arch__root-row">
+          <div class="arch__root-node">
+            <div class="arch__root-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5.5" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+                <circle cx="7" cy="7" r="2" fill="rgba(0,101,252,0.7)"/>
+              </svg>
+            </div>
+            Cyber Profound — Operating Layer
+          </div>
+        </div>
+        <svg class="arch__connectors" viewBox="0 0 900 56" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M450 0 L112 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L337 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L562 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L787 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <circle cx="450" cy="0" r="4" fill="#0065fc"/>
+          <circle cx="112" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="337" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="562" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="787" cy="56" r="4" fill="#dde3ef"/>
+        </svg>
+        <div class="arch__pillars" style="grid-template-columns: repeat(4,1fr);">
+          <div class="arch__pillar is-active" data-arch-pillar="op-soc" tabindex="0">
+            <div class="arch__pillar-num">01</div>
+            <h3>AI Operations Center</h3>
+            <p>Centralized 24/7 SOC serving all platform companies from a single intelligence environment.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="op-infra" tabindex="0">
+            <div class="arch__pillar-num">02</div>
+            <h3>Shared Infrastructure</h3>
+            <p>Pooled licensing, legal, HR, finance, and compliance functions available to every portfolio company.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="op-intel" tabindex="0">
+            <div class="arch__pillar-num">03</div>
+            <h3>Threat Intelligence</h3>
+            <p>Cross-portfolio telemetry aggregation, dark web monitoring, and correlated threat pattern detection.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="op-scale" tabindex="0">
+            <div class="arch__pillar-num">04</div>
+            <h3>Revenue Expansion</h3>
+            <p>Cross-sell engine enabling platform companies to offer capabilities built by peers without rebuilding them.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+        </div>
+        <div class="arch__detail">
+          <div class="arch__detail-label">Layer Detail</div>
+          <div class="arch__detail-content is-active" id="detail-op-soc">
+            <div class="arch__detail-card"><h4>CrowdStrike Falcon + Charlotte AI</h4><p>Autonomous endpoint detection, triage, and response across all platform endpoints.</p><span class="arch__tag">EDR / AI</span></div>
+            <div class="arch__detail-card"><h4>Microsoft Sentinel + Copilot</h4><p>Cloud-native SIEM with AI-assisted alert correlation and investigation acceleration.</p><span class="arch__tag">SIEM</span></div>
+            <div class="arch__detail-card"><h4>Palo Alto Cortex XSIAM</h4><p>AI-driven SOC platform integrating XDR, SOAR, and ASM into a unified analyst workspace.</p><span class="arch__tag">XSIAM</span></div>
+          </div>
+          <div class="arch__detail-content" id="detail-op-infra">
+            <div class="arch__detail-card"><h4>Legal &amp; Compliance</h4><p>Centralized contract management, regulatory filings, cyber insurance, and employment law — available to all portfolio companies.</p><span class="arch__tag">Shared Service</span></div>
+            <div class="arch__detail-card"><h4>Finance &amp; Reporting</h4><p>Consolidated financial reporting, treasury management, accounts payable/receivable, and audit support.</p><span class="arch__tag">Shared Service</span></div>
+            <div class="arch__detail-card"><h4>HR &amp; Talent</h4><p>Unified payroll, benefits administration, recruiting pipeline, and professional development programs.</p><span class="arch__tag">Shared Service</span></div>
+          </div>
+          <div class="arch__detail-content" id="detail-op-intel">
+            <div class="arch__detail-card"><h4>Cross-Portfolio Telemetry</h4><p>Anonymized threat signal aggregation across all platform companies creates a collective detection advantage no standalone MSSP can replicate.</p><span class="arch__tag">Intelligence</span></div>
+            <div class="arch__detail-card"><h4>Dark Web Monitoring</h4><p>Continuous surveillance of underground markets, paste sites, and threat actor channels for client-specific exposure indicators.</p><span class="arch__tag">Intelligence</span></div>
+            <div class="arch__detail-card"><h4>ISAC Integration</h4><p>Active membership in sector-specific Information Sharing and Analysis Centers — healthcare, financial services, and critical infrastructure.</p><span class="arch__tag">Intelligence</span></div>
+          </div>
+          <div class="arch__detail-content" id="detail-op-scale">
+            <div class="arch__detail-card"><h4>Cross-Sell Engine</h4><p>A healthcare MSSP in the portfolio can sell cloud security capabilities built by a peer firm — with zero incremental build cost.</p><span class="arch__tag">Revenue</span></div>
+            <div class="arch__detail-card"><h4>Capability Catalog</h4><p>Standardized service definitions across identity, cloud, compliance, and response — enabling rapid onboarding of new client requirements.</p><span class="arch__tag">Revenue</span></div>
+            <div class="arch__detail-card"><h4>National Delivery</h4><p>Geographic footprint expansion through portfolio firm network — serving clients across multiple metro markets from a single platform relationship.</p><span class="arch__tag">Revenue</span></div>
+          </div>
+        </div>
+        <div class="arch__foundation">
+          <span class="arch__foundation-label">Technology Stack</span>
+          <div class="arch__foundation-chips">
+            <span class="arch__chip">CrowdStrike</span>
+            <span class="arch__chip">Microsoft Sentinel</span>
+            <span class="arch__chip">Palo Alto Cortex</span>
+            <span class="arch__chip">Wiz</span>
+            <span class="arch__chip">Microsoft Entra</span>
+            <span class="arch__chip">Cyera</span>
+            <span class="arch__chip">Google SecOps</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel operate -->
+
+    <!-- PANEL: Governance Layer -->
+    <div class="arch__panel" id="arch-panel-govern">
+      <div class="arch__diagram reveal">
+        <div class="arch__root-row">
+          <div class="arch__root-node">
+            <div class="arch__root-badge">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="10" height="10" rx="1.5" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+                <path d="M5 7h4M7 5v4" stroke="rgba(0,101,252,0.8)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            Cyber Profound — Governance Layer
+          </div>
+        </div>
+        <svg class="arch__connectors" viewBox="0 0 900 56" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M450 0 L150 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L450 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <path d="M450 0 L750 56" stroke="#dde3ef" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+          <circle cx="450" cy="0" r="4" fill="#0065fc"/>
+          <circle cx="150" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="450" cy="56" r="4" fill="#dde3ef"/>
+          <circle cx="750" cy="56" r="4" fill="#dde3ef"/>
+        </svg>
+        <div class="arch__pillars">
+          <div class="arch__pillar is-active" data-arch-pillar="gov-board" tabindex="0">
+            <div class="arch__pillar-num">01</div>
+            <h3>Board Oversight</h3>
+            <p>Independent board with quarterly reporting, fiduciary accountability, and investment committee approval for acquisitions above threshold.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="gov-risk" tabindex="0">
+            <div class="arch__pillar-num">02</div>
+            <h3>Risk &amp; Compliance</h3>
+            <p>Enterprise risk management framework applied across all portfolio companies — including cyber, legal, regulatory, and operational risk.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+          <div class="arch__pillar" data-arch-pillar="gov-report" tabindex="0">
+            <div class="arch__pillar-num">03</div>
+            <h3>Reporting Standards</h3>
+            <p>Institutional financial reporting, portfolio KPI dashboards, and consolidated performance metrics delivered to the board on a defined cadence.</p>
+            <span class="arch__pillar-arrow">→</span>
+          </div>
+        </div>
+        <div class="arch__detail">
+          <div class="arch__detail-label">Layer Detail</div>
+          <div class="arch__detail-content is-active" id="detail-gov-board">
+            <div class="arch__detail-card"><h4>Board Composition</h4><p>Chairman, Founder &amp; MD, CEO, and Independent Non-Executive Directors with backgrounds in cybersecurity, law, enterprise technology, and institutional finance.</p><span class="arch__tag">Governance</span></div>
+            <div class="arch__detail-card"><h4>Investment Committee</h4><p>Formal approval process for acquisitions, capital deployments above defined thresholds, and strategic partnerships.</p><span class="arch__tag">Governance</span></div>
+            <div class="arch__detail-card"><h4>Fiduciary Framework</h4><p>Directors' duties, conflict of interest policies, and related-party transaction standards — the same structures applied to public companies.</p><span class="arch__tag">Governance</span></div>
+          </div>
+          <div class="arch__detail-content" id="detail-gov-risk">
+            <div class="arch__detail-card"><h4>Cyber Risk Register</h4><p>Consolidated risk register across all portfolio companies — tracked, rated, and reviewed quarterly with mitigation status.</p><span class="arch__tag">Risk</span></div>
+            <div class="arch__detail-card"><h4>Regulatory Compliance</h4><p>CMMC, HIPAA, SOC 2 Type II, and NIST CSF frameworks implemented and maintained as platform standards.</p><span class="arch__tag">Compliance</span></div>
+            <div class="arch__detail-card"><h4>Insurance Program</h4><p>Consolidated cyber liability, E&amp;O, and D&amp;O insurance structure — providing platform-wide coverage at institutional rates.</p><span class="arch__tag">Risk</span></div>
+          </div>
+          <div class="arch__detail-content" id="detail-gov-report">
+            <div class="arch__detail-card"><h4>Consolidated Financials</h4><p>Monthly management accounts, quarterly board packs, and annual audited financials prepared to institutional standards.</p><span class="arch__tag">Reporting</span></div>
+            <div class="arch__detail-card"><h4>Portfolio KPI Dashboard</h4><p>Real-time visibility into ARR, EBITDA margin, NPS, headcount, and security metrics across every platform company.</p><span class="arch__tag">Reporting</span></div>
+            <div class="arch__detail-card"><h4>Investor Reporting</h4><p>Capital partner reporting cadence, LP communications, and debt covenant compliance reporting on defined schedules.</p><span class="arch__tag">Reporting</span></div>
+          </div>
+        </div>
+        <div class="arch__foundation">
+          <span class="arch__foundation-label">Compliance Standards</span>
+          <div class="arch__foundation-chips">
+            <span class="arch__chip">CMMC</span>
+            <span class="arch__chip">HIPAA</span>
+            <span class="arch__chip">SOC 2 Type II</span>
+            <span class="arch__chip">NIST CSF</span>
+            <span class="arch__chip">ISO 27001</span>
+            <span class="arch__chip">FedRAMP</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel govern -->
+
+  </div><!-- /wrap -->
+</section>
+
 <!-- 5. AI-DRIVEN INFRASTRUCTURE -->
 <section class="section infra">
   <div class="wrap">
@@ -659,6 +1302,207 @@
 </section>
 
 
+
+<!-- ══ MODULE B — SHARED SERVICES ══ -->
+<section class="section svc" id="shared-services">
+  <div class="wrap">
+    <div class="svc__head reveal">
+      <span class="eyebrow">Shared Services</span>
+      <h2>Six institutional capabilities. Deployed across every acquisition from day one.</h2>
+      <p>When a firm joins the platform, it immediately accesses infrastructure that took Cyber Profound years to build. No hiring cycle. No vendor negotiation. No delay.</p>
+    </div>
+
+    <div class="svc__layout reveal">
+      <!-- Left nav -->
+      <nav class="svc__nav" aria-label="Shared service categories">
+        <button class="svc__nav-item is-active" data-svc="sec" aria-selected="true">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1L14 4V8.5C14 11.5 11.5 13.8 8 15C4.5 13.8 2 11.5 2 8.5V4L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Security Operations</span>
+        </button>
+        <button class="svc__nav-item" data-svc="legal" aria-selected="false">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="3" y="1" width="10" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5.5 5.5h5M5.5 8h5M5.5 10.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Legal &amp; Compliance</span>
+        </button>
+        <button class="svc__nav-item" data-svc="finance" aria-selected="false">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1v14M4 4h6a2 2 0 010 4H4M4 8h7a2 2 0 010 4H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Finance &amp; Reporting</span>
+        </button>
+        <button class="svc__nav-item" data-svc="hr" aria-selected="false">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Human Capital</span>
+        </button>
+        <button class="svc__nav-item" data-svc="tech" aria-selected="false">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 7l2 2-2 2M9 11h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Technology Stack</span>
+        </button>
+        <button class="svc__nav-item" data-svc="intel" aria-selected="false">
+          <span class="svc__nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="8" cy="8" r="2.5" fill="currentColor" opacity="0.4"/>
+              <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity="0.4"/>
+            </svg>
+          </span>
+          <span class="svc__nav-label">Threat Intelligence</span>
+        </button>
+      </nav>
+
+      <!-- Right panels -->
+      <div class="svc__panels">
+
+        <div class="svc__panel is-active" id="svc-panel-sec">
+          <div class="svc__panel-eyebrow">Security Operations</div>
+          <h3>A 24/7 AI-driven SOC that replaces what each firm was trying to build alone.</h3>
+          <p class="svc__panel-desc">Platform companies immediately gain access to a centralized security operations center running best-in-class tooling — without the capital cost of standing it up independently.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Coverage</div><div class="svc__spec-value">24 / 7 / 365</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Response SLA</div><div class="svc__spec-value">&lt; 15 minutes</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Detection Approach</div><div class="svc__spec-value">AI-behavioral, not signature</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Integration Timeline</div><div class="svc__spec-value">90-day onboarding sprint</div></div>
+          </div>
+          <div class="svc__tools-label">Technology</div>
+          <div class="svc__tools">
+            <span class="svc__tool">CrowdStrike Falcon</span>
+            <span class="svc__tool">Charlotte AI</span>
+            <span class="svc__tool">Microsoft Sentinel</span>
+            <span class="svc__tool">Security Copilot</span>
+            <span class="svc__tool">Palo Alto Cortex XSIAM</span>
+            <span class="svc__tool">Google Security Ops</span>
+          </div>
+        </div>
+
+        <div class="svc__panel" id="svc-panel-legal">
+          <div class="svc__panel-eyebrow">Legal &amp; Compliance</div>
+          <h3>Institutional legal coverage that no founder-owned MSSP could carry independently.</h3>
+          <p class="svc__panel-desc">From contract management and employment law to regulatory filings and cyber insurance, every acquired firm benefits from platform-level legal infrastructure on day one.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Contract Management</div><div class="svc__spec-value">Centralized CLM</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Insurance</div><div class="svc__spec-value">Consolidated D&amp;O + Cyber</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Frameworks Maintained</div><div class="svc__spec-value">CMMC · HIPAA · SOC 2</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Employment Law</div><div class="svc__spec-value">Multi-state coverage</div></div>
+          </div>
+          <div class="svc__tools-label">Scope</div>
+          <div class="svc__tools">
+            <span class="svc__tool">Contract Lifecycle</span>
+            <span class="svc__tool">NDA Management</span>
+            <span class="svc__tool">Regulatory Compliance</span>
+            <span class="svc__tool">Cyber Liability</span>
+            <span class="svc__tool">Employment Law</span>
+            <span class="svc__tool">M&amp;A Legal</span>
+          </div>
+        </div>
+
+        <div class="svc__panel" id="svc-panel-finance">
+          <div class="svc__panel-eyebrow">Finance &amp; Reporting</div>
+          <h3>Institutional financial infrastructure applied to every portfolio company from close.</h3>
+          <p class="svc__panel-desc">Consolidated financial reporting, treasury management, and audit-ready accounting replace the informal finance functions most founder-owned firms rely on.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Reporting Cadence</div><div class="svc__spec-value">Monthly management accounts</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Board Packs</div><div class="svc__spec-value">Quarterly, audited standard</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Debt Covenant Tracking</div><div class="svc__spec-value">Continuous</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Annual Audit</div><div class="svc__spec-value">Independent external auditor</div></div>
+          </div>
+          <div class="svc__tools-label">Functions</div>
+          <div class="svc__tools">
+            <span class="svc__tool">AP / AR</span>
+            <span class="svc__tool">Payroll</span>
+            <span class="svc__tool">Treasury</span>
+            <span class="svc__tool">Tax Compliance</span>
+            <span class="svc__tool">Board Reporting</span>
+            <span class="svc__tool">Investor Relations</span>
+          </div>
+        </div>
+
+        <div class="svc__panel" id="svc-panel-hr">
+          <div class="svc__panel-eyebrow">Human Capital</div>
+          <h3>A unified talent infrastructure that helps portfolio companies recruit, retain, and develop people at scale.</h3>
+          <p class="svc__panel-desc">Platform-level HR eliminates the administrative overhead that consumes founder bandwidth — allowing acquired leadership to focus on clients and growth.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Benefits</div><div class="svc__spec-value">Group plan (platform rate)</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Recruiting</div><div class="svc__spec-value">Shared talent pipeline</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">L&amp;D</div><div class="svc__spec-value">Centralized training catalog</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Payroll</div><div class="svc__spec-value">Unified multi-state payroll</div></div>
+          </div>
+          <div class="svc__tools-label">Programs</div>
+          <div class="svc__tools">
+            <span class="svc__tool">Onboarding Protocol</span>
+            <span class="svc__tool">Benefits Administration</span>
+            <span class="svc__tool">Performance Management</span>
+            <span class="svc__tool">Security Certifications</span>
+            <span class="svc__tool">Leadership Development</span>
+          </div>
+        </div>
+
+        <div class="svc__panel" id="svc-panel-tech">
+          <div class="svc__panel-eyebrow">Technology Stack</div>
+          <h3>Enterprise-grade tooling pooled across the platform — available to every portfolio company at shared cost.</h3>
+          <p class="svc__panel-desc">Consolidated licensing eliminates the cost barrier that prevents standalone MSSPs from deploying the technology now required to compete with large-scale providers.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Licensing Model</div><div class="svc__spec-value">Platform-consolidated</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Upgrade Cadence</div><div class="svc__spec-value">Continuous (platform-managed)</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Stack Categories</div><div class="svc__spec-value">6 domains covered</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Tooling Decision</div><div class="svc__spec-value">Investment committee</div></div>
+          </div>
+          <div class="svc__tools-label">Stack Domains</div>
+          <div class="svc__tools">
+            <span class="svc__tool">AI-Driven SOC/SIEM</span>
+            <span class="svc__tool">Cloud Security</span>
+            <span class="svc__tool">Identity &amp; Access</span>
+            <span class="svc__tool">Data Security</span>
+            <span class="svc__tool">Endpoint Protection</span>
+            <span class="svc__tool">AI Governance</span>
+          </div>
+        </div>
+
+        <div class="svc__panel" id="svc-panel-intel">
+          <div class="svc__panel-eyebrow">Threat Intelligence</div>
+          <h3>Collective intelligence that compounds in value with each acquisition.</h3>
+          <p class="svc__panel-desc">Every firm added to the platform contributes telemetry that strengthens detection capabilities for the entire portfolio. This compounding intelligence advantage cannot be replicated by any standalone MSSP.</p>
+          <div class="svc__panel-specs">
+            <div class="svc__spec"><div class="svc__spec-label">Signal Sources</div><div class="svc__spec-value">Cross-portfolio + external feeds</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Dark Web Coverage</div><div class="svc__spec-value">Continuous automated monitoring</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">ISAC Memberships</div><div class="svc__spec-value">Healthcare · FS · CI</div></div>
+            <div class="svc__spec"><div class="svc__spec-label">Feed Correlation</div><div class="svc__spec-value">AI-aggregated, analyst-reviewed</div></div>
+          </div>
+          <div class="svc__tools-label">Intelligence Sources</div>
+          <div class="svc__tools">
+            <span class="svc__tool">Internal Telemetry</span>
+            <span class="svc__tool">Commercial Feeds</span>
+            <span class="svc__tool">ISAC Networks</span>
+            <span class="svc__tool">Dark Web Monitoring</span>
+            <span class="svc__tool">Government Advisories</span>
+            <span class="svc__tool">Vendor Intelligence</span>
+          </div>
+        </div>
+
+      </div><!-- /svc__panels -->
+    </div><!-- /svc__layout -->
+  </div><!-- /wrap -->
+</section>
+
 <!-- OPERATIONAL INTELLIGENCE -->
 <section class="section opint" id="technology">
   <div class="wrap">
@@ -690,6 +1534,166 @@
       </div>
     </div>
     <p class="opint__note reveal"><strong>The compounding effect of scale.</strong> Each company integrated into the platform contributes telemetry, detection patterns, and operational data that improves outcomes for every other firm in the portfolio. This is the structural advantage that individual MSSPs operating in isolation cannot replicate.</p>
+  </div>
+</section>
+
+
+<!-- ══ MODULE C — SECURITY MESH ══ -->
+<section class="section mesh" id="security-mesh">
+  <div class="wrap">
+    <div class="mesh__head reveal">
+      <span class="eyebrow">Security Mesh</span>
+      <h2>One integrated mesh. Every acquired firm becomes stronger than the sum of the platform.</h2>
+      <p>The Cyber Profound Security Mesh is the connective architecture between portfolio companies — shared threat intelligence, unified response protocols, and coordinated governance across a distributed national footprint.</p>
+    </div>
+
+    <div class="mesh__layout reveal">
+      <!-- SVG mesh diagram -->
+      <div class="mesh__canvas-wrap" style="position:relative;">
+        <svg class="mesh__svg" viewBox="0 0 560 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Security Mesh diagram showing interconnected platform nodes">
+
+          <!-- Background grid -->
+          <defs>
+            <pattern id="meshGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" fill="none" stroke="rgba(0,101,252,0.06)" stroke-width="1"/>
+            </pattern>
+            <radialGradient id="meshGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(0,101,252,0.12)"/>
+              <stop offset="100%" stop-color="rgba(0,101,252,0)"/>
+            </radialGradient>
+            <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(0,101,252,0.35)"/>
+              <stop offset="100%" stop-color="rgba(0,101,252,0)"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="560" height="420" fill="url(#meshGrid)"/>
+          <circle cx="280" cy="210" r="160" fill="url(#meshGlow)"/>
+
+          <!-- Mesh connection lines (spokes) -->
+          <!-- Center to each ring node -->
+          <line x1="280" y1="210" x2="280" y2="80"  stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="400" y2="118" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="440" y2="250" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="380" y2="345" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="170" y2="345" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="118" y2="250" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+          <line x1="280" y1="210" x2="160" y2="118" stroke="#0065fc" stroke-width="1" stroke-dasharray="5 5" opacity="0.35"/>
+
+          <!-- Ring-to-ring cross connections -->
+          <line x1="280" y1="80"  x2="400" y2="118" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="400" y1="118" x2="440" y2="250" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="440" y1="250" x2="380" y2="345" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="380" y1="345" x2="170" y2="345" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="170" y1="345" x2="118" y2="250" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="118" y1="250" x2="160" y2="118" stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+          <line x1="160" y1="118" x2="280" y2="80"  stroke="#0A1B2E" stroke-width="1" opacity="0.2"/>
+
+          <!-- Skip connections (some cross-ring) -->
+          <line x1="280" y1="80"  x2="440" y2="250" stroke="#0065fc" stroke-width="0.75" opacity="0.1"/>
+          <line x1="400" y1="118" x2="170" y2="345" stroke="#0065fc" stroke-width="0.75" opacity="0.1"/>
+          <line x1="160" y1="118" x2="380" y2="345" stroke="#0065fc" stroke-width="0.75" opacity="0.1"/>
+
+          <!-- Core pulse ring -->
+          <circle class="mesh-pulse" cx="280" cy="210" r="38" fill="rgba(0,101,252,0.07)" stroke="rgba(0,101,252,0.15)" stroke-width="1"/>
+
+          <!-- Core node -->
+          <circle cx="280" cy="210" r="28" fill="#0065fc"/>
+          <circle cx="280" cy="210" r="28" fill="url(#coreGlow)"/>
+          <!-- CP initials in core -->
+          <text x="280" y="215" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="white" letter-spacing="0.5">CP</text>
+
+          <!-- Ring nodes — Acquisition targets / portfolio companies -->
+          <!-- Node 1 — top -->
+          <circle cx="280" cy="80" r="20" fill="#0A1B2E" stroke="#0065fc" stroke-width="1.5"/>
+          <text x="280" y="84" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.85)">SOC</text>
+
+          <!-- Node 2 — upper right -->
+          <circle cx="400" cy="118" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="400" y="122" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm A</text>
+
+          <!-- Node 3 — right -->
+          <circle cx="440" cy="250" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="440" y="254" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm B</text>
+
+          <!-- Node 4 — lower right -->
+          <circle cx="380" cy="345" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="380" y="349" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm C</text>
+
+          <!-- Node 5 — lower left -->
+          <circle cx="170" cy="345" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="170" y="349" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm D</text>
+
+          <!-- Node 6 — left -->
+          <circle cx="118" cy="250" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="118" y="254" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm E</text>
+
+          <!-- Node 7 — upper left -->
+          <circle cx="160" cy="118" r="20" fill="#0A1B2E" stroke="#dde3ef" stroke-width="1.5" opacity="0.85"/>
+          <text x="160" y="122" text-anchor="middle" dominant-baseline="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="rgba(255,255,255,0.7)">Firm F</text>
+
+          <!-- Node labels (external) -->
+          <text x="280" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Shared AI SOC</text>
+          <text x="435" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Healthcare</text>
+          <text x="490" y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Financial Svcs</text>
+          <text x="408" y="376" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Gov / Defense</text>
+          <text x="138" y="376" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Critical Infra</text>
+          <text x="68"  y="255" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Energy / Utilities</text>
+          <text x="128" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#3a506b">Manufacturing</text>
+
+          <!-- Center label -->
+          <text x="280" y="250" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="600" fill="rgba(0,101,252,0.6)" letter-spacing="0.08em" text-transform="uppercase">CYBER PROFOUND</text>
+          <text x="280" y="263" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(10,27,46,0.4)">Platform Core</text>
+        </svg>
+
+        <!-- Tooltip (JS-controlled) -->
+        <div class="mesh__tooltip" id="meshTooltip"></div>
+      </div>
+
+      <!-- Right: metrics + capabilities -->
+      <div class="mesh__meta">
+        <div class="mesh__metric">
+          <div class="mesh__metric-num">N×</div>
+          <div class="mesh__metric-label">Intelligence Compounding</div>
+          <div class="mesh__metric-desc">Each acquisition multiplies threat signal coverage for every existing portfolio company.</div>
+        </div>
+        <div class="mesh__metric">
+          <div class="mesh__metric-num">1</div>
+          <div class="mesh__metric-label">Governance Framework</div>
+          <div class="mesh__metric-desc">One board, one reporting standard, one risk register applied uniformly across every firm.</div>
+        </div>
+        <div class="mesh__capability-list">
+          <div class="mesh__cap">
+            <div class="mesh__cap-dot"></div>
+            <div class="mesh__cap-body">
+              <h4>Distributed Detection</h4>
+              <p>Threat signals from every portfolio firm feed a single AI correlation engine — detections improve with each acquisition.</p>
+            </div>
+          </div>
+          <div class="mesh__cap">
+            <div class="mesh__cap-dot"></div>
+            <div class="mesh__cap-body">
+              <h4>Coordinated Response</h4>
+              <p>A confirmed threat in one firm triggers an automated intelligence push to all mesh participants — before it spreads.</p>
+            </div>
+          </div>
+          <div class="mesh__cap">
+            <div class="mesh__cap-dot"></div>
+            <div class="mesh__cap-body">
+              <h4>Brand Independence</h4>
+              <p>Each firm retains its identity and client relationships. The mesh operates beneath the brand layer, invisibly strengthening every node.</p>
+            </div>
+          </div>
+          <div class="mesh__cap">
+            <div class="mesh__cap-dot"></div>
+            <div class="mesh__cap-body">
+              <h4>No Exit Architecture</h4>
+              <p>The mesh is designed to strengthen indefinitely — not to be dissolved. Institutional ownership means the platform compounds permanently.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -825,5 +1829,128 @@ setTimeout(() => {
   });
 })();
 </script>
+
+<script>
+/* ═══════════ ARCH — Tab + Pillar interaction ═══════════ */
+(function() {
+  // Tab switching
+  document.querySelectorAll('[data-arch-tab]').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var key = this.dataset.archTab;
+      document.querySelectorAll('[data-arch-tab]').forEach(function(t) {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected','false');
+      });
+      this.classList.add('is-active');
+      this.setAttribute('aria-selected','true');
+      document.querySelectorAll('.arch__panel').forEach(function(p) { p.classList.remove('is-active'); });
+      var panel = document.getElementById('arch-panel-' + key);
+      if (panel) {
+        panel.classList.add('is-active');
+        // activate first pillar in this panel
+        var firstPillar = panel.querySelector('.arch__pillar');
+        if (firstPillar) firstPillar.click();
+      }
+    });
+  });
+
+  // Pillar switching within a panel — delegate on document
+  document.addEventListener('click', function(e) {
+    var pillar = e.target.closest('.arch__pillar');
+    if (!pillar) return;
+    var panel = pillar.closest('.arch__panel');
+    if (!panel) return;
+    panel.querySelectorAll('.arch__pillar').forEach(function(p) { p.classList.remove('is-active'); });
+    pillar.classList.add('is-active');
+    var key = pillar.dataset.archPillar;
+    panel.querySelectorAll('.arch__detail-content').forEach(function(c) { c.classList.remove('is-active'); });
+    var det = document.getElementById('detail-' + key);
+    if (det) det.classList.add('is-active');
+  });
+
+  // Keyboard support for pillars
+  document.querySelectorAll('.arch__pillar').forEach(function(p) {
+    p.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); p.click(); }
+    });
+  });
+})();
+
+/* ═══════════ SVC — Left nav tab switching ═══════════ */
+(function() {
+  document.querySelectorAll('[data-svc]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = this.dataset.svc;
+      document.querySelectorAll('[data-svc]').forEach(function(b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected','false');
+      });
+      this.classList.add('is-active');
+      this.setAttribute('aria-selected','true');
+      document.querySelectorAll('.svc__panel').forEach(function(p) { p.classList.remove('is-active'); });
+      var panel = document.getElementById('svc-panel-' + key);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+})();
+
+/* ═══════════ MESH — SVG node tooltips ═══════════ */
+(function() {
+  var tip = document.getElementById('meshTooltip');
+  if (!tip) return;
+  var labels = {
+    'Shared AI SOC': 'AI Operations Center — 24/7 threat monitoring',
+    'Healthcare': 'Firm A — Healthcare MSSP target',
+    'Financial Svcs': 'Firm B — Financial Services MSSP target',
+    'Gov / Defense': 'Firm C — Government &amp; Defense MSSP target',
+    'Critical Infra': 'Firm D — Critical Infrastructure MSSP target',
+    'Energy / Utilities': 'Firm E — Energy &amp; Utilities MSSP target',
+    'Manufacturing': 'Firm F — Manufacturing MSSP target'
+  };
+  var svg = document.querySelector('.mesh__svg');
+  if (!svg) return;
+  svg.querySelectorAll('circle[stroke="#0065fc"], circle[stroke="#dde3ef"]').forEach(function(node) {
+    node.style.cursor = 'pointer';
+    node.addEventListener('mouseenter', function(e) {
+      // find sibling text label
+      var bbox = node.getBoundingClientRect();
+      var wrapBbox = node.closest('.mesh__canvas-wrap').getBoundingClientRect();
+      tip.style.left = (bbox.left - wrapBbox.left + bbox.width/2) + 'px';
+      tip.style.top  = (bbox.top  - wrapBbox.top) + 'px';
+      // find nearest text element
+      var cx = parseFloat(node.getAttribute('cx'));
+      var cy = parseFloat(node.getAttribute('cy'));
+      var svgW = 560; var svgH = 420;
+      var canvasW = wrapBbox.width; var canvasH = wrapBbox.height;
+      var px = (cx/svgW)*canvasW; var py = (cy/svgH)*canvasH;
+      tip.style.left = px + 'px';
+      tip.style.top  = py + 'px';
+      tip.innerHTML = node.getAttribute('data-label') || '';
+      if (tip.innerHTML) tip.classList.add('is-visible');
+    });
+    node.addEventListener('mouseleave', function() { tip.classList.remove('is-visible'); });
+  });
+  // Assign data-labels to nodes
+  var nodeData = [
+    { cx: 280, cy: 80,  label: 'AI Operations Center — 24/7 threat monitoring for all portfolio firms' },
+    { cx: 400, cy: 118, label: 'Healthcare MSSP — target acquisition vertical' },
+    { cx: 440, cy: 250, label: 'Financial Services MSSP — target acquisition vertical' },
+    { cx: 380, cy: 345, label: 'Government &amp; Defense MSSP — target acquisition vertical' },
+    { cx: 170, cy: 345, label: 'Critical Infrastructure MSSP — target acquisition vertical' },
+    { cx: 118, cy: 250, label: 'Energy &amp; Utilities MSSP — target acquisition vertical' },
+    { cx: 160, cy: 118, label: 'Manufacturing MSSP — target acquisition vertical' }
+  ];
+  svg.querySelectorAll('circle').forEach(function(c) {
+    var cx = parseFloat(c.getAttribute('cx'));
+    var cy = parseFloat(c.getAttribute('cy'));
+    nodeData.forEach(function(nd) {
+      if (Math.abs(nd.cx - cx) < 2 && Math.abs(nd.cy - cy) < 2) {
+        c.setAttribute('data-label', nd.label);
+      }
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
