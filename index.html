@@ -601,20 +601,21 @@
     .hp-leader__photo-wrap:hover::before { opacity: 1; }
     .hp-leader__photo-wrap::after {
       content: 'View Bio';
-      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%) translateY(10px);
+      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%) translateY(0);
       z-index: 2;
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       color: #fff;
       padding: 0.4rem 0.9rem 0.4rem 0.8rem; border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.35);
+      background-color: rgba(10,27,46,0.72);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: 0.85rem center; background-size: 12px 12px;
+      background-repeat: no-repeat; background-position: 0.85rem center, 0 0; background-size: 12px 12px, auto;
       padding-left: 1.9rem;
-      opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1; transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
       pointer-events: none;
     }
-    .hp-leader__photo-wrap:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .hp-leader__photo-wrap:hover::after { background-color: rgba(10,27,46,0.9); }
     .hp-leader__photo-wrap img.hp-leader__photo { transition: transform 0.5s ease; display: block; }
     .hp-leader__photo-wrap:hover img.hp-leader__photo { transform: scale(1.04); }
     .hp-leader.is-open .hp-leader__photo-wrap::after,

@@ -389,20 +389,21 @@
     .board__photo-wrap:hover::before { opacity: 1; }
     .board__photo-wrap::after {
       content: 'View Bio';
-      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%) translateY(10px);
+      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%) translateY(0);
       z-index: 2;
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       color: #fff;
       padding: 0.4rem 0.9rem 0.4rem 0.8rem; border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.35);
+      background-color: rgba(10,27,46,0.72);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: 0.85rem center; background-size: 12px 12px;
+      background-repeat: no-repeat; background-position: 0.85rem center, 0 0; background-size: 12px 12px, auto;
       padding-left: 1.9rem;
-      opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1; transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
       pointer-events: none;
     }
-    .board__photo-wrap:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .board__photo-wrap:hover::after { background-color: rgba(10,27,46,0.9); }
     .board__photo-wrap img.board__photo { transition: transform 0.5s ease; display: block; }
     .board__photo-wrap:hover img.board__photo { transform: scale(1.04); }
     .board__card.is-open .board__photo-wrap::after,
@@ -1227,9 +1228,7 @@ setTimeout(() => {
         'At Cyber Profound, Mr. Johnston leads financial diligence, valuation, capital structuring, and lender package preparation ahead of each acquisition; post-acquisition, he assumes full financial oversight covering P&amp;L management, budget controls, lender reporting, and the integration of acquired financial operations. His capital markets partnership experience bears directly on the Group\'s preparation for a future public listing.'
       ] }
   };
-  const cpxModal = document.getElementById('cpxModal');
-  const cpxModalClose = document.getElementById('cpxModalClose');
-  const cpxModalLi = document.getElementById('cpxModalLi');
+  var cpxModal, cpxModalClose, cpxModalLi;
   function openBioModal(key) {
     const d = cpxBios[key]; if (!d) return;
     document.getElementById('cpxModalRole').textContent = d.role;
@@ -1242,10 +1241,20 @@ setTimeout(() => {
     cpxModal.classList.add('is-open'); document.body.style.overflow = 'hidden';
   }
   function closeBioModal() { cpxModal.classList.remove('is-open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('[data-bio]').forEach(btn => btn.addEventListener('click', () => openBioModal(btn.dataset.bio)));
-  cpxModalClose.addEventListener('click', closeBioModal);
-  cpxModal.addEventListener('click', e => { if (e.target === cpxModal) closeBioModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBioModal(); });
+  function initBioModal() {
+    cpxModal = document.getElementById('cpxModal');
+    cpxModalClose = document.getElementById('cpxModalClose');
+    cpxModalLi = document.getElementById('cpxModalLi');
+    document.querySelectorAll('[data-bio]').forEach(btn => btn.addEventListener('click', () => openBioModal(btn.dataset.bio)));
+    cpxModalClose.addEventListener('click', closeBioModal);
+    cpxModal.addEventListener('click', e => { if (e.target === cpxModal) closeBioModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBioModal(); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBioModal);
+  } else {
+    initBioModal();
+  }
 </script>
 <!-- Bio Modal Overlay -->
 <div class="cpx-modal" id="cpxModal" role="dialog" aria-modal="true" aria-labelledby="cpxModalName">
