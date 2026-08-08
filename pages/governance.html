@@ -294,6 +294,7 @@
 .board__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
     .board__grid--3col { grid-template-columns: repeat(3, 1fr); }
     .board__grid--2col-center { grid-template-columns: repeat(2, minmax(0, 322px)); justify-content: center; }
+    .board__grid--wide { grid-template-columns: repeat(4, 1fr); width: 100vw; max-width: 1440px; margin-left: 50%; transform: translateX(-50%); padding: 0 var(--gut); box-sizing: border-box; }
     .board__section-head { margin-bottom: 1.75rem; }
     .board__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: var(--navy); letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid var(--border); }
 .board__card { border: 1px solid var(--border); background: #fff; border-radius: 4px; overflow: hidden; }
@@ -365,6 +366,7 @@
   .struct__cols { grid-template-columns: 1fr; gap: 2.5rem; }
   .board__grid { grid-template-columns: 1fr; }
   .board__grid--2col-center { grid-template-columns: 1fr; max-width: 322px; margin-inline: auto; }
+  .board__grid--wide { grid-template-columns: 1fr; }
   .footer__contact { text-align: left; }
   .cta__btns { flex-direction: column; align-items: stretch; }
   .btn { justify-content: center; }
@@ -933,7 +935,7 @@
       <div class="boardsection-head reveal" style="margin-top: clamp(3rem,5vw,4.5rem);">
         <h3 class="boardsection-title">Non-Executive Directors</h3>
       </div>
-      <div class="board__grid board__grid--3col">
+      <div class="board__grid board__grid--wide">
         <div class="board__card reveal" data-bio="maryann">
           <div class="board__photo-wrap">
             <img class="board__photo" src="../assets/headshot-davidson.jpg" alt="Mary Ann Davidson" loading="lazy" />

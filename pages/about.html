@@ -331,6 +331,7 @@
 .lead__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .lead__grid--3col { grid-template-columns: repeat(3, 1fr); }
     .lead__grid--2col-center { grid-template-columns: repeat(2, minmax(0, 322px)); justify-content: center; }
+    .lead__grid--wide { grid-template-columns: repeat(4, 1fr); width: 100vw; max-width: 1440px; margin-left: 50%; transform: translateX(-50%); padding: 0 var(--gut); box-sizing: border-box; }
 .lead__card { border: 1px solid var(--border); background: #fff; border-radius: 4px; overflow: hidden; }
 .lead__photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
 .lead__photo-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--off); display: flex; align-items: center; justify-content: center; }
@@ -387,12 +388,14 @@
   .lead__grid { grid-template-columns: repeat(2, 1fr); }
   .lead__grid--3col { grid-template-columns: repeat(2, 1fr); }
   .lead__grid--2col-center { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 100%; }
+  .lead__grid--wide { grid-template-columns: repeat(2, 1fr); width: 100%; max-width: 100%; margin-left: 0; transform: none; padding: 0; }
 }
 @media (max-width: 768px) {
   .firm__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .principles__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .lead__grid { grid-template-columns: 1fr; }
   .lead__grid--2col-center { grid-template-columns: 1fr; max-width: 322px; margin-inline: auto; }
+  .lead__grid--wide { grid-template-columns: 1fr; }
   .inst__sep { display: none; }
   .footer__contact { text-align: left; }
   .cta__btns { flex-direction: column; align-items: stretch; }
@@ -1007,7 +1010,7 @@
       <div class="leadsection-head reveal" style="margin-top: clamp(3rem,5vw,4.5rem);">
         <h3 class="leadsection-title">Non-Executive Directors</h3>
       </div>
-      <div class="lead__grid lead__grid--3col">
+      <div class="lead__grid lead__grid--wide">
         <div class="lead__card reveal" data-bio="maryann">
           <div class="lead__photo-wrap">
             <img class="lead__photo" src="../assets/headshot-davidson.jpg" alt="Mary Ann Davidson" loading="lazy" />
