@@ -293,6 +293,7 @@
 .board__intro { font-size: clamp(0.9375rem, 1.4vw, 1.0625rem); line-height: 1.75; color: var(--mid); max-width: 64ch; }
 .board__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
     .board__grid--3col { grid-template-columns: repeat(3, 1fr); }
+    .board__grid--2col-center { grid-template-columns: repeat(2, minmax(0, 322px)); justify-content: center; }
     .board__section-head { margin-bottom: 1.75rem; }
     .board__section-title { font-family: var(--font-d); font-size: clamp(1.25rem, 2.2vw, 1.625rem); font-weight: 600; color: var(--navy); letter-spacing: -0.01em; padding-bottom: 0.875rem; border-bottom: 1px solid var(--border); }
 .board__card { border: 1px solid var(--border); background: #fff; border-radius: 4px; overflow: hidden; }
@@ -363,6 +364,7 @@
 @media (max-width: 768px) {
   .struct__cols { grid-template-columns: 1fr; gap: 2.5rem; }
   .board__grid { grid-template-columns: 1fr; }
+  .board__grid--2col-center { grid-template-columns: 1fr; max-width: 322px; margin-inline: auto; }
   .footer__contact { text-align: left; }
   .cta__btns { flex-direction: column; align-items: stretch; }
   .btn { justify-content: center; }
@@ -893,7 +895,7 @@
       <div class="boardsection-head reveal" style="margin-top: clamp(3rem,5vw,4.5rem);">
         <h3 class="boardsection-title">Executive Team</h3>
       </div>
-      <div class="board__grid board__grid--3col">
+      <div class="board__grid board__grid--2col-center">
         <div class="board__card reveal" data-bio="michael">
           <div class="board__photo-wrap">
             <img class="board__photo" src="../assets/headshot-johnston.jpg" alt="Michael Johnston" loading="lazy" />
