@@ -496,7 +496,7 @@
 }
 .footer__brand, .hp-footer__brand { display: flex; flex-direction: column; gap: 0; }
 .footer__logo, .hp-footer__logo {
-  height: 30px; width: auto; display: block;
+  height: 40px; width: auto; max-width: fit-content; align-self: flex-start; display: block;
   margin-bottom: 1.75rem; opacity: 1;
 }
 .footer__tag, .hp-footer__tag {
