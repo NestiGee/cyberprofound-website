@@ -497,7 +497,7 @@
 .footer__brand, .hp-footer__brand { display: flex; flex-direction: column; gap: 0; }
 .footer__logo, .hp-footer__logo {
   height: 30px; width: auto; display: block;
-  margin-bottom: 1.75rem; opacity: 0.85;
+  margin-bottom: 1.75rem; opacity: 1;
 }
 .footer__tag, .hp-footer__tag {
   font-size: 0.75rem; line-height: 1.85;
