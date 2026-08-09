@@ -795,15 +795,19 @@
       position: absolute; pointer-events: none;
       background: var(--navy); color: #fff; border-radius: 3px;
       padding: 0.6rem 1rem; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.01em; white-space: nowrap;
+      letter-spacing: 0.01em; white-space: normal;
+      width: max-content; max-width: min(230px, calc(100vw - 2rem));
       box-shadow: 0 8px 24px rgba(10,27,46,0.25);
       opacity: 0; transition: opacity 160ms; z-index: 10;
-      transform: translateX(-50%) translateY(-130%);
+      transform: translateY(-130%);
     }
     .mesh__tooltip.is-visible { opacity: 1; }
     .mesh__tooltip::after {
-      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      content: ''; position: absolute; top: 100%; left: var(--arrow-x, 50%); transform: translateX(-50%);
       border: 5px solid transparent; border-top-color: var(--navy);
+    }
+    @media (max-width: 480px) {
+      .mesh__tooltip { font-size: 0.6875rem; padding: 0.5rem 0.75rem; max-width: min(180px, calc(100vw - 1.5rem)); }
     }
 
     @media (max-width: 900px) {
@@ -2043,21 +2047,30 @@ setTimeout(() => {
   svg.querySelectorAll('circle[stroke="#0065fc"], circle[stroke="#dde3ef"]').forEach(function(node) {
     node.style.cursor = 'pointer';
     node.addEventListener('mouseenter', function(e) {
-      // find sibling text label
-      var bbox = node.getBoundingClientRect();
-      var wrapBbox = node.closest('.mesh__canvas-wrap').getBoundingClientRect();
-      tip.style.left = (bbox.left - wrapBbox.left + bbox.width/2) + 'px';
-      tip.style.top  = (bbox.top  - wrapBbox.top) + 'px';
-      // find nearest text element
+      var wrapEl = node.closest('.mesh__canvas-wrap');
+      var wrapBbox = wrapEl.getBoundingClientRect();
+      // node center position within the canvas-wrap, in real px
       var cx = parseFloat(node.getAttribute('cx'));
       var cy = parseFloat(node.getAttribute('cy'));
       var svgW = 560; var svgH = 420;
       var canvasW = wrapBbox.width; var canvasH = wrapBbox.height;
-      var px = (cx/svgW)*canvasW; var py = (cy/svgH)*canvasH;
-      tip.style.left = px + 'px';
-      tip.style.top  = py + 'px';
+      var nodeX = (cx/svgW)*canvasW; var nodeY = (cy/svgH)*canvasH;
       tip.innerHTML = node.getAttribute('data-label') || '';
-      if (tip.innerHTML) tip.classList.add('is-visible');
+      if (!tip.innerHTML) return;
+      tip.classList.add('is-visible');
+      // measure tooltip, then clamp its centered position within the wrap bounds
+      var tipW = tip.offsetWidth;
+      var margin = 8;
+      var idealLeft = nodeX - (tipW / 2);
+      var minLeft = margin;
+      var maxLeft = canvasW - tipW - margin;
+      var clampedLeft = Math.max(minLeft, Math.min(idealLeft, maxLeft));
+      tip.style.left = clampedLeft + 'px';
+      tip.style.top  = nodeY + 'px';
+      // point the arrow at the node's actual x position, clamped within the tooltip box
+      var arrowX = nodeX - clampedLeft;
+      arrowX = Math.max(10, Math.min(arrowX, tipW - 10));
+      tip.style.setProperty('--arrow-x', arrowX + 'px');
     });
     node.addEventListener('mouseleave', function() { tip.classList.remove('is-visible'); });
   });
