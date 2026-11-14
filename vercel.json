@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    { "source": "/about.html", "destination": "/pages/about.html", "permanent": true },
+    { "source": "/about", "destination": "/pages/about.html", "permanent": true },
+    { "source": "/careers.html", "destination": "/pages/careers.html", "permanent": true },
+    { "source": "/careers", "destination": "/pages/careers.html", "permanent": true },
+    { "source": "/news.html", "destination": "/pages/newsroom.html", "permanent": true },
+    { "source": "/news", "destination": "/pages/newsroom.html", "permanent": true },
+    { "source": "/privacy.html", "destination": "/pages/privacy.html", "permanent": true },
+    { "source": "/terms.html", "destination": "/pages/terms.html", "permanent": true },
+    { "source": "/thank-you.html", "destination": "/pages/contact.html", "permanent": false },
+    { "source": "/forms.html", "destination": "/", "permanent": false }
+  ]
+}
