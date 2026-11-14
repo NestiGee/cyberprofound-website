@@ -1063,6 +1063,16 @@
   .bh__chip small { display: none; }
   .bh__title span { white-space: normal; }
 }
+
+/* ===== HERO: logo fully visible, small sector labels below ===== */
+.bh__art { display: flex; flex-direction: column; align-items: center; justify-content: center; height: auto; }
+.bh__mark { position: static; inset: auto; width: min(100%, 460px); height: auto; aspect-ratio: 1; }
+.bh__chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: -0.5rem; }
+.bh__chip { position: static; padding: 0.45rem 0.9rem 0.45rem 0.5rem; border-radius: 999px; font-size: 0.8125rem; gap: 0.5rem; box-shadow: 0 8px 24px rgba(10,27,46,0.1); border: 1px solid #dbe7ff; }
+.bh__chip small { display: none; }
+.bh__chip-ic { width: 28px; height: 28px; border-radius: 50%; }
+.bh__chip-ic svg { width: 15px; height: 15px; }
+@media (max-width: 900px) { .bh__art { height: auto; max-width: 340px; } .bh__chip { padding: 0.4rem 0.8rem 0.4rem 0.45rem; } }
 </style>
 </head>
 <body>
@@ -1178,9 +1188,11 @@
 <path class="bm bm2" fill="url(#bg2)" d="M533,157 C640,100 800,140 900,270 C980,370 970,450 895,465 C790,480 690,250 533,157 Z"/>
 <path class="bm bm3" fill="url(#bg3)" d="M348,742 C520,755 700,700 820,700 C910,700 935,750 905,845 C860,930 700,945 620,940 C480,935 380,860 348,742 Z"/>
 </svg>
+      <div class="bh__chips">
       <div class="bh__chip bh__chip--1"><div class="bh__chip-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg></div><div>Cybersecurity<small>MSSPs and security firms</small></div></div>
       <div class="bh__chip bh__chip--2"><div class="bh__chip-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><div>Managed IT<small>MSPs and IT services</small></div></div>
       <div class="bh__chip bh__chip--3"><div class="bh__chip-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg></div><div>Healthcare<small>Established care businesses</small></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1329,8 +1341,8 @@
   <div class="wrap">
     <div class="hp-section__head hp-reveal">
       <span class="hp-eyebrow">Leadership</span>
-      <h2 class="hp-h2">Founder led. Personally accountable.</h2>
-      <p class="hp-intro">Every conversation with Cyber Profound starts with the person who makes the decision.</p>
+      <h2 class="hp-h2">Executive Leadership</h2>
+      <p class="hp-intro">Cyber Profound is led by its founder, with a focus on disciplined acquisitions and long term ownership.</p>
     </div>
     
     
@@ -1361,9 +1373,10 @@
         </div>
       </div>
       <div class="cp-lead__aside hp-reveal">
-        <h3>Nest Gjinaj, Founder and Chief Executive Officer</h3>
-        <p>Nest leads strategy, deal sourcing and the integration of every firm that joins the platform. He spent nearly a decade in safety critical engineering, assessing organizations against exacting international standards. He applies the same discipline to every acquisition.</p>
-        <p>Owners who reach out speak with him directly.</p>
+        <span class="cp-lead__board-label">Founder and Chief Executive Officer</span>
+        <h3>Nest Gjinaj</h3>
+        <p>Nest Gjinaj is the Founder and Chief Executive Officer of Cyber Profound. He leads the company's strategy, acquisitions, capital structuring and the integration of every company that joins the platform.</p>
+        <p>Before founding Cyber Profound, he spent nearly a decade at Tier 1 automotive suppliers including Magna International, Aptiv and Valeo, where he led quality engineering strategy across North America and directed teams through international safety and quality assessments.</p>
         <div class="cp-lead__board">
           <span class="cp-lead__board-label">Board of Directors</span>
           <p>Board composition is confidential at this stage. Details are shared with qualified parties under a mutual NDA.</p>
