@@ -1,0 +1,53 @@
+[build]
+  publish = "."
+
+# Old URLs from the retired root pages point to the current pages.
+[[redirects]]
+  from = "/about.html"
+  to = "/pages/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/pages/about.html"
+  status = 301
+
+[[redirects]]
+  from = "/careers.html"
+  to = "/pages/careers.html"
+  status = 301
+
+[[redirects]]
+  from = "/careers"
+  to = "/pages/careers.html"
+  status = 301
+
+[[redirects]]
+  from = "/news.html"
+  to = "/pages/newsroom.html"
+  status = 301
+
+[[redirects]]
+  from = "/news"
+  to = "/pages/newsroom.html"
+  status = 301
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/pages/privacy.html"
+  status = 301
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/pages/terms.html"
+  status = 301
+
+[[redirects]]
+  from = "/thank-you.html"
+  to = "/pages/contact.html"
+  status = 302
+
+[[redirects]]
+  from = "/forms.html"
+  to = "/"
+  status = 302
