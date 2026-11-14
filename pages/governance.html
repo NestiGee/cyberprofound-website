@@ -732,6 +732,19 @@
 @media (max-width: 1020px) { .hero__mark { width: 62vw; right: -22vw; opacity: 0.13; filter: none; } .hero__inner { max-width: 880px; } }
 .thesis__item, .how__step, .news-card, .principle, .commit__item, .scope__item, .crit__card, .ops__item { transition: transform 260ms cubic-bezier(0.16,1,0.3,1), box-shadow 260ms; }
 .thesis__item:hover, .how__step:hover, .news-card:hover, .principle:hover, .commit__item:hover, .crit__card:hover, .ops__item:hover { transform: translateY(-6px); }
+
+/* ===== BOARD AND EXECUTIVE TEAM ===== */
+.cp-org { margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--border); }
+.cp-org__head p { font-size: 1rem; line-height: 1.7; color: var(--mid); max-width: 60ch; }
+.cp-org__grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.75rem; padding: 0; }
+.cp-org__item { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.45rem; transition: transform 260ms cubic-bezier(0.16,1,0.3,1), box-shadow 260ms, border-color 260ms; }
+.cp-org__item:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 18px 40px rgba(0,101,252,0.12); }
+.cp-org__item--on { border-top: 3px solid var(--blue); }
+.cp-org__role { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); }
+.cp-org__name { font-family: var(--font-d); font-weight: 600; font-size: 1.375rem; line-height: 1.2; color: var(--navy); }
+.cp-org__name--tba { color: var(--muted); font-weight: 500; }
+@media (max-width: 860px) { .cp-org__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .cp-org__grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -826,7 +839,7 @@
       <div class="struct__col reveal">
         <div class="struct__num">01</div>
         <h3>Board of Directors</h3>
-        <p>Board composition is confidential at this stage. Details are shared with qualified investors, acquisition counterparties and executive candidates under a mutual NDA.</p>
+        <p>The Board of Directors oversees strategy, capital and risk. It includes the Founder and Chief Executive Officer. The Chairman and further directors will be announced.</p>
       </div>
       <div class="struct__col reveal">
         <div class="struct__num">02</div>
@@ -880,16 +893,31 @@
         </div>
 
       <div class="cp-lead__aside reveal">
-          <span class="cp-lead__board-label">Founder and Chief Executive Officer</span>
+          <span class="cp-lead__board-label">Founder, Chief Executive Officer and Director</span>
         <h3>Nest Gjinaj</h3>
         <p>Nest Gjinaj is the Founder and Chief Executive Officer of Cyber Profound. He leads the company's strategy, acquisitions, capital structuring and the integration of every company that joins the platform.</p>
         <p>Before founding Cyber Profound, he spent nearly a decade at Tier 1 automotive suppliers including Magna International, Aptiv and Valeo, where he led quality engineering strategy across North America and directed teams through international safety and quality assessments.</p>
           <div class="cp-lead__board">
             <span class="cp-lead__board-label">Board of Directors</span>
-            <p>Board composition is confidential at this stage. Details are shared with qualified parties under a mutual NDA.</p>
+            <p>Nest Gjinaj serves on the Board of Directors. The Chairman and further directors will be announced.</p>
           </div>
         </div>
       </div>
+
+    <div class="cp-org reveal">
+      <div class="cp-org__head">
+        <span class="cp-lead__board-label">Board and Executive Team</span>
+        <p>Cyber Profound is governed by a Board of Directors and run by an executive team. Appointments are announced as they are made.</p>
+      </div>
+      <ul class="cp-org__grid">
+        <li class="cp-org__item"><span class="cp-org__role">Chairman of the Board</span><span class="cp-org__name cp-org__name--tba">To be announced</span></li>
+        <li class="cp-org__item cp-org__item--on"><span class="cp-org__role">Chief Executive Officer and Director</span><span class="cp-org__name">Nest Gjinaj</span></li>
+        <li class="cp-org__item"><span class="cp-org__role">Chief Financial Officer</span><span class="cp-org__name cp-org__name--tba">To be announced</span></li>
+        <li class="cp-org__item"><span class="cp-org__role">Chief Operating Officer</span><span class="cp-org__name cp-org__name--tba">To be announced</span></li>
+        <li class="cp-org__item"><span class="cp-org__role">General Counsel</span><span class="cp-org__name cp-org__name--tba">To be announced</span></li>
+        <li class="cp-org__item cp-org__item--on"><span class="cp-org__role">Outside Counsel</span><span class="cp-org__name">Holland &amp; Knight LLP</span></li>
+      </ul>
+    </div>
     </section>
 
 <!-- 4. GOVERNANCE COMMITMENTS -->
@@ -926,7 +954,7 @@
     <div class="disclose__inner reveal">
       <span class="eyebrow">Disclosure</span>
       <h2>Governance Documentation</h2>
-      <p>Certain governance documents — including board composition, operating agreements, and portfolio governance frameworks — are not publicly disclosed. This is consistent with standard practice for private holding companies of this nature.</p>
+      <p>Certain governance documents, including operating agreements and portfolio governance frameworks, are not publicly disclosed. This is consistent with standard practice for privately held companies.</p>
       <p>Qualified institutional investors, acquisition counterparties, and executive candidates may request governance documentation under a mutual non-disclosure agreement. All requests are reviewed by legal counsel.</p>
       <div class="disclose__btn">
         <a href="contact.html" class="btn btn--ghost">Request Documentation</a>
