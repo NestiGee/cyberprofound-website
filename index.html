@@ -63,7 +63,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -1100,6 +1100,110 @@
 .cp-org__grid { margin-top: 0; }
 .cp-org__bio { align-self: flex-start; margin-top: 0.35rem; background: none; border: 0; padding: 0; font: 600 0.8125rem var(--font-b); color: var(--blue); cursor: pointer; border-bottom: 1px solid rgba(0,101,252,0.35); }
 .cp-org__bio:hover { border-bottom-color: var(--blue); }
+
+/* ===== APPLE STYLE (homepage) ===== */
+:root { --nav-h: 56px; --ink: #1d1d1f; --grey: #6e6e73; --off: #f5f5f7; --font-d: 'Inter', -apple-system, sans-serif; }
+body { color: var(--ink); }
+.nav { background: rgba(255,255,255,0.78); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); }
+.nav__logo img { height: 30px; }
+.nav__menu { justify-content: center; }
+.nav__menu a { font-size: 0.8125rem; font-weight: 500; color: #333; padding: 0 1.1rem; letter-spacing: 0; }
+.nav__menu a::after { display: none; }
+.nav__menu a:hover { color: var(--blue); }
+.nav__search-btn { border: 0; width: 32px; height: 32px; color: #333; }
+.nav__talk { border-radius: 999px !important; font-size: 0.8125rem !important; padding: 0.5rem 1rem !important; }
+
+/* Hero */
+.ap-hero { text-align: center; padding: calc(var(--nav-h) + clamp(3.5rem, 8vw, 6.5rem)) 0 0; background: #fff; overflow: hidden; }
+.ap-hero__title { font-family: var(--font-b); font-weight: 700; font-size: clamp(2.4rem, 5.6vw, 4.25rem); line-height: 1.06; max-width: 16ch; margin: 0 auto; letter-spacing: -0.035em; color: var(--ink); }
+.ap-hero__title span { background: linear-gradient(90deg, #0052d6, #0065fc 40%, #3aa0ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ap-hero__sub { font-size: clamp(1.05rem, 1.7vw, 1.3rem); font-weight: 500; color: var(--grey); margin: 1.1rem auto 0; max-width: 44ch; line-height: 1.5; letter-spacing: -0.01em; }
+.ap-hero__links { display: flex; flex-wrap: wrap; gap: 1.6rem; justify-content: center; align-items: center; margin-top: 1.8rem; }
+.ap-pill { display: inline-flex; background: var(--blue); color: #fff; font-size: 1.0625rem; font-weight: 500; padding: 0.75rem 1.45rem; border-radius: 999px; transition: background 160ms, transform 160ms; }
+.ap-pill:hover { background: var(--blue-hover); transform: scale(1.03); }
+.ap-more { color: var(--blue); font-size: 1.0625rem; font-weight: 500; display: inline-flex; gap: 0.3rem; transition: gap 160ms; }
+.ap-more:hover { gap: 0.55rem; text-decoration: underline; text-underline-offset: 4px; }
+.ap-more--light { color: #4da3ff; }
+.ap-chips { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin: 1.25rem 0 0; padding: 0; animation: bhRise 1s 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+.ap-chips li { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--off); color: var(--ink); font-size: 0.875rem; font-weight: 600; padding: 0.5rem 0.95rem; border-radius: 999px; }
+.ap-chips svg { color: var(--blue); }
+.ap-hero__art { margin: clamp(2.5rem, 5vw, 3.5rem) auto 0; width: 290px; max-width: 70vw; }
+.ap-hero__mark { display: block; width: 100%; height: auto; aspect-ratio: 1; overflow: visible; }
+.ap-hero__mark path { filter: drop-shadow(0 30px 40px rgba(0,101,252,0.22)); }
+.ap-hero__title, .ap-hero__sub, .ap-hero__links, .ap-hero__art { animation: bhRise 1s cubic-bezier(0.16,1,0.3,1) both; }
+.ap-hero__sub { animation-delay: 0.12s; } .ap-hero__links { animation-delay: 0.24s; } .ap-hero__art { animation-delay: 0.36s; }
+
+/* Sector tiles */
+.ap-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: clamp(3rem, 7vw, 5rem) 12px 12px; max-width: 1440px; margin: 0 auto; }
+.ap-tile { position: relative; overflow: hidden; border-radius: 28px; min-height: clamp(460px, 44vw, 580px); padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2.5rem) 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.ap-tile--dark { background: #000; color: #f5f5f7; }
+.ap-tile--light { background: var(--off); color: var(--ink); }
+.ap-tile__eyebrow { font-size: 0.8125rem; font-weight: 600; color: var(--grey); }
+.ap-tile--dark .ap-tile__eyebrow { color: #86868b; }
+.ap-tile h2 { font-family: var(--font-b); font-weight: 700; font-size: clamp(2.25rem, 4.4vw, 3.5rem); letter-spacing: -0.03em; line-height: 1.05; margin-top: 0.4rem; }
+.ap-tile p { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.45; color: var(--grey); max-width: 30ch; margin: 0.8rem 0 1.1rem; }
+.ap-tile--dark p { color: #a1a1a6; }
+.ap-tile__art { position: absolute; left: 50%; bottom: -12%; width: min(78%, 360px); transform: translateX(-50%); stroke: #2997ff; }
+.ap-tile__art--wide { width: min(92%, 440px); bottom: 4%; stroke: var(--blue); }
+.ap-draw { stroke-dasharray: 80; stroke-dashoffset: 80; }
+.ap-tile.in .ap-draw { animation: apDraw 2.2s 0.3s cubic-bezier(0.65,0,0.35,1) forwards; }
+.ap-tile.in .ap-draw--2 { animation-delay: 1.4s; }
+@keyframes apDraw { to { stroke-dashoffset: 0; } }
+
+/* Promise */
+.ap-promise { background: var(--off); text-align: center; padding: clamp(4rem, 8vw, 6.5rem) 0; margin-top: 12px; }
+.ap-promise__title { font-family: var(--font-b); font-weight: 700; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.08; letter-spacing: -0.03em; max-width: 18ch; margin: 0 auto; color: var(--ink); }
+.ap-promise__title em { font-style: normal; color: var(--grey); }
+.ap-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(2rem, 7vw, 5.5rem); margin-top: clamp(2.5rem, 5vw, 3.75rem); }
+.ap-stats b { display: block; font-size: clamp(1.9rem, 3.6vw, 2.75rem); font-weight: 700; letter-spacing: -0.03em; background: linear-gradient(180deg, #0065fc, #57a5ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ap-stats span { font-size: 0.9375rem; color: var(--grey); }
+
+/* Restyle the remaining sections */
+.hp-section__head { margin-left: auto; margin-right: auto; text-align: center; }
+.hp-intro { margin-left: auto; margin-right: auto; color: var(--grey); font-size: clamp(1rem, 1.6vw, 1.1875rem); line-height: 1.55; }
+.hp-eyebrow { font-size: 0.875rem; letter-spacing: 0; text-transform: none; font-weight: 600; margin-bottom: 0.6rem; }
+.hp-h2 { font-family: var(--font-b); font-weight: 700; letter-spacing: -0.03em; color: var(--ink); font-size: clamp(2rem, 4.6vw, 3.25rem); }
+.hp-h2--light { color: #f5f5f7; }
+.hp-bg-off { background: #fff; }
+.cp-keep__col { border: 0; border-radius: 24px; background: var(--off); padding: clamp(1.75rem, 3vw, 2.5rem); }
+.cp-keep__col--never { background: var(--off); }
+.cp-keep__col h3, .cp-step h3, .cp-std__item h3, .cp-org__name { font-family: var(--font-b); font-weight: 600; letter-spacing: -0.015em; }
+.cp-keep__col h3 { font-size: 1.375rem; }
+.hp-why.hp-bg-navy { background: #000; }
+.hp-why.hp-bg-navy::before, .hp-why.hp-bg-navy::after { display: none; }
+.hp-why .hp-eyebrow { color: #86868b; }
+.hp-why__body { color: #a1a1a6; }
+.hp-why__link { color: #4da3ff; }
+.cp-fact { border-color: rgba(255,255,255,0.14) !important; background: transparent !important; }
+.cp-fact__num { font-family: var(--font-b) !important; font-weight: 700 !important; letter-spacing: -0.04em; background: linear-gradient(180deg, #2b8cff, #7bbcff); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+.cp-fact__num span { color: inherit !important; }
+.cp-crit { border: 0; border-radius: 24px; background: var(--off); }
+.cp-crit__item { border-right-color: rgba(0,0,0,0.08); }
+.cp-crit__num { font-family: var(--font-b); font-weight: 700; letter-spacing: -0.03em; color: var(--blue); font-size: clamp(1.25rem, 2vw, 1.625rem); }
+.cp-step { border-top: 0; background: var(--off); border-radius: 20px; padding: 1.5rem; }
+.cp-step__num { font-family: var(--font-b) !important; color: var(--blue); }
+.cp-crit__more { text-align: center; }
+.hp-leadership { background: var(--off); }
+.cp-org__item { border: 0; border-radius: 20px; }
+.cp-org__item--on { border-top: 0; box-shadow: inset 0 0 0 2px var(--blue); }
+.cp-org__item:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.cp-org__item--on:hover { box-shadow: inset 0 0 0 2px var(--blue), 0 18px 40px rgba(0,101,252,0.14); }
+.cp-org__role { letter-spacing: 0.08em; }
+.cp-std__item { border: 0 !important; border-radius: 20px; background: var(--off); padding: 1.5rem !important; }
+.cp-std__note { text-align: center; }
+.hp-cta.hp-bg-navy { background: var(--off); color: var(--ink); text-align: center; }
+.hp-cta .hp-h2--light { color: var(--ink); }
+.hp-cta__inner { grid-template-columns: 1fr; justify-items: center; }
+.hp-cta__body { color: var(--grey); margin-left: auto; margin-right: auto; }
+.hp-cta__actions { flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; }
+.hp-cta .btn-solid { border-radius: 999px; }
+.hp-cta .btn-outline { border-radius: 999px; color: var(--blue); border-color: var(--blue); }
+.hp-cta__note { color: var(--grey); margin-top: 0.5rem; }
+.hp-cta__text { max-width: 760px; }
+.cp-std { border: 0; gap: 12px; }
+.cp-std__item { margin-right: 0 !important; }
+@media (max-width: 860px) { .ap-tiles { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ap-hero * , .ap-hero__title, .ap-hero__sub, .ap-hero__links, .ap-hero__art { animation: none !important; } .ap-draw { stroke-dashoffset: 0; animation: none !important; } }
 </style>
 </head>
 <body>
@@ -1193,20 +1297,16 @@
 <!-- ══════════════════════════════════════════
      HERO
 ══════════════════════════════════════════ -->
-<section class="bh" id="top">
-  <div class="bh__blob bh__blob--1" aria-hidden="true"></div>
-  <div class="bh__blob bh__blob--2" aria-hidden="true"></div>
-  <div class="wrap bh__row">
-    <div class="bh__copy">
-      <h1 class="bh__title">We acquire and grow <span>cybersecurity</span> and <span>healthcare</span> companies.</h1>
-      <p class="bh__lede">Cyber Profound is a privately held consolidation platform. We buy good businesses, keep their names and teams, and own them for the long term.</p>
-      <div class="bh__cta">
-        <a href="pages/contact.html" class="bh__btn bh__btn--p">Start a Conversation <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="pages/criteria.html" class="bh__btn bh__btn--s">See Our Criteria</a>
-      </div>
+<section class="ap-hero" id="top">
+  <div class="wrap">
+    <h1 class="ap-hero__title">We acquire and grow <span>cybersecurity</span> and <span>healthcare</span> companies.</h1>
+    <p class="ap-hero__sub">Cyber Profound is a privately held consolidation platform. We buy good businesses, keep their names and teams, and own them for the long term.</p>
+    <div class="ap-hero__links">
+      <a href="pages/contact.html" class="ap-pill">Start a Conversation</a>
+      <a href="pages/criteria.html" class="ap-more">See Our Criteria <span aria-hidden="true">›</span></a>
     </div>
-    <div class="bh__art" aria-hidden="true">
-      <svg class="bh__mark" viewBox="0 0 1080 1080" aria-hidden="true"><defs>
+    <div class="ap-hero__art" aria-hidden="true">
+      <svg class="ap-hero__mark" viewBox="0 0 1080 1080" aria-hidden="true"><defs>
 <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4d9bff"/><stop offset="1" stop-color="#0052d6"/></linearGradient>
 <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b82ff"/><stop offset="1" stop-color="#0065fc"/></linearGradient>
 <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0052d6"/><stop offset="1" stop-color="#57a5ff"/></linearGradient></defs>
@@ -1214,11 +1314,11 @@
 <path class="bm bm2" fill="url(#bg2)" d="M533,157 C640,100 800,140 900,270 C980,370 970,450 895,465 C790,480 690,250 533,157 Z"/>
 <path class="bm bm3" fill="url(#bg3)" d="M348,742 C520,755 700,700 820,700 C910,700 935,750 905,845 C860,930 700,945 620,940 C480,935 380,860 348,742 Z"/>
 </svg>
-      <div class="bh__chips">
-      <div class="bh__chip bh__chip--1"><div class="bh__chip-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg></div><div>Cybersecurity<small>MSSPs and security firms</small></div></div>
-      <div class="bh__chip bh__chip--3"><div class="bh__chip-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg></div><div>Healthcare<small>Established care businesses</small></div></div>
-      </div>
     </div>
+    <ul class="ap-chips">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg>Cybersecurity</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg>Healthcare</li>
+    </ul>
   </div>
 </section>
 
@@ -1226,28 +1326,30 @@
 <!-- ══════════════════════════════════════════
      SECTION 2 — WHO WE BACK
 ══════════════════════════════════════════ -->
-<section class="hp-section hp-targets" id="targets">
-  <div class="wrap">
-    <div class="hp-section__head hp-reveal">
-      <span class="hp-eyebrow">Who We Acquire</span>
-      <h2 class="hp-h2">Two sectors. One long term owner.</h2>
-      <p class="hp-intro">We buy established, founder owned companies that do essential work. If you own one and are thinking about what comes next, we want to know you.</p>
-    </div>
-    <div class="hp-targets__grid">
-      <div class="hp-target hp-reveal">
-        <div class="bh-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path d="M9 12l2.2 2.2L15.2 10"/></svg></div>
-        <span class="hp-target__tag">Security</span>
-        <h3>Cybersecurity</h3>
-        <p>MSSPs, security focused MSPs, consultancies and compliance firms with recurring revenue and clients who stay.</p>
-        <a href="pages/criteria.html" class="hp-target__link">View Criteria <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <div class="hp-target hp-reveal">
-        <div class="bh-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg></div>
-        <span class="hp-target__tag">Care</span>
-        <h3>Healthcare</h3>
-        <p>Established healthcare companies with strong teams, steady demand and owners who care what happens next.</p>
-        <a href="pages/criteria.html" class="hp-target__link">View Criteria <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 6.5h9M8 3l3.5 3.5L8 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+<section class="ap-tiles" id="targets" aria-label="Who we acquire">
+  <div class="ap-tile ap-tile--dark hp-reveal">
+    <span class="ap-tile__eyebrow">Who we acquire</span>
+    <h2>Cybersecurity</h2>
+    <p>MSSPs, security focused MSPs, consultancies and compliance firms with recurring revenue and clients who stay.</p>
+    <a href="pages/criteria.html" class="ap-more ap-more--light">See the criteria <span aria-hidden="true">›</span></a>
+    <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2" d="M9 12l2.2 2.2L15.2 10"/></svg>
+  </div>
+  <div class="ap-tile ap-tile--light hp-reveal">
+    <span class="ap-tile__eyebrow">Who we acquire</span>
+    <h2>Healthcare</h2>
+    <p>Established healthcare companies with strong teams, steady demand and owners who care what happens next.</p>
+    <a href="pages/criteria.html" class="ap-more">See the criteria <span aria-hidden="true">›</span></a>
+    <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
+  </div>
+</section>
+
+<section class="ap-promise">
+  <div class="wrap hp-reveal">
+    <h2 class="ap-promise__title">Your name stays. Your team stays. <em>We stay too.</em></h2>
+    <div class="ap-stats">
+      <div><b>$3M to $20M</b><span>Revenue we look for</span></div>
+      <div><b>2 sectors</b><span>Cybersecurity and healthcare</span></div>
+      <div><b>No exit clock</b><span>We hold for the long term</span></div>
     </div>
   </div>
 </section>
