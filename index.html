@@ -1411,6 +1411,8 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 @media (max-width: 1180px) { .nav__menu a { padding: 0 0.6rem; font-size: 0.875rem; } .nav__menu a::after { left: 0.6rem; right: 0.6rem; } .nav__logo { margin-right: 0.75rem; } .nav__logo img { height: 36px; } .nav__right { gap: 0.6rem; margin-left: 0.5rem; } .nav__talk { padding-left: 0.9rem !important; padding-right: 0.9rem !important; } }
 @media (max-width: 1040px) { .nav__right .nav__talk svg { display: none; } .nav__menu a { padding: 0 0.45rem; } .nav__menu a::after { left: 0.45rem; right: 0.45rem; } }
 @media (max-width: 1320px) { .nav__search-btn { min-width: 0; width: 42px; padding: 0; justify-content: center; } .nav__search-btn .nav__search-txt { display: none; } }
+/* The second panel keeps an empty label row so both headings line up */
+@media (max-width: 860px) { .ap-tile__eyebrow--gap { display: none; } }
 </style>
 </head>
 <body>
@@ -1541,7 +1543,7 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
     <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-orbit" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2 ap-check" pathLength="80" d="M9 12l2.2 2.2L15.2 10"/></svg>
   </div>
   <div class="ap-tile ap-tile--light hp-reveal">
-    <span class="ap-tile__eyebrow">Who we acquire</span>
+    <span class="ap-tile__eyebrow ap-tile__eyebrow--gap" aria-hidden="true">&nbsp;</span>
     <h2>Healthcare</h2>
     <p>Home care, home health, hospice and assisted living companies with strong teams, steady demand and owners who care what happens next.</p>
     <a href="pages/criteria.html" class="ap-more">See the criteria <span aria-hidden="true">›</span></a>
