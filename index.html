@@ -1102,7 +1102,7 @@
 .cp-org__bio:hover { border-bottom-color: var(--blue); }
 
 /* ===== APPLE STYLE (homepage) ===== */
-:root { --nav-h: 56px; --ink: #1d1d1f; --grey: #6e6e73; --off: #f5f5f7; --font-d: 'Inter', -apple-system, sans-serif; }
+:root { --nav-h: 56px; --ink: #1d1d1f; --grey: #6e6e73; --off: #f5f5f7; }
 body { color: var(--ink); }
 .nav { background: rgba(255,255,255,0.78); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); }
 .nav__logo img { height: 30px; }
@@ -1296,6 +1296,17 @@ body { color: var(--ink); }
 .cp-org__li:hover { background: #004182; transform: translateY(-2px); }
 .cp-org__li svg { width: 14px; height: 14px; }
 .cp-org__item > .cp-org__role { white-space: nowrap; letter-spacing: 0.07em; font-size: min(0.66rem, calc((100cqi - 3rem) / 24.5)); }
+/* ===== ONE TYPEFACE: every heading and big number in the serif ===== */
+section h1, section h2, section h3,
+.ap-stats b, .cp-fact__num, .cp-crit__num, .cp-step__num {
+  font-family: var(--font-d) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.012em !important;
+}
+.ap-promise__title em { font-family: inherit; }
+section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .cp-step__num { font-variant-numeric: lining-nums; text-wrap: balance; }
+.ap-promise__title { max-width: 20ch; margin-left: auto; margin-right: auto; }
+.cp-std__item h3 { font-size: 1.15rem; }
 </style>
 </head>
 <body>
