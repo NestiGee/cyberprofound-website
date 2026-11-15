@@ -1313,6 +1313,58 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
   .ap-hero__sub { max-width: 52ch; font-size: 1.3rem; }
   .ap-hero__art { width: 340px; }
 }
+/* ===== BIG ORG: full bleed hero, panels, bands ===== */
+:root { --edge: max(var(--gut), calc((100vw - var(--max)) / 2 + var(--gut))); }
+.ap-hero { position: relative; min-height: min(92vh, 1000px); display: flex; align-items: center; text-align: left; color: #fff;
+  padding: calc(var(--nav-h) + clamp(3rem, 6vw, 5rem)) 0 clamp(4rem, 7vw, 6rem);
+  background: linear-gradient(100deg, rgba(5,14,30,0.97) 0%, rgba(6,20,44,0.9) 45%, rgba(4,22,60,0.78) 100%), url(assets/hero-image.jpg) center 30% / cover no-repeat; }
+.ap-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(120,180,255,0.5), transparent); }
+.ap-hero .wrap { width: 100%; }
+.ap-hero__title { color: #fff; }
+.ap-hero__title span { background-image: linear-gradient(90deg, #4d9bff, #9cccff 45%, #4d9bff); }
+.ap-hero__sub { color: rgba(255,255,255,0.78); }
+.ap-hero .ap-more { color: #9cccff; }
+.ap-chips li { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.ap-chips svg { color: #7db8ff; }
+.ap-hero__mark .bm { filter: drop-shadow(0 18px 40px rgba(0,101,252,0.45)); }
+
+.ap-tiles { max-width: none; padding: 0; gap: 0; grid-template-columns: 1fr 1fr; margin: 0; }
+.ap-tile { border-radius: 0; transform: none !important; min-height: clamp(360px, 30vw, 500px); align-content: center;
+  grid-template-columns: 1fr clamp(96px, 10vw, 170px); grid-template-rows: auto auto auto auto;
+  padding: clamp(3rem, 6vw, 5.5rem) clamp(2rem, 4vw, 4.5rem); }
+.ap-tile:first-child { padding-left: var(--edge); }
+.ap-tile:last-child { padding-right: var(--edge); }
+.ap-tile:hover { box-shadow: none; }
+.ap-tile::after { border-radius: 0; }
+.ap-tile--dark { background: linear-gradient(rgba(4,10,22,0.86), rgba(4,10,22,0.93)), url(assets/img-server.jpg) center / cover; }
+.ap-tile--light { background: #eef3fb; }
+.ap-tile h2 { font-size: clamp(2rem, 3.2vw, 3.1rem); }
+.ap-tile p { font-size: clamp(1rem, 1.2vw, 1.15rem); max-width: 40ch; }
+.ap-tile__art, .ap-tile__art--wide { width: 100%; height: auto; grid-row: 1 / -1; align-self: center; }
+@media (max-width: 860px) {
+  .ap-tiles { grid-template-columns: 1fr; }
+  .ap-tile, .ap-tile:first-child, .ap-tile:last-child { padding: 3rem var(--gut); }
+}
+
+.ap-promise { margin-top: 0; text-align: left; color: #fff; padding: clamp(5rem, 9vw, 8rem) 0;
+  background: radial-gradient(900px 500px at 85% 20%, rgba(87,165,255,0.35), transparent 60%), linear-gradient(120deg, #07152b 0%, #0a2f78 55%, #0065fc 100%); }
+.ap-promise__title { margin: 0; max-width: 22ch; font-size: clamp(2.4rem, 4.6vw, 4.5rem); color: #fff; }
+.ap-promise__title .sw { color: rgba(255,255,255,0.28); }
+.ap-promise__title .sw.on { color: #fff; }
+.ap-promise__title em .sw.on, .ap-promise__title em { color: #9cccff; }
+.ap-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 4vw, 4rem); justify-content: stretch; margin-top: clamp(3rem, 6vw, 5rem); }
+.ap-stats > div { border-top: 1px solid rgba(255,255,255,0.28); padding-top: 1.25rem; }
+.ap-stats b { font-size: clamp(2.2rem, 4vw, 3.75rem); background: linear-gradient(180deg, #fff, #a9d0ff); -webkit-background-clip: text; background-clip: text; }
+.ap-stats span { color: rgba(255,255,255,0.72); font-size: 1rem; }
+@media (max-width: 700px) { .ap-stats { grid-template-columns: 1fr; } }
+
+.hp-cta.hp-bg-navy { color: #fff; padding: clamp(6rem, 11vw, 10rem) 0;
+  background: linear-gradient(rgba(5,14,30,0.8), rgba(5,14,30,0.9)), url(assets/img-skyline.jpg) center 60% / cover; }
+.hp-cta .hp-h2--light { color: #fff; font-size: clamp(2.4rem, 4.6vw, 4.25rem); }
+.hp-cta__body { color: rgba(255,255,255,0.78); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+.hp-cta .btn-outline { color: #fff; border-color: rgba(255,255,255,0.6); }
+.hp-cta .btn-outline:hover { background: #fff; color: var(--navy); }
+.hp-cta__note { color: rgba(255,255,255,0.6); }
 </style>
 </head>
 <body>
@@ -1393,13 +1445,6 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
     </div>
   </div>
 </div>
-    <div class="search-overlay__hints" aria-label="Quick links">
-      <a href="pages/criteria.html" class="search-overlay__hint">Acquisition Criteria</a>
-      <a href="pages/platform.html" class="search-overlay__hint">Platform Overview</a>
-      <a href="pages/governance.html" class="search-overlay__hint">Governance</a>
-      <a href="pages/newsroom.html" class="search-overlay__hint">Newsroom</a>
-      <a href="pages/contact.html" class="search-overlay__hint">Contact</a>
-    </div>
   </div>
 </div>
 
