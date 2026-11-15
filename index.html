@@ -1221,6 +1221,17 @@ body { color: var(--ink); }
 .hp-leadership .cp-org__name--tba { color: var(--muted); }
 .cp-std__item { margin-right: 0 !important; }
 @media (max-width: 860px) { .ap-tiles { grid-template-columns: 1fr; } }
+/* Compact sector tiles */
+.ap-tiles { max-width: var(--max); padding: clamp(2rem, 4vw, 3rem) var(--gut) clamp(2.5rem, 5vw, 4rem); gap: 16px; }
+.ap-tile { min-height: 0; border-radius: 22px; padding: 1.75rem 1.75rem 1.75rem 2rem; text-align: left; display: grid; grid-template-columns: 1fr 110px; grid-template-rows: auto auto auto 1fr; column-gap: 1.25rem; align-items: start; }
+.ap-tile > :not(svg) { grid-column: 1; }
+.ap-tile h2 { font-size: clamp(1.5rem, 2.2vw, 1.875rem); margin-top: 0.2rem; }
+.ap-tile p { font-size: 0.9688rem; line-height: 1.55; max-width: none; margin: 0.5rem 0 0.9rem; }
+.ap-tile .ap-more { font-size: 0.9375rem; align-self: end; }
+.ap-tile__eyebrow { font-size: 0.75rem; }
+.ap-tile__art, .ap-tile__art--wide { position: static; transform: none; grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 110px; height: 110px; }
+.ap-tile__art--wide { stroke-width: .6; }
+@media (max-width: 520px) { .ap-tile { grid-template-columns: 1fr 72px; padding: 1.5rem; } .ap-tile__art, .ap-tile__art--wide { width: 72px; height: 72px; } }
 @media (prefers-reduced-motion: reduce) { .ap-hero * , .ap-hero__title, .ap-hero__sub, .ap-hero__links, .ap-hero__art { animation: none !important; } .ap-draw { stroke-dashoffset: 0; animation: none !important; } }
 </style>
 </head>
@@ -1352,14 +1363,14 @@ body { color: var(--ink); }
     <h2>Cybersecurity</h2>
     <p>MSSPs, security focused MSPs, consultancies and compliance firms with recurring revenue and clients who stay.</p>
     <a href="pages/criteria.html" class="ap-more ap-more--light">See the criteria <span aria-hidden="true">›</span></a>
-    <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2" d="M9 12l2.2 2.2L15.2 10"/></svg>
+    <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2" d="M9 12l2.2 2.2L15.2 10"/></svg>
   </div>
   <div class="ap-tile ap-tile--light hp-reveal">
     <span class="ap-tile__eyebrow">Who we acquire</span>
     <h2>Healthcare</h2>
     <p>Established healthcare companies with strong teams, steady demand and owners who care what happens next.</p>
     <a href="pages/criteria.html" class="ap-more">See the criteria <span aria-hidden="true">›</span></a>
-    <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
+    <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
   </div>
 </section>
 
