@@ -1365,6 +1365,20 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 .hp-cta .btn-outline { color: #fff; border-color: rgba(255,255,255,0.6); }
 .hp-cta .btn-outline:hover { background: #fff; color: var(--navy); }
 .hp-cta__note { color: rgba(255,255,255,0.6); }
+/* ===== LIVE ICONS: constant motion on the sector icons ===== */
+.ap-orbit, .ap-beat { stroke-dasharray: 12 68; stroke-dashoffset: 80; opacity: 0; stroke-width: 1.6; }
+.ap-orbit { stroke: #bfe0ff; filter: drop-shadow(0 0 1.2px #7db8ff); }
+.ap-beat { stroke: #0065fc; stroke-width: 1.5; filter: drop-shadow(0 0 1px rgba(0,101,252,0.8)); }
+.ap-tile.in .ap-orbit { animation: apRun 3.2s linear 2.6s infinite; }
+.ap-tile.in .ap-beat { animation: apRun 2.4s cubic-bezier(0.45,0,0.55,1) 2.6s infinite; }
+@keyframes apRun { 0% { stroke-dashoffset: 80; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+.ap-tile.in .ap-check { animation: apDraw 2.2s cubic-bezier(0.65,0,0.35,1) 1.4s forwards, apCheck 4.8s ease-in-out 4s infinite; }
+@keyframes apCheck { 0%, 55%, 100% { stroke-dashoffset: 0; } 70% { stroke-dashoffset: 80; } 71% { stroke-dashoffset: 80; } }
+.ap-tile.in .ap-tile__art { animation: apGlow 3.2s ease-in-out 2.6s infinite; }
+.ap-tile--dark .ap-tile__art { --glow: rgba(41,151,255,0.55); }
+.ap-tile--light .ap-tile__art { --glow: rgba(0,101,252,0.35); }
+@keyframes apGlow { 0%, 100% { filter: drop-shadow(0 0 0 transparent); } 50% { filter: drop-shadow(0 0 14px var(--glow)); } }
+@media (prefers-reduced-motion: reduce) { .ap-orbit, .ap-beat { display: none; } .ap-tile__art, .ap-check { animation: none !important; } }
 </style>
 </head>
 <body>
@@ -1488,14 +1502,14 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
     <h2>Cybersecurity</h2>
     <p>MSSPs, security focused MSPs, consultancies and compliance firms with recurring revenue and clients who stay.</p>
     <a href="pages/criteria.html" class="ap-more ap-more--light">See the criteria <span aria-hidden="true">›</span></a>
-    <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2" d="M9 12l2.2 2.2L15.2 10"/></svg>
+    <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-orbit" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2 ap-check" pathLength="80" d="M9 12l2.2 2.2L15.2 10"/></svg>
   </div>
   <div class="ap-tile ap-tile--light hp-reveal">
     <span class="ap-tile__eyebrow">Who we acquire</span>
     <h2>Healthcare</h2>
     <p>Established healthcare companies with strong teams, steady demand and owners who care what happens next.</p>
     <a href="pages/criteria.html" class="ap-more">See the criteria <span aria-hidden="true">›</span></a>
-    <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
+    <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" pathLength="80" d="M0 7h5l2-5 4 10 3-8 2 3h8"/><path class="ap-beat" pathLength="80" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
   </div>
 </section>
 
