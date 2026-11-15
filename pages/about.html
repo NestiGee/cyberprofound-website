@@ -785,6 +785,20 @@
 .cp-org__grid { margin-top: 0; }
 .cp-org__bio { align-self: flex-start; margin-top: 0.35rem; background: none; border: 0; padding: 0; font: 600 0.8125rem var(--font-b); color: var(--blue); cursor: pointer; border-bottom: 1px solid rgba(0,101,252,0.35); }
 .cp-org__bio:hover { border-bottom-color: var(--blue); }
+
+/* Leadership cards: equal size, photo on top */
+.cp-org__grid { grid-auto-rows: 1fr; }
+.cp-org__item { padding: 0 !important; overflow: hidden; gap: 0 !important; }
+.cp-org__item > :not(.cp-org__photo) { margin-left: 1.5rem; margin-right: 1.5rem; }
+.cp-org__item > .cp-org__role { margin-top: 1.2rem; }
+.cp-org__item > .cp-org__name { margin-top: 0.35rem; }
+.cp-org__item > :last-child { margin-bottom: 1.4rem; }
+.cp-org__item > .cp-org__bio { margin-top: 0.6rem; }
+.cp-org__photo { aspect-ratio: 4 / 4.2; width: 100%; overflow: hidden; background: #eef3fb; }
+.cp-org__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; transition: transform 600ms cubic-bezier(0.16,1,0.3,1); }
+.cp-org__item:hover .cp-org__photo img { transform: scale(1.04); }
+.cp-org__photo--empty { display: grid; place-items: center; color: #c5d3ea; background: linear-gradient(160deg, #f3f7fd, #e4ecf8); }
+.cp-org__photo--empty svg { width: 38%; height: auto; }
 </style>
 </head>
 <body>
@@ -952,12 +966,12 @@
       
             <div class="cp-org reveal">
       <ul class="cp-org__grid">
-        <li class="cp-org__item"><span class="cp-org__role">Chairman of the Board</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
-        <li class="cp-org__item cp-org__item--on"><span class="cp-org__role">Founder, Chief Executive Officer and Director</span><span class="cp-org__name">Nest Gjinaj</span><button type="button" class="cp-org__bio" data-bio="nest">View bio</button></li>
-        <li class="cp-org__item"><span class="cp-org__role">Chief Financial Officer</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
-        <li class="cp-org__item"><span class="cp-org__role">Chief Operating Officer</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
-        <li class="cp-org__item"><span class="cp-org__role">General Counsel</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
-        <li class="cp-org__item cp-org__item--on"><span class="cp-org__role">Outside Counsel</span><span class="cp-org__name">Holland &amp; Knight LLP</span></li>
+        <li class="cp-org__item"><div class="cp-org__photo cp-org__photo--empty" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="24" r="11"/><path d="M10 58c2-12 11-19 22-19s20 7 22 19z"/></svg></div><span class="cp-org__role">Chairman of the Board</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
+        <li class="cp-org__item cp-org__item--on"><div class="cp-org__photo"><img src="../assets/headshot-gjinaj.jpg" alt="Nest Gjinaj" loading="lazy" width="1080" height="1320"></div><span class="cp-org__role">Founder and Chief Executive Officer</span><span class="cp-org__name">Nest Gjinaj</span><button type="button" class="cp-org__bio" data-bio="nest">View bio</button></li>
+        <li class="cp-org__item"><div class="cp-org__photo cp-org__photo--empty" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="24" r="11"/><path d="M10 58c2-12 11-19 22-19s20 7 22 19z"/></svg></div><span class="cp-org__role">Chief Financial Officer</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
+        <li class="cp-org__item"><div class="cp-org__photo cp-org__photo--empty" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="24" r="11"/><path d="M10 58c2-12 11-19 22-19s20 7 22 19z"/></svg></div><span class="cp-org__role">Chief Operating Officer</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
+        <li class="cp-org__item"><div class="cp-org__photo cp-org__photo--empty" aria-hidden="true"><svg viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="24" r="11"/><path d="M10 58c2-12 11-19 22-19s20 7 22 19z"/></svg></div><span class="cp-org__role">General Counsel</span><span class="cp-org__name cp-org__name--tba">Confidential</span></li>
+        <li class="cp-org__item cp-org__item--on"><div class="cp-org__photo cp-org__photo--empty" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M8 24L32 10l24 14z"/><path d="M14 28v20M25 28v20M39 28v20M50 28v20M8 54h48"/></svg></div><span class="cp-org__role">Outside Counsel</span><span class="cp-org__name">Holland &amp; Knight LLP</span></li>
       </ul>
     </div>
     </section>
