@@ -79,8 +79,8 @@
       --font-d:     'Cormorant Garamond', Georgia, serif;
       --font-b:     'Inter', sans-serif;
       --nav-h:      80px;
-      --max:        1120px;
-      --gut:        clamp(1.5rem, 5vw, 3.5rem);
+      --max:        1520px;
+      --gut:        clamp(1.5rem, 5vw, 5rem);
       --ease:       cubic-bezier(0.16, 1, 0.3, 1);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1307,6 +1307,12 @@ section h1, section h2, section h3,
 section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .cp-step__num { font-variant-numeric: lining-nums; text-wrap: balance; }
 .ap-promise__title { max-width: 20ch; margin-left: auto; margin-right: auto; }
 .cp-std__item h3 { font-size: 1.15rem; }
+/* ===== WIDE LAYOUT: hero scales with the wider page ===== */
+@media (min-width: 1200px) {
+  .ap-hero__title { max-width: 19ch; font-size: clamp(3.6rem, 4.4vw, 5rem); }
+  .ap-hero__sub { max-width: 52ch; font-size: 1.3rem; }
+  .ap-hero__art { width: 340px; }
+}
 </style>
 </head>
 <body>
