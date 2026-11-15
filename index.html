@@ -1457,8 +1457,9 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 @keyframes skTw { 0%, 100% { opacity: .15; } 50% { opacity: .95; } }
 @keyframes skRip { 0%, 100% { transform: translateX(0); opacity: .2; } 50% { transform: translateX(18px); opacity: .5; } }
 @media (prefers-reduced-motion: reduce) { .sk-w .w, .sk-rip path { animation: none; opacity: .6; } }
-.hp-footer { position: relative; overflow: hidden; }
-.hp-footer > .hp-skyline { position: absolute; left: 0; right: 0; bottom: 0; background: none; opacity: .34; pointer-events: none; }
+.hp-footer { position: relative; overflow: hidden; padding-top: clamp(2.25rem, 3.5vw, 3rem); }
+.hp-footer .hp-footer__inner { padding-bottom: calc(clamp(170px, 18.75vw, 480px) - 40px); }
+.hp-footer > .hp-skyline { position: absolute; left: 0; right: 0; bottom: 0; background: none; opacity: .5; pointer-events: none; }
 .hp-footer > .wrap { position: relative; z-index: 1; }
 .hp-footer .sk-moon { display: none; }
 </style>
