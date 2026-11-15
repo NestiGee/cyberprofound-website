@@ -2244,6 +2244,12 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
     while (nodes.length < want) nodes.push(spawn(true));
     nodes.length = want;
   }
+  var shapes = mark.querySelectorAll('.bm');
+  function center() {
+    var h = hero.getBoundingClientRect(), l = 1e9, t = 1e9, r = -1e9, b = -1e9, i, q;
+    for (i = 0; i < shapes.length; i++) { q = shapes[i].getBoundingClientRect(); l = Math.min(l, q.left); t = Math.min(t, q.top); r = Math.max(r, q.right); b = Math.max(b, q.bottom); }
+    if (r > l) { cx = (l + r) / 2 - h.left; cy = (t + b) / 2 - h.top; R = (r - l) * 0.66; }
+  }
   function spawn(anywhere) {
     var x, y;
     if (anywhere) { x = Math.random() * W; y = Math.random() * H; }
@@ -2326,6 +2332,7 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
   function frame(now) {
     if (!running) return;
     var dt = Math.min(0.05, (now - last) / 1000 || 0); last = now;
+    center();
     step(dt, now); draw(now);
     raf = requestAnimationFrame(frame);
   }
