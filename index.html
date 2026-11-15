@@ -1444,7 +1444,7 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 @keyframes ixEcg { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 @media (max-width: 860px) { .ap-tile { grid-template-columns: 1fr 120px; } }
 @media (prefers-reduced-motion: reduce) { .ix * { animation: none !important; } .ix-blip { opacity: 1; } .ix-ring { opacity: .3; } }
-/* ===== FOOTER SKYLINE (homepage) ===== */
+/* ===== FOOTER SKYLINE (homepage): sits behind the footer text ===== */
 .hp-skyline { background: linear-gradient(180deg, #071a3a 0%, #0c2a5e 60%, #0A1B2E 100%); line-height: 0; overflow: hidden; }
 .sk { display: block; width: 100%; height: clamp(170px, 18.75vw, 480px); }
 .sk-b path { fill: url(#skFill); stroke: #3f86f0; stroke-width: 1.2; stroke-linejoin: round; }
@@ -1457,7 +1457,10 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 @keyframes skTw { 0%, 100% { opacity: .15; } 50% { opacity: .95; } }
 @keyframes skRip { 0%, 100% { transform: translateX(0); opacity: .2; } 50% { transform: translateX(18px); opacity: .5; } }
 @media (prefers-reduced-motion: reduce) { .sk-w .w, .sk-rip path { animation: none; opacity: .6; } }
-.hp-footer { padding-top: clamp(2.5rem, 4vw, 3.5rem); }
+.hp-footer { position: relative; overflow: hidden; }
+.hp-footer > .hp-skyline { position: absolute; left: 0; right: 0; bottom: 0; background: none; opacity: .34; pointer-events: none; }
+.hp-footer > .wrap { position: relative; z-index: 1; }
+.hp-footer .sk-moon { display: none; }
 </style>
 </head>
 <body>
@@ -1796,6 +1799,7 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 <!-- ══════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════ -->
+<footer class="hp-footer" role="contentinfo">
 <div class="hp-skyline">
 <svg class="sk" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice" role="img" aria-labelledby="skTitle"><title id="skTitle">Illustration of the Detroit skyline with the Ambassador Bridge and the Renaissance Center</title>
 <defs><linearGradient id="skFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c4a94"/><stop offset="1" stop-color="#0d2550"/></linearGradient>
@@ -1809,7 +1813,6 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 <path class="sk-line" d="M0 262H1600"/>
 </svg>
 </div>
-<footer class="hp-footer" role="contentinfo">
   <div class="wrap">
     <div class="hp-footer__inner">
 
