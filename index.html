@@ -1234,6 +1234,9 @@ body { color: var(--ink); }
 @media (max-width: 520px) { .ap-tile { grid-template-columns: 1fr 72px; padding: 1.5rem; } .ap-tile__art, .ap-tile__art--wide { width: 72px; height: 72px; } }
 @media (prefers-reduced-motion: reduce) { .ap-hero * , .ap-hero__title, .ap-hero__sub, .ap-hero__links, .ap-hero__art { animation: none !important; } .ap-draw { stroke-dashoffset: 0; animation: none !important; } }
 
+/* Hero headline in the serif used by the leadership section */
+.ap-hero__title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; line-height: 1.04; color: var(--navy); font-size: clamp(2.6rem, 5vw, 4.1rem); }
+.ap-hero__sub { color: var(--mid); }
 /* ===== MOTION ===== */
 .cp-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 400; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #0052d6, #0065fc, #57a5ff); pointer-events: none; }
 .hp-reveal { opacity: 0; transform: translateY(32px) scale(0.985); filter: blur(8px); transition: opacity 900ms cubic-bezier(0.16,1,0.3,1), transform 900ms cubic-bezier(0.16,1,0.3,1), filter 900ms cubic-bezier(0.16,1,0.3,1); }
