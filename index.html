@@ -1411,8 +1411,12 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
 @media (max-width: 1180px) { .nav__menu a { padding: 0 0.6rem; font-size: 0.875rem; } .nav__menu a::after { left: 0.6rem; right: 0.6rem; } .nav__logo { margin-right: 0.75rem; } .nav__logo img { height: 36px; } .nav__right { gap: 0.6rem; margin-left: 0.5rem; } .nav__talk { padding-left: 0.9rem !important; padding-right: 0.9rem !important; } }
 @media (max-width: 1040px) { .nav__right .nav__talk svg { display: none; } .nav__menu a { padding: 0 0.45rem; } .nav__menu a::after { left: 0.45rem; right: 0.45rem; } }
 @media (max-width: 1320px) { .nav__search-btn { min-width: 0; width: 42px; padding: 0; justify-content: center; } .nav__search-btn .nav__search-txt { display: none; } }
-/* The second panel keeps an empty label row so both headings line up */
-@media (max-width: 860px) { .ap-tile__eyebrow--gap { display: none; } }
+/* Banner above the two sector panels */
+.ap-tiles__banner { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; padding: clamp(1.75rem, 3vw, 2.5rem) var(--edge); background: linear-gradient(90deg, #0052d6, #0065fc 55%, #2f86ff); color: #fff; }
+.ap-tiles__banner h2 { font-family: var(--font-d) !important; font-weight: 600; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1; letter-spacing: -0.012em; color: #fff; margin: 0; }
+.ap-tiles__banner p { font-size: clamp(1rem, 1.3vw, 1.15rem); color: rgba(255,255,255,0.88); margin: 0; }
+@media (min-width: 861px) { .ap-tiles__banner + .ap-tile { padding-left: var(--edge); } }
+.ap-tile h3 { font-family: var(--font-d) !important; font-weight: 600; font-size: clamp(2rem, 3.2vw, 3.1rem); letter-spacing: -0.012em; line-height: 1.05; margin: 0; }
 </style>
 </head>
 <body>
@@ -1535,16 +1539,18 @@ section h1, section h2, section h3, .ap-stats b, .cp-fact__num, .cp-crit__num, .
      SECTION 2 — WHO WE BACK
 ══════════════════════════════════════════ -->
 <section class="ap-tiles" id="targets" aria-label="Who we acquire">
+  <div class="ap-tiles__banner">
+    <h2>Who we acquire</h2>
+    <p>Two sectors. One platform.</p>
+  </div>
   <div class="ap-tile ap-tile--dark hp-reveal">
-    <span class="ap-tile__eyebrow">Who we acquire</span>
-    <h2>Cybersecurity</h2>
+    <h3>Cybersecurity</h3>
     <p>MSSPs, security focused MSPs, consultancies and compliance firms with recurring revenue and clients who stay.</p>
     <a href="pages/criteria.html" class="ap-more ap-more--light">See the criteria <span aria-hidden="true">›</span></a>
     <svg class="ap-tile__art" viewBox="0 0 24 24" fill="none" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-orbit" pathLength="80" d="M12 2.5l8 3v6c0 5-3.5 8.6-8 10-4.5-1.4-8-5-8-10v-6l8-3z"/><path class="ap-draw ap-draw--2 ap-check" pathLength="80" d="M9 12l2.2 2.2L15.2 10"/></svg>
   </div>
   <div class="ap-tile ap-tile--light hp-reveal">
-    <span class="ap-tile__eyebrow ap-tile__eyebrow--gap" aria-hidden="true">&nbsp;</span>
-    <h2>Healthcare</h2>
+    <h3>Healthcare</h3>
     <p>Home care, home health, hospice and assisted living companies with strong teams, steady demand and owners who care what happens next.</p>
     <a href="pages/criteria.html" class="ap-more">See the criteria <span aria-hidden="true">›</span></a>
     <svg class="ap-tile__art ap-tile__art--wide" viewBox="0 0 24 14" fill="none" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="ap-draw" pathLength="80" d="M0 7h5l2-5 4 10 3-8 2 3h8"/><path class="ap-beat" pathLength="80" d="M0 7h5l2-5 4 10 3-8 2 3h8"/></svg>
